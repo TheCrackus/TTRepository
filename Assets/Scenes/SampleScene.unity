@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1222828609}
   - component: {fileID: 1222828608}
   m_Layer: 0
-  m_Name: PrimerCuadrado
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
