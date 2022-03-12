@@ -22,6 +22,7 @@ public class movimientoCamara : MonoBehaviour
         
     }
 
+
     void FixedUpdate() 
     {
         if (transform.position != objetivo.position) 
