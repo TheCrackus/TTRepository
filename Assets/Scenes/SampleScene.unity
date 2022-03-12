@@ -5070,18 +5070,18 @@ CompositeCollider2D:
       - {x: 8.874989, y: 6}
       - {x: -13.875009, y: 5.999988}
       - {x: -14, y: 5.812492}
-      - {x: -14.000007, y: -1.8750088}
-      - {x: -13.937501, y: -1.99999}
-      - {x: -13.124973, y: -1.9999782}
-      - {x: -13.00001, y: -1.8125253}
+      - {x: -13.999997, y: -1.8750056}
+      - {x: -13.937485, y: -2}
+      - {x: -13.124992, y: -1.9999882}
+      - {x: -13, y: -1.8124923}
       - {x: -12.99997, y: 5}
       - {x: 8, y: 4.9999704}
       - {x: 7.9999704, y: -6}
       - {x: -13, y: -5.9999704}
-      - {x: -12.999996, y: -3.2499886}
-      - {x: -13.1875105, y: -2.99999}
-      - {x: -13.812512, y: -2.9999993}
-      - {x: -14.00001, y: -3.1875088}
+      - {x: -13.000005, y: -3.2499933}
+      - {x: -13.187513, y: -3}
+      - {x: -13.812508, y: -3.0000076}
+      - {x: -14, y: -3.1875107}
       - {x: -13.999995, y: -6.750007}
       - {x: -13.812487, y: -7}
     - - {x: -0.1875042, y: -1}
@@ -5577,7 +5577,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1876493819511065115, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
       propertyPath: m_Name
-      value: MoverCuarto2
+      value: MoverCuartoVertical-2
       objectReference: {fileID: 0}
     - target: {fileID: 1876493819511065116, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
       propertyPath: m_RootOrder
@@ -5622,6 +5622,10 @@ PrefabInstance:
     - target: {fileID: 1876493819511065116, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1876493819511065117, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
+      propertyPath: m_Size.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1876493819511065118, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
       propertyPath: cambioCamara.x
@@ -5699,7 +5703,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1876493819511065115, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
       propertyPath: m_Name
-      value: MoverCuarto
+      value: MoverCuartoVertical-1
       objectReference: {fileID: 0}
     - target: {fileID: 1876493819511065116, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
       propertyPath: m_RootOrder
@@ -5744,6 +5748,10 @@ PrefabInstance:
     - target: {fileID: 1876493819511065116, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1876493819511065117, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
+      propertyPath: m_Size.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1876493819511065118, guid: 60f124e089baf4b44ab14f74a667911b, type: 3}
       propertyPath: cambioPlayer.x
