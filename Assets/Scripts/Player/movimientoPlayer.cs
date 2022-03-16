@@ -9,6 +9,7 @@ public class movimientoPlayer : MonoBehaviour
     private Rigidbody2D playerRigidBody;
     private Vector3 vectorMovimiento;
     private Animator playerAnimator;
+    private bool permiteMover;
 
 
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class movimientoPlayer : MonoBehaviour
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        permiteMover = true;
     }
 
     // Update is called once per frame
@@ -24,10 +26,17 @@ public class movimientoPlayer : MonoBehaviour
         vectorMovimiento = Vector3.zero;
         vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
         vectorMovimiento.y = Input.GetAxisRaw("Vertical");
-        ActualizarMovimiento();
+        if (permiteMover)
+        {
+            ActualizarMovimiento();
+        }
+        else 
+        {
+            playerAnimator.SetBool("Movimiento", false);
+        }
     }
 
-    void ActualizarMovimiento() 
+    private void ActualizarMovimiento() 
     {
         if (vectorMovimiento != Vector3.zero)
         {
@@ -42,8 +51,18 @@ public class movimientoPlayer : MonoBehaviour
         }
     }
 
-    void Movimiento() 
+    private void Movimiento() 
     {
         playerRigidBody.MovePosition(transform.position + vectorMovimiento * velocidad * Time.fixedDeltaTime);
+    }
+
+    public void cambiaPermiteMovimientoPositivo() 
+    {
+        permiteMover = true;
+    }
+
+    public void cambiaPermiteMovimientoNegativo()
+    {
+        permiteMover = false;
     }
 }
