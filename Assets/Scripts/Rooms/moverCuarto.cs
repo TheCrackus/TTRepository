@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class moverCuarto : MonoBehaviour
 {
 
@@ -13,24 +13,45 @@ public class moverCuarto : MonoBehaviour
     private Animator panelAnimator;
     private AnimationClip fadeOutClip;
     private AnimationClip fadeInClip;
-    private movimientoPlayer movP;
+    public bool debeMostrarTexto;
+    public string nombreCuarto;
+    public GameObject objetoTextoCuarto;
+    public Text textoCuarto;
+    private Animator textoCuartoAnimator;
+    private AnimationClip mostrarTextoClip;
+    private AnimationClip ocultarTextoClip;
 
     // Start is called before the first frame update
     void Start()
     {
         movCam = Camera.main.GetComponent<movimientoCamara>();
         panelAnimator = canvasPanel.GetComponent<Animator>();
+        textoCuartoAnimator = objetoTextoCuarto.GetComponent<Animator>();
         foreach (AnimationClip clip in panelAnimator.runtimeAnimatorController.animationClips)
         {
             if (clip.name == "FadeOut")
             {
                 fadeOutClip = clip;
             }
-            else 
+            else
             {
                 if (clip.name == "FadeIn")
                 {
                     fadeInClip = clip;
+                }
+            }
+        }
+        foreach (AnimationClip clip in textoCuartoAnimator.runtimeAnimatorController.animationClips) 
+        {
+            if (clip.name == "mostrarTexto")
+            {
+                mostrarTextoClip = clip;
+            }
+            else 
+            {
+                if (clip.name == "ocultarTexto") 
+                {
+                    ocultarTextoClip = clip;
                 }
             }
         }
@@ -47,27 +68,55 @@ public class moverCuarto : MonoBehaviour
         if (colisionDetectada.CompareTag("Player"))
         {
             StartCoroutine(esperaFadeOut(colisionDetectada,fadeOutClip.length));
-            panelAnimator.Play("FadeOut");
-            movP = colisionDetectada.GetComponent<movimientoPlayer>();
-            movP.cambiaPermiteMovimientoNegativo();
         }
     }
 
-    IEnumerator esperaFadeOut(Collider2D colisionDetectada, float time) 
+    private IEnumerator esperaFadeOut(Collider2D colisionDetectada, float tiempo) 
     {
-        yield return new WaitForSeconds(time);
-        colisionDetectada.transform.position = moverCuartoRef.transform.position + cambioPlayer;
-        movCam.posicionMaxima += cambioCamara;
-        movCam.posicionMinima += cambioCamara;
-        Camera.main.transform.position = (colisionDetectada.transform.position - new Vector3(0,0,10));
+        canvasPanel.SetActive(true);
+        panelAnimator.Play("FadeOut");
+        movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
+        movP.cambiaPermiteMovimientoNegativo();
+        yield return new WaitForSeconds(tiempo);
         StartCoroutine(esperaFadeIn(colisionDetectada,1f));
     }
 
-    IEnumerator esperaFadeIn(Collider2D colisionDetectada, float time) 
+    private IEnumerator esperaFadeIn(Collider2D colisionDetectada, float tiempo) 
     {
-        yield return new WaitForSeconds(time);
-        panelAnimator.Play("FadeIn");
-        movP.cambiaPermiteMovimientoPositivo();
+        colisionDetectada.transform.position = moverCuartoRef.transform.position + cambioPlayer;
+        movCam.posicionMaxima += cambioCamara;
+        movCam.posicionMinima += cambioCamara;
+        Camera.main.transform.position = (colisionDetectada.transform.position - new Vector3(0, 0, 10));
+        yield return new WaitForSeconds(tiempo);
+        StartCoroutine(ocultaPanel(colisionDetectada,fadeInClip.length));
     }
 
+    private IEnumerator ocultaPanel(Collider2D colisionDetectada, float tiempo) 
+    {
+        panelAnimator.Play("FadeIn");
+        yield return new WaitForSeconds(tiempo);
+        canvasPanel.SetActive(false);
+        movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
+        movP.cambiaPermiteMovimientoPositivo();
+        if (debeMostrarTexto)
+        {
+            StartCoroutine(muestraNombreCuarto(mostrarTextoClip.length));
+        }
+    }
+
+    private IEnumerator muestraNombreCuarto(float tiempo) 
+    {
+        objetoTextoCuarto.SetActive(true);
+        textoCuarto.text = nombreCuarto;
+        textoCuartoAnimator.Play("mostrarTexto");
+        yield return new WaitForSeconds(tiempo);
+        StartCoroutine(ocultaNombreCuarto(ocultarTextoClip.length));
+    }
+
+    private IEnumerator ocultaNombreCuarto(float tiempo) 
+    {
+        textoCuartoAnimator.Play("ocultarTexto");
+        yield return new WaitForSeconds(tiempo);
+        objetoTextoCuarto.SetActive(false);
+    }
 }

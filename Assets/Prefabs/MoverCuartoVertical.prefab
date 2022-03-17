@@ -106,6 +106,10 @@ MonoBehaviour:
   moverCuartoRef: {fileID: 3949341841310226951}
   cambioPlayer: {x: 1, y: 0, z: 0}
   canvasPanel: {fileID: 0}
+  necesitaMostrarTexto: 1
+  nombreCuarto: Camino al bosque
+  objetoTextoCuarto: {fileID: 0}
+  textoCuarto: {fileID: 0}
 --- !u!1 &3949341841310226951
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,3 +184,7 @@ MonoBehaviour:
   moverCuartoRef: {fileID: 3225778366752415745}
   cambioPlayer: {x: -1, y: 0, z: 0}
   canvasPanel: {fileID: 0}
+  necesitaMostrarTexto: 1
+  nombreCuarto: El pueblo
+  objetoTextoCuarto: {fileID: 0}
+  textoCuarto: {fileID: 0}
