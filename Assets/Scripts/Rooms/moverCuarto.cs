@@ -8,7 +8,7 @@ public class moverCuarto : MonoBehaviour
     public Vector2 cambioCamara;
     public GameObject moverCuartoRef;
     public Vector3 cambioPlayer;
-    public GameObject canvasPanel;
+    public GameObject objetoPanel;
     private movimientoCamara movCam;
     private Animator panelAnimator;
     private AnimationClip fadeOutClip;
@@ -25,7 +25,7 @@ public class moverCuarto : MonoBehaviour
     void Start()
     {
         movCam = Camera.main.GetComponent<movimientoCamara>();
-        panelAnimator = canvasPanel.GetComponent<Animator>();
+        panelAnimator = objetoPanel.GetComponent<Animator>();
         textoCuartoAnimator = objetoTextoCuarto.GetComponent<Animator>();
         foreach (AnimationClip clip in panelAnimator.runtimeAnimatorController.animationClips)
         {
@@ -73,7 +73,7 @@ public class moverCuarto : MonoBehaviour
 
     private IEnumerator esperaFadeOut(Collider2D colisionDetectada, float tiempo) 
     {
-        canvasPanel.SetActive(true);
+        objetoPanel.SetActive(true);
         panelAnimator.Play("FadeOut");
         movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
         movP.cambiaPermiteMovimientoNegativo();
@@ -95,7 +95,7 @@ public class moverCuarto : MonoBehaviour
     {
         panelAnimator.Play("FadeIn");
         yield return new WaitForSeconds(tiempo);
-        canvasPanel.SetActive(false);
+        objetoPanel.SetActive(false);
         movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
         movP.cambiaPermiteMovimientoPositivo();
         if (debeMostrarTexto)
