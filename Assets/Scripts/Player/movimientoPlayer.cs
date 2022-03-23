@@ -2,22 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState 
+{
+    caminando,
+    atacando,
+    interactuando,
+    ninguno
+}
+
 public class movimientoPlayer : MonoBehaviour
 {
-
+    private PlayerState estadoActualPlayer;
     public float velocidad;
     private Rigidbody2D playerRigidBody;
     private Vector3 vectorMovimiento;
     private Animator playerAnimator;
-    private bool permiteMover;
+    private AnimationClip atacandoArribaClip;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        estadoActualPlayer = PlayerState.caminando;
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        permiteMover = true;
+        foreach (AnimationClip clip in playerAnimator.runtimeAnimatorController.animationClips)
+        {
+            if (clip.name == "Atacando Arriba")
+            {
+                atacandoArribaClip = clip;
+            }
+        }
+        playerAnimator.SetFloat("MovimientoX", 0f);
+        playerAnimator.SetFloat("MovimientoY", -1f);
     }
 
     // Update is called once per frame
@@ -26,14 +43,48 @@ public class movimientoPlayer : MonoBehaviour
         vectorMovimiento = Vector3.zero;
         vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
         vectorMovimiento.y = Input.GetAxisRaw("Vertical");
-        if (permiteMover)
+        if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
         {
-            ActualizarMovimiento();
+            vectorMovimiento.y = 0;
         }
         else 
         {
-            playerAnimator.SetBool("Movimiento", false);
+            vectorMovimiento.x = 0;
         }
+        if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando && estadoActualPlayer != PlayerState.ninguno)
+        {
+            StartCoroutine(Atacar());
+        }
+        else 
+        {
+            if (estadoActualPlayer == PlayerState.caminando && estadoActualPlayer != PlayerState.atacando)
+            {
+                ActualizarMovimiento();
+            }
+            else
+            {
+                playerAnimator.SetBool("Movimiento", false);
+            }
+        }
+        
+    }
+
+    void FixedUpdate() 
+    {
+        
+    }
+
+    private IEnumerator Atacar() 
+    {
+        playerAnimator.SetBool("Movimiento", false);
+        estadoActualPlayer = PlayerState.atacando;
+        playerAnimator.SetBool("Atacando", true);
+        yield return null;
+
+        playerAnimator.SetBool("Atacando", false);
+        yield return new WaitForSeconds(atacandoArribaClip.length);
+
+        estadoActualPlayer = PlayerState.caminando;
     }
 
     private void ActualizarMovimiento() 
@@ -53,16 +104,17 @@ public class movimientoPlayer : MonoBehaviour
 
     private void Movimiento() 
     {
+        vectorMovimiento.Normalize();
         playerRigidBody.MovePosition(transform.position + vectorMovimiento * velocidad * Time.fixedDeltaTime);
     }
 
     public void cambiaPermiteMovimientoPositivo() 
     {
-        permiteMover = true;
+        estadoActualPlayer = PlayerState.caminando;
     }
 
     public void cambiaPermiteMovimientoNegativo()
     {
-        permiteMover = false;
+        estadoActualPlayer = PlayerState.ninguno;
     }
 }

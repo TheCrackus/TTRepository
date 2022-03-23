@@ -20,6 +20,8 @@ public class moverCuarto : MonoBehaviour
     private Animator textoCuartoAnimator;
     private AnimationClip mostrarTextoClip;
     private AnimationClip ocultarTextoClip;
+    public bool comienzaContador;
+    public bool terminaContador;
 
     // Start is called before the first frame update
     void Start()
@@ -67,56 +69,42 @@ public class moverCuarto : MonoBehaviour
     {
         if (colisionDetectada.CompareTag("Player"))
         {
-            StartCoroutine(esperaFadeOut(colisionDetectada,fadeOutClip.length));
+            StartCoroutine(cambioCuarto(colisionDetectada));
         }
     }
 
-    private IEnumerator esperaFadeOut(Collider2D colisionDetectada, float tiempo) 
+    private IEnumerator cambioCuarto(Collider2D colisionDetectada) 
     {
         objetoPanel.SetActive(true);
         panelAnimator.Play("FadeOut");
         movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
         movP.cambiaPermiteMovimientoNegativo();
-        yield return new WaitForSeconds(tiempo);
-        StartCoroutine(esperaFadeIn(colisionDetectada,1f));
-    }
+        yield return new WaitForSeconds(fadeOutClip.length);
 
-    private IEnumerator esperaFadeIn(Collider2D colisionDetectada, float tiempo) 
-    {
         colisionDetectada.transform.position = moverCuartoRef.transform.position + cambioPlayer;
         movCam.posicionMaxima += cambioCamara;
         movCam.posicionMinima += cambioCamara;
         Camera.main.transform.position = (colisionDetectada.transform.position - new Vector3(0, 0, 10));
-        yield return new WaitForSeconds(tiempo);
-        StartCoroutine(ocultaPanel(colisionDetectada,fadeInClip.length));
-    }
+        yield return new WaitForSeconds(1f);
 
-    private IEnumerator ocultaPanel(Collider2D colisionDetectada, float tiempo) 
-    {
         panelAnimator.Play("FadeIn");
-        yield return new WaitForSeconds(tiempo);
+        yield return new WaitForSeconds(fadeInClip.length);
+
         objetoPanel.SetActive(false);
-        movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
         movP.cambiaPermiteMovimientoPositivo();
         if (debeMostrarTexto)
         {
-            StartCoroutine(muestraNombreCuarto(mostrarTextoClip.length));
+
+            objetoTextoCuarto.SetActive(true);
+            textoCuarto.text = nombreCuarto;
+            textoCuartoAnimator.Play("mostrarTexto");
+            yield return new WaitForSeconds(mostrarTextoClip.length);
+
+            textoCuartoAnimator.Play("ocultarTexto");
+            yield return new WaitForSeconds(ocultarTextoClip.length);
+            objetoTextoCuarto.SetActive(false);
+
         }
-    }
 
-    private IEnumerator muestraNombreCuarto(float tiempo) 
-    {
-        objetoTextoCuarto.SetActive(true);
-        textoCuarto.text = nombreCuarto;
-        textoCuartoAnimator.Play("mostrarTexto");
-        yield return new WaitForSeconds(tiempo);
-        StartCoroutine(ocultaNombreCuarto(ocultarTextoClip.length));
-    }
-
-    private IEnumerator ocultaNombreCuarto(float tiempo) 
-    {
-        textoCuartoAnimator.Play("ocultarTexto");
-        yield return new WaitForSeconds(tiempo);
-        objetoTextoCuarto.SetActive(false);
     }
 }
