@@ -3399,6 +3399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 219613693}
   - component: {fileID: 219613694}
+  - component: {fileID: 219613695}
   m_Layer: 0
   m_Name: GolpeIzquierda
   m_TagString: Untagged
@@ -3456,6 +3457,18 @@ PolygonCollider2D:
       - {x: -0.7052293, y: -0.9957123}
       - {x: -0.50861156, y: -1.0230548}
       - {x: 0.029384136, y: -0.4554034}
+--- !u!114 &219613695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219613692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9c6b028d497d64e80cfea53b108fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &267373873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3541,6 +3554,7 @@ PrefabInstance:
       objectReference: {fileID: 1819312784}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+<<<<<<< HEAD
 --- !u!1 &316065132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,6 +3759,8 @@ BoxCollider2D:
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
+=======
+>>>>>>> parent of 481e338 (Cambios mal echos)
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5955,6 +5971,109 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
+--- !u!1001 &857670898
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 97123490582020484, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420008845017785321, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: m_Name
+      value: MoverCuartoHorizontal2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: objetoPanel
+      value: 
+      objectReference: {fileID: 147709972}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: textoCuarto
+      value: 
+      objectReference: {fileID: 1819312786}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: nombreCuarto
+      value: Pueblo perdido
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: cambioCamara.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: cambioPlayer.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: moverCuartoRef
+      value: 
+      objectReference: {fileID: 3563501539957699958}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: debeMostrarTexto
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: objetoTextoCuarto
+      value: 
+      objectReference: {fileID: 1819312784}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+--- !u!1 &857670899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4420008845017785321, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+  m_PrefabInstance: {fileID: 857670898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &868704229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> parent of 481e338 (Cambios mal echos)
   serializedVersion: 6
   m_Component:
   - component: {fileID: 868704233}
@@ -5963,7 +6082,10 @@ GameObject:
   - component: {fileID: 868704230}
   - component: {fileID: 868704234}
   - component: {fileID: 868704235}
+<<<<<<< HEAD
   - component: {fileID: 868704236}
+=======
+>>>>>>> parent of 481e338 (Cambios mal echos)
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5984,7 +6106,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0007826686, y: -0.45421505}
+  m_Offset: {x: 0.0007826686, y: -0.48287445}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5995,7 +6117,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.50156426, y: 0.28526688}
+  m_Size: {x: 0.50156426, y: 0.285267}
   m_EdgeRadius: 0
 --- !u!50 &868704231
 Rigidbody2D:
@@ -6080,6 +6202,7 @@ Transform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalPosition: {x: 12.08, y: -13.11, z: 0}
 =======
   m_LocalPosition: {x: 19.5, y: -12.9, z: 0}
@@ -6090,6 +6213,9 @@ Transform:
 =======
   m_LocalPosition: {x: 19.5, y: -12.9, z: 0}
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
+=======
+  m_LocalPosition: {x: 7, y: -10.61, z: 0}
+>>>>>>> parent of 481e338 (Cambios mal echos)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6107,6 +6233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4491f4a4d692a194ba84debdee2bc830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  estadoActualPlayer: 0
   velocidad: 4
 --- !u!95 &868704235
 Animator:
@@ -6127,6 +6254,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -6156,6 +6284,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.62742615, y: 0.93959904}
   m_EdgeRadius: 0
+=======
+>>>>>>> parent of 481e338 (Cambios mal echos)
 --- !u!1 &973654258
 GameObject:
   m_ObjectHideFlags: 0
@@ -6166,6 +6296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 973654259}
   - component: {fileID: 973654260}
+  - component: {fileID: 973654261}
   m_Layer: 0
   m_Name: GolpeArriba
   m_TagString: Untagged
@@ -6220,6 +6351,18 @@ PolygonCollider2D:
       - {x: 0.95529044, y: -0.32016635}
       - {x: 1.0199957, y: -0.19513226}
       - {x: 0.94474506, y: 0.804449}
+--- !u!114 &973654261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973654258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9c6b028d497d64e80cfea53b108fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &991635641
 GameObject:
   m_ObjectHideFlags: 0
@@ -6230,6 +6373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 991635642}
   - component: {fileID: 991635643}
+  - component: {fileID: 991635644}
   m_Layer: 0
   m_Name: GolpeDerecha
   m_TagString: Untagged
@@ -6285,12 +6429,27 @@ PolygonCollider2D:
       - {x: 0.64591795, y: -0.9751891}
       - {x: 0.8194195, y: -0.9449756}
       - {x: 1.2749681, y: -0.387703}
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
+=======
+--- !u!114 &991635644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991635641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9c6b028d497d64e80cfea53b108fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> parent of 481e338 (Cambios mal echos)
 --- !u!1001 &1008102346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6361,6 +6520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1098464516}
   - component: {fileID: 1098464517}
+  - component: {fileID: 1098464518}
   m_Layer: 0
   m_Name: GolpeAbajo
   m_TagString: Untagged
@@ -6417,12 +6577,27 @@ PolygonCollider2D:
       - {x: 0.42085123, y: -0.77730846}
       - {x: 0.4543953, y: -0.5710821}
       - {x: 0.46140575, y: -0.44124323}
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
+=======
+--- !u!114 &1098464518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098464515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9c6b028d497d64e80cfea53b108fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> parent of 481e338 (Cambios mal echos)
 --- !u!1 &1166256975
 GameObject:
   m_ObjectHideFlags: 0

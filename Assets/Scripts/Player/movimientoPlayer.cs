@@ -23,14 +23,6 @@ public class movimientoPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando && estadoActualPlayer != PlayerState.ninguno)
-        {
-            StartCoroutine(Atacar());
-        }
-    }
-
-    void FixedUpdate() 
-    {
         vectorMovimiento = Vector3.zero;
         vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
         vectorMovimiento.y = Input.GetAxisRaw("Vertical");
@@ -41,10 +33,11 @@ public class movimientoPlayer : MonoBehaviour
         {
             vectorMovimiento.y = 0;
         }
-        else
+        else 
         {
             vectorMovimiento.x = 0;
         }
+<<<<<<< HEAD
         if (estadoActualPlayer == PlayerState.caminando)
 =======
         if (permiteMover)
@@ -55,23 +48,41 @@ public class movimientoPlayer : MonoBehaviour
 =======
         if (permiteMover)
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
+=======
+        if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando && estadoActualPlayer != PlayerState.ninguno)
+>>>>>>> parent of 481e338 (Cambios mal echos)
         {
-            ActualizarMovimiento();
+            StartCoroutine(Atacar());
         }
         else 
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (estadoActualPlayer == PlayerState.ninguno) 
+=======
+            if (estadoActualPlayer == PlayerState.caminando && estadoActualPlayer != PlayerState.atacando)
+            {
+                ActualizarMovimiento();
+            }
+            else
+>>>>>>> parent of 481e338 (Cambios mal echos)
             {
                 playerAnimator.SetBool("Movimiento", false);
             }
         }
+        
+    }
+
+    void FixedUpdate() 
+    {
+        
     }
 
     private IEnumerator Atacar() 
     {
+        playerAnimator.SetBool("Movimiento", false);
         estadoActualPlayer = PlayerState.atacando;
         playerAnimator.SetBool("Atacando", true);
         yield return null;
