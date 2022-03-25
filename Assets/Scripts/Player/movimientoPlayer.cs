@@ -36,6 +36,7 @@ public class movimientoPlayer : MonoBehaviour
         vectorMovimiento.y = Input.GetAxisRaw("Vertical");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
         {
             vectorMovimiento.y = 0;
@@ -51,11 +52,15 @@ public class movimientoPlayer : MonoBehaviour
 =======
         if (permiteMover)
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
+=======
+        if (permiteMover)
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
         {
             ActualizarMovimiento();
         }
         else 
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             if (estadoActualPlayer == PlayerState.ninguno) 
@@ -75,6 +80,10 @@ public class movimientoPlayer : MonoBehaviour
         yield return new WaitForSeconds(atacandoArribaClip.length);
 
         estadoActualPlayer = PlayerState.caminando;
+=======
+            playerAnimator.SetBool("Movimiento", false);
+        }
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
             playerAnimator.SetBool("Movimiento", false);
         }

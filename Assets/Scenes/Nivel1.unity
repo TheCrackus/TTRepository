@@ -3388,6 +3388,7 @@ Animator:
   m_KeepAnimatorControllerStateOnDisable: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &219613692
 GameObject:
   m_ObjectHideFlags: 0
@@ -3738,6 +3739,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.94423294, y: 1.2700129}
   m_EdgeRadius: 0
+=======
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
@@ -5819,12 +5822,21 @@ PrefabInstance:
       propertyPath: nombreCuarto
       value: Bosque mistico
 <<<<<<< HEAD
+<<<<<<< HEAD
       objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
       propertyPath: cambioCamara.x
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+=======
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+      propertyPath: cambioCamara.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
       objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: 00372e436393feb4995372f8e8e09963, type: 3}
@@ -6067,7 +6079,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalPosition: {x: 12.08, y: -13.11, z: 0}
+=======
+  m_LocalPosition: {x: 19.5, y: -12.9, z: 0}
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
   m_LocalPosition: {x: 19.5, y: -12.9, z: 0}
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
@@ -6111,6 +6127,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!61 &868704236
@@ -6272,6 +6289,8 @@ PolygonCollider2D:
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
+=======
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 --- !u!1001 &1008102346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6329,6 +6348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -2695619058785784247, guid: 2562964928096444dabed1ae62713881, type: 3}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1 &1098464515
@@ -6397,6 +6417,8 @@ PolygonCollider2D:
       - {x: 0.42085123, y: -0.77730846}
       - {x: 0.4543953, y: -0.5710821}
       - {x: 0.46140575, y: -0.44124323}
+=======
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
