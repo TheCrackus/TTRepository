@@ -40,6 +40,14 @@ public class movimientoPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando && estadoActualPlayer != PlayerState.ninguno)
+        {
+            StartCoroutine(Atacar());
+        }
+    }
+
+    void FixedUpdate() 
+    {
         vectorMovimiento = Vector3.zero;
         vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
         vectorMovimiento.y = Input.GetAxisRaw("Vertical");
@@ -47,36 +55,25 @@ public class movimientoPlayer : MonoBehaviour
         {
             vectorMovimiento.y = 0;
         }
-        else 
+        else
         {
             vectorMovimiento.x = 0;
         }
-        if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando && estadoActualPlayer != PlayerState.ninguno)
+        if (estadoActualPlayer == PlayerState.caminando)
         {
-            StartCoroutine(Atacar());
+            ActualizarMovimiento();
         }
         else 
         {
-            if (estadoActualPlayer == PlayerState.caminando && estadoActualPlayer != PlayerState.atacando)
-            {
-                ActualizarMovimiento();
-            }
-            else
+            if (estadoActualPlayer == PlayerState.ninguno) 
             {
                 playerAnimator.SetBool("Movimiento", false);
             }
         }
-        
-    }
-
-    void FixedUpdate() 
-    {
-        
     }
 
     private IEnumerator Atacar() 
     {
-        playerAnimator.SetBool("Movimiento", false);
         estadoActualPlayer = PlayerState.atacando;
         playerAnimator.SetBool("Atacando", true);
         yield return null;
