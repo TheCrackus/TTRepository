@@ -2,39 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState 
-{
-    caminando,
-    atacando,
-    interactuando,
-    ninguno
-}
-
 public class movimientoPlayer : MonoBehaviour
 {
-    private PlayerState estadoActualPlayer;
+
     public float velocidad;
     private Rigidbody2D playerRigidBody;
     private Vector3 vectorMovimiento;
     private Animator playerAnimator;
-    private AnimationClip atacandoArribaClip;
+    private bool permiteMover;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        estadoActualPlayer = PlayerState.caminando;
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        foreach (AnimationClip clip in playerAnimator.runtimeAnimatorController.animationClips)
-        {
-            if (clip.name == "Atacando Arriba")
-            {
-                atacandoArribaClip = clip;
-            }
-        }
-        playerAnimator.SetFloat("MovimientoX", 0f);
-        playerAnimator.SetFloat("MovimientoY", -1f);
+        permiteMover = true;
     }
 
     // Update is called once per frame
@@ -51,6 +34,7 @@ public class movimientoPlayer : MonoBehaviour
         vectorMovimiento = Vector3.zero;
         vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
         vectorMovimiento.y = Input.GetAxisRaw("Vertical");
+<<<<<<< HEAD
         if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
         {
             vectorMovimiento.y = 0;
@@ -60,11 +44,15 @@ public class movimientoPlayer : MonoBehaviour
             vectorMovimiento.x = 0;
         }
         if (estadoActualPlayer == PlayerState.caminando)
+=======
+        if (permiteMover)
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
         {
             ActualizarMovimiento();
         }
         else 
         {
+<<<<<<< HEAD
             if (estadoActualPlayer == PlayerState.ninguno) 
             {
                 playerAnimator.SetBool("Movimiento", false);
@@ -82,6 +70,10 @@ public class movimientoPlayer : MonoBehaviour
         yield return new WaitForSeconds(atacandoArribaClip.length);
 
         estadoActualPlayer = PlayerState.caminando;
+=======
+            playerAnimator.SetBool("Movimiento", false);
+        }
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
     }
 
     private void ActualizarMovimiento() 
@@ -101,17 +93,16 @@ public class movimientoPlayer : MonoBehaviour
 
     private void Movimiento() 
     {
-        vectorMovimiento.Normalize();
         playerRigidBody.MovePosition(transform.position + vectorMovimiento * velocidad * Time.fixedDeltaTime);
     }
 
     public void cambiaPermiteMovimientoPositivo() 
     {
-        estadoActualPlayer = PlayerState.caminando;
+        permiteMover = true;
     }
 
     public void cambiaPermiteMovimientoNegativo()
     {
-        estadoActualPlayer = PlayerState.ninguno;
+        permiteMover = false;
     }
 }
