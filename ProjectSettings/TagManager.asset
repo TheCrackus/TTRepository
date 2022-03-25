@@ -3,17 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-  tags:
-  - Rompible
-  - Enemigo
-=======
   tags: []
->>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
-=======
-  tags: []
->>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
   layers:
   - Default
   - TransparentFX
@@ -50,10 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Carteles
-    uniqueID: 2733357933
-    locked: 0
-  - name: Player
-    uniqueID: 1508288005
     locked: 0
