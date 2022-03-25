@@ -212,10 +212,14 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 4708558232632660443}
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Position: {x: 30, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2254660444407650762}
     m_Position: {x: 290, y: 210, z: 0}
+=======
+    m_Position: {x: 300, y: 210, z: 0}
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
     m_Position: {x: 300, y: 210, z: 0}
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
@@ -225,7 +229,11 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_AnyStatePosition: {x: 310, y: 140, z: 0}
+=======
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+>>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
 =======
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
 >>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
