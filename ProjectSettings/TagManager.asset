@@ -3,12 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
   - Rompible
->>>>>>> parent of 481e338 (Cambios mal echos)
+  - Enemigo
   layers:
   - Default
   - TransparentFX
@@ -45,4 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Carteles
+    uniqueID: 2733357933
+    locked: 0
+  - name: Player
+    uniqueID: 1508288005
     locked: 0

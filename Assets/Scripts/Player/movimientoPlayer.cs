@@ -2,87 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState
+{
+    caminando,
+    atacando,
+    interactuando,
+    ninguno,
+    estuneado
+}
+
 public class movimientoPlayer : MonoBehaviour
 {
-
+    private PlayerState estadoActualPlayer;
     public float velocidad;
     private Rigidbody2D playerRigidBody;
     private Vector3 vectorMovimiento;
     private Animator playerAnimator;
-    private bool permiteMover;
+    private AnimationClip atacandoArribaClip;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        estadoActualPlayer = PlayerState.caminando;
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        permiteMover = true;
+        foreach (AnimationClip clip in playerAnimator.runtimeAnimatorController.animationClips)
+        {
+            if (clip.name == "Atacando Arriba")
+            {
+                atacandoArribaClip = clip;
+            }
+        }
+        playerAnimator.SetFloat("MovimientoX", 0f);
+        playerAnimator.SetFloat("MovimientoY", -1f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando && estadoActualPlayer != PlayerState.ninguno)
+        {
+            StartCoroutine(Atacar());
+        }
+    }
+
+    void FixedUpdate()
+    {
         vectorMovimiento = Vector3.zero;
         vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
         vectorMovimiento.y = Input.GetAxisRaw("Vertical");
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
         {
             vectorMovimiento.y = 0;
         }
-        else 
+        else
         {
             vectorMovimiento.x = 0;
         }
-<<<<<<< HEAD
         if (estadoActualPlayer == PlayerState.caminando)
-=======
-        if (permiteMover)
->>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
-=======
-        if (permiteMover)
->>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
-=======
-        if (permiteMover)
->>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
-=======
-        if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando && estadoActualPlayer != PlayerState.ninguno)
->>>>>>> parent of 481e338 (Cambios mal echos)
         {
-            StartCoroutine(Atacar());
+            ActualizarMovimiento();
         }
-        else 
+        else
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            if (estadoActualPlayer == PlayerState.ninguno) 
-=======
-            if (estadoActualPlayer == PlayerState.caminando && estadoActualPlayer != PlayerState.atacando)
-            {
-                ActualizarMovimiento();
-            }
-            else
->>>>>>> parent of 481e338 (Cambios mal echos)
+            if (estadoActualPlayer == PlayerState.ninguno)
             {
                 playerAnimator.SetBool("Movimiento", false);
             }
         }
-        
     }
 
-    void FixedUpdate() 
+    public void activarPlayerEstuneado() 
     {
-        
+        estadoActualPlayer = PlayerState.estuneado;
     }
 
-    private IEnumerator Atacar() 
+    private IEnumerator Atacar()
     {
-        playerAnimator.SetBool("Movimiento", false);
         estadoActualPlayer = PlayerState.atacando;
         playerAnimator.SetBool("Atacando", true);
         yield return null;
@@ -91,21 +88,9 @@ public class movimientoPlayer : MonoBehaviour
         yield return new WaitForSeconds(atacandoArribaClip.length);
 
         estadoActualPlayer = PlayerState.caminando;
-=======
-            playerAnimator.SetBool("Movimiento", false);
-        }
->>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
-=======
-            playerAnimator.SetBool("Movimiento", false);
-        }
->>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
-=======
-            playerAnimator.SetBool("Movimiento", false);
-        }
->>>>>>> parent of 177bf19 (Jarron rompible, correciones al movimiento del jugador y ataque de espada basico e interacciones)
     }
 
-    private void ActualizarMovimiento() 
+    private void ActualizarMovimiento()
     {
         if (vectorMovimiento != Vector3.zero)
         {
@@ -120,18 +105,35 @@ public class movimientoPlayer : MonoBehaviour
         }
     }
 
-    private void Movimiento() 
+    private void Movimiento()
     {
+        vectorMovimiento.Normalize();
         playerRigidBody.MovePosition(transform.position + vectorMovimiento * velocidad * Time.fixedDeltaTime);
     }
 
-    public void cambiaPermiteMovimientoPositivo() 
+    public void cambiaPermiteMovimientoPositivo()
     {
-        permiteMover = true;
+        estadoActualPlayer = PlayerState.caminando;
     }
 
     public void cambiaPermiteMovimientoNegativo()
     {
-        permiteMover = false;
+        estadoActualPlayer = PlayerState.ninguno;
+    }
+
+    public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
+    {
+        StartCoroutine(empujaPlayer(rigidBodyAfectado, tiempoAplicarFuerza));
+    }
+
+    private IEnumerator empujaPlayer(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
+    {
+        if (rigidBodyAfectado != null)
+        {
+            yield return new WaitForSeconds(tiempoAplicarFuerza);
+
+            rigidBodyAfectado.velocity = Vector2.zero;
+            estadoActualPlayer = PlayerState.caminando;
+        }
     }
 }

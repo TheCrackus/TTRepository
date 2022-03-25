@@ -1,76 +1,55 @@
 fileFormatVersion: 2
-guid: 4e07b8e86be44cd4f98890fdb5aaea4c
+guid: 12bf927a331ac544eb671dd3524d8ee3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5034061168752090764
-    second: log_0
+      213: -2459997212589772163
+    second: undefined - Imgur_0
   - first:
-      213: -8771329076928401280
-    second: log_1
+      213: -1631164333299321304
+    second: undefined - Imgur_1
   - first:
-      213: 2376815873980901129
-    second: log_2
+      213: -7153315302098180922
+    second: undefined - Imgur_2
   - first:
-      213: -1512028583440225198
-    second: log_3
+      213: 1230708905645671477
+    second: undefined - Imgur_3
   - first:
-      213: 8213902188476598959
-    second: log_4
+      213: -6767605050790213331
+    second: undefined - Imgur_4
   - first:
-      213: -22439546833456996
-    second: log_5
+      213: -5938514016157378139
+    second: undefined - Imgur_5
   - first:
-      213: -451413936476517383
-    second: log_6
+      213: 5460573542627417499
+    second: undefined - Imgur_6
   - first:
-      213: 8458950633466780684
-    second: log_7
+      213: -4328155585780722695
+    second: undefined - Imgur_7
   - first:
-      213: 3059174765694063163
-    second: log_8
+      213: -2583609528573096823
+    second: undefined - Imgur_8
   - first:
-      213: -34017176892466219
-    second: log_9
+      213: -6034590068324861663
+    second: undefined - Imgur_9
   - first:
-      213: -5690133823277906687
-    second: log_10
+      213: 4262122074016667468
+    second: undefined - Imgur_10
   - first:
-      213: -2570500000468905864
-    second: log_11
+      213: 57377120749025715
+    second: undefined - Imgur_11
   - first:
-      213: 8498479158080882289
-    second: log_12
+      213: 7465504349221928740
+    second: undefined - Imgur_12
   - first:
-      213: -6457386710923275188
-    second: log_13
+      213: 349743148773028476
+    second: undefined - Imgur_13
   - first:
-      213: 681774289175886536
-    second: log_14
+      213: 5078214970769225182
+    second: undefined - Imgur_14
   - first:
-      213: 2703527186074568732
-    second: log_15
-  - first:
-      213: 3107883342233372815
-    second: log_16
-  - first:
-      213: -822619953307990688
-    second: log_17
-  - first:
-      213: -128083769461270964
-    second: log_18
-  - first:
-      213: -3791062316690792145
-    second: log_19
-  - first:
-      213: -2086765476746818828
-    second: log_20
-  - first:
-      213: 5566842953363755866
-    second: log_21
-  - first:
-      213: -7445369939883215787
-    second: log_22
+      213: 1295707711443247836
+    second: undefined - Imgur_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -117,7 +96,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -172,13 +151,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: log_0
+      name: undefined - Imgur_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 32
-        height: 32
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,41 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 471a1f2e90c632ab0800000000000000
-      internalID: -5034061168752090764
+      spriteID: d72b22b91955cddd0800000000000000
+      internalID: -2459997212589772163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 080b0a15daaf54680800000000000000
-      internalID: -8771329076928401280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_2
+      name: undefined - Imgur_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 96
-        width: 32
-        height: 32
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,41 +186,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9072429c1752cf020800000000000000
-      internalID: 2376815873980901129
+      spriteID: 826386f5ea0fc59e0800000000000000
+      internalID: -1631164333299321304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25ceec1b302340be0800000000000000
-      internalID: -1512028583440225198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_4
+      name: undefined - Imgur_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 96
-        width: 32
-        height: 32
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,20 +207,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: faa83f37584adf170800000000000000
-      internalID: 8213902188476598959
+      spriteID: 6c46214f1a15abc90800000000000000
+      internalID: -7153315302098180922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_5
+      name: undefined - Imgur_3
       rect:
         serializedVersion: 2
-        x: 160
-        y: 96
-        width: 32
-        height: 32
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,20 +228,104 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c90321ed95740bff0800000000000000
-      internalID: -22439546833456996
+      spriteID: 5348be6aa3b541110800000000000000
+      internalID: 1230708905645671477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_6
+      name: undefined - Imgur_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2982870013a412a0800000000000000
+      internalID: -6767605050790213331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: undefined - Imgur_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9d24547f8269da0800000000000000
+      internalID: -5938514016157378139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: undefined - Imgur_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d1436a4bad7cb40800000000000000
+      internalID: 5460573542627417499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: undefined - Imgur_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f3dae02d6d4fe3c0800000000000000
+      internalID: -4328155585780722695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: undefined - Imgur_8
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,41 +333,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fb08ad9a614cb9f0800000000000000
-      internalID: -451413936476517383
+      spriteID: 98c061382dc252cd0800000000000000
+      internalID: -2583609528573096823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_7
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0c5a50a8ca346570800000000000000
-      internalID: 8458950633466780684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_8
+      name: undefined - Imgur_9
       rect:
         serializedVersion: 2
         x: 64
         y: 64
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -354,41 +354,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b32980fbd3f547a20800000000000000
-      internalID: 3059174765694063163
+      spriteID: 12975643e44d04ca0800000000000000
+      internalID: -6034590068324861663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_9
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5db101fce85278ff0800000000000000
-      internalID: -34017176892466219
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_10
+      name: undefined - Imgur_10
       rect:
         serializedVersion: 2
         x: 128
         y: 64
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -396,20 +375,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 105c5137f659801b0800000000000000
-      internalID: -5690133823277906687
+      spriteID: c475d13d179162b30800000000000000
+      internalID: 4262122074016667468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_11
+      name: undefined - Imgur_11
       rect:
         serializedVersion: 2
-        x: 160
+        x: 192
         y: 64
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -417,146 +396,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 870d8e06edfb35cd0800000000000000
-      internalID: -2570500000468905864
+      spriteID: 3b9fa74ff28dbc000800000000000000
+      internalID: 57377120749025715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 176c87474c9a0f570800000000000000
-      internalID: 8498479158080882289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_13
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c441716cff0c266a0800000000000000
-      internalID: -6457386710923275188
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_14
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8cab2539a16267900800000000000000
-      internalID: 681774289175886536
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_15
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c18069ed6abd48520800000000000000
-      internalID: 2703527186074568732
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_16
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f888c29fe6b612b20800000000000000
-      internalID: 3107883342233372815
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_17
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 065cde9c2877594f0800000000000000
-      internalID: -822619953307990688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_18
+      name: undefined - Imgur_12
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -564,41 +417,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4694c38d74f83ef0800000000000000
-      internalID: -128083769461270964
+      spriteID: 42fb184d6acca9760800000000000000
+      internalID: 7465504349221928740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_19
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f21a64ca8e0736bc0800000000000000
-      internalID: -3791062316690792145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_20
+      name: undefined - Imgur_13
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -606,41 +438,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fa05f4ead15a03e0800000000000000
-      internalID: -2086765476746818828
+      spriteID: c723e317a898ad400800000000000000
+      internalID: 349743148773028476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: log_21
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5312a3fb26614d40800000000000000
-      internalID: 5566842953363755866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: log_22
+      name: undefined - Imgur_14
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -648,8 +459,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 554b3e7ac7bbca890800000000000000
-      internalID: -7445369939883215787
+      spriteID: ed535c14c91797640800000000000000
+      internalID: 5078214970769225182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: undefined - Imgur_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd22f417c474bf110800000000000000
+      internalID: 1295707711443247836
       vertices: []
       indices: 
       edges: []
