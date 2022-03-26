@@ -7,14 +7,16 @@ public enum EnemyState
     ninguno,
     caminando,
     atacando,
-    estuneado
+    estuneado,
+    durmiendo
 }
 
 public class enemigo : MonoBehaviour
 {
 
     private EnemyState estadoActualEnemigo;
-    public int vidaEnemigo;
+    private valorFlotante vidaMaxima;
+    private float vidaEnemigo;
     public string nombreEnemigo;
     public int puntosAtaqueEnemigo;
     public float velocidadMovimientoEnemigo;
@@ -22,7 +24,7 @@ public class enemigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        vidaEnemigo = vidaMaxima.valorInicial;
     }
 
     // Update is called once per frame
@@ -31,22 +33,7 @@ public class enemigo : MonoBehaviour
 
     }
 
-    public void activarEnemigoEstuneado() 
-    {
-        estadoActualEnemigo = EnemyState.estuneado;   
-    }
-
-    public void activarEnemigoNinguno()
-    {
-        estadoActualEnemigo = EnemyState.ninguno;
-    }
-
-    public void activarEnemigoCaminando()
-    {
-        estadoActualEnemigo = EnemyState.caminando;
-    }
-
-    public void cambiarEstado(EnemyState nuevoEstado)
+    public void setEstadoActualEnemigo(EnemyState nuevoEstado)
     {
         if(estadoActualEnemigo != nuevoEstado)
         {
@@ -61,6 +48,7 @@ public class enemigo : MonoBehaviour
 
     public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza) 
     {
+        estadoActualEnemigo = EnemyState.estuneado;
         StartCoroutine(empujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
     }
 
@@ -73,5 +61,18 @@ public class enemigo : MonoBehaviour
             rigidBodyAfectado.velocity = Vector2.zero;
             estadoActualEnemigo = EnemyState.ninguno;
         }
+    }
+
+    public void espera(float tiempoEspera) 
+    {
+        estadoActualEnemigo = EnemyState.atacando;
+        StartCoroutine(esperaMovimiento(tiempoEspera));
+    }
+
+    private IEnumerator esperaMovimiento(float tiempoEspera)
+    {
+           yield return new WaitForSeconds(tiempoEspera);
+
+           estadoActualEnemigo = EnemyState.ninguno;
     }
 }

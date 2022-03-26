@@ -41,8 +41,12 @@ public class movimientoPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando && estadoActualPlayer != PlayerState.ninguno)
+        if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando 
+            && estadoActualPlayer != PlayerState.interactuando
+            && estadoActualPlayer != PlayerState.estuneado
+            && (estadoActualPlayer == PlayerState.caminando || estadoActualPlayer == PlayerState.ninguno))
         {
+            estadoActualPlayer = PlayerState.atacando;
             StartCoroutine(Atacar());
         }
     }
@@ -52,77 +56,90 @@ public class movimientoPlayer : MonoBehaviour
         vectorMovimiento = Vector3.zero;
         vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
         vectorMovimiento.y = Input.GetAxisRaw("Vertical");
-        if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
+
+        if (vectorMovimiento != Vector3.zero)
         {
-            vectorMovimiento.y = 0;
-        }
-        else
-        {
-            vectorMovimiento.x = 0;
-        }
-        if (estadoActualPlayer == PlayerState.caminando)
-        {
-            ActualizarMovimiento();
-        }
-        else
-        {
-            if (estadoActualPlayer == PlayerState.ninguno)
+            if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
             {
-                playerAnimator.SetBool("Movimiento", false);
+                vectorMovimiento.y = 0;
+            }
+            else
+            {
+                vectorMovimiento.x = 0;
+            }
+            if (estadoActualPlayer == PlayerState.caminando
+            && estadoActualPlayer != PlayerState.atacando
+            && estadoActualPlayer != PlayerState.interactuando
+            && estadoActualPlayer != PlayerState.ninguno
+            && estadoActualPlayer != PlayerState.estuneado)
+            {
+                ActualizarMovimiento();
+            }
+            else
+            {
+                if (estadoActualPlayer == PlayerState.atacando
+                && estadoActualPlayer == PlayerState.interactuando
+                && estadoActualPlayer == PlayerState.ninguno
+                && estadoActualPlayer == PlayerState.estuneado
+                && estadoActualPlayer != PlayerState.caminando)
+                {
+                    playerAnimator.SetBool("Movimiento", false);
+                }
+                else
+                {
+                    if (estadoActualPlayer != PlayerState.caminando
+                    && estadoActualPlayer != PlayerState.atacando
+                    && estadoActualPlayer != PlayerState.interactuando
+                    && estadoActualPlayer == PlayerState.ninguno
+                    && estadoActualPlayer != PlayerState.estuneado)
+                    {
+                        estadoActualPlayer = PlayerState.caminando;
+                    }
+                }
             }
         }
-    }
-
-    public void activarPlayerEstuneado() 
-    {
-        estadoActualPlayer = PlayerState.estuneado;
+        else 
+        {
+            playerAnimator.SetBool("Movimiento", false);
+        }
     }
 
     private IEnumerator Atacar()
     {
-        estadoActualPlayer = PlayerState.atacando;
         playerAnimator.SetBool("Atacando", true);
         yield return null;
 
         playerAnimator.SetBool("Atacando", false);
         yield return new WaitForSeconds(atacandoArribaClip.length);
 
-        estadoActualPlayer = PlayerState.caminando;
+        estadoActualPlayer = PlayerState.ninguno;
     }
 
     private void ActualizarMovimiento()
     {
-        if (vectorMovimiento != Vector3.zero)
-        {
-            Movimiento();
-            playerAnimator.SetFloat("MovimientoX", vectorMovimiento.x);
-            playerAnimator.SetFloat("MovimientoY", vectorMovimiento.y);
-            playerAnimator.SetBool("Movimiento", true);
-        }
-        else
-        {
-            playerAnimator.SetBool("Movimiento", false);
-        }
-    }
-
-    private void Movimiento()
-    {
         vectorMovimiento.Normalize();
         playerRigidBody.MovePosition(transform.position + vectorMovimiento * velocidad * Time.fixedDeltaTime);
+        playerAnimator.SetFloat("MovimientoX", vectorMovimiento.x);
+        playerAnimator.SetFloat("MovimientoY", vectorMovimiento.y);
+        playerAnimator.SetBool("Movimiento", true);
     }
 
-    public void cambiaPermiteMovimientoPositivo()
+    public void setEstadoActualPlayer(PlayerState nuevoEstado)
     {
-        estadoActualPlayer = PlayerState.caminando;
+        if (estadoActualPlayer != nuevoEstado)
+        {
+            estadoActualPlayer = nuevoEstado;
+        }
     }
 
-    public void cambiaPermiteMovimientoNegativo()
+    public PlayerState getEstadoActualPlayer() 
     {
-        estadoActualPlayer = PlayerState.ninguno;
+        return estadoActualPlayer;
     }
 
     public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
     {
+        estadoActualPlayer = PlayerState.estuneado;
         StartCoroutine(empujaPlayer(rigidBodyAfectado, tiempoAplicarFuerza));
     }
 
@@ -133,7 +150,7 @@ public class movimientoPlayer : MonoBehaviour
             yield return new WaitForSeconds(tiempoAplicarFuerza);
 
             rigidBodyAfectado.velocity = Vector2.zero;
-            estadoActualPlayer = PlayerState.caminando;
+            estadoActualPlayer = PlayerState.ninguno;
         }
     }
 }

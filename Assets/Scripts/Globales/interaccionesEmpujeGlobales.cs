@@ -22,14 +22,16 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        if (colisionDetectada.gameObject.CompareTag("Rompible") && this.gameObject.CompareTag("Player"))
+        if (colisionDetectada.gameObject.CompareTag("Rompible") && gameObject.CompareTag("ArmaObjetoPlayer"))
         {
             colisionDetectada.GetComponent<jarro>().Romper();
         }
         else
         {
-            if ( (colisionDetectada.gameObject.CompareTag("Enemigo") && this.gameObject.CompareTag("Player"))
-                || (colisionDetectada.gameObject.CompareTag("Player") && this.gameObject.CompareTag("Enemigo")))
+
+            if ( (colisionDetectada.gameObject.CompareTag("Enemigo") && gameObject.CompareTag("ArmaObjetoPlayer"))
+                || 
+                (colisionDetectada.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemigo")))
             {
                 Rigidbody2D rigidBodyAfectado = colisionDetectada.gameObject.GetComponent<Rigidbody2D>();
                 if (rigidBodyAfectado != null)
@@ -37,17 +39,19 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                     Vector2 diferencia = rigidBodyAfectado.transform.position - transform.position;
                     diferencia = diferencia.normalized * fuerza;
                     rigidBodyAfectado.AddForce(diferencia, ForceMode2D.Impulse);
-                    if (colisionDetectada.gameObject.CompareTag("Enemigo"))
+                    if (colisionDetectada.gameObject.CompareTag("Enemigo") && gameObject.CompareTag("ArmaObjetoPlayer"))
                     {
-                        colisionDetectada.gameObject.GetComponent<enemigo>().activarEnemigoEstuneado();
-                        colisionDetectada.gameObject.GetComponent<enemigo>().empuja(rigidBodyAfectado, tiempoAplicarFuerza);
+                        if (colisionDetectada.gameObject.GetComponent<enemigo>().getEstadoActualEnemigo() != EnemyState.estuneado) 
+                        {
+                            colisionDetectada.gameObject.GetComponent<enemigo>().empuja(rigidBodyAfectado, tiempoAplicarFuerza);
+                        }
                     }
                     else
                     {
-                        if (colisionDetectada.gameObject.CompareTag("Player"))
+                        if (colisionDetectada.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemigo"))
                         {
-                            colisionDetectada.gameObject.GetComponent<movimientoPlayer>().activarPlayerEstuneado();
                             colisionDetectada.gameObject.GetComponent<movimientoPlayer>().empuja(rigidBodyAfectado, tiempoAplicarFuerza);
+                            gameObject.GetComponent<enemigo>().espera(tiempoAplicarFuerza);
                         }
                     }
                 }

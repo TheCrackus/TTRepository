@@ -67,31 +67,38 @@ public class moverCuarto : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        if (colisionDetectada.CompareTag("Player"))
+        if (colisionDetectada.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(cambioCuarto(colisionDetectada));
+            movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
+            PlayerState estadoPlayer = movP.getEstadoActualPlayer();
+            if (estadoPlayer != PlayerState.interactuando
+                && estadoPlayer != PlayerState.atacando
+                && estadoPlayer != PlayerState.ninguno
+                && (estadoPlayer == PlayerState.caminando || estadoPlayer == PlayerState.estuneado)) 
+            {
+                
+                movP.setEstadoActualPlayer(PlayerState.interactuando);
+                StartCoroutine(cambioCuarto(colisionDetectada, movP));
+            }
         }
     }
 
-    private IEnumerator cambioCuarto(Collider2D colisionDetectada) 
+    private IEnumerator cambioCuarto(Collider2D colisionDetectada, movimientoPlayer movP) 
     {
         objetoPanel.SetActive(true);
         panelAnimator.Play("FadeOut");
-        movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
-        movP.cambiaPermiteMovimientoNegativo();
         yield return new WaitForSeconds(fadeOutClip.length);
 
         colisionDetectada.transform.position = moverCuartoRef.transform.position + cambioPlayer;
         movCam.posicionMaxima += cambioCamara;
         movCam.posicionMinima += cambioCamara;
-        Camera.main.transform.position = (colisionDetectada.transform.position - new Vector3(0, 0, 10));
         yield return new WaitForSeconds(1f);
 
         panelAnimator.Play("FadeIn");
         yield return new WaitForSeconds(fadeInClip.length);
 
         objetoPanel.SetActive(false);
-        movP.cambiaPermiteMovimientoPositivo();
+        movP.setEstadoActualPlayer(PlayerState.caminando);
         if (debeMostrarTexto)
         {
 
