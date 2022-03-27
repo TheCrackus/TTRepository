@@ -74,7 +74,8 @@ public class moverCuarto : MonoBehaviour
             if (estadoPlayer != PlayerState.interactuando
                 && estadoPlayer != PlayerState.atacando
                 && estadoPlayer != PlayerState.ninguno
-                && (estadoPlayer == PlayerState.caminando || estadoPlayer == PlayerState.estuneado)) 
+                && (estadoPlayer == PlayerState.caminando || estadoPlayer == PlayerState.estuneado)
+                && !colisionDetectada.isTrigger) 
             {
                 
                 movP.setEstadoActualPlayer(PlayerState.interactuando);

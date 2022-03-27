@@ -8,29 +8,23 @@ public enum EnemyState
     caminando,
     atacando,
     estuneado,
-    durmiendo
+    durmiendo,
+    inactivo
 }
 
 public class enemigo : MonoBehaviour
 {
 
     private EnemyState estadoActualEnemigo;
-    private valorFlotante vidaMaxima;
+    public valorFlotante vidaMaxima;
     private float vidaEnemigo;
     public string nombreEnemigo;
     public int puntosAtaqueEnemigo;
     public float velocidadMovimientoEnemigo;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         vidaEnemigo = vidaMaxima.valorInicial;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void setEstadoActualEnemigo(EnemyState nuevoEstado)
@@ -46,10 +40,29 @@ public class enemigo : MonoBehaviour
         return estadoActualEnemigo;    
     }
 
-    public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza) 
+    public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza, float vidaMenos) 
     {
-        estadoActualEnemigo = EnemyState.estuneado;
-        StartCoroutine(empujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
+        tomaMenosVida(vidaMenos);
+        if (estadoActualEnemigo != EnemyState.inactivo
+            && estadoActualEnemigo != EnemyState.estuneado
+            && estadoActualEnemigo != EnemyState.atacando
+            && (estadoActualEnemigo == EnemyState.caminando 
+                || estadoActualEnemigo == EnemyState.ninguno 
+                || estadoActualEnemigo == EnemyState.durmiendo)) 
+        {
+            estadoActualEnemigo = EnemyState.estuneado;
+            StartCoroutine(empujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
+        }
+    }
+
+    private void tomaMenosVida(float vidaMenos)
+    {
+        vidaEnemigo -= vidaMenos;
+        if (vidaEnemigo <= 0)
+        {
+            estadoActualEnemigo = EnemyState.inactivo;
+            gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator empujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)

@@ -8,7 +8,8 @@ public enum PlayerState
     atacando,
     interactuando,
     ninguno,
-    estuneado
+    estuneado,
+    inactivo
 }
 
 public class movimientoPlayer : MonoBehaviour
@@ -19,7 +20,8 @@ public class movimientoPlayer : MonoBehaviour
     private Vector3 vectorMovimiento;
     private Animator playerAnimator;
     private AnimationClip atacandoArribaClip;
-
+    public valorFlotante vidaActual;
+    public evento eventoVidaJugador;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,7 @@ public class movimientoPlayer : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && estadoActualPlayer != PlayerState.atacando 
             && estadoActualPlayer != PlayerState.interactuando
             && estadoActualPlayer != PlayerState.estuneado
+            && estadoActualPlayer != PlayerState.inactivo
             && (estadoActualPlayer == PlayerState.caminando || estadoActualPlayer == PlayerState.ninguno))
         {
             estadoActualPlayer = PlayerState.atacando;
@@ -71,29 +74,30 @@ public class movimientoPlayer : MonoBehaviour
             && estadoActualPlayer != PlayerState.atacando
             && estadoActualPlayer != PlayerState.interactuando
             && estadoActualPlayer != PlayerState.ninguno
-            && estadoActualPlayer != PlayerState.estuneado)
+            && estadoActualPlayer != PlayerState.estuneado
+            && estadoActualPlayer != PlayerState.inactivo)
             {
                 ActualizarMovimiento();
             }
             else
             {
-                if (estadoActualPlayer == PlayerState.atacando
-                && estadoActualPlayer == PlayerState.interactuando
-                && estadoActualPlayer == PlayerState.ninguno
-                && estadoActualPlayer == PlayerState.estuneado
-                && estadoActualPlayer != PlayerState.caminando)
-                {
-                    playerAnimator.SetBool("Movimiento", false);
-                }
-                else
-                {
-                    if (estadoActualPlayer != PlayerState.caminando
+                if (estadoActualPlayer == PlayerState.ninguno
                     && estadoActualPlayer != PlayerState.atacando
                     && estadoActualPlayer != PlayerState.interactuando
-                    && estadoActualPlayer == PlayerState.ninguno
-                    && estadoActualPlayer != PlayerState.estuneado)
+                    && estadoActualPlayer != PlayerState.caminando
+                    && estadoActualPlayer != PlayerState.estuneado
+                    && estadoActualPlayer != PlayerState.inactivo)
+                {
+                    estadoActualPlayer = PlayerState.caminando;
+                }
+                else 
+                {
+                    if (estadoActualPlayer != PlayerState.caminando
+                        && estadoActualPlayer != PlayerState.inactivo
+                        && (estadoActualPlayer == PlayerState.atacando || estadoActualPlayer == PlayerState.interactuando
+                            || estadoActualPlayer == PlayerState.ninguno || estadoActualPlayer == PlayerState.estuneado))
                     {
-                        estadoActualPlayer = PlayerState.caminando;
+                        playerAnimator.SetBool("Movimiento", false);
                     }
                 }
             }
@@ -137,10 +141,30 @@ public class movimientoPlayer : MonoBehaviour
         return estadoActualPlayer;
     }
 
-    public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
+    public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza, float vidaMenos)
     {
-        estadoActualPlayer = PlayerState.estuneado;
-        StartCoroutine(empujaPlayer(rigidBodyAfectado, tiempoAplicarFuerza));
+        tomaMenosVida(vidaMenos);
+        eventoVidaJugador.altaEvento();
+        if (estadoActualPlayer != PlayerState.atacando
+            && estadoActualPlayer != PlayerState.interactuando
+            && estadoActualPlayer != PlayerState.estuneado
+            && estadoActualPlayer != PlayerState.inactivo
+            && (estadoActualPlayer == PlayerState.caminando
+                || estadoActualPlayer == PlayerState.ninguno))
+        {
+            estadoActualPlayer = PlayerState.estuneado;
+            StartCoroutine(empujaPlayer(rigidBodyAfectado, tiempoAplicarFuerza));
+        }
+    }
+
+    private void tomaMenosVida(float vidaMenos)
+    {
+        vidaActual.valorEjecucion -= vidaMenos;
+        if (vidaActual.valorEjecucion <= 0)
+        {
+            estadoActualPlayer = PlayerState.inactivo;
+            gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator empujaPlayer(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)

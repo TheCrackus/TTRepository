@@ -38,13 +38,14 @@ public class trepaCielosCorrupto : enemigo
             && Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) >= radioAtaque)
         {
             if (getEstadoActualEnemigo() != EnemyState.estuneado
-                && (getEstadoActualEnemigo() == EnemyState.caminando || getEstadoActualEnemigo() == EnemyState.durmiendo || getEstadoActualEnemigo() == EnemyState.ninguno)
-                && getEstadoActualEnemigo() != EnemyState.atacando)
+                && getEstadoActualEnemigo() != EnemyState.atacando
+                && getEstadoActualEnemigo() != EnemyState.inactivo
+                && (getEstadoActualEnemigo() == EnemyState.caminando || getEstadoActualEnemigo() == EnemyState.durmiendo || getEstadoActualEnemigo() == EnemyState.ninguno))
             {
                 Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, objetivoPerseguir.position, velocidadMovimientoEnemigo * Time.deltaTime);
                 Vector3 refAnimacion = objetivoPerseguir.position - vectorTemporal;
-                cambiaAnimaciones(refAnimacion);
-                enemigoRigidBody.MovePosition(vectorTemporal);
+                Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
+                enemigoRigidBody.MovePosition(transform.position + vectorMovimiento * velocidadMovimientoEnemigo * Time.fixedDeltaTime);
                 setEstadoActualEnemigo(EnemyState.caminando);
                 trepaCielosAnimator.SetBool("Despertar", true);
             }
@@ -65,19 +66,21 @@ public class trepaCielosCorrupto : enemigo
         trepaCielosAnimator.SetFloat("MovimientoY", vector.y);
     }
 
-    private void cambiaAnimaciones(Vector2 vectorMovimiento) 
+    private Vector2 cambiaAnimaciones(Vector2 vectorMovimiento) 
     {
         if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
         {
             if (vectorMovimiento.x > 0)
             {
                 enviaAnimacion(Vector2.right);
+                return Vector2.right;
             }
             else 
             {
                 if (vectorMovimiento.x < 0) 
                 {
                     enviaAnimacion(Vector2.left);
+                    return Vector2.left;
                 }
             }
         }
@@ -88,15 +91,18 @@ public class trepaCielosCorrupto : enemigo
                 if (vectorMovimiento.y > 0)
                 {
                     enviaAnimacion(Vector2.up);
+                    return Vector2.up;
                 }
                 else
                 {
                     if (vectorMovimiento.y < 0)
                     {
                         enviaAnimacion(Vector2.down);
+                        return Vector2.down;
                     }
                 }
             }
         }
+        return new Vector2(0,0);
     }
 }

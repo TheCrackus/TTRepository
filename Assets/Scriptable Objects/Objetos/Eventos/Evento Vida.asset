@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2509b261aad71147a2e4d043c0e0dfb, type: 3}
-  m_Name: Vida Enemigo
+  m_Script: {fileID: 11500000, guid: 9d9f60e15a53f2a40847716109bb7f32, type: 3}
+  m_Name: Evento Vida
   m_EditorClassIdentifier: 
-  valorInicial: 0
+  eventos: []

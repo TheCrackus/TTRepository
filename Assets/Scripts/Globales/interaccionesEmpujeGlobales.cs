@@ -7,6 +7,7 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
 
     public float fuerza;
     public float tiempoAplicarFuerza;
+    public float vidaMenos;
 
     // Start is called before the first frame update
     void Start()
@@ -39,18 +40,20 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                     Vector2 diferencia = rigidBodyAfectado.transform.position - transform.position;
                     diferencia = diferencia.normalized * fuerza;
                     rigidBodyAfectado.AddForce(diferencia, ForceMode2D.Impulse);
-                    if (colisionDetectada.gameObject.CompareTag("Enemigo") && gameObject.CompareTag("ArmaObjetoPlayer"))
+                    if (colisionDetectada.gameObject.CompareTag("Enemigo") 
+                        && gameObject.CompareTag("ArmaObjetoPlayer")
+                        && colisionDetectada.isTrigger)
                     {
-                        if (colisionDetectada.gameObject.GetComponent<enemigo>().getEstadoActualEnemigo() != EnemyState.estuneado) 
-                        {
-                            colisionDetectada.gameObject.GetComponent<enemigo>().empuja(rigidBodyAfectado, tiempoAplicarFuerza);
-                        }
+                        colisionDetectada.gameObject.GetComponent<enemigo>().empuja(rigidBodyAfectado, tiempoAplicarFuerza, vidaMenos);
                     }
                     else
                     {
-                        if (colisionDetectada.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemigo"))
+                        if (colisionDetectada.gameObject.CompareTag("Player") 
+                            && gameObject.CompareTag("Enemigo")
+                            && colisionDetectada.isTrigger)
                         {
-                            colisionDetectada.gameObject.GetComponent<movimientoPlayer>().empuja(rigidBodyAfectado, tiempoAplicarFuerza);
+
+                            colisionDetectada.gameObject.GetComponent<movimientoPlayer>().empuja(rigidBodyAfectado, tiempoAplicarFuerza, vidaMenos);
                             gameObject.GetComponent<enemigo>().espera(tiempoAplicarFuerza);
                         }
                     }
