@@ -67,15 +67,15 @@ public class moverCuarto : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        if (colisionDetectada.gameObject.CompareTag("Player"))
+        if (colisionDetectada.gameObject.CompareTag("Player")
+            && !colisionDetectada.isTrigger)
         {
             movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
             PlayerState estadoPlayer = movP.getEstadoActualPlayer();
             if (estadoPlayer != PlayerState.interactuando
                 && estadoPlayer != PlayerState.atacando
                 && estadoPlayer != PlayerState.ninguno
-                && (estadoPlayer == PlayerState.caminando || estadoPlayer == PlayerState.estuneado)
-                && !colisionDetectada.isTrigger) 
+                && (estadoPlayer == PlayerState.caminando || estadoPlayer == PlayerState.estuneado)) 
             {
                 
                 movP.setEstadoActualPlayer(PlayerState.interactuando);
@@ -113,6 +113,5 @@ public class moverCuarto : MonoBehaviour
             objetoTextoCuarto.SetActive(false);
 
         }
-
     }
 }

@@ -22,6 +22,7 @@ public class movimientoPlayer : MonoBehaviour
     private AnimationClip atacandoArribaClip;
     public valorFlotante vidaActual;
     public evento eventoVidaJugador;
+    public valorVectorial posicionPlayerActual;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,7 @@ public class movimientoPlayer : MonoBehaviour
         }
         playerAnimator.SetFloat("MovimientoX", 0f);
         playerAnimator.SetFloat("MovimientoY", -1f);
+        gameObject.transform.position = posicionPlayerActual.valorEjecucion;
     }
 
     // Update is called once per frame

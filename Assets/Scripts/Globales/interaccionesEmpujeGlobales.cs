@@ -23,23 +23,25 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        if (colisionDetectada.gameObject.CompareTag("Rompible") && gameObject.CompareTag("ArmaObjetoPlayer"))
+        if (colisionDetectada.gameObject.CompareTag("Rompible") 
+            && gameObject.CompareTag("ArmaObjetoPlayer"))
         {
             colisionDetectada.GetComponent<jarro>().Romper();
         }
         else
         {
-
-            if ( (colisionDetectada.gameObject.CompareTag("Enemigo") && gameObject.CompareTag("ArmaObjetoPlayer"))
+            if ((colisionDetectada.gameObject.CompareTag("Enemigo") 
+                && gameObject.CompareTag("ArmaObjetoPlayer"))
                 || 
-                (colisionDetectada.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemigo")))
+                (colisionDetectada.gameObject.CompareTag("Player") 
+                && gameObject.CompareTag("Enemigo")))
             {
                 Rigidbody2D rigidBodyAfectado = colisionDetectada.gameObject.GetComponent<Rigidbody2D>();
                 if (rigidBodyAfectado != null)
                 {
-                    Vector2 diferencia = rigidBodyAfectado.transform.position - transform.position;
-                    diferencia = diferencia.normalized * fuerza;
-                    rigidBodyAfectado.AddForce(diferencia, ForceMode2D.Impulse);
+                    Vector2 diferencia = rigidBodyAfectado.transform.position - gameObject.transform.position;
+                    Vector2 direccion = diferencia.normalized * fuerza;
+                    rigidBodyAfectado.AddForce(direccion, ForceMode2D.Impulse);
                     if (colisionDetectada.gameObject.CompareTag("Enemigo") 
                         && gameObject.CompareTag("ArmaObjetoPlayer")
                         && colisionDetectada.isTrigger)

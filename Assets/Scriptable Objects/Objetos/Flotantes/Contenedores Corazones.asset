@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2509b261aad71147a2e4d043c0e0dfb, type: 3}
   m_Name: Contenedores Corazones
   m_EditorClassIdentifier: 
-  valorInicial: 1
+  valorInicial: 2
+  valorEjecucion: 2

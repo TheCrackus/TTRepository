@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class valorFlotante : ScriptableObject, ISerializationCallbackReceiver
+public class valorVectorial : ScriptableObject, ISerializationCallbackReceiver
 {
-    
-    public float valorInicial;
 
-    public float valorEjecucion;
+    public Vector2 valorInicial;
+
+    public Vector2 valorEjecucion;
 
     public void OnAfterDeserialize()
     {
@@ -17,6 +17,6 @@ public class valorFlotante : ScriptableObject, ISerializationCallbackReceiver
 
     public void OnBeforeSerialize()
     {
-        
+
     }
 }

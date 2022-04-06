@@ -37,7 +37,8 @@ public class controladorDialogos : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        if (colisionDetectada.CompareTag("Player")) 
+        if (colisionDetectada.CompareTag("Player") 
+            && colisionDetectada.isTrigger) 
         {
             playerEnRango = true;
         }
@@ -45,7 +46,8 @@ public class controladorDialogos : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D colisionDetectada)
     {
-        if (colisionDetectada.CompareTag("Player"))
+        if (colisionDetectada.CompareTag("Player")
+            && colisionDetectada.isTrigger)
         {
             playerEnRango = false;
             objetoContenedorTextoDialogos.SetActive(false);
