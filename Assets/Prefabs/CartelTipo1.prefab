@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 906470344907594677}
   - component: {fileID: 906470344907594666}
   - component: {fileID: 676352301}
+  - component: {fileID: 664281596917086568}
   m_Layer: 0
   m_Name: CartelTipo1
   m_TagString: Untagged
@@ -98,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.05}
   m_EdgeRadius: 0
 --- !u!61 &906470344907594666
 BoxCollider2D:
@@ -124,7 +125,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,7 +136,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.4}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &676352301
 MonoBehaviour:
@@ -149,8 +150,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6476c08955e7124b869e0c4a23afbe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simboloActivoDesactivo: {fileID: 11400000, guid: 5aa15c8b7adddd24ebf64699d2ca3bc2, type: 2}
   objetoContenedorTextoDialogos: {fileID: 0}
   textoDialogos: {fileID: 0}
-  dialogo: "\xA1Cuando la manzana dorada pose en direcci\xF3n al \xE1rbol solitario
-    la mazmorra de los secretos se abrir\xE1! "
-  debeMostrarDialogo: 1
+  dialogo: "Bienvenido al pueblo de los trepa cielos, las cosas aqu\xED son distintas
+    al mundo humano."
+--- !u!50 &664281596917086568
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906470344907594665}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 7

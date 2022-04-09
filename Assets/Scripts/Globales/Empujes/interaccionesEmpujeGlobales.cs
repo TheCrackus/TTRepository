@@ -56,7 +56,7 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                         {
 
                             colisionDetectada.gameObject.GetComponent<movimientoPlayer>().empuja(rigidBodyAfectado, tiempoAplicarFuerza, vidaMenos);
-                            gameObject.GetComponent<enemigo>().espera(tiempoAplicarFuerza);
+                            //gameObject.GetComponent<enemigo>().espera(tiempoAplicarFuerza);
                         }
                     }
                 }

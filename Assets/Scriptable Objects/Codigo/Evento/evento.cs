@@ -8,12 +8,11 @@ public class evento : ScriptableObject
 
     public List<escuchaEvento> eventos = new List<escuchaEvento>();
 
-    public void altaEvento() 
+    public void invocaEventosLista() 
     {
         foreach (escuchaEvento evento in eventos)
         {
-
-            evento.alzaEvento();
+            evento.invocaEvento();
         }
     }
 

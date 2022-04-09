@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05cf6c6af54329b40bcdf34cf5f60af0, type: 3}
   m_Name: Estado Cambio Escenas
   m_EditorClassIdentifier: 
-  nombreInicial: El pueblo
+  nombreInicial: 
   nombreEjecucion: 
   cambioInicial: 0
   cambioEjecucion: 0
+  muestraTextoInicial: 0
+  muestraTextoEjecucion: 0
+  direccionPlayerInicial: {x: 0, y: -1}
+  direccionPlayerEjecucion: {x: 0, y: -1}

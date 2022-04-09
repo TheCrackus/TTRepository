@@ -9,7 +9,7 @@ public class escuchaEvento : MonoBehaviour
     public evento evento;
     public UnityEvent eventoUnity;
 
-    public void alzaEvento() 
+    public void invocaEvento() 
     {
         eventoUnity.Invoke();
     }

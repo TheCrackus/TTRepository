@@ -51,7 +51,6 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: e82f11005d9631e4c89664eb0c56eb98, type: 3}
   - {fileID: 21300000, guid: 41d9a4d0a8a4fa44599e522d24a3796e, type: 3}
-  - {fileID: -790699523677361007, guid: 980ae0626e40b47408c71c624a8143db, type: 3}
   - {fileID: -1580347878817688430, guid: 980ae0626e40b47408c71c624a8143db, type: 3}
   - {fileID: -2017960369268865016, guid: 980ae0626e40b47408c71c624a8143db, type: 3}
   - {fileID: -6835189599539173722, guid: 980ae0626e40b47408c71c624a8143db, type: 3}
@@ -1582,6 +1581,7 @@ SpriteAtlas:
   - {fileID: 5566842953363755866, guid: 4e07b8e86be44cd4f98890fdb5aaea4c, type: 3}
   - {fileID: -7445369939883215787, guid: 4e07b8e86be44cd4f98890fdb5aaea4c, type: 3}
   - {fileID: 21300000, guid: 9f8f0449a58538149a11da86c2aa2951, type: 3}
+  - {fileID: 21300000, guid: 4b1a8b593599bbe4fbc113370a3efd74, type: 3}
   - {fileID: 21300000, guid: 5282ad997f187d54188c3429f27dbeda, type: 3}
   - {fileID: -5938514016157378139, guid: 12bf927a331ac544eb671dd3524d8ee3, type: 3}
   - {fileID: -6767605050790213331, guid: 12bf927a331ac544eb671dd3524d8ee3, type: 3}
@@ -2639,7 +2639,6 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - gradients
   - Kobold
-  - character_14
   - character_17
   - character_58
   - character_10
@@ -4170,6 +4169,7 @@ SpriteAtlas:
   - log_21
   - log_22
   - Brown Rabbit
+  - key
   - cave
   - undefined - Imgur_5
   - undefined - Imgur_4

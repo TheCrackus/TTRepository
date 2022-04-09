@@ -7,6 +7,7 @@ public class trepaCielosCorrupto : enemigo
 
     private Rigidbody2D enemigoRigidBody;
     private Transform objetivoPerseguir;
+    private GameObject player;
     public float radioPersecucion;
     public float radioAtaque;
     public Transform posicionOriginal;
@@ -17,6 +18,7 @@ public class trepaCielosCorrupto : enemigo
     {
         setEstadoActualEnemigo(EnemyState.durmiendo);
         objetivoPerseguir = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindWithTag("Player");
         enemigoRigidBody = GetComponent<Rigidbody2D>();
         trepaCielosAnimator = GetComponent<Animator>();
     }
@@ -37,10 +39,19 @@ public class trepaCielosCorrupto : enemigo
         if (Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) <= radioPersecucion
             && Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) >= radioAtaque)
         {
+            PlayerState estadoPlayer = player.GetComponent<movimientoPlayer>().getEstadoActualPlayer();
             if (getEstadoActualEnemigo() != EnemyState.estuneado
                 && getEstadoActualEnemigo() != EnemyState.atacando
                 && getEstadoActualEnemigo() != EnemyState.inactivo
-                && (getEstadoActualEnemigo() == EnemyState.caminando || getEstadoActualEnemigo() == EnemyState.durmiendo || getEstadoActualEnemigo() == EnemyState.ninguno))
+                && (getEstadoActualEnemigo() == EnemyState.caminando 
+                    || getEstadoActualEnemigo() == EnemyState.durmiendo 
+                    || getEstadoActualEnemigo() == EnemyState.ninguno)
+                && estadoPlayer != PlayerState.estuneado
+                && estadoPlayer != PlayerState.inactivo
+                && estadoPlayer != PlayerState.interactuando
+                && (estadoPlayer == PlayerState.caminando
+                    || estadoPlayer == PlayerState.atacando
+                    || estadoPlayer == PlayerState.ninguno))
             {
                 Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, objetivoPerseguir.position, velocidadMovimientoEnemigo * Time.deltaTime);
                 Vector3 refAnimacion = objetivoPerseguir.position - vectorTemporal;

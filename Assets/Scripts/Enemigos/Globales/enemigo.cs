@@ -76,16 +76,16 @@ public class enemigo : MonoBehaviour
         }
     }
 
-    public void espera(float tiempoEspera) 
-    {
-        estadoActualEnemigo = EnemyState.atacando;
-        StartCoroutine(esperaMovimiento(tiempoEspera));
-    }
+    //public void espera(float tiempoEspera) 
+    //{
+    //    estadoActualEnemigo = EnemyState.atacando;
+    //    StartCoroutine(esperaMovimiento(tiempoEspera));
+    //}
 
-    private IEnumerator esperaMovimiento(float tiempoEspera)
-    {
-           yield return new WaitForSeconds(tiempoEspera);
+    //private IEnumerator esperaMovimiento(float tiempoEspera)
+    //{
+    //       yield return new WaitForSeconds(tiempoEspera);
 
-           estadoActualEnemigo = EnemyState.ninguno;
-    }
+    //       estadoActualEnemigo = EnemyState.ninguno;
+    //}
 }

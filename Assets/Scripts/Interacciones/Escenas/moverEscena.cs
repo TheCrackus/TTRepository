@@ -12,29 +12,22 @@ public class moverEscena : MonoBehaviour
     public valorVectorial posicionPlayer;
     public cambioEscena estadoCambioEscenas;
     public GameObject fadeInFadeOutCanvas;
+    public bool debeMostrarTexto;
+    public string nombreMostrar;
+    public Vector2 direccionPlayer;
     private GameObject objetoPanel;
     private Animator panelAnimator;
     private AnimationClip fadeOutClip;
     private AnimationClip fadeInClip;
-    public bool debeMostrarTexto;
     private GameObject objetoTextoEscena;
-    public string nombreMostrar;
-    private Text textoCuarto;
+    private Text textoEscena;
     private Animator textoEscenaAnimator;
     private AnimationClip mostrarTextoClip;
     private AnimationClip ocultarTextoClip;
     private GameObject nCanvas;
+    private GameObject pCanvas;
 
-    public void Start()
-    {
-        iniciaCanvas();
-        if (estadoCambioEscenas.cambioEjecucion == true)
-        {
-            StartCoroutine(cambioEscenaIn());
-        }
-    }
-
-    private void iniciaCanvas() 
+    private void iniciaCanvas()
     {
         if (fadeInFadeOutCanvas != null)
         {
@@ -46,10 +39,14 @@ public class moverEscena : MonoBehaviour
             {
                 nCanvas = GameObject.FindGameObjectWithTag("CanvasEscenas");
             }
+            if (GameObject.FindGameObjectWithTag("CanvasPlayer")) 
+            {
+                pCanvas = GameObject.FindGameObjectWithTag("CanvasPlayer");
+            }
             objetoPanel = nCanvas.transform.Find("Panel").gameObject;
             panelAnimator = objetoPanel.GetComponent<Animator>();
             objetoTextoEscena = nCanvas.transform.Find("TextoEscenas").gameObject;
-            textoCuarto = objetoTextoEscena.GetComponent<Text>();
+            textoEscena = objetoTextoEscena.GetComponent<Text>();
             textoEscenaAnimator = objetoTextoEscena.GetComponent<Animator>();
             foreach (AnimationClip clip in panelAnimator.runtimeAnimatorController.animationClips)
             {
@@ -82,11 +79,19 @@ public class moverEscena : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        if (estadoCambioEscenas.cambioEjecucion)
+        {
+            iniciaCanvas();
+            StartCoroutine(cambioEscenaIn());
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.gameObject.CompareTag("Player")
-            && !colisionDetectada.isTrigger
-            && nCanvas != null)
+            && !colisionDetectada.isTrigger)
         {
             movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
             PlayerState estadoPlayer = movP.getEstadoActualPlayer();
@@ -100,6 +105,8 @@ public class moverEscena : MonoBehaviour
                 posicionPlayer.valorEjecucion = nuevaPosicionPlayer;
                 estadoCambioEscenas.cambioEjecucion = true;
                 estadoCambioEscenas.nombreEjecucion = nombreMostrar;
+                estadoCambioEscenas.muestraTextoEjecucion = debeMostrarTexto;
+                estadoCambioEscenas.direccionPlayerEjecucion = direccionPlayer;
                 StartCoroutine(cambioEscenaOut());
             }
         }
@@ -107,17 +114,33 @@ public class moverEscena : MonoBehaviour
 
     private IEnumerator cambioEscenaIn()
     {
+        pCanvas.SetActive(false);
         objetoPanel.SetActive(true);
         panelAnimator.Play("FadeIn");
         yield return new WaitForSeconds(fadeInClip.length);
-        
+
+        pCanvas.SetActive(true);
         objetoPanel.SetActive(false);
-        estadoCambioEscenas.cambioEjecucion = false;
-        estadoCambioEscenas.nombreEjecucion = "";
+        GameObject.FindGameObjectWithTag("Player").GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.caminando);
+        if (estadoCambioEscenas.muestraTextoEjecucion)
+        {
+            objetoTextoEscena.SetActive(true);
+            textoEscena.text = estadoCambioEscenas.nombreEjecucion;
+            textoEscenaAnimator.Play("mostrarTexto");
+            estadoCambioEscenas.cambioEjecucion = false;
+            estadoCambioEscenas.nombreEjecucion = "";
+            estadoCambioEscenas.muestraTextoEjecucion = false;
+            yield return new WaitForSeconds(mostrarTextoClip.length);
+
+            textoEscenaAnimator.Play("ocultarTexto");
+            yield return new WaitForSeconds(ocultarTextoClip.length);
+            objetoTextoEscena.SetActive(false);
+        }
     }
 
     private IEnumerator cambioEscenaOut()
     {
+        pCanvas.SetActive(false);
         objetoPanel.SetActive(true);
         panelAnimator.Play("FadeOut");
         yield return new WaitForSeconds(fadeOutClip.length);

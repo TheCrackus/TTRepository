@@ -3,25 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class controladorDialogos : MonoBehaviour
+public class controladorDialogos : interactuador
 {
 
     public GameObject objetoContenedorTextoDialogos;
     public Text textoDialogos;
-    public string dialogo;
-    public bool debeMostrarDialogo;
-    private bool playerEnRango;
+    public string dialogo;    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerEnRango) 
+        if (Input.GetKeyDown(KeyCode.E) && getPlayerEnRango()) 
         {
             if (objetoContenedorTextoDialogos.activeInHierarchy)
             {
@@ -37,19 +28,22 @@ public class controladorDialogos : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        if (colisionDetectada.CompareTag("Player") 
-            && colisionDetectada.isTrigger) 
+        if (colisionDetectada.CompareTag("Player")
+            && !colisionDetectada.isTrigger)
         {
-            playerEnRango = true;
+            simboloActivoDesactivo.invocaEventosLista();
+            setPlayerEnRango(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.CompareTag("Player")
-            && colisionDetectada.isTrigger)
+            && !colisionDetectada.isTrigger)
         {
-            playerEnRango = false;
+            simboloActivoDesactivo.invocaEventosLista();
+            setPlayerEnRango(false);
+            textoDialogos.text = "";
             objetoContenedorTextoDialogos.SetActive(false);
         }
     }

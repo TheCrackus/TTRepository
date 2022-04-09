@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 8371295275147919530}
   - component: {fileID: 8371295275147919531}
   - component: {fileID: 8371295275147919528}
+  - component: {fileID: 5838576423406741331}
   m_Layer: 0
   m_Name: MoverCuartoVertical
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -78,3 +79,26 @@ MonoBehaviour:
   nombreCuarto: 
   objetoTextoCuarto: {fileID: 0}
   textoCuarto: {fileID: 0}
+  comienzaContador: 0
+  terminaContador: 0
+--- !u!50 &5838576423406741331
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371295275147919533}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7

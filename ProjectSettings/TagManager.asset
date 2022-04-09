@@ -8,6 +8,7 @@ TagManager:
   - Enemigo
   - ArmaObjetoPlayer
   - CanvasEscenas
+  - CanvasPlayer
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,10 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1508288005
+    locked: 0
+  - name: Rompible
+    uniqueID: 4080413259
+    locked: 0
+  - name: Simbolos
+    uniqueID: 4164994501
     locked: 0

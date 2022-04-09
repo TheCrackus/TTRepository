@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3230322103667937638}
   - component: {fileID: 3230322103667937637}
   - component: {fileID: 3230322103667937639}
+  - component: {fileID: 1357540229474234442}
   m_Layer: 0
   m_Name: MoverEscenaHorizontal
   m_TagString: Untagged
@@ -71,9 +72,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   escenaCarga: 
-  posicionPlayer: {x: 0, y: 0}
-  posicionPlayerGuardar: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
+  nuevaPosicionPlayer: {x: 0, y: 0}
+  posicionPlayer: {fileID: 0}
   estadoCambioEscenas: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   fadeInFadeOutCanvas: {fileID: 8745939805210079820, guid: 60dc23bc450bfb446ba135d3ae12a426, type: 3}
   debeMostrarTexto: 0
-  nombreEscena: 
+  nombreMostrar: 
+--- !u!50 &1357540229474234442
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3230322103667937636}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7

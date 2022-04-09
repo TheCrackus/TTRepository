@@ -23,11 +23,20 @@ public class movimientoPlayer : MonoBehaviour
     public valorFlotante vidaActual;
     public evento eventoVidaJugador;
     public valorVectorial posicionPlayerActual;
+    public cambioEscena estadoCambioEscenas;
+    public inventario inventarioPlayer;
+    public SpriteRenderer spriteObjetoMostrar;
 
     // Start is called before the first frame update
     void Start()
     {
-        estadoActualPlayer = PlayerState.caminando;
+        if (estadoCambioEscenas.cambioEjecucion)
+        {
+            estadoActualPlayer = PlayerState.interactuando;
+        }
+        else {
+            estadoActualPlayer = PlayerState.ninguno;
+        }
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         foreach (AnimationClip clip in playerAnimator.runtimeAnimatorController.animationClips)
@@ -37,8 +46,41 @@ public class movimientoPlayer : MonoBehaviour
                 atacandoArribaClip = clip;
             }
         }
-        playerAnimator.SetFloat("MovimientoX", 0f);
-        playerAnimator.SetFloat("MovimientoY", -1f);
+        if (estadoCambioEscenas.direccionPlayerEjecucion.x == 0)
+        {
+            if (estadoCambioEscenas.direccionPlayerEjecucion.y > 0)
+            {
+                playerAnimator.SetFloat("MovimientoX", 0f);
+                playerAnimator.SetFloat("MovimientoY", 1f);
+            }
+            else
+            {
+                if (estadoCambioEscenas.direccionPlayerEjecucion.y < 0)
+                {
+                    playerAnimator.SetFloat("MovimientoX", 0f);
+                    playerAnimator.SetFloat("MovimientoY", -1f);
+                }
+            }
+        }
+        else 
+        {
+            if (estadoCambioEscenas.direccionPlayerEjecucion.y == 0)
+            {
+                if (estadoCambioEscenas.direccionPlayerEjecucion.x > 0)
+                {
+                    playerAnimator.SetFloat("MovimientoX", 1f);
+                    playerAnimator.SetFloat("MovimientoY", 0f);
+                }
+                else
+                {
+                    if (estadoCambioEscenas.direccionPlayerEjecucion.x < 0)
+                    {
+                        playerAnimator.SetFloat("MovimientoX", -1f);
+                        playerAnimator.SetFloat("MovimientoY", 0f);
+                    }
+                }
+            }
+        }
         gameObject.transform.position = posicionPlayerActual.valorEjecucion;
     }
 
@@ -58,55 +100,70 @@ public class movimientoPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        vectorMovimiento = Vector3.zero;
-        vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
-        vectorMovimiento.y = Input.GetAxisRaw("Vertical");
-
-        if (vectorMovimiento != Vector3.zero)
+        if (gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero
+            && (estadoActualPlayer == PlayerState.ninguno
+                || estadoActualPlayer == PlayerState.interactuando
+                || estadoActualPlayer == PlayerState.atacando
+                || estadoActualPlayer == PlayerState.inactivo)
+            && estadoActualPlayer != PlayerState.caminando
+            && estadoActualPlayer != PlayerState.estuneado)
         {
-            if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
-            {
-                vectorMovimiento.y = 0;
-            }
-            else
-            {
-                vectorMovimiento.x = 0;
-            }
-            if (estadoActualPlayer == PlayerState.caminando
-            && estadoActualPlayer != PlayerState.atacando
-            && estadoActualPlayer != PlayerState.interactuando
-            && estadoActualPlayer != PlayerState.ninguno
-            && estadoActualPlayer != PlayerState.estuneado
-            && estadoActualPlayer != PlayerState.inactivo)
-            {
-                ActualizarMovimiento();
-            }
-            else
-            {
-                if (estadoActualPlayer == PlayerState.ninguno
-                    && estadoActualPlayer != PlayerState.atacando
-                    && estadoActualPlayer != PlayerState.interactuando
-                    && estadoActualPlayer != PlayerState.caminando
-                    && estadoActualPlayer != PlayerState.estuneado
-                    && estadoActualPlayer != PlayerState.inactivo)
-                {
-                    estadoActualPlayer = PlayerState.caminando;
-                }
-                else 
-                {
-                    if (estadoActualPlayer != PlayerState.caminando
-                        && estadoActualPlayer != PlayerState.inactivo
-                        && (estadoActualPlayer == PlayerState.atacando || estadoActualPlayer == PlayerState.interactuando
-                            || estadoActualPlayer == PlayerState.ninguno || estadoActualPlayer == PlayerState.estuneado))
-                    {
-                        playerAnimator.SetBool("Movimiento", false);
-                    }
-                }
-            }
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
         else 
         {
-            playerAnimator.SetBool("Movimiento", false);
+            vectorMovimiento = Vector3.zero;
+            vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
+            vectorMovimiento.y = Input.GetAxisRaw("Vertical");
+            if (estadoActualPlayer != PlayerState.caminando
+                && estadoActualPlayer != PlayerState.inactivo
+                && (/*estadoActualPlayer == PlayerState.atacando ||*/ estadoActualPlayer == PlayerState.interactuando
+                || /*estadoActualPlayer == PlayerState.ninguno ||*/ estadoActualPlayer == PlayerState.estuneado))
+            {
+                playerAnimator.SetBool("Movimiento", false);
+            }
+            else
+            {
+                if (vectorMovimiento != Vector3.zero)
+                {
+                    if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
+                    {
+                        vectorMovimiento.y = 0;
+                    }
+                    else
+                    {
+                        vectorMovimiento.x = 0;
+                    }
+                    if (estadoActualPlayer == PlayerState.ninguno
+                            && estadoActualPlayer != PlayerState.atacando
+                            && estadoActualPlayer != PlayerState.interactuando
+                            && estadoActualPlayer != PlayerState.caminando
+                            && estadoActualPlayer != PlayerState.estuneado
+                            && estadoActualPlayer != PlayerState.inactivo)
+                    {
+                        estadoActualPlayer = PlayerState.caminando;
+                        ActualizarMovimiento();
+                    }
+                    else
+                    {
+                        if (estadoActualPlayer == PlayerState.caminando
+                        && estadoActualPlayer != PlayerState.atacando
+                        && estadoActualPlayer != PlayerState.interactuando
+                        && estadoActualPlayer != PlayerState.ninguno
+                        && estadoActualPlayer != PlayerState.estuneado
+                        && estadoActualPlayer != PlayerState.inactivo)
+                        {
+                            ActualizarMovimiento();
+                        }
+                    }
+
+                }
+                else
+                {
+                    estadoActualPlayer = PlayerState.ninguno;
+                    playerAnimator.SetBool("Movimiento", false);
+                }
+            }
         }
     }
 
@@ -146,7 +203,7 @@ public class movimientoPlayer : MonoBehaviour
     public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza, float vidaMenos)
     {
         tomaMenosVida(vidaMenos);
-        eventoVidaJugador.altaEvento();
+        eventoVidaJugador.invocaEventosLista();
         if (estadoActualPlayer != PlayerState.atacando
             && estadoActualPlayer != PlayerState.interactuando
             && estadoActualPlayer != PlayerState.estuneado
@@ -177,6 +234,28 @@ public class movimientoPlayer : MonoBehaviour
 
             rigidBodyAfectado.velocity = Vector2.zero;
             estadoActualPlayer = PlayerState.ninguno;
+        }
+    }
+
+    public void muestrObjeto() 
+    {
+        if (inventarioPlayer.objetoActual != null)
+        {
+            if (estadoActualPlayer != PlayerState.interactuando)
+            {
+                Debug.Log("Entre aqui xdd");
+                playerAnimator.SetBool("MostrandoObjeto", true);
+                estadoActualPlayer = PlayerState.interactuando;
+                spriteObjetoMostrar.sprite = inventarioPlayer.objetoActual.spriteObjeto;
+            }
+            else
+            {
+                Debug.Log("Entre aca xdd");
+                playerAnimator.SetBool("MostrandoObjeto", false);
+                estadoActualPlayer = PlayerState.ninguno;
+                inventarioPlayer.objetoActual = null;
+                spriteObjetoMostrar.sprite = null;
+            }
         }
     }
 }
