@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1264945169
 Transform:
   m_ObjectHideFlags: 0
@@ -455,7 +455,6 @@ MonoBehaviour:
   posicionPlayerActual: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   estadoCambioEscenas: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
-  objetoObjetoMostrar: {fileID: 1264945168}
   spriteObjetoMostrar: {fileID: 1264945170}
 --- !u!95 &1398895126709478748
 Animator:
