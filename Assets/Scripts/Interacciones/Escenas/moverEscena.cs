@@ -26,8 +26,14 @@ public class moverEscena : MonoBehaviour
     private AnimationClip ocultarTextoClip;
     private GameObject nCanvas;
     private GameObject pCanvas;
+    public bool comienzaContador;
+    public bool terminaContador;
+    public bool pausaContador;
+    public evento contadorRegresivoInicia;
+    public evento contadorRegresivoDeten;
+    public evento contadorRegresivoReinicia;
 
-    private void iniciaCanvas()
+    public void iniciaCanvas()
     {
         if (fadeInFadeOutCanvas != null)
         {
@@ -88,7 +94,7 @@ public class moverEscena : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D colisionDetectada)
+    public void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.gameObject.CompareTag("Player")
             && !colisionDetectada.isTrigger)
@@ -107,13 +113,27 @@ public class moverEscena : MonoBehaviour
                 estadoCambioEscenas.nombreEjecucion = nombreMostrar;
                 estadoCambioEscenas.muestraTextoEjecucion = debeMostrarTexto;
                 estadoCambioEscenas.direccionPlayerEjecucion = direccionPlayer;
+                if (pausaContador)
+                {
+                    contadorRegresivoDeten.invocaEventosLista();
+                    estadoCambioEscenas.pausoContadorEjecucion = true;
+                }
+                if (terminaContador)
+                {
+                    contadorRegresivoReinicia.invocaEventosLista();
+                }
                 StartCoroutine(cambioEscenaOut());
             }
         }
     }
 
-    private IEnumerator cambioEscenaIn()
+    public IEnumerator cambioEscenaIn()
     {
+        if (estadoCambioEscenas.pausoContadorEjecucion)
+        {
+            contadorRegresivoInicia.invocaEventosLista();
+            estadoCambioEscenas.pausoContadorEjecucion = false;
+        }
         pCanvas.SetActive(false);
         objetoPanel.SetActive(true);
         panelAnimator.Play("FadeIn");
@@ -138,7 +158,7 @@ public class moverEscena : MonoBehaviour
         }
     }
 
-    private IEnumerator cambioEscenaOut()
+    public IEnumerator cambioEscenaOut()
     {
         pCanvas.SetActive(false);
         objetoPanel.SetActive(true);

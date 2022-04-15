@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8371295275147919530}
   - component: {fileID: 8371295275147919531}
-  - component: {fileID: 8371295275147919528}
   - component: {fileID: 5838576423406741331}
+  - component: {fileID: 8371295275147919528}
   m_Layer: 0
   m_Name: MoverCuartoVertical
-  m_TagString: Untagged
+  m_TagString: MoverCuarto
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,6 +59,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 0.5}
   m_EdgeRadius: 0
+--- !u!50 &5838576423406741331
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371295275147919533}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!114 &8371295275147919528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,24 +102,7 @@ MonoBehaviour:
   textoCuarto: {fileID: 0}
   comienzaContador: 0
   terminaContador: 0
---- !u!50 &5838576423406741331
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8371295275147919533}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
+  pausaContador: 0
+  contadorRegresivoInicia: {fileID: 11400000, guid: 44f42969ead8f514eb7f17ce8ef15b71, type: 2}
+  contadorRegresivoDeten: {fileID: 11400000, guid: 52e43ba2e78e79649bbd417d363b932c, type: 2}
+  contadorRegresivoReinicia: {fileID: 11400000, guid: f6cdd663aa8c6094b83aabade28e9e6a, type: 2}

@@ -22,9 +22,13 @@ public class moverCuarto : MonoBehaviour
     private AnimationClip ocultarTextoClip;
     public bool comienzaContador;
     public bool terminaContador;
+    public bool pausaContador;
+    public evento contadorRegresivoInicia;
+    public evento contadorRegresivoDeten;
+    public evento contadorRegresivoReinicia;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void Start()
     {
         movCam = Camera.main.GetComponent<movimientoCamara>();
         panelAnimator = objetoPanel.GetComponent<Animator>();
@@ -59,13 +63,7 @@ public class moverCuarto : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D colisionDetectada)
+    public void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.gameObject.CompareTag("Player")
             && !colisionDetectada.isTrigger)
@@ -79,18 +77,30 @@ public class moverCuarto : MonoBehaviour
             {
                 
                 movP.setEstadoActualPlayer(PlayerState.interactuando);
-                StartCoroutine(cambioCuarto(colisionDetectada, movP));
+                if (comienzaContador)
+                {
+                    contadorRegresivoInicia.invocaEventosLista();
+                }
+                if (pausaContador)
+                {
+                    contadorRegresivoDeten.invocaEventosLista();
+                }
+                if (terminaContador)
+                {
+                    contadorRegresivoReinicia.invocaEventosLista();
+                }
+                StartCoroutine(cambioCuarto(colisionDetectada.gameObject));
             }
         }
     }
 
-    private IEnumerator cambioCuarto(Collider2D colisionDetectada, movimientoPlayer movP) 
+    public IEnumerator cambioCuarto(GameObject player) 
     {
         objetoPanel.SetActive(true);
         panelAnimator.Play("FadeOut");
         yield return new WaitForSeconds(fadeOutClip.length);
 
-        colisionDetectada.transform.position = moverCuartoRef.transform.position + cambioPlayer;
+        player.transform.position = moverCuartoRef.transform.position + cambioPlayer;
         movCam.posicionMaxima += cambioCamara;
         movCam.posicionMinima += cambioCamara;
         yield return new WaitForSeconds(1f);
@@ -99,7 +109,11 @@ public class moverCuarto : MonoBehaviour
         yield return new WaitForSeconds(fadeInClip.length);
 
         objetoPanel.SetActive(false);
-        movP.setEstadoActualPlayer(PlayerState.caminando);
+        if (pausaContador) 
+        {
+            contadorRegresivoInicia.invocaEventosLista();
+        }
+        player.GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.caminando);
         if (debeMostrarTexto)
         {
 

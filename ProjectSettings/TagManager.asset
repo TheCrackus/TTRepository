@@ -9,6 +9,9 @@ TagManager:
   - ArmaObjetoPlayer
   - CanvasEscenas
   - CanvasPlayer
+  - MoverCuarto
+  - MoverCueva
+  - MoverEscena
   layers:
   - Default
   - TransparentFX

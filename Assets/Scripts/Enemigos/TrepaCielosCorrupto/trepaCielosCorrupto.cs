@@ -11,7 +11,7 @@ public class trepaCielosCorrupto : enemigo
     public float radioPersecucion;
     public float radioAtaque;
     public Transform posicionOriginal;
-    private Animator trepaCielosAnimator;
+    private Animator enemigoAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,48 @@ public class trepaCielosCorrupto : enemigo
         objetivoPerseguir = GameObject.FindWithTag("Player").transform;
         player = GameObject.FindWithTag("Player");
         enemigoRigidBody = GetComponent<Rigidbody2D>();
-        trepaCielosAnimator = GetComponent<Animator>();
+        enemigoAnimator = GetComponent<Animator>();
+        getEnemigoAnimator().SetBool("Despertar", true);
+    }
+
+    public void setEnemigoRigidBody(Rigidbody2D enemigoRigidBody) 
+    {
+        this.enemigoRigidBody = enemigoRigidBody;
+    }
+
+    public Rigidbody2D getEnemigoRigidBody() 
+    {
+        return enemigoRigidBody;
+    }
+
+    public void setEnemigoAnimator(Animator enemigoAnimator) 
+    {
+        this.enemigoAnimator = enemigoAnimator;
+    }
+
+    public Animator getEnemigoAnimator() 
+    {
+        return enemigoAnimator;
+    }
+
+    public void setObjetivoPerseguir(Transform objetivoPerseguir) 
+    {
+        this.objetivoPerseguir = objetivoPerseguir;
+    }
+
+    public Transform getObjetivoPerseguir() 
+    {
+        return objetivoPerseguir;
+    }
+
+    public void setPlayer(GameObject player) 
+    {
+        this.player = player;
+    }
+
+    public GameObject getPlayer() 
+    {
+        return player;
     }
 
     // Update is called once per frame
@@ -34,7 +75,7 @@ public class trepaCielosCorrupto : enemigo
         gestionDistancias();
     }
 
-    private void gestionDistancias()
+    public virtual void gestionDistancias()
     {
         if (Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) <= radioPersecucion
             && Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) >= radioAtaque)
@@ -58,14 +99,14 @@ public class trepaCielosCorrupto : enemigo
                 Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
                 enemigoRigidBody.MovePosition(transform.position + vectorMovimiento * velocidadMovimientoEnemigo * Time.fixedDeltaTime);
                 setEstadoActualEnemigo(EnemyState.caminando);
-                trepaCielosAnimator.SetBool("Despertar", true);
+                enemigoAnimator.SetBool("Despertar", true);
             }
         }
         else
         {
             if (Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) > radioPersecucion) 
             {
-                trepaCielosAnimator.SetBool("Despertar", false);
+                enemigoAnimator.SetBool("Despertar", false);
                 setEstadoActualEnemigo(EnemyState.durmiendo);
             }
         }
@@ -73,11 +114,11 @@ public class trepaCielosCorrupto : enemigo
 
     private void enviaAnimacion(Vector2 vector) 
     {
-        trepaCielosAnimator.SetFloat("MoviminetoX", vector.x);
-        trepaCielosAnimator.SetFloat("MovimientoY", vector.y);
+        enemigoAnimator.SetFloat("MoviminetoX", vector.x);
+        enemigoAnimator.SetFloat("MovimientoY", vector.y);
     }
 
-    private Vector2 cambiaAnimaciones(Vector2 vectorMovimiento) 
+    public Vector2 cambiaAnimaciones(Vector2 vectorMovimiento) 
     {
         if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
         {

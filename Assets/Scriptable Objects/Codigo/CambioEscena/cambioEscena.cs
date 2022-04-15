@@ -22,12 +22,17 @@ public class cambioEscena : ScriptableObject, ISerializationCallbackReceiver
 
     public Vector2 direccionPlayerEjecucion;
 
+    public bool pausoContadorInicial;
+
+    public bool pausoContadorEjecucion;
+
     public void OnAfterDeserialize()
     {
         nombreEjecucion = nombreInicial;
         cambioEjecucion = cambioInicial;
         muestraTextoEjecucion = muestraTextoInicial;
         direccionPlayerEjecucion = direccionPlayerInicial;
+        pausoContadorEjecucion = pausoContadorInicial;
     }
 
     public void OnBeforeSerialize()

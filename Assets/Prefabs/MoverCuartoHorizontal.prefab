@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 97123490582020484}
-  - component: {fileID: 6204763251028791180}
   - component: {fileID: 4432209651786303975}
   - component: {fileID: 8851205943646041000}
+  - component: {fileID: 6204763251028791180}
   m_Layer: 0
   m_Name: MoverCuartoHorizontal
-  m_TagString: Untagged
+  m_TagString: MoverCuarto
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,28 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6204763251028791180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4420008845017785321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 350cb0421217b484ea324bafbafb2799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cambioCamara: {x: 0, y: 0}
-  moverCuartoRef: {fileID: 0}
-  cambioPlayer: {x: 0, y: 0, z: 0}
-  objetoPanel: {fileID: 0}
-  debeMostrarTexto: 0
-  nombreCuarto: 
-  objetoTextoCuarto: {fileID: 0}
-  textoCuarto: {fileID: 0}
-  comienzaContador: 0
-  terminaContador: 0
 --- !u!61 &4432209651786303975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -102,3 +80,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &6204763251028791180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420008845017785321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350cb0421217b484ea324bafbafb2799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cambioCamara: {x: 0, y: 0}
+  moverCuartoRef: {fileID: 0}
+  cambioPlayer: {x: 0, y: 0, z: 0}
+  objetoPanel: {fileID: 0}
+  debeMostrarTexto: 0
+  nombreCuarto: 
+  objetoTextoCuarto: {fileID: 0}
+  textoCuarto: {fileID: 0}
+  comienzaContador: 0
+  terminaContador: 0
+  pausaContador: 0
+  contadorRegresivoInicia: {fileID: 11400000, guid: 44f42969ead8f514eb7f17ce8ef15b71, type: 2}
+  contadorRegresivoDeten: {fileID: 11400000, guid: 52e43ba2e78e79649bbd417d363b932c, type: 2}
+  contadorRegresivoReinicia: {fileID: 11400000, guid: f6cdd663aa8c6094b83aabade28e9e6a, type: 2}
