@@ -22,7 +22,7 @@ public class movimientoPlayer : MonoBehaviour
     private AnimationClip atacandoArribaClip;
     public valorFlotante vidaActual;
     public evento eventoVidaJugador;
-    public valorVectorial posicionPlayerActual;
+    public valorVectorial posicionPlayerMapa;
     public cambioEscena estadoCambioEscenas;
     public inventario inventarioPlayer;
     public SpriteRenderer spriteObjetoMostrar;
@@ -34,7 +34,8 @@ public class movimientoPlayer : MonoBehaviour
         {
             estadoActualPlayer = PlayerState.interactuando;
         }
-        else {
+        else 
+        {
             estadoActualPlayer = PlayerState.ninguno;
         }
         playerRigidBody = GetComponent<Rigidbody2D>();
@@ -81,7 +82,7 @@ public class movimientoPlayer : MonoBehaviour
                 }
             }
         }
-        gameObject.transform.position = posicionPlayerActual.valorEjecucion;
+        gameObject.transform.position = posicionPlayerMapa.valorEjecucion;
     }
 
     // Update is called once per frame
@@ -117,7 +118,7 @@ public class movimientoPlayer : MonoBehaviour
             vectorMovimiento.y = Input.GetAxisRaw("Vertical");
             if (estadoActualPlayer != PlayerState.caminando
                 && estadoActualPlayer != PlayerState.inactivo
-                && (/*estadoActualPlayer == PlayerState.atacando ||*/ estadoActualPlayer == PlayerState.interactuando
+                && (estadoActualPlayer == PlayerState.atacando || estadoActualPlayer == PlayerState.interactuando
                 || /*estadoActualPlayer == PlayerState.ninguno ||*/ estadoActualPlayer == PlayerState.estuneado))
             {
                 playerAnimator.SetBool("Movimiento", false);
@@ -142,7 +143,6 @@ public class movimientoPlayer : MonoBehaviour
                             && estadoActualPlayer != PlayerState.inactivo)
                     {
                         estadoActualPlayer = PlayerState.caminando;
-                        ActualizarMovimiento();
                     }
                     else
                     {

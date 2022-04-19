@@ -271,6 +271,8 @@ MonoBehaviour:
   nombreEnemigo: Trepa cielos movible
   puntosAtaqueEnemigo: 1
   velocidadMovimientoEnemigo: 2
+  efectoMuerteEnemigo: {fileID: 755099225653218745, guid: 5086d25ea712d8b4f88bca10f2db084f, type: 3}
+  muerteEnemigoClip: {fileID: 7400000, guid: ce3f48e2b1ff8b848aec99a2e3bea931, type: 2}
   radioPersecucion: 3
   radioAtaque: 0.5
   posicionOriginal: {fileID: 0}

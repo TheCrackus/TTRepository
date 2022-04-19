@@ -6,26 +6,25 @@ public class interactuador : MonoBehaviour
 {
 
     public evento simboloActivoDesactivo;
-    private bool playerEnRango;
+    public bool playerEnRango;
 
-    // Start is called before the first frame update
-    void Start()
+    public virtual void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        
+        if (colisionDetectada.CompareTag("Player")
+            && !colisionDetectada.isTrigger)
+        {
+            simboloActivoDesactivo.invocaEventosLista();
+            playerEnRango = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void OnTriggerExit2D(Collider2D colisionDetectada)
     {
-        
-    }
-
-    public void setPlayerEnRango(bool playerEnRango) {
-        this.playerEnRango = playerEnRango;
-    }
-
-    public bool getPlayerEnRango()
-    {
-        return playerEnRango;
+        if (colisionDetectada.CompareTag("Player")
+            && !colisionDetectada.isTrigger)
+        {
+            simboloActivoDesactivo.invocaEventosLista();
+            playerEnRango = false;
+        }
     }
 }

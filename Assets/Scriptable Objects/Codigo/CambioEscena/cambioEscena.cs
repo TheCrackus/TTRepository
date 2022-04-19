@@ -26,6 +26,22 @@ public class cambioEscena : ScriptableObject, ISerializationCallbackReceiver
 
     public bool pausoContadorEjecucion;
 
+    public string nombreEjecutarInicial;
+
+    public string nombreEjecutarEjecucion;
+
+    public Vector3 camaraPosicionMaximaInicial;
+
+    public Vector3 camaraPosicionMaximaEjecucion;
+
+    public Vector3 camaraPosicionMinimaInicial;
+
+    public Vector3 camaraPosicionMinimaEjecucion;
+
+    public Vector3 camaraPosicionInicial;
+
+    public Vector3 camaraPosicionEjecucion;
+
     public void OnAfterDeserialize()
     {
         nombreEjecucion = nombreInicial;
@@ -33,6 +49,10 @@ public class cambioEscena : ScriptableObject, ISerializationCallbackReceiver
         muestraTextoEjecucion = muestraTextoInicial;
         direccionPlayerEjecucion = direccionPlayerInicial;
         pausoContadorEjecucion = pausoContadorInicial;
+        nombreEjecutarEjecucion = nombreEjecutarInicial;
+        camaraPosicionMaximaEjecucion = camaraPosicionMaximaInicial;
+        camaraPosicionMinimaEjecucion = camaraPosicionMinimaInicial;
+        camaraPosicionEjecucion = camaraPosicionInicial;
     }
 
     public void OnBeforeSerialize()

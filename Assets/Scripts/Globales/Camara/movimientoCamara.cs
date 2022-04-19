@@ -7,21 +7,16 @@ public class movimientoCamara : MonoBehaviour
 
     public Transform objetivo;
     public float suavizado;
-    public Vector2 posicionMaxima;
-    public Vector2 posicionMinima;
+    private Vector3 posicionMaxima;
+    private Vector3 posicionMinima;
+    public cambioEscena estadoCambioEscena;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        posicionMaxima = estadoCambioEscena.camaraPosicionMaximaEjecucion;
+        posicionMinima = estadoCambioEscena.camaraPosicionMinimaEjecucion;
+        gameObject.transform.position = estadoCambioEscena.camaraPosicionEjecucion;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     void FixedUpdate() 
     {
@@ -32,5 +27,26 @@ public class movimientoCamara : MonoBehaviour
             posicionObjetivo.y = Mathf.Clamp(posicionObjetivo.y, posicionMinima.y, posicionMaxima.y);
             transform.position = Vector3.Lerp(transform.position, posicionObjetivo, suavizado);
         }
+    }
+
+    public void setPosicionMaxima(Vector3 posicionMaxima) 
+    {
+        this.posicionMaxima = posicionMaxima;
+;   }
+
+    public Vector3 getPosicionMaxima() 
+    {
+        return posicionMaxima;
+    }
+
+    public void setPosicionMinima(Vector3 posicionMinima)
+    {
+        this.posicionMinima = posicionMinima;
+        ;
+    }
+
+    public Vector3 getPosicionMinima()
+    {
+        return posicionMinima;
     }
 }

@@ -307,9 +307,9 @@ GameObject:
   - component: {fileID: 1398895126709478751}
   - component: {fileID: 1398895126709478736}
   - component: {fileID: 1398895126709478737}
-  - component: {fileID: 1398895126709478749}
   - component: {fileID: 1398895126709478748}
   - component: {fileID: 1398895126709478747}
+  - component: {fileID: 1398895126709478749}
   - component: {fileID: 1759186388}
   - component: {fileID: 1441881193787301406}
   m_Layer: 0
@@ -437,25 +437,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.50156426, y: 0.28526688}
   m_EdgeRadius: 0
---- !u!114 &1398895126709478749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398895126709478738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4491f4a4d692a194ba84debdee2bc830, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidad: 4
-  vidaActual: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
-  eventoVidaJugador: {fileID: 11400000, guid: ea1b00a7cd78273419b168b303342e10, type: 2}
-  posicionPlayerActual: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
-  estadoCambioEscenas: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
-  inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
-  spriteObjetoMostrar: {fileID: 1264945170}
 --- !u!95 &1398895126709478748
 Animator:
   serializedVersion: 3
@@ -501,6 +482,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.62742615, y: 0.93959904}
   m_EdgeRadius: 0
+--- !u!114 &1398895126709478749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895126709478738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4491f4a4d692a194ba84debdee2bc830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad: 4
+  vidaActual: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
+  eventoVidaJugador: {fileID: 11400000, guid: ea1b00a7cd78273419b168b303342e10, type: 2}
+  posicionPlayerMapa: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
+  estadoCambioEscenas: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
+  inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
+  spriteObjetoMostrar: {fileID: 1264945170}
 --- !u!114 &1759186388
 MonoBehaviour:
   m_ObjectHideFlags: 0

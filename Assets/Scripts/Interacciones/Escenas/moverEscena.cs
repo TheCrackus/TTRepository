@@ -8,13 +8,15 @@ public class moverEscena : MonoBehaviour
 {
 
     public string escenaCarga;
-    public Vector2 nuevaPosicionPlayer;
+    public Vector3 nuevaPosicionPlayer;
+    public Vector3 nuevaPosicionCamara;
     public valorVectorial posicionPlayer;
-    public cambioEscena estadoCambioEscenas;
+    public cambioEscena estadoCambioEscena;
     public GameObject fadeInFadeOutCanvas;
     public bool debeMostrarTexto;
     public string nombreMostrar;
     public Vector2 direccionPlayer;
+    private movimientoCamara movCam;
     private GameObject objetoPanel;
     private Animator panelAnimator;
     private AnimationClip fadeOutClip;
@@ -32,6 +34,10 @@ public class moverEscena : MonoBehaviour
     public evento contadorRegresivoInicia;
     public evento contadorRegresivoDeten;
     public evento contadorRegresivoReinicia;
+    public string nombreEjecucion;
+    public string nombrePropioEjecucion;
+    public Vector3 nuevaPosicionCamaraMaxima;
+    public Vector3 nuevaPosicionCamaraMinima;
 
     public void iniciaCanvas()
     {
@@ -45,10 +51,7 @@ public class moverEscena : MonoBehaviour
             {
                 nCanvas = GameObject.FindGameObjectWithTag("CanvasEscenas");
             }
-            if (GameObject.FindGameObjectWithTag("CanvasPlayer")) 
-            {
-                pCanvas = GameObject.FindGameObjectWithTag("CanvasPlayer");
-            }
+            pCanvas = GameObject.FindGameObjectWithTag("CanvasPlayer");
             objetoPanel = nCanvas.transform.Find("Panel").gameObject;
             panelAnimator = objetoPanel.GetComponent<Animator>();
             objetoTextoEscena = nCanvas.transform.Find("TextoEscenas").gameObject;
@@ -87,8 +90,9 @@ public class moverEscena : MonoBehaviour
 
     public void Start()
     {
-        if (estadoCambioEscenas.cambioEjecucion)
+        if (estadoCambioEscena.cambioEjecucion && estadoCambioEscena.nombreEjecutarEjecucion == nombrePropioEjecucion)
         {
+            movCam = Camera.main.GetComponent<movimientoCamara>();
             iniciaCanvas();
             StartCoroutine(cambioEscenaIn());
         }
@@ -100,39 +104,36 @@ public class moverEscena : MonoBehaviour
             && !colisionDetectada.isTrigger)
         {
             movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
-            PlayerState estadoPlayer = movP.getEstadoActualPlayer();
-            if (estadoPlayer != PlayerState.interactuando
-                && estadoPlayer != PlayerState.atacando
-                && estadoPlayer != PlayerState.ninguno
-                && (estadoPlayer == PlayerState.caminando || estadoPlayer == PlayerState.estuneado))
+            iniciaCanvas();
+            movP.setEstadoActualPlayer(PlayerState.interactuando);
+            posicionPlayer.valorEjecucion = nuevaPosicionPlayer;
+            estadoCambioEscena.cambioEjecucion = true;
+            estadoCambioEscena.nombreEjecucion = nombreMostrar;
+            estadoCambioEscena.muestraTextoEjecucion = debeMostrarTexto;
+            estadoCambioEscena.direccionPlayerEjecucion = direccionPlayer;
+            estadoCambioEscena.nombreEjecutarEjecucion = nombreEjecucion;
+            estadoCambioEscena.camaraPosicionMaximaEjecucion = nuevaPosicionCamaraMaxima;
+            estadoCambioEscena.camaraPosicionMinimaEjecucion = nuevaPosicionCamaraMinima;
+            estadoCambioEscena.camaraPosicionEjecucion = nuevaPosicionCamara;
+            if (pausaContador)
             {
-                iniciaCanvas();
-                movP.setEstadoActualPlayer(PlayerState.interactuando);
-                posicionPlayer.valorEjecucion = nuevaPosicionPlayer;
-                estadoCambioEscenas.cambioEjecucion = true;
-                estadoCambioEscenas.nombreEjecucion = nombreMostrar;
-                estadoCambioEscenas.muestraTextoEjecucion = debeMostrarTexto;
-                estadoCambioEscenas.direccionPlayerEjecucion = direccionPlayer;
-                if (pausaContador)
-                {
-                    contadorRegresivoDeten.invocaEventosLista();
-                    estadoCambioEscenas.pausoContadorEjecucion = true;
-                }
-                if (terminaContador)
-                {
-                    contadorRegresivoReinicia.invocaEventosLista();
-                }
-                StartCoroutine(cambioEscenaOut());
+                contadorRegresivoDeten.invocaEventosLista();
+                estadoCambioEscena.pausoContadorEjecucion = true;
             }
+            if (terminaContador)
+            {
+                contadorRegresivoReinicia.invocaEventosLista();
+            }
+            StartCoroutine(cambioEscenaOut());
         }
     }
 
     public IEnumerator cambioEscenaIn()
     {
-        if (estadoCambioEscenas.pausoContadorEjecucion)
+        if (estadoCambioEscena.pausoContadorEjecucion)
         {
             contadorRegresivoInicia.invocaEventosLista();
-            estadoCambioEscenas.pausoContadorEjecucion = false;
+            estadoCambioEscena.pausoContadorEjecucion = false;
         }
         pCanvas.SetActive(false);
         objetoPanel.SetActive(true);
@@ -141,15 +142,15 @@ public class moverEscena : MonoBehaviour
 
         pCanvas.SetActive(true);
         objetoPanel.SetActive(false);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.caminando);
-        if (estadoCambioEscenas.muestraTextoEjecucion)
+        GameObject.FindGameObjectWithTag("Player").GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.ninguno);
+        if (estadoCambioEscena.muestraTextoEjecucion)
         {
             objetoTextoEscena.SetActive(true);
-            textoEscena.text = estadoCambioEscenas.nombreEjecucion;
+            textoEscena.text = estadoCambioEscena.nombreEjecucion;
             textoEscenaAnimator.Play("mostrarTexto");
-            estadoCambioEscenas.cambioEjecucion = false;
-            estadoCambioEscenas.nombreEjecucion = "";
-            estadoCambioEscenas.muestraTextoEjecucion = false;
+            estadoCambioEscena.cambioEjecucion = false;
+            estadoCambioEscena.nombreEjecucion = "";
+            estadoCambioEscena.muestraTextoEjecucion = false;
             yield return new WaitForSeconds(mostrarTextoClip.length);
 
             textoEscenaAnimator.Play("ocultarTexto");

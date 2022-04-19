@@ -6,9 +6,9 @@ using UnityEngine;
 public class valorVectorial : ScriptableObject, ISerializationCallbackReceiver
 {
 
-    public Vector2 valorInicial;
+    public Vector3 valorInicial;
 
-    public Vector2 valorEjecucion;
+    public Vector3 valorEjecucion;
 
     public void OnAfterDeserialize()
     {

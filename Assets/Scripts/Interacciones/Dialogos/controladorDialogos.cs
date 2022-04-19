@@ -12,7 +12,7 @@ public class controladorDialogos : interactuador
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && getPlayerEnRango()) 
+        if (Input.GetKeyDown(KeyCode.E) && playerEnRango) 
         {
             if (objetoContenedorTextoDialogos.activeInHierarchy)
             {
@@ -25,24 +25,13 @@ public class controladorDialogos : interactuador
             }
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D colisionDetectada)
+    public override void OnTriggerExit2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
             simboloActivoDesactivo.invocaEventosLista();
-            setPlayerEnRango(true);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D colisionDetectada)
-    {
-        if (colisionDetectada.CompareTag("Player")
-            && !colisionDetectada.isTrigger)
-        {
-            simboloActivoDesactivo.invocaEventosLista();
-            setPlayerEnRango(false);
+            playerEnRango = false;
             textoDialogos.text = "";
             objetoContenedorTextoDialogos.SetActive(false);
         }

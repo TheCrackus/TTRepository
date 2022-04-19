@@ -21,8 +21,10 @@ public class enemigo : MonoBehaviour
     public string nombreEnemigo;
     public int puntosAtaqueEnemigo;
     public float velocidadMovimientoEnemigo;
+    public GameObject efectoMuerteEnemigo;
+    public AnimationClip muerteEnemigoClip;
 
-    private void Awake()
+    void Awake()
     {
         vidaEnemigo = vidaMaxima.valorInicial;
     }
@@ -60,8 +62,18 @@ public class enemigo : MonoBehaviour
         vidaEnemigo -= vidaMenos;
         if (vidaEnemigo <= 0)
         {
+            muerteEnemigoAnimacion();
             estadoActualEnemigo = EnemyState.inactivo;
             gameObject.SetActive(false);
+        }
+    }
+
+    private void muerteEnemigoAnimacion() 
+    {
+        if (efectoMuerteEnemigo != null) 
+        {
+            GameObject efecto = GameObject.Instantiate(efectoMuerteEnemigo, gameObject.transform.position, Quaternion.identity);
+            Destroy(efecto, muerteEnemigoClip.length);
         }
     }
 
@@ -75,6 +87,8 @@ public class enemigo : MonoBehaviour
             estadoActualEnemigo = EnemyState.ninguno;
         }
     }
+
+
 
     //public void espera(float tiempoEspera) 
     //{

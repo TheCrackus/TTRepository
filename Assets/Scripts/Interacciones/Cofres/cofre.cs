@@ -15,16 +15,14 @@ public class cofre : interactuador
     public inventario inventarioPlayer;
     private Animator cofreAnimator;
 
-    // Start is called before the first frame update
     void Start()
     {
         cofreAnimator = gameObject.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && getPlayerEnRango())
+        if (Input.GetKeyDown(KeyCode.E) && playerEnRango)
         {
             if (!cofreAbierto && !cofreVacio)
             {
@@ -72,23 +70,14 @@ public class cofre : interactuador
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D colisionDetectada)
-    {
-        if (colisionDetectada.CompareTag("Player")
-            && !colisionDetectada.isTrigger)
-        {
-            simboloActivoDesactivo.invocaEventosLista();
-            setPlayerEnRango(true);
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D colisionDetectada)
+    public override void OnTriggerExit2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
             simboloActivoDesactivo.invocaEventosLista();
-            setPlayerEnRango(false);
+            playerEnRango = false;
             textoDialogos.text = "";
             objetoContenedorTextoDialogos.SetActive(false);
         }

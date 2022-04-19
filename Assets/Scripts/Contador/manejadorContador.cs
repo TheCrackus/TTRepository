@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class manejadorContador : MonoBehaviour
 {
 
     public valorFlotante tiempoContadorRegresivo;
     public GameObject objetoTextoContador;
-    public Text textoContador;
+    public TextMeshProUGUI textoContador;
     private bool cuentaTimerRegresivo;
     public bool regresaCuarto;
     public bool regresaEscena;
     public Vector2 posicionMaximaCamaraReset;
     public Vector2 posicionMinimaCamaraReset;
-    public Vector3 posicionNuevaPlayer;
+    public Vector3 nuevaPoscicionPlayer;
+    public Vector2 direccionPlayer;
     public GameObject objetoPanel;
     private movimientoCamara movCam;
     private Animator panelAnimator;
@@ -80,7 +82,6 @@ public class manejadorContador : MonoBehaviour
                 {
                     GameObject player = GameObject.FindGameObjectWithTag("Player");
                     movimientoPlayer movP = player.GetComponent<movimientoPlayer>();
-                    PlayerState estadoPlayer = movP.getEstadoActualPlayer();
                     movP.setEstadoActualPlayer(PlayerState.interactuando);
                     StartCoroutine(cambioCuarto(player));
                 }
@@ -127,17 +128,18 @@ public class manejadorContador : MonoBehaviour
         panelAnimator.Play("FadeOut");
         yield return new WaitForSeconds(fadeOutClip.length);
 
+        estableceDireccionPlayer(player);
         reiniciaContadorRegresivo();
-        player.transform.position = posicionNuevaPlayer;
-        movCam.posicionMaxima = posicionMaximaCamaraReset;
-        movCam.posicionMinima = posicionMinimaCamaraReset;
+        player.transform.position = nuevaPoscicionPlayer;
+        movCam.setPosicionMaxima(posicionMaximaCamaraReset);
+        movCam.setPosicionMinima(posicionMinimaCamaraReset);
         yield return new WaitForSeconds(1f);
 
         panelAnimator.Play("FadeIn");
         yield return new WaitForSeconds(fadeInClip.length);
 
         objetoPanel.SetActive(false);
-        player.GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.caminando);
+        player.GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.ninguno);
         if (debeMostrarTexto)
         {
 
@@ -150,6 +152,46 @@ public class manejadorContador : MonoBehaviour
             yield return new WaitForSeconds(ocultarTextoClip.length);
             objetoTextoCuarto.SetActive(false);
 
+        }
+    }
+
+    public void estableceDireccionPlayer(GameObject player)
+    {
+        Animator playerAnimator = player.GetComponent<Animator>();
+        if (direccionPlayer.x == 0)
+        {
+            if (direccionPlayer.y > 0)
+            {
+                playerAnimator.SetFloat("MovimientoX", 0f);
+                playerAnimator.SetFloat("MovimientoY", 1f);
+            }
+            else
+            {
+                if (direccionPlayer.y < 0)
+                {
+                    playerAnimator.SetFloat("MovimientoX", 0f);
+                    playerAnimator.SetFloat("MovimientoY", -1f);
+                }
+            }
+        }
+        else
+        {
+            if (direccionPlayer.y == 0)
+            {
+                if (direccionPlayer.x > 0)
+                {
+                    playerAnimator.SetFloat("MovimientoX", 1f);
+                    playerAnimator.SetFloat("MovimientoY", 0f);
+                }
+                else
+                {
+                    if (direccionPlayer.x < 0)
+                    {
+                        playerAnimator.SetFloat("MovimientoX", -1f);
+                        playerAnimator.SetFloat("MovimientoY", 0f);
+                    }
+                }
+            }
         }
     }
 }

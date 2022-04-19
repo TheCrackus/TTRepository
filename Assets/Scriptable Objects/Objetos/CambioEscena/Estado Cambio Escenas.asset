@@ -20,3 +20,13 @@ MonoBehaviour:
   muestraTextoEjecucion: 0
   direccionPlayerInicial: {x: 0, y: -1}
   direccionPlayerEjecucion: {x: 0, y: -1}
+  pausoContadorInicial: 0
+  pausoContadorEjecucion: 0
+  nombreEjecutarInicial: 
+  nombreEjecutarEjecucion: 
+  camaraPosicionMaximaInicial: {x: 14.3, y: -6, z: 0}
+  camaraPosicionMaximaEjecucion: {x: 14.3, y: -6, z: 0}
+  camaraPosicionMinimaInicial: {x: 10.7, y: -19, z: 0}
+  camaraPosicionMinimaEjecucion: {x: 10.7, y: -19, z: 0}
+  camaraPosicionInicial: {x: 11, y: -18, z: 0}
+  camaraPosicionEjecucion: {x: 11, y: -18, z: 0}

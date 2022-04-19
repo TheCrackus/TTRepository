@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class moverCuarto : MonoBehaviour
 {
 
-    public Vector2 cambioCamara;
+    public Vector3 cambioCamara;
     public GameObject moverCuartoRef;
-    public Vector3 cambioPlayer;
+    public Vector3 cambioPoscicionPlayer;
+    public Vector2 direccionPlayer;
     public GameObject objetoPanel;
     private movimientoCamara movCam;
     private Animator panelAnimator;
@@ -69,28 +70,20 @@ public class moverCuarto : MonoBehaviour
             && !colisionDetectada.isTrigger)
         {
             movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
-            PlayerState estadoPlayer = movP.getEstadoActualPlayer();
-            if (estadoPlayer != PlayerState.interactuando
-                && estadoPlayer != PlayerState.atacando
-                && estadoPlayer != PlayerState.ninguno
-                && (estadoPlayer == PlayerState.caminando || estadoPlayer == PlayerState.estuneado)) 
+            movP.setEstadoActualPlayer(PlayerState.interactuando);
+            if (comienzaContador)
             {
-                
-                movP.setEstadoActualPlayer(PlayerState.interactuando);
-                if (comienzaContador)
-                {
-                    contadorRegresivoInicia.invocaEventosLista();
-                }
-                if (pausaContador)
-                {
-                    contadorRegresivoDeten.invocaEventosLista();
-                }
-                if (terminaContador)
-                {
-                    contadorRegresivoReinicia.invocaEventosLista();
-                }
-                StartCoroutine(cambioCuarto(colisionDetectada.gameObject));
+                contadorRegresivoInicia.invocaEventosLista();
             }
+            if (pausaContador)
+            {
+                contadorRegresivoDeten.invocaEventosLista();
+            }
+            if (terminaContador)
+            {
+                contadorRegresivoReinicia.invocaEventosLista();
+            }
+            StartCoroutine(cambioCuarto(colisionDetectada.gameObject));
         }
     }
 
@@ -100,9 +93,16 @@ public class moverCuarto : MonoBehaviour
         panelAnimator.Play("FadeOut");
         yield return new WaitForSeconds(fadeOutClip.length);
 
-        player.transform.position = moverCuartoRef.transform.position + cambioPlayer;
-        movCam.posicionMaxima += cambioCamara;
-        movCam.posicionMinima += cambioCamara;
+        estableceDireccionPlayer(player);
+        player.transform.position = moverCuartoRef.transform.position + cambioPoscicionPlayer;
+        Vector3 posMaxCam = movCam.getPosicionMaxima();
+        Vector3 posMinCam = movCam.getPosicionMinima();
+        movCam.setPosicionMaxima(posMaxCam += cambioCamara);
+        movCam.setPosicionMinima(posMinCam += cambioCamara);
+        movCam.gameObject.transform.position = new Vector3(
+            movCam.gameObject.transform.position.x + cambioCamara.x,
+            movCam.gameObject.transform.position.y + cambioCamara.y,
+            -10);
         yield return new WaitForSeconds(1f);
 
         panelAnimator.Play("FadeIn");
@@ -113,7 +113,7 @@ public class moverCuarto : MonoBehaviour
         {
             contadorRegresivoInicia.invocaEventosLista();
         }
-        player.GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.caminando);
+        player.GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.ninguno);
         if (debeMostrarTexto)
         {
 
@@ -126,6 +126,46 @@ public class moverCuarto : MonoBehaviour
             yield return new WaitForSeconds(ocultarTextoClip.length);
             objetoTextoCuarto.SetActive(false);
 
+        }
+    }
+
+    public void estableceDireccionPlayer(GameObject player) 
+    {
+        Animator playerAnimator = player.GetComponent<Animator>();
+        if (direccionPlayer.x == 0)
+        {
+            if (direccionPlayer.y > 0)
+            {
+                playerAnimator.SetFloat("MovimientoX", 0f);
+                playerAnimator.SetFloat("MovimientoY", 1f);
+            }
+            else
+            {
+                if (direccionPlayer.y < 0)
+                {
+                    playerAnimator.SetFloat("MovimientoX", 0f);
+                    playerAnimator.SetFloat("MovimientoY", -1f);
+                }
+            }
+        }
+        else
+        {
+            if (direccionPlayer.y == 0)
+            {
+                if (direccionPlayer.x > 0)
+                {
+                    playerAnimator.SetFloat("MovimientoX", 1f);
+                    playerAnimator.SetFloat("MovimientoY", 0f);
+                }
+                else
+                {
+                    if (direccionPlayer.x < 0)
+                    {
+                        playerAnimator.SetFloat("MovimientoX", -1f);
+                        playerAnimator.SetFloat("MovimientoY", 0f);
+                    }
+                }
+            }
         }
     }
 }
