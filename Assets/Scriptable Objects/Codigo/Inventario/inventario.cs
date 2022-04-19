@@ -9,6 +9,7 @@ public class inventario : ScriptableObject
     public objeto objetoActual;
     public List<objeto> objetos = new List<objeto>();
     public int numeroLlaves;
+    public int numeroMonedas;
 
     public void agregaObjeto(objeto objetoAgrega) 
     {

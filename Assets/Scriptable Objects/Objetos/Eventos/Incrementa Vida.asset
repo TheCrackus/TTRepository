@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2550790bac29693438c3822fd99e8f72, type: 3}
-  m_Name: Inventario Player
+  m_Script: {fileID: 11500000, guid: 9d9f60e15a53f2a40847716109bb7f32, type: 3}
+  m_Name: Incrementa Vida
   m_EditorClassIdentifier: 
-  objetoActual: {fileID: 0}
-  objetos: []
-  numeroLlaves: 0
-  numeroMonedas: 0
+  eventos: []
