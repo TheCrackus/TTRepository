@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class interaccionesEmpujeGlobales : MonoBehaviour
 {
-
+    [Header("Estadisticas globales para atacar")]
     public float fuerza;
     public float tiempoAplicarFuerza;
-    public float vidaMenos;
+    public float vidaRestar;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +46,7 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                         && gameObject.CompareTag("ArmaObjetoPlayer")
                         && colisionDetectada.isTrigger)
                     {
-                        colisionDetectada.gameObject.GetComponent<enemigo>().empuja(rigidBodyAfectado, tiempoAplicarFuerza, vidaMenos);
+                        colisionDetectada.gameObject.GetComponent<enemigo>().empuja(rigidBodyAfectado, tiempoAplicarFuerza, vidaRestar);
                     }
                     else
                     {
@@ -55,7 +55,7 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                             && colisionDetectada.isTrigger)
                         {
 
-                            colisionDetectada.gameObject.GetComponent<movimientoPlayer>().empuja(rigidBodyAfectado, tiempoAplicarFuerza, vidaMenos);
+                            colisionDetectada.gameObject.GetComponent<movimientoPlayer>().comienzaEmpujaPlayer(rigidBodyAfectado, tiempoAplicarFuerza, vidaRestar);
                             //gameObject.GetComponent<enemigo>().espera(tiempoAplicarFuerza);
                         }
                     }

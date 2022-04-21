@@ -6,14 +6,20 @@ using UnityEngine.UI;
 public class cofre : interactuador
 {
 
-    public objeto objetoContenido;
+    private Animator cofreAnimator;
     private bool cofreAbierto;
     private bool cofreVacio;
+    [Header("Objeto que contiene el cofre")]
+    public objeto objetoContenido;
+    [Header("Evento para mostrar un objeto")]
     public evento muestraObjeto;
+    [Header("Objeto que contiene el texto a mostrar")]
     public GameObject objetoContenedorTextoDialogos;
+    [Header("Objeto texto a mostrar")]
     public Text textoDialogos;
+    [Header("Inventario del player")]
     public inventario inventarioPlayer;
-    private Animator cofreAnimator;
+    
 
     void Start()
     {
@@ -41,8 +47,8 @@ public class cofre : interactuador
         objetoContenedorTextoDialogos.SetActive(true);
         inventarioPlayer.agregaObjeto(objetoContenido);
         inventarioPlayer.objetoActual = objetoContenido;
-        muestraObjeto.invocaEventosLista();
-        simboloActivoDesactivo.invocaEventosLista();
+        muestraObjeto.invocaFunciones();
+        simboloActivoDesactivo.invocaFunciones();
         cofreAbierto = true;
         cofreAnimator.SetBool("Abrir", true);
     }
@@ -52,8 +58,8 @@ public class cofre : interactuador
         {
             textoDialogos.text = "";
             objetoContenedorTextoDialogos.SetActive(false);
-            muestraObjeto.invocaEventosLista();
-            simboloActivoDesactivo.invocaEventosLista();
+            muestraObjeto.invocaFunciones();
+            simboloActivoDesactivo.invocaFunciones();
             cofreVacio = true;
         }
         else 
@@ -76,7 +82,7 @@ public class cofre : interactuador
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            simboloActivoDesactivo.invocaEventosLista();
+            simboloActivoDesactivo.invocaFunciones();
             playerEnRango = false;
             textoDialogos.text = "";
             objetoContenedorTextoDialogos.SetActive(false);

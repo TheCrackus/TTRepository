@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class corazon : incrementoEstadisticas
 {
+    [Header("Vida del player")]
     public valorFlotante vidaPlayer;
+    [Header("Numero de corazones del player")]
     public valorFlotante contenedorCorazones;
+    [Header("Incremento de vida para el player")]
     public float incrementoValorEstadistica;
 
     private void OnTriggerEnter2D(Collider2D colision)
@@ -17,7 +20,7 @@ public class corazon : incrementoEstadisticas
             {
                 vidaPlayer.valorEjecucion = contenedorCorazones.valorEjecucion * 2f;
             }
-            eventoIncrementoEstadistica.invocaEventosLista();
+            eventoIncrementoEstadistica.invocaFunciones();
             Destroy(this.gameObject);
         }
     }

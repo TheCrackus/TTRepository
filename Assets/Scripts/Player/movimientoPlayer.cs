@@ -15,17 +15,22 @@ public enum PlayerState
 public class movimientoPlayer : MonoBehaviour
 {
     private PlayerState estadoActualPlayer;
+    [Header("Estadisticas Player")]
     public float velocidad;
     private Rigidbody2D playerRigidBody;
     private Vector3 vectorMovimiento;
     private Animator playerAnimator;
     private AnimationClip atacandoArribaClip;
     public valorFlotante vidaActual;
+    [Header("Eventos del jugador globales")]
     public evento eventoVidaJugador;
+    public evento reciveGolpePlayer;
+    [Header("Variables globales del player")]
     public valorVectorial posicionPlayerMapa;
-    public cambioEscena estadoCambioEscenas;
     public inventario inventarioPlayer;
     public SpriteRenderer spriteObjetoMostrar;
+    [Header("Estado general de la escena")]
+    public cambioEscena estadoCambioEscenas;
 
     // Start is called before the first frame update
     void Start()
@@ -200,10 +205,10 @@ public class movimientoPlayer : MonoBehaviour
         return estadoActualPlayer;
     }
 
-    public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza, float vidaMenos)
+    public void comienzaEmpujaPlayer(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza, float vidaMenos)
     {
-        tomaMenosVida(vidaMenos);
-        eventoVidaJugador.invocaEventosLista();
+        quitaVidaPlayer(vidaMenos);
+        eventoVidaJugador.invocaFunciones();
         if (estadoActualPlayer != PlayerState.atacando
             && estadoActualPlayer != PlayerState.interactuando
             && estadoActualPlayer != PlayerState.estuneado
@@ -216,7 +221,7 @@ public class movimientoPlayer : MonoBehaviour
         }
     }
 
-    private void tomaMenosVida(float vidaMenos)
+    private void quitaVidaPlayer(float vidaMenos)
     {
         vidaActual.valorEjecucion -= vidaMenos;
         if (vidaActual.valorEjecucion <= 0)
@@ -228,6 +233,7 @@ public class movimientoPlayer : MonoBehaviour
 
     private IEnumerator empujaPlayer(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
     {
+        reciveGolpePlayer.invocaFunciones();
         if (rigidBodyAfectado != null)
         {
             yield return new WaitForSeconds(tiempoAplicarFuerza);

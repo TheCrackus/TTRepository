@@ -14,13 +14,14 @@ public enum EnemyState
 
 public class enemigo : MonoBehaviour
 {
-
     private EnemyState estadoActualEnemigo;
-    public valorFlotante vidaMaxima;
     private float vidaEnemigo;
+    [Header("Estadisticas del enemigo")]
+    public valorFlotante vidaMaxima;
     public string nombreEnemigo;
     public int puntosAtaqueEnemigo;
     public float velocidadMovimientoEnemigo;
+    [Header("Efectos visuales del enemigo")]
     public GameObject efectoMuerteEnemigo;
     public AnimationClip muerteEnemigoClip;
 

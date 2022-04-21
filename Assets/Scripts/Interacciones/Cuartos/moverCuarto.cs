@@ -4,26 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 public class moverCuarto : MonoBehaviour
 {
-
-    public Vector3 cambioCamara;
-    public GameObject moverCuartoRef;
-    public Vector3 cambioPoscicionPlayer;
-    public Vector2 direccionPlayer;
-    public GameObject objetoPanel;
     private movimientoCamara movCam;
     private Animator panelAnimator;
     private AnimationClip fadeOutClip;
     private AnimationClip fadeInClip;
+    private Animator textoCuartoAnimator;
+    private AnimationClip mostrarTextoClip;
+    private AnimationClip ocultarTextoClip;
+    [Header("Valores para limites de la camara")]
+    public Vector3 cambioCamara;
+    [Header("Objeto de destino en la transicion")]
+    public GameObject moverCuartoRef;
+    [Header("Valores para la posicion del player")]
+    public Vector3 cambioPoscicionPlayer;
+    public Vector2 direccionPlayer;
+    [Header("Panel para animar la transicion")]
+    public GameObject objetoPanel;
+    [Header("Valores para mostrar el titulo de los escenarios")]
     public bool debeMostrarTexto;
     public string nombreCuarto;
     public GameObject objetoTextoCuarto;
     public Text textoCuarto;
-    private Animator textoCuartoAnimator;
-    private AnimationClip mostrarTextoClip;
-    private AnimationClip ocultarTextoClip;
+    [Header("Tipo de interaccion con el contador")]
     public bool comienzaContador;
     public bool terminaContador;
     public bool pausaContador;
+    [Header("Eventos para controlar el ontador")]
     public evento contadorRegresivoInicia;
     public evento contadorRegresivoDeten;
     public evento contadorRegresivoReinicia;
@@ -73,15 +79,15 @@ public class moverCuarto : MonoBehaviour
             movP.setEstadoActualPlayer(PlayerState.interactuando);
             if (comienzaContador)
             {
-                contadorRegresivoInicia.invocaEventosLista();
+                contadorRegresivoInicia.invocaFunciones();
             }
             if (pausaContador)
             {
-                contadorRegresivoDeten.invocaEventosLista();
+                contadorRegresivoDeten.invocaFunciones();
             }
             if (terminaContador)
             {
-                contadorRegresivoReinicia.invocaEventosLista();
+                contadorRegresivoReinicia.invocaFunciones();
             }
             StartCoroutine(cambioCuarto(colisionDetectada.gameObject));
         }
@@ -111,7 +117,7 @@ public class moverCuarto : MonoBehaviour
         objetoPanel.SetActive(false);
         if (pausaContador) 
         {
-            contadorRegresivoInicia.invocaEventosLista();
+            contadorRegresivoInicia.invocaFunciones();
         }
         player.GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.ninguno);
         if (debeMostrarTexto)

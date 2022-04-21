@@ -6,29 +6,36 @@ using TMPro;
 
 public class manejadorContador : MonoBehaviour
 {
-
-    public valorFlotante tiempoContadorRegresivo;
-    public GameObject objetoTextoContador;
-    public TextMeshProUGUI textoContador;
     private bool cuentaTimerRegresivo;
-    public bool regresaCuarto;
-    public bool regresaEscena;
-    public Vector2 posicionMaximaCamaraReset;
-    public Vector2 posicionMinimaCamaraReset;
-    public Vector3 nuevaPoscicionPlayer;
-    public Vector2 direccionPlayer;
-    public GameObject objetoPanel;
     private movimientoCamara movCam;
     private Animator panelAnimator;
     private AnimationClip fadeOutClip;
     private AnimationClip fadeInClip;
+    private Animator textoCuartoAnimator;
+    private AnimationClip mostrarTextoClip;
+    private AnimationClip ocultarTextoClip;
+    [Header("Duracion del contador")]
+    public valorFlotante tiempoContadorRegresivo;
+    [Header("Texto donde se mostrara el contador")]
+    public GameObject objetoTextoContador;
+    public TextMeshProUGUI textoContador;
+    [Header("Tipo de transicion")]
+    public bool regresaCuarto;
+    public bool regresaEscena;
+    [Header("Valores para limites de la camara")]
+    public Vector2 posicionMaximaCamaraReset;
+    public Vector2 posicionMinimaCamaraReset;
+    [Header("Valores para la posicion del player")]
+    public Vector3 nuevaPoscicionPlayer;
+    public Vector2 direccionPlayer;
+    [Header("Panel para animar la transicion")]
+    public GameObject objetoPanel;
+    [Header("Valores para mostrar el titulo de los escenarios")]
     public bool debeMostrarTexto;
     public string nombreCuarto;
     public GameObject objetoTextoCuarto;
     public Text textoCuarto;
-    private Animator textoCuartoAnimator;
-    private AnimationClip mostrarTextoClip;
-    private AnimationClip ocultarTextoClip;
+    
 
 
     public void Start()

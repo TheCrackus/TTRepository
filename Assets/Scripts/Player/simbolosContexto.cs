@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class simbolosContexto : MonoBehaviour
 {
-
+    [Header("Objeto que mostrara una imagen")]
     public GameObject simboloContexto;
     private  bool simboloEstado = false;
 

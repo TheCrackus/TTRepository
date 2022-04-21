@@ -200,7 +200,6 @@ MonoBehaviour:
   muerteEnemigoClip: {fileID: 7400000, guid: ce3f48e2b1ff8b848aec99a2e3bea931, type: 2}
   radioPersecucion: 6
   radioAtaque: 0.5
-  posicionOriginal: {fileID: 0}
 --- !u!114 &8720145897935035772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,4 +214,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuerza: 5
   tiempoAplicarFuerza: 0.3
-  vidaMenos: 1
+  vidaRestar: 0

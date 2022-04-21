@@ -6,16 +6,6 @@ using UnityEngine.UI;
 
 public class moverEscena : MonoBehaviour
 {
-
-    public string escenaCarga;
-    public Vector3 nuevaPosicionPlayer;
-    public Vector3 nuevaPosicionCamara;
-    public valorVectorial posicionPlayer;
-    public cambioEscena estadoCambioEscena;
-    public GameObject fadeInFadeOutCanvas;
-    public bool debeMostrarTexto;
-    public string nombreMostrar;
-    public Vector2 direccionPlayer;
     private movimientoCamara movCam;
     private GameObject objetoPanel;
     private Animator panelAnimator;
@@ -28,16 +18,35 @@ public class moverEscena : MonoBehaviour
     private AnimationClip ocultarTextoClip;
     private GameObject nCanvas;
     private GameObject pCanvas;
+    [Header("Escena destino")]
+    public string escenaCarga;
+    [Header("Valores para la posicion del player")]
+    public Vector3 nuevaPosicionPlayer;
+    public Vector3 nuevaPosicionCamara;
+    public valorVectorial posicionPlayer;
+    [Header("Estado actual de la escena")]
+    public cambioEscena estadoCambioEscena;
+    [Header("Panel para animar la transicion")]
+    public GameObject fadeInFadeOutCanvas;
+    [Header("Valores para mostrar el titulo de los escenarios")]
+    public bool debeMostrarTexto;
+    public string nombreMostrar;
+    [Header("Valores para la posicion del player")]
+    public Vector2 direccionPlayer;
+    [Header("Tipo de interaccion con el contador")]
     public bool comienzaContador;
     public bool terminaContador;
     public bool pausaContador;
+    [Header("Valores para ejecutar una transicion")]
+    public string nombreEjecucion;
+    public string nombrePropioEjecucion;
+    [Header("Valores para limites de la camara")]
+    public Vector3 nuevaPosicionCamaraMaxima;
+    public Vector3 nuevaPosicionCamaraMinima;
+    [Header("Eventos para controlar el ontador")]
     public evento contadorRegresivoInicia;
     public evento contadorRegresivoDeten;
     public evento contadorRegresivoReinicia;
-    public string nombreEjecucion;
-    public string nombrePropioEjecucion;
-    public Vector3 nuevaPosicionCamaraMaxima;
-    public Vector3 nuevaPosicionCamaraMinima;
 
     public void iniciaCanvas()
     {
@@ -117,12 +126,12 @@ public class moverEscena : MonoBehaviour
             estadoCambioEscena.camaraPosicionEjecucion = nuevaPosicionCamara;
             if (pausaContador)
             {
-                contadorRegresivoDeten.invocaEventosLista();
+                contadorRegresivoDeten.invocaFunciones();
                 estadoCambioEscena.pausoContadorEjecucion = true;
             }
             if (terminaContador)
             {
-                contadorRegresivoReinicia.invocaEventosLista();
+                contadorRegresivoReinicia.invocaFunciones();
             }
             StartCoroutine(cambioEscenaOut());
         }
@@ -132,7 +141,7 @@ public class moverEscena : MonoBehaviour
     {
         if (estadoCambioEscena.pausoContadorEjecucion)
         {
-            contadorRegresivoInicia.invocaEventosLista();
+            contadorRegresivoInicia.invocaFunciones();
             estadoCambioEscena.pausoContadorEjecucion = false;
         }
         pCanvas.SetActive(false);

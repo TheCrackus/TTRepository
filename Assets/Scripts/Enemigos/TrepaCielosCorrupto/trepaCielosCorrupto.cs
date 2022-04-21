@@ -8,10 +8,11 @@ public class trepaCielosCorrupto : enemigo
     private Rigidbody2D enemigoRigidBody;
     private Transform objetivoPerseguir;
     private GameObject player;
-    public float radioPersecucion;
-    public float radioAtaque;
-    public Transform posicionOriginal;
     private Animator enemigoAnimator;
+    [Header("Distancia de persecucion")]
+    public float radioPersecucion;
+    [Header("Distancia de ataque")]
+    public float radioAtaque;
 
     // Start is called before the first frame update
     void Start()

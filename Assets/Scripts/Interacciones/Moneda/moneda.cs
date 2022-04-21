@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class moneda : incrementoEstadisticas
 {
-
+    [Header("Inventario del player")]
     public inventario inventarioPlayer;
 
     private void OnTriggerEnter2D(Collider2D colision)
@@ -12,7 +12,7 @@ public class moneda : incrementoEstadisticas
         if (colision.gameObject.CompareTag("Player") && colision.isTrigger)
         {
             inventarioPlayer.numeroMonedas += 1;
-            eventoIncrementoEstadistica.invocaEventosLista();
+            eventoIncrementoEstadistica.invocaFunciones();
             Destroy(this.gameObject);
         }
     }

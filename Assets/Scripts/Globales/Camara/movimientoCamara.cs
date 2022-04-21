@@ -10,9 +10,11 @@ public class movimientoCamara : MonoBehaviour
     private Vector3 posicionMaxima;
     private Vector3 posicionMinima;
     public cambioEscena estadoCambioEscena;
+    private Animator camaraAnimator;
 
     void Start()
     {
+        camaraAnimator = gameObject.GetComponent<Animator>();
         posicionMaxima = estadoCambioEscena.camaraPosicionMaximaEjecucion;
         posicionMinima = estadoCambioEscena.camaraPosicionMinimaEjecucion;
         gameObject.transform.position = estadoCambioEscena.camaraPosicionEjecucion;
@@ -48,5 +50,17 @@ public class movimientoCamara : MonoBehaviour
     public Vector3 getPosicionMinima()
     {
         return posicionMinima;
+    }
+
+    public void empiezaAnimacionGolpePLayer() 
+    {
+        camaraAnimator.SetBool("RecibeGolpePlayer", true);
+        StartCoroutine(animacionGolpePLayer());
+    }
+
+    private IEnumerator animacionGolpePLayer() 
+    {
+        yield return null;
+        camaraAnimator.SetBool("RecibeGolpePlayer", false);
     }
 }

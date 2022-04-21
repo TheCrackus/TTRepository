@@ -8,7 +8,7 @@ public class evento : ScriptableObject
 
     public List<escuchaEvento> eventos = new List<escuchaEvento>();
 
-    public void invocaEventosLista() 
+    public void invocaFunciones() 
     {
         foreach (escuchaEvento evento in eventos)
         {

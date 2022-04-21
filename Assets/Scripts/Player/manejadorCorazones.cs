@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class manejadorCorazones : MonoBehaviour
 {
-
+    [Header("Numero de imagenes maximas")]
     public Image[] corazones;
+    [Header("Sprites para la cantidad de vida")]
     public Sprite corazonLleno;
     public Sprite corazonMitad;
     public Sprite corazonVacio;
+    [Header("Estadisticas de salud del player")]
     public valorFlotante corazonesMaximos;
     public valorFlotante vidaActualPlayer;
 

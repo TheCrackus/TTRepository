@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class trepaCielosCorruptoMovible : trepaCielosCorrupto
 {
-
-    public Transform[] camino;
-    public int puntoActual;
-    public Transform puntoActualMeta;
-    public float distanciaAlPunto;
     private bool direccionAdelante = true;
+    [Header("Objetivos a seguir")]
+    public Transform[] camino;
+    [Header("Numero del objetivo actual")]
+    public int puntoActual;
+    [Header("Objetivo actual")]
+    public Transform puntoActualMeta;
+    [Header("Distancia para cambiar de objetivo")]
+    public float distanciaAlPunto;
 
     public override void gestionDistancias()
     {

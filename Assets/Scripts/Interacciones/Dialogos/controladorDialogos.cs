@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class controladorDialogos : interactuador
 {
-
+    [Header("Objeto contenedor del Texto a mostrar")]
     public GameObject objetoContenedorTextoDialogos;
+    [Header("Objeto texto para mostrar los dialogos")]
     public Text textoDialogos;
+    [Header("Texto a mostrar")]
     public string dialogo;    
 
     void Update()
@@ -30,7 +32,7 @@ public class controladorDialogos : interactuador
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            simboloActivoDesactivo.invocaEventosLista();
+            simboloActivoDesactivo.invocaFunciones();
             playerEnRango = false;
             textoDialogos.text = "";
             objetoContenedorTextoDialogos.SetActive(false);

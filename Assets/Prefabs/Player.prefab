@@ -501,6 +501,7 @@ MonoBehaviour:
   estadoCambioEscenas: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
   spriteObjetoMostrar: {fileID: 1264945170}
+  reciveGolpePlayer: {fileID: 11400000, guid: a22c4645bb8328747ae3d66b9a5b2bc9, type: 2}
 --- !u!114 &1759186388
 MonoBehaviour:
   m_ObjectHideFlags: 0

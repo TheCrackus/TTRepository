@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class interactuador : MonoBehaviour
 {
-
+    [Header("Evento que activa un simbolo")]
     public evento simboloActivoDesactivo;
+    [Header("Interactua?")]
     public bool playerEnRango;
 
     public virtual void OnTriggerEnter2D(Collider2D colisionDetectada)
@@ -13,7 +14,7 @@ public class interactuador : MonoBehaviour
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            simboloActivoDesactivo.invocaEventosLista();
+            simboloActivoDesactivo.invocaFunciones();
             playerEnRango = true;
         }
     }
@@ -23,7 +24,7 @@ public class interactuador : MonoBehaviour
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            simboloActivoDesactivo.invocaEventosLista();
+            simboloActivoDesactivo.invocaFunciones();
             playerEnRango = false;
         }
     }
