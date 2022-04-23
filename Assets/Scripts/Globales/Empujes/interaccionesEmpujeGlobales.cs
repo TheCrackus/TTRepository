@@ -34,7 +34,10 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                 && gameObject.CompareTag("ArmaObjetoPlayer"))
                 || 
                 (colisionDetectada.gameObject.CompareTag("Player") 
-                && gameObject.CompareTag("Enemigo")))
+                && gameObject.CompareTag("Enemigo"))
+                ||
+                (colisionDetectada.gameObject.CompareTag("Player")
+                && gameObject.CompareTag("ProyectilEnemigo")))
             {
                 Rigidbody2D rigidBodyAfectado = colisionDetectada.gameObject.GetComponent<Rigidbody2D>();
                 if (rigidBodyAfectado != null)
@@ -46,17 +49,25 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                         && gameObject.CompareTag("ArmaObjetoPlayer")
                         && colisionDetectada.isTrigger)
                     {
-                        colisionDetectada.gameObject.GetComponent<enemigo>().empuja(rigidBodyAfectado, tiempoAplicarFuerza, vidaRestar);
+                        colisionDetectada.gameObject.GetComponent<enemigo>().empiezaEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza, vidaRestar);
                     }
                     else
                     {
-                        if (colisionDetectada.gameObject.CompareTag("Player") 
+                        if (colisionDetectada.gameObject.CompareTag("Player")
                             && gameObject.CompareTag("Enemigo")
                             && colisionDetectada.isTrigger)
                         {
 
                             colisionDetectada.gameObject.GetComponent<movimientoPlayer>().comienzaEmpujaPlayer(rigidBodyAfectado, tiempoAplicarFuerza, vidaRestar);
-                            //gameObject.GetComponent<enemigo>().espera(tiempoAplicarFuerza);
+                        }
+                        else 
+                        {
+                            if (colisionDetectada.gameObject.CompareTag("Player")
+                                && gameObject.CompareTag("ProyectilEnemigo")
+                                && colisionDetectada.isTrigger) 
+                            {
+                                colisionDetectada.gameObject.GetComponent<movimientoPlayer>().comienzaEmpujaPlayer(rigidBodyAfectado, tiempoAplicarFuerza, vidaRestar);
+                            }    
                         }
                     }
                 }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using miUsuario = usuario;
 
 public enum conexionState
 {
@@ -13,8 +12,8 @@ public enum conexionState
 
 public class conexionWeb : MonoBehaviour
 {
-    
     private conexionState estadoActualConexion;
+    public usuario miUsuario;
 
     public void Start()
     {
@@ -41,7 +40,7 @@ public class conexionWeb : MonoBehaviour
         if (web.result != UnityWebRequest.Result.ProtocolError)
         {
             Debug.Log("Recibi resultados...");
-            miUsuario.setDatosUsuario(JsonUtility.FromJson<miUsuario.datosUsuario>(web.downloadHandler.text));
+            miUsuario.datosEjecucuion = JsonUtility.FromJson<usuario.datosUsuario>(web.downloadHandler.text);
             estadoActualConexion = conexionState.termineIniciarSesion;
         }
         else 

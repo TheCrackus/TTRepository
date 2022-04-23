@@ -252,9 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 5
-  tiempoAplicarFuerza: 0.3
-  vidaMenos: 1
+  fuerza: 3
+  tiempoAplicarFuerza: 0.2
+  vidaRestar: 1
 --- !u!114 &11911563963576661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,14 +268,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaMaxima: {fileID: 11400000, guid: 1e3be81f1002cab4ea326851b599d49f, type: 2}
-  nombreEnemigo: Trepa cielos movible
-  puntosAtaqueEnemigo: 1
+  nombreEnemigo: Trepa Cielos Corrupto
   velocidadMovimientoEnemigo: 2
   efectoMuerteEnemigo: {fileID: 755099225653218745, guid: 5086d25ea712d8b4f88bca10f2db084f, type: 3}
   muerteEnemigoClip: {fileID: 7400000, guid: ce3f48e2b1ff8b848aec99a2e3bea931, type: 2}
-  radioPersecucion: 3
-  radioAtaque: 0.5
-  posicionOriginal: {fileID: 0}
+  radioPersecucion: 4
+  radioAtaque: 0.1
   camino:
   - {fileID: 11911563529567822}
   - {fileID: 11911564700135952}

@@ -12,6 +12,7 @@ TagManager:
   - MoverCuarto
   - MoverCueva
   - MoverEscena
+  - ProyectilEnemigo
   layers:
   - Default
   - TransparentFX

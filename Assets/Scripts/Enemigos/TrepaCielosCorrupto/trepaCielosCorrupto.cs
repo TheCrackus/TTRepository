@@ -14,8 +14,7 @@ public class trepaCielosCorrupto : enemigo
     [Header("Distancia de ataque")]
     public float radioAtaque;
 
-    // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         setEstadoActualEnemigo(EnemyState.durmiendo);
         objetivoPerseguir = GameObject.FindWithTag("Player").transform;
@@ -63,12 +62,6 @@ public class trepaCielosCorrupto : enemigo
     public GameObject getPlayer() 
     {
         return player;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void FixedUpdate()

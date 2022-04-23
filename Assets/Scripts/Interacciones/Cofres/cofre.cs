@@ -7,8 +7,8 @@ public class cofre : interactuador
 {
 
     private Animator cofreAnimator;
-    private bool cofreAbierto;
-    private bool cofreVacio;
+    private bool cofreAbierto = false;
+    private bool cofreVacio = false;
     [Header("Objeto que contiene el cofre")]
     public objeto objetoContenido;
     [Header("Evento para mostrar un objeto")]
@@ -19,11 +19,19 @@ public class cofre : interactuador
     public Text textoDialogos;
     [Header("Inventario del player")]
     public inventario inventarioPlayer;
-    
+    [Header("Fue Abrieto este cofre?")]
+    public valorBooleano estadoCofre;
+
 
     void Start()
     {
         cofreAnimator = gameObject.GetComponent<Animator>();
+        cofreAbierto = estadoCofre.valorEjecucion;
+        cofreVacio = estadoCofre.valorEjecucion;
+        if (cofreAbierto && cofreVacio) 
+        {
+            cofreAnimator.SetBool("Abrir", true);
+        }
     }
 
     void Update()
@@ -50,6 +58,7 @@ public class cofre : interactuador
         muestraObjeto.invocaFunciones();
         simboloActivoDesactivo.invocaFunciones();
         cofreAbierto = true;
+        estadoCofre.valorEjecucion = true;
         cofreAnimator.SetBool("Abrir", true);
     }
 

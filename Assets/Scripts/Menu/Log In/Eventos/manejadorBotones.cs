@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using miUsuario = usuario;
 
 public class manejadorBotones : MonoBehaviour
 {
     public InputField email;
     public InputField password;
-    public miUsuario.datosUsuario datos;
+    public usuario miUsuario;
     public GameObject fondoEmergente;
     public Text textoVentanaEmergente;
 
@@ -22,8 +21,7 @@ public class manejadorBotones : MonoBehaviour
     public void cierraVentanaEmergente() 
     {
         textoVentanaEmergente.text = "Advertencias:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-";
-        miUsuario.vaciar();
-        datos = miUsuario.getDatosUsuario();
+        miUsuario.datosEjecucuion = miUsuario.datosReset;
         fondoEmergente.SetActive(false);
     }
 
@@ -33,12 +31,11 @@ public class manejadorBotones : MonoBehaviour
         if (conexion.getEstadoActualConexion() == conexionState.termineIniciarSesion)
         {
             Debug.Log("Datos listos...");
-            datos = miUsuario.getDatosUsuario();
             conexion.setEstadoActualConexion(conexionState.ninguno);
-            textoVentanaEmergente.text = "ID jugador: " + datos.id_jugador.ToString() 
-                + "\nSobrenombre: " + datos.Sobrenombre
-                + "\nNacimineto: " + datos.nacimiento
-                + "\nEmail: " + datos.nacimiento;
+            textoVentanaEmergente.text = "ID jugador: " + miUsuario.datosEjecucuion.id_jugador.ToString()
+                + "\nSobrenombre: " + miUsuario.datosEjecucuion.Sobrenombre
+                + "\nNacimineto: " + miUsuario.datosEjecucuion.nacimiento
+                + "\nEmail: " + miUsuario.datosEjecucuion.nacimiento;
             fondoEmergente.SetActive(true);
         }
     }

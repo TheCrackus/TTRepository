@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class usuario
+[CreateAssetMenu]
+public class usuario : ScriptableObject, ISerializationCallbackReceiver
 {
     [System.Serializable]
     public struct configuracion
@@ -45,19 +46,20 @@ public static class usuario
         public logro[] Logros;
     }
 
-    private static datosUsuario datos;
+    [Header("Datos usuario iniciales")]
+    public datosUsuario datosIniciales;
+    [Header("Datos usuario en ejecucion")]
+    public datosUsuario datosEjecucuion;
+    [Header("Datos usuario para cerrar sesion")]
+    public datosUsuario datosReset;
 
-    public static void vaciar(){
-        datos = new datosUsuario();
+    public void OnAfterDeserialize()
+    {
+        datosEjecucuion = datosIniciales;
     }
 
-    public static datosUsuario getDatosUsuario()
+    public void OnBeforeSerialize()
     {
-        return datos;
-    }
 
-    public static void setDatosUsuario(datosUsuario ndatos)
-    {
-       datos = ndatos;
     }
 }

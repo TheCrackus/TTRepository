@@ -207,8 +207,6 @@ public class movimientoPlayer : MonoBehaviour
 
     public void comienzaEmpujaPlayer(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza, float vidaMenos)
     {
-        quitaVidaPlayer(vidaMenos);
-        eventoVidaJugador.invocaFunciones();
         if (estadoActualPlayer != PlayerState.atacando
             && estadoActualPlayer != PlayerState.interactuando
             && estadoActualPlayer != PlayerState.estuneado
@@ -216,26 +214,31 @@ public class movimientoPlayer : MonoBehaviour
             && (estadoActualPlayer == PlayerState.caminando
                 || estadoActualPlayer == PlayerState.ninguno))
         {
-            estadoActualPlayer = PlayerState.estuneado;
-            StartCoroutine(empujaPlayer(rigidBodyAfectado, tiempoAplicarFuerza));
+            quitaVidaPlayer(vidaMenos, rigidBodyAfectado, tiempoAplicarFuerza);
         }
     }
 
-    private void quitaVidaPlayer(float vidaMenos)
+    private void quitaVidaPlayer(float vidaMenos, Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
     {
         vidaActual.valorEjecucion -= vidaMenos;
+        eventoVidaJugador.invocaFunciones();
         if (vidaActual.valorEjecucion <= 0)
         {
             estadoActualPlayer = PlayerState.inactivo;
             gameObject.SetActive(false);
         }
+        else 
+        {
+            estadoActualPlayer = PlayerState.estuneado;
+            StartCoroutine(empujaPlayer(rigidBodyAfectado, tiempoAplicarFuerza));
+        }
     }
 
     private IEnumerator empujaPlayer(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
     {
-        reciveGolpePlayer.invocaFunciones();
         if (rigidBodyAfectado != null)
         {
+            reciveGolpePlayer.invocaFunciones();
             yield return new WaitForSeconds(tiempoAplicarFuerza);
 
             rigidBodyAfectado.velocity = Vector2.zero;

@@ -19,7 +19,6 @@ public class enemigo : MonoBehaviour
     [Header("Estadisticas del enemigo")]
     public valorFlotante vidaMaxima;
     public string nombreEnemigo;
-    public int puntosAtaqueEnemigo;
     public float velocidadMovimientoEnemigo;
     [Header("Efectos visuales del enemigo")]
     public GameObject efectoMuerteEnemigo;
@@ -43,9 +42,8 @@ public class enemigo : MonoBehaviour
         return estadoActualEnemigo;    
     }
 
-    public void empuja(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza, float vidaMenos) 
+    public void empiezaEmpujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza, float vidaMenos) 
     {
-        tomaMenosVida(vidaMenos);
         if (estadoActualEnemigo != EnemyState.inactivo
             && estadoActualEnemigo != EnemyState.estuneado
             && estadoActualEnemigo != EnemyState.atacando
@@ -53,12 +51,11 @@ public class enemigo : MonoBehaviour
                 || estadoActualEnemigo == EnemyState.ninguno 
                 || estadoActualEnemigo == EnemyState.durmiendo)) 
         {
-            estadoActualEnemigo = EnemyState.estuneado;
-            StartCoroutine(empujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
+            tomaMenosVida(vidaMenos, rigidBodyAfectado, tiempoAplicarFuerza);
         }
     }
 
-    private void tomaMenosVida(float vidaMenos)
+    private void tomaMenosVida(float vidaMenos, Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
     {
         vidaEnemigo -= vidaMenos;
         if (vidaEnemigo <= 0)
@@ -67,14 +64,10 @@ public class enemigo : MonoBehaviour
             estadoActualEnemigo = EnemyState.inactivo;
             gameObject.SetActive(false);
         }
-    }
-
-    private void muerteEnemigoAnimacion() 
-    {
-        if (efectoMuerteEnemigo != null) 
+        else 
         {
-            GameObject efecto = GameObject.Instantiate(efectoMuerteEnemigo, gameObject.transform.position, Quaternion.identity);
-            Destroy(efecto, muerteEnemigoClip.length);
+            estadoActualEnemigo = EnemyState.estuneado;
+            StartCoroutine(empujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
         }
     }
 
@@ -89,18 +82,12 @@ public class enemigo : MonoBehaviour
         }
     }
 
-
-
-    //public void espera(float tiempoEspera) 
-    //{
-    //    estadoActualEnemigo = EnemyState.atacando;
-    //    StartCoroutine(esperaMovimiento(tiempoEspera));
-    //}
-
-    //private IEnumerator esperaMovimiento(float tiempoEspera)
-    //{
-    //       yield return new WaitForSeconds(tiempoEspera);
-
-    //       estadoActualEnemigo = EnemyState.ninguno;
-    //}
+    private void muerteEnemigoAnimacion() 
+    {
+        if (efectoMuerteEnemigo != null) 
+        {
+            GameObject efecto = GameObject.Instantiate(efectoMuerteEnemigo, gameObject.transform.position, Quaternion.identity);
+            Destroy(efecto, muerteEnemigoClip.length);
+        }
+    }
 }

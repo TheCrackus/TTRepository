@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 374845261}
   - component: {fileID: 374845260}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasMenuLogIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1365,7 +1365,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1914,6 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2a439d4ca96484abf4b0f75196d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
 --- !u!114 &1063888314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,26 +1929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   email: {fileID: 796023676}
   password: {fileID: 1447478765}
-  datos:
-    id_jugador: 0
-    Sobrenombre: 
-    nacimiento: 
-    mail: 
-    password: 
-    Puntos: 0
-    Enemigos: 0
-    NivelesT: 0
-    Configuracion:
-      volumen: 0
-      resolucion: 
-    Partida:
-      id_partida: 0
-      Vida: 0
-      Puntos: 0
-      Enemigos: 0
-      id_punto_control: 0
-      Inventario: []
-    Logros: []
+  miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
   fondoEmergente: {fileID: 2145506679}
   textoVentanaEmergente: {fileID: 1121584949}
 --- !u!1 &1121584947
@@ -2357,7 +2339,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
