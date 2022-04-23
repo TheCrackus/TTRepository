@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class cambiarEntradas : MonoBehaviour
+public class manejadorEntradasLogIn : MonoBehaviour
 {
-
     EventSystem sistema;
     public Selectable primerInput;
     public Selectable enterInputLogIn;
@@ -16,14 +15,12 @@ public class cambiarEntradas : MonoBehaviour
     public Button botonRegistro;
     public Button botonRecuperaPass;
 
-    // Start is called before the first frame update
     void Start()
     {
         sistema = EventSystem.current;
         primerInput.Select();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (primerInput != null && sistema.currentSelectedGameObject != null)
@@ -48,7 +45,8 @@ public class cambiarEntradas : MonoBehaviour
                 }
             }
         }
-        else {
+        else
+        {
             if (Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
             {
                 primerInput.Select();
@@ -59,18 +57,19 @@ public class cambiarEntradas : MonoBehaviour
                 {
                     primerInput.Select();
                 }
-                else 
+                else
                 {
-                    if (sistema.currentSelectedGameObject == enterInputLogIn 
-                        || sistema.currentSelectedGameObject == enterInputRegistro 
-                        || sistema.currentSelectedGameObject == enterInputRecuperaPass) 
+                    if (sistema.currentSelectedGameObject == enterInputLogIn
+                        || sistema.currentSelectedGameObject == enterInputRegistro
+                        || sistema.currentSelectedGameObject == enterInputRecuperaPass)
                     {
-                        if (Input.GetKeyDown(KeyCode.Return)) {
+                        if (Input.GetKeyDown(KeyCode.Return))
+                        {
                             if (sistema.currentSelectedGameObject == enterInputLogIn)
                             {
                                 botonLogIn.onClick.Invoke();
                             }
-                            else 
+                            else
                             {
                                 if (sistema.currentSelectedGameObject == enterInputRegistro)
                                 {

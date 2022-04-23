@@ -7,6 +7,8 @@ public enum conexionState
 {
     iniciandoSesion,
     termineIniciarSesion,
+    falleIniciarSesionDatos,
+    falleIniciarSesionConexion,
     ninguno
 }
 
@@ -24,7 +26,6 @@ public class conexionWeb : MonoBehaviour
     {
         if (estadoActualConexion != conexionState.iniciandoSesion) 
         {
-            Debug.Log("Iniciando sesion...");
             estadoActualConexion = conexionState.iniciandoSesion;
             StartCoroutine(inicia(email, password));
         }
@@ -39,15 +40,21 @@ public class conexionWeb : MonoBehaviour
         yield return web.SendWebRequest();
         if (web.result != UnityWebRequest.Result.ProtocolError)
         {
-            Debug.Log("Recibi resultados...");
             miUsuario.datosEjecucuion = JsonUtility.FromJson<usuario.datosUsuario>(web.downloadHandler.text);
-            estadoActualConexion = conexionState.termineIniciarSesion;
+            if (miUsuario.datosEjecucuion.id_jugador == 0)
+            {
+                estadoActualConexion = conexionState.falleIniciarSesionDatos;
+            }
+            else 
+            {
+                estadoActualConexion = conexionState.termineIniciarSesion;
+            }
+            
         }
         else 
         {
-            Debug.Log("No recibi resultados...");
             Debug.LogError(web.result);
-            estadoActualConexion = conexionState.ninguno;
+            estadoActualConexion = conexionState.falleIniciarSesionConexion;
         }
     }
 

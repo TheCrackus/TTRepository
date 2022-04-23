@@ -168,7 +168,7 @@ public class moverEscena : MonoBehaviour
         }
     }
 
-    public IEnumerator cambioEscenaOut()
+    private IEnumerator cambioEscenaOut()
     {
         pCanvas.SetActive(false);
         objetoPanel.SetActive(true);
