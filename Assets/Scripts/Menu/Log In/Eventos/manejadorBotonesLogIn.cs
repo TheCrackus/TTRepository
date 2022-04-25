@@ -6,35 +6,66 @@ using UnityEngine.UI;
 
 public class manejadorBotonesLogIn : MonoBehaviour
 {
-    public InputField email;
-    public InputField password;
-    public GameObject fondoEmergente;
+    private conexionWeb conexion;
+    private bool pulseBoton;
+    public InputField emailField;
+    public InputField passwordFiled;
+    public GameObject ventanaEmergente;
     public string escenaPrincipal;
+    public string escenaRegistra;
+
+    public bool getPulseBoton()
+    {
+        return pulseBoton;
+    }
+
+    public void setPulseBoton(bool pulseBoton)
+    {
+        this.pulseBoton = pulseBoton;
+    }
+
+    void Start()
+    {
+        pulseBoton = false;
+        conexion = gameObject.GetComponent<conexionWeb>();
+    }
 
     public void botonIniciaSesion()
     {
-        conexionWeb conexion = gameObject.GetComponent<conexionWeb>();
-        conexion.iniciaSesion(email.text.ToString(), password.text.ToString());
-        StartCoroutine(esperaDatos(conexion));
+        if (!pulseBoton) 
+        {
+            conexion.iniciaSesion(emailField.text.ToString(), passwordFiled.text.ToString());
+            pulseBoton = true;
+            StartCoroutine(esperaDatosInicioSesion());
+        }
     }
 
-    private IEnumerator esperaDatos(conexionWeb conexion)
+    public void botonRegistra() 
     {
-        fondoEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Procesando datos...");
+        if (!pulseBoton)
+        {
+            pulseBoton = true;
+            StartCoroutine(cambioEscena(escenaRegistra));
+        }
+    }
+
+    private IEnumerator esperaDatosInicioSesion()
+    {
+        ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Procesando datos...", false);
         yield return new WaitWhile(() => (conexion.getEstadoActualConexion() == conexionState.iniciandoSesion));
         if (conexion.getEstadoActualConexion() == conexionState.termineIniciarSesion)
         {
-            fondoEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Datos listos...");
+            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Datos listos...", false);
             yield return new WaitForSeconds(1f);
             conexion.setEstadoActualConexion(conexionState.ninguno);
-            fondoEmergente.GetComponent<manejadorVentanaEmergente>().cierraVentanaEmergente();
+            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().cierraVentanaEmergente();
             StartCoroutine(cambioEscena(escenaPrincipal));
         }
         else
         {
             if (conexion.getEstadoActualConexion() == conexionState.falleIniciarSesionConexion)
             {
-                fondoEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Fallo de conexión...");
+                ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Fallo de conexión...", true);
                 yield return new WaitForSeconds(1f);
                 conexion.setEstadoActualConexion(conexionState.ninguno);
             }
@@ -42,12 +73,13 @@ public class manejadorBotonesLogIn : MonoBehaviour
             {
                 if (conexion.getEstadoActualConexion() == conexionState.falleIniciarSesionDatos)
                 {
-                    fondoEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("El usuario no existe...");
+                    ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("El usuario no existe...", true);
                     yield return new WaitForSeconds(1f);
                     conexion.setEstadoActualConexion(conexionState.ninguno);
                 }
             }
         }
+        pulseBoton = false;
     }
 
     private IEnumerator cambioEscena(string escenaCarga) 

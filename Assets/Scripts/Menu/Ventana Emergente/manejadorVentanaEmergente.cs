@@ -5,24 +5,56 @@ using UnityEngine.UI;
 
 public class manejadorVentanaEmergente : MonoBehaviour
 {
-    public GameObject fondoEmergente;
+    private float contadorTiempoCerrar;
+    private bool empiezaContador;
     public Text textoVentanaEmergente;
+    public float tiempoCerrar;
 
-    public void cierraVentanaEmergente()
+    void Awake()
     {
-        textoVentanaEmergente.text = "Advertencias:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-";
-        if (fondoEmergente.activeInHierarchy) 
+        empiezaContador = false;
+    }
+
+    void Start()
+    {
+        contadorTiempoCerrar = tiempoCerrar;    
+    }
+
+    void Update()
+    {
+        if (empiezaContador) 
         {
-            fondoEmergente.SetActive(false);
+            contadorTiempoCerrar -= Time.deltaTime;
+            if (contadorTiempoCerrar <= 0) 
+            {
+                cierraVentanaEmergente();
+                contadorTiempoCerrar = tiempoCerrar;
+                empiezaContador = false;
+            }
         }
     }
 
-    public void abreVentanaEmergente(string textoMostrar) 
+    public void cierraVentanaEmergente()
     {
-        textoVentanaEmergente.text = textoMostrar;
-        if (!fondoEmergente.activeInHierarchy)
+        if (gameObject.activeInHierarchy) 
         {
-            fondoEmergente.SetActive(true);
+            textoVentanaEmergente.text = "Advertencias:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-";
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void abreVentanaEmergente(string textoMostrar, bool debeEmpezarContador) 
+    {
+        if (!gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(true);
+            textoVentanaEmergente.text = textoMostrar;
+            empiezaContador = debeEmpezarContador;
+        }
+        else 
+        {
+            textoVentanaEmergente.text = textoMostrar;
+            empiezaContador = debeEmpezarContador;
         }
     }
 }

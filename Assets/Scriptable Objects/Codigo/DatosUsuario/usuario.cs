@@ -49,13 +49,13 @@ public class usuario : ScriptableObject, ISerializationCallbackReceiver
     [Header("Datos usuario iniciales")]
     public datosUsuario datosIniciales;
     [Header("Datos usuario en ejecucion")]
-    public datosUsuario datosEjecucuion;
+    public datosUsuario datosEjecucion;
     [Header("Datos usuario para cerrar sesion")]
     public datosUsuario datosReset;
 
     public void OnAfterDeserialize()
     {
-        datosEjecucuion = datosIniciales;
+        datosEjecucion = datosIniciales;
     }
 
     public void OnBeforeSerialize()
