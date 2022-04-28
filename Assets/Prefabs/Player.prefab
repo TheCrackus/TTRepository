@@ -202,9 +202,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398895126468970419}
+  - component: {fileID: 691990550}
   - component: {fileID: 1398895126468970418}
   - component: {fileID: 1398895126468970417}
-  - component: {fileID: 691990550}
   m_Layer: 0
   m_Name: GolpeAbajo
   m_TagString: ArmaObjetoPlayer
@@ -226,6 +226,27 @@ Transform:
   m_Father: {fileID: 1398895126709478750}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &691990550
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895126468970420}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!60 &1398895126468970418
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -274,27 +295,7 @@ MonoBehaviour:
   fuerza: 2
   tiempoAplicarFuerza: 0.3
   vidaRestar: 1
---- !u!50 &691990550
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398895126468970420}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
+  tiempoEntreGolpes: 0.1
 --- !u!1 &1398895126709478738
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398895126709478738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.39, y: -13.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1398895126468970419}
@@ -494,6 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4491f4a4d692a194ba84debdee2bc830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  estadoActualPlayer: 0
   velocidad: 4
   vidaActual: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
   eventoVidaJugador: {fileID: 11400000, guid: ea1b00a7cd78273419b168b303342e10, type: 2}
@@ -552,9 +554,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398895126822302276}
+  - component: {fileID: 558398525}
   - component: {fileID: 1398895126822302275}
   - component: {fileID: 1398895126822302274}
-  - component: {fileID: 558398525}
   m_Layer: 0
   m_Name: GolpeArriba
   m_TagString: ArmaObjetoPlayer
@@ -576,6 +578,27 @@ Transform:
   m_Father: {fileID: 1398895126709478750}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &558398525
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895126822302277}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!60 &1398895126822302275
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -624,27 +647,7 @@ MonoBehaviour:
   fuerza: 2
   tiempoAplicarFuerza: 0.3
   vidaRestar: 1
---- !u!50 &558398525
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398895126822302277}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
+  tiempoEntreGolpes: 0.1
 --- !u!1 &1398895126840300046
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,9 +657,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398895126840300045}
+  - component: {fileID: 1679227120}
   - component: {fileID: 1398895126840300044}
   - component: {fileID: 1398895126840300043}
-  - component: {fileID: 1679227120}
   m_Layer: 0
   m_Name: GolpeDerecha
   m_TagString: ArmaObjetoPlayer
@@ -678,6 +681,27 @@ Transform:
   m_Father: {fileID: 1398895126709478750}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1679227120
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895126840300046}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!60 &1398895126840300044
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -726,27 +750,7 @@ MonoBehaviour:
   fuerza: 2
   tiempoAplicarFuerza: 0.3
   vidaRestar: 1
---- !u!50 &1679227120
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398895126840300046}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
+  tiempoEntreGolpes: 0.1
 --- !u!1 &1398895127746540363
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,9 +760,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398895127746540362}
+  - component: {fileID: 305910461}
   - component: {fileID: 1398895127746540361}
   - component: {fileID: 1398895127746540360}
-  - component: {fileID: 305910461}
   m_Layer: 0
   m_Name: GolpeIzquierda
   m_TagString: ArmaObjetoPlayer
@@ -780,6 +784,27 @@ Transform:
   m_Father: {fileID: 1398895126709478750}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &305910461
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895127746540363}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!60 &1398895127746540361
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -828,24 +853,4 @@ MonoBehaviour:
   fuerza: 2
   tiempoAplicarFuerza: 0.3
   vidaRestar: 1
---- !u!50 &305910461
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398895127746540363}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
+  tiempoEntreGolpes: 0.1

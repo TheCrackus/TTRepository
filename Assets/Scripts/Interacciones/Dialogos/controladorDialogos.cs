@@ -14,7 +14,7 @@ public class controladorDialogos : interactuador
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerEnRango) 
+        if (Input.GetButtonDown("Interactuar") && playerEnRango) 
         {
             if (objetoContenedorTextoDialogos.activeInHierarchy)
             {

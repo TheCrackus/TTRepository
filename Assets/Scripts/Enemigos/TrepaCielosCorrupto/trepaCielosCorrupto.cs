@@ -7,27 +7,17 @@ public class trepaCielosCorrupto : enemigo
 
     private Rigidbody2D enemigoRigidBody;
     private Transform objetivoPerseguir;
-    private GameObject player;
     private Animator enemigoAnimator;
     [Header("Distancia de persecucion")]
     public float radioPersecucion;
     [Header("Distancia de ataque")]
     public float radioAtaque;
 
-    public virtual void Start()
-    {
-        setEstadoActualEnemigo(EnemyState.durmiendo);
-        objetivoPerseguir = GameObject.FindWithTag("Player").transform;
-        player = GameObject.FindWithTag("Player");
-        enemigoRigidBody = GetComponent<Rigidbody2D>();
-        enemigoAnimator = GetComponent<Animator>();
-        getEnemigoAnimator().SetBool("Despertar", true);
-    }
-
     public void setEnemigoRigidBody(Rigidbody2D enemigoRigidBody) 
     {
         this.enemigoRigidBody = enemigoRigidBody;
     }
+
 
     public Rigidbody2D getEnemigoRigidBody() 
     {
@@ -54,19 +44,32 @@ public class trepaCielosCorrupto : enemigo
         return objetivoPerseguir;
     }
 
-    public void setPlayer(GameObject player) 
+    public override void Start()
     {
-        this.player = player;
+        base.Start();
+        setEstadoActualEnemigo(EnemyState.durmiendo);
+        objetivoPerseguir = GameObject.FindWithTag("Player").transform;
+        enemigoRigidBody = gameObject.GetComponent<Rigidbody2D>();
+        enemigoAnimator = gameObject.GetComponent<Animator>();
+        enemigoAnimator.SetBool("Despertar", true);
     }
 
-    public GameObject getPlayer() 
+    public virtual void FixedUpdate()
     {
-        return player;
+        if (getPuedoMoverme()) 
+        {
+            gestionDistancias();
+        }
     }
 
-    void FixedUpdate()
+    public override void OnEnable()
     {
-        gestionDistancias();
+        base.OnEnable();
+        setEstadoActualEnemigo(EnemyState.durmiendo);
+        objetivoPerseguir = GameObject.FindWithTag("Player").transform;
+        enemigoRigidBody = GetComponent<Rigidbody2D>();
+        enemigoAnimator = GetComponent<Animator>();
+        enemigoAnimator.SetBool("Despertar", true);
     }
 
     public virtual void gestionDistancias()
@@ -74,19 +77,12 @@ public class trepaCielosCorrupto : enemigo
         if (Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) <= radioPersecucion
             && Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) >= radioAtaque)
         {
-            PlayerState estadoPlayer = player.GetComponent<movimientoPlayer>().getEstadoActualPlayer();
             if (getEstadoActualEnemigo() != EnemyState.estuneado
                 && getEstadoActualEnemigo() != EnemyState.atacando
                 && getEstadoActualEnemigo() != EnemyState.inactivo
                 && (getEstadoActualEnemigo() == EnemyState.caminando 
                     || getEstadoActualEnemigo() == EnemyState.durmiendo 
-                    || getEstadoActualEnemigo() == EnemyState.ninguno)
-                && estadoPlayer != PlayerState.estuneado
-                && estadoPlayer != PlayerState.inactivo
-                && estadoPlayer != PlayerState.interactuando
-                && (estadoPlayer == PlayerState.caminando
-                    || estadoPlayer == PlayerState.atacando
-                    || estadoPlayer == PlayerState.ninguno))
+                    || getEstadoActualEnemigo() == EnemyState.ninguno))
             {
                 Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, objetivoPerseguir.position, velocidadMovimientoEnemigo * Time.deltaTime);
                 Vector3 refAnimacion = objetivoPerseguir.position - vectorTemporal;

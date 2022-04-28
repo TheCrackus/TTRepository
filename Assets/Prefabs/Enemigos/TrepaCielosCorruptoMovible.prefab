@@ -255,6 +255,7 @@ MonoBehaviour:
   fuerza: 3
   tiempoAplicarFuerza: 0.2
   vidaRestar: 1
+  tiempoEntreGolpes: 0.1
 --- !u!114 &11911563963576661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,8 +271,13 @@ MonoBehaviour:
   vidaMaxima: {fileID: 11400000, guid: 1e3be81f1002cab4ea326851b599d49f, type: 2}
   nombreEnemigo: Trepa Cielos Corrupto
   velocidadMovimientoEnemigo: 2
+  posicionOriginal: {x: 0, y: 0, z: 0}
   efectoMuerteEnemigo: {fileID: 755099225653218745, guid: 5086d25ea712d8b4f88bca10f2db084f, type: 3}
   muerteEnemigoClip: {fileID: 7400000, guid: ce3f48e2b1ff8b848aec99a2e3bea931, type: 2}
+  estadoEnemigosCuarto: {fileID: 0}
+  miLoot: {fileID: 11400000, guid: e97340749cc8b274988a1fbae0c9e64b, type: 2}
+  tiempoEsperaMovimiento: 1
+  miPosicionMapa: {fileID: 11911565429649675}
   radioPersecucion: 4
   radioAtaque: 0.1
   camino:
@@ -336,7 +342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11911565429649675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72.5, y: -3.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7990708162782973236}

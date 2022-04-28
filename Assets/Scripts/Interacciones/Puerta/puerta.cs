@@ -26,7 +26,7 @@ public class puerta : interactuador
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("Interactuar"))
         {
             if (playerEnRango)
             {
@@ -53,7 +53,12 @@ public class puerta : interactuador
     }
 
     public void cerrar() 
-    { 
-        
+    {
+        puertaSprite.enabled = true;
+        estaAbierta = false;
+        foreach (BoxCollider2D colision in puertaColliders)
+        {
+            colision.enabled = true;
+        }
     }
 }

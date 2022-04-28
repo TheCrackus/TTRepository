@@ -36,7 +36,7 @@ public class cofre : interactuador
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerEnRango)
+        if (Input.GetButtonDown("Interactuar") && playerEnRango)
         {
             if (!cofreAbierto && !cofreVacio)
             {

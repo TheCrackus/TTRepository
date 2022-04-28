@@ -34,7 +34,7 @@ public class proyectil : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D colisionDetectada) 
     {
-        if (!colisionDetectada.gameObject.CompareTag("Enemigo"))
+        if (!colisionDetectada.gameObject.CompareTag("Enemigo") && !colisionDetectada.gameObject.CompareTag("ArmaObjetoPlayer"))
         {
             Destroy(gameObject);
         }

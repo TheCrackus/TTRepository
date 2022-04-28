@@ -9,7 +9,9 @@ public class manejadorBotonesPrincipal : MonoBehaviour
     private conexionWeb conexion;
     public GameObject ventanaEmergente;
     public string escenaLogIn;
+    public string escenaLaberintos;
     public GameObject manejadorElimina;
+    public GameObject manejadorModifica;
 
     public bool getPulseBoton() 
     {
@@ -52,6 +54,25 @@ public class manejadorBotonesPrincipal : MonoBehaviour
             manejadorElimina.SetActive(true);
             manejadorElimina.GetComponent<manejadorBotonesElimina>().setPulseBoton(false);
             pulseBoton = true;
+        }
+    }
+
+    public void botonModificaUsuario() 
+    {
+        if (!pulseBoton)
+        {
+            manejadorModifica.SetActive(true);
+            manejadorModifica.GetComponent<manejadorBotonesModifica>().setPulseBoton(false);
+            pulseBoton = true;
+        }
+    }
+
+    public void botonNuevaPartida() 
+    {
+        if (!pulseBoton)
+        {
+            pulseBoton = true;
+            StartCoroutine(cambioEscena(escenaLaberintos));
         }
     }
 

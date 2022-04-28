@@ -19,19 +19,12 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
         if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioPersecucion
             && Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) >= radioAtaque)
         {
-            PlayerState estadoPlayer = getPlayer().GetComponent<movimientoPlayer>().getEstadoActualPlayer();
             if (getEstadoActualEnemigo() != EnemyState.estuneado
                 && getEstadoActualEnemigo() != EnemyState.atacando
                 && getEstadoActualEnemigo() != EnemyState.inactivo
                 && (getEstadoActualEnemigo() == EnemyState.caminando
                     || getEstadoActualEnemigo() == EnemyState.durmiendo
-                    || getEstadoActualEnemigo() == EnemyState.ninguno)
-                && estadoPlayer != PlayerState.estuneado
-                && estadoPlayer != PlayerState.inactivo
-                && estadoPlayer != PlayerState.interactuando
-                && (estadoPlayer == PlayerState.caminando
-                    || estadoPlayer == PlayerState.atacando
-                    || estadoPlayer == PlayerState.ninguno))
+                    || getEstadoActualEnemigo() == EnemyState.ninguno))
             {
                 Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, velocidadMovimientoEnemigo * Time.deltaTime);
                 Vector3 refAnimacion = getObjetivoPerseguir().position - vectorTemporal;

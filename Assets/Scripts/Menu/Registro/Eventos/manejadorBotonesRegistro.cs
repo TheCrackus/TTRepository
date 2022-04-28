@@ -302,7 +302,7 @@ public class manejadorBotonesRegistro : MonoBehaviour
                         if (passwordFiled.text.ToString().Length < 4) 
                         {
                             passwordCorrecta = false;
-                            msjFormulario += "Tu contraseña no es válido, debe tener al menos 4 caracteres.";
+                            msjFormulario += "Tu contraseña no es válida, debe tener al menos 4 caracteres.";
                         }
                     }
                 }
@@ -319,6 +319,9 @@ public class manejadorBotonesRegistro : MonoBehaviour
                 ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente(msjFormulario, true);
                 msjFormulario = "Favor de verificar la siguiente información:\n\n";
                 fechaCorrecta = true;
+                emailCorrecto = true;
+                sobrenombreCorrecto = true;
+                passwordCorrecta = true;
                 pulseBoton = false;
             }
         }

@@ -138,6 +138,7 @@ MonoBehaviour:
   fuerza: 1
   tiempoAplicarFuerza: 0.3
   vidaRestar: 1
+  tiempoEntreGolpes: 0.1
 --- !u!114 &8853671634870005040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fa258ed16913148ab48c6a1b4485b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 2
+  velocidadMovimiento: 1
   tiempoVida: 1
   proyectilRigidBody: {fileID: 8853671634870005007}

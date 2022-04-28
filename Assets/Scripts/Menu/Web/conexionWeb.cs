@@ -18,6 +18,10 @@ public enum conexionState
     termineEliminacion,
     falleEliminacionDatos,
     falleEliminacionConexion,
+    iniciandoModificacion,
+    termineModificacion,
+    falleModificacionDatos,
+    falleModificacionConexion,
     ninguno
 }
 
@@ -162,6 +166,44 @@ public class conexionWeb : MonoBehaviour
         else
         {
             estadoActualConexion = conexionState.falleEliminacionConexion;
+        }
+    }
+
+    public void modificaUsuario(string sobrenombre, string nacimiento, string email, string password) 
+    {
+        if (estadoActualConexion != conexionState.iniciandoModificacion)
+        {
+            estadoActualConexion = conexionState.iniciandoModificacion;
+            StartCoroutine(modifica(sobrenombre, nacimiento, email, password));
+        }
+    }
+
+    private IEnumerator modifica(string sobrenombre, string nacimiento, string email, string password)
+    {
+        WWWForm forma = new WWWForm();
+        forma.AddField("id_jugador", miUsuario.datosEjecucion.id_jugador);
+        forma.AddField("sobrenombre", sobrenombre);
+        forma.AddField("nacimiento", nacimiento);
+        forma.AddField("email", email);
+        forma.AddField("password", password);
+        UnityWebRequest web = UnityWebRequest.Post("https://tt2021-a015.herokuapp.com/MJ_JSON", forma);
+        yield return web.SendWebRequest();
+        if (web.result != UnityWebRequest.Result.ProtocolError)
+        {
+            respuestaServidor = web.downloadHandler.text;
+            Debug.Log(respuestaServidor);
+            if (respuestaServidor.Contains("Correcto"))
+            {
+                estadoActualConexion = conexionState.termineModificacion;
+            }
+            else
+            {
+                estadoActualConexion = conexionState.falleModificacionDatos;
+            }
+        }
+        else
+        {
+            estadoActualConexion = conexionState.falleModificacionConexion;
         }
     }
 
