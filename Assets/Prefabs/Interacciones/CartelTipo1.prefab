@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 676352301}
   m_Layer: 0
   m_Name: CartelTipo1
-  m_TagString: Untagged
+  m_TagString: Leible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,5 +175,4 @@ MonoBehaviour:
   playerEnRango: 0
   objetoContenedorTextoDialogos: {fileID: 0}
   textoDialogos: {fileID: 0}
-  dialogo: "Bienvenido al pueblo de los trepa cielos, las cosas aqu\xED son distintas
-    al mundo humano."
+  dialogo: 

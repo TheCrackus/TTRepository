@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3230322103667937638}
-  - component: {fileID: 3230322103667937637}
   - component: {fileID: 1357540229474234442}
+  - component: {fileID: 3230322103667937637}
   - component: {fileID: 3230322103667937639}
   m_Layer: 0
   m_Name: MoverEscenaHorizontal
@@ -33,6 +33,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1357540229474234442
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3230322103667937636}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!61 &3230322103667937637
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59,27 +80,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 1}
   m_EdgeRadius: 0
---- !u!50 &1357540229474234442
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3230322103667937636}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!114 &3230322103667937639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,8 +103,14 @@ MonoBehaviour:
   comienzaContador: 0
   terminaContador: 0
   pausaContador: 0
+  nombreTransicionDestino: 
+  nombreTransicionActual: 
+  nuevaPosicionCamara: {x: 0, y: 0, z: 0}
+  nuevaPosicionCamaraMaxima: {x: 0, y: 0, z: 0}
+  nuevaPosicionCamaraMinima: {x: 0, y: 0, z: 0}
+  posicionCamaraMaxima: {fileID: 11400000, guid: 84a706b1a4866e2489ca60493dd176c9, type: 2}
+  posicionCamaraMinima: {fileID: 11400000, guid: ee43b5ebcf573744894a71b2b04063ad, type: 2}
+  posicionCamara: {fileID: 11400000, guid: b7e938756b42de74eb849309e4d4008f, type: 2}
   contadorRegresivoInicia: {fileID: 11400000, guid: 44f42969ead8f514eb7f17ce8ef15b71, type: 2}
   contadorRegresivoDeten: {fileID: 11400000, guid: 52e43ba2e78e79649bbd417d363b932c, type: 2}
   contadorRegresivoReinicia: {fileID: 11400000, guid: f6cdd663aa8c6094b83aabade28e9e6a, type: 2}
-  nombreEjecucion: 
-  nombrePropioEjecucion: 

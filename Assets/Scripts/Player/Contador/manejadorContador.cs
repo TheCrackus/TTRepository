@@ -23,18 +23,23 @@ public class manejadorContador : MonoBehaviour
     public bool regresaCuarto;
     public bool regresaEscena;
     [Header("Valores para limites de la camara")]
-    public Vector2 posicionMaximaCamaraReset;
-    public Vector2 posicionMinimaCamaraReset;
+    public Vector3 posicionMaximaCamaraReset;
+    public Vector3 posicionMinimaCamaraReset;
+    public Vector3 posicionCamaraReset;
+    public valorVectorial posicionCamaraMaxima;
+    public valorVectorial posicionCamaraMinima;
+    public valorVectorial posicionCamara;
     [Header("Valores para la posicion del player")]
     public Vector3 nuevaPoscicionPlayer;
     public Vector2 direccionPlayer;
+    public valorVectorial posicionPlayer;
     [Header("Panel para animar la transicion")]
     public GameObject objetoPanel;
     [Header("Valores para mostrar el titulo de los escenarios")]
     public bool debeMostrarTexto;
     public string nombreCuarto;
     public GameObject objetoTextoCuarto;
-    public Text textoCuarto;
+    public TextMeshProUGUI textoCuarto;
     
 
 
@@ -60,13 +65,13 @@ public class manejadorContador : MonoBehaviour
         }
         foreach (AnimationClip clip in textoCuartoAnimator.runtimeAnimatorController.animationClips)
         {
-            if (clip.name == "mostrarTexto")
+            if (clip.name == "Mostrar Texto")
             {
                 mostrarTextoClip = clip;
             }
             else
             {
-                if (clip.name == "ocultarTexto")
+                if (clip.name == "Ocultar Texto")
                 {
                     ocultarTextoClip = clip;
                 }
@@ -78,9 +83,9 @@ public class manejadorContador : MonoBehaviour
     {
         if (cuentaTimerRegresivo) 
         {
-            if (tiempoContadorRegresivo.valorEjecucion > 0)
+            if (tiempoContadorRegresivo.valorFlotanteEjecucion > 0)
             {
-                tiempoContadorRegresivo.valorEjecucion -= Time.deltaTime;
+                tiempoContadorRegresivo.valorFlotanteEjecucion -= Time.deltaTime;
                 muestraTiempo();
             }
             else 
@@ -105,8 +110,8 @@ public class manejadorContador : MonoBehaviour
 
     public void muestraTiempo()
     {
-        int minutos = Mathf.FloorToInt(tiempoContadorRegresivo.valorEjecucion / 60f);
-        int segundos = Mathf.FloorToInt(tiempoContadorRegresivo.valorEjecucion - minutos * 60f);
+        int minutos = Mathf.FloorToInt(tiempoContadorRegresivo.valorFlotanteEjecucion / 60f);
+        int segundos = Mathf.FloorToInt(tiempoContadorRegresivo.valorFlotanteEjecucion - minutos * 60f);
         textoContador.text = string.Format("{0:00}:{1:00}", minutos, segundos);
     }
 
@@ -126,7 +131,7 @@ public class manejadorContador : MonoBehaviour
     {
         cuentaTimerRegresivo = false;
         objetoTextoContador.SetActive(false);
-        tiempoContadorRegresivo.valorEjecucion = tiempoContadorRegresivo.valorInicial;
+        tiempoContadorRegresivo.valorFlotanteEjecucion = tiempoContadorRegresivo.valorFlotanteInicial;
     }
 
     public IEnumerator cambioCuarto(GameObject player)
@@ -138,8 +143,11 @@ public class manejadorContador : MonoBehaviour
         estableceDireccionPlayer(player);
         reiniciaContadorRegresivo();
         player.transform.position = nuevaPoscicionPlayer;
-        movCam.setPosicionMaxima(posicionMaximaCamaraReset);
-        movCam.setPosicionMinima(posicionMinimaCamaraReset);
+        posicionPlayer.valorVectorialEjecucion = player.transform.position;
+        posicionCamaraMaxima.valorVectorialEjecucion = posicionMaximaCamaraReset;
+        posicionCamaraMinima.valorVectorialEjecucion = posicionMinimaCamaraReset;
+        movCam.gameObject.transform.position = posicionCamaraReset;
+        posicionCamara.valorVectorialEjecucion = movCam.gameObject.transform.position;
         yield return new WaitForSeconds(1f);
 
         panelAnimator.Play("FadeIn");
@@ -152,10 +160,10 @@ public class manejadorContador : MonoBehaviour
 
             objetoTextoCuarto.SetActive(true);
             textoCuarto.text = nombreCuarto;
-            textoCuartoAnimator.Play("mostrarTexto");
+            textoCuartoAnimator.Play("Mostrar Texto");
             yield return new WaitForSeconds(mostrarTextoClip.length);
 
-            textoCuartoAnimator.Play("ocultarTexto");
+            textoCuartoAnimator.Play("Ocultar Texto");
             yield return new WaitForSeconds(ocultarTextoClip.length);
             objetoTextoCuarto.SetActive(false);
 

@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class valorBooleano : ScriptableObject, ISerializationCallbackReceiver
+[System.Serializable]
+public class valorBooleano : ScriptableObject
 {
-    public bool valorInicial;
+    public bool valorBooleanoInicial;
 
-    public bool valorEjecucion;
+    public bool valorBooleanoEjecucion;
 
-    public void OnAfterDeserialize()
+    public void reiniciaValores()
     {
-        valorEjecucion = valorInicial;
-    }
-
-    public void OnBeforeSerialize()
-    {
-
+        valorBooleanoEjecucion = valorBooleanoInicial;
     }
 }

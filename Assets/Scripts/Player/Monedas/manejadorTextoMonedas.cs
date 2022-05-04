@@ -12,7 +12,7 @@ public class manejadorTextoMonedas : MonoBehaviour
 
     public void actualizaNumeroMonedas() 
     {
-        textoNumeroMonedas.text = inventarioPlayer.numeroMonedas.ToString("0000");
+        textoNumeroMonedas.text = inventarioPlayer.numeroMonedasEjecucion.ToString("0000");
     }
 
 }

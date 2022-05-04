@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c127d52a14e9d649a80f65f6756d4f6, type: 3}
   m_Name: Cofre 1
   m_EditorClassIdentifier: 
-  valorBooleanoInicial: 0
-  valorBooleanoEjecucion: 0
+  valorInicial: 0
+  valorEjecucion: 0

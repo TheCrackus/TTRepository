@@ -16,7 +16,7 @@ public class interruptor : MonoBehaviour
 
     void Start()
     {
-        activo = estadoInterruptor.valorEjecucion;
+        activo = estadoInterruptor.valorBooleanoEjecucion;
         interruptorSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if (activo) 
         {
@@ -27,7 +27,7 @@ public class interruptor : MonoBehaviour
     public void activaInterruptor() 
     {
         activo = true;
-        estadoInterruptor.valorEjecucion = true;
+        estadoInterruptor.valorBooleanoEjecucion = true;
         puertaAbrir.abrir();
         interruptorSpriteRenderer.sprite = spriteInterruptorActivo;
     }

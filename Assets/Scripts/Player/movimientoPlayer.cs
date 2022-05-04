@@ -23,9 +23,10 @@ public class movimientoPlayer : MonoBehaviour
     public PlayerState estadoActualPlayer;
     [Header("Estadisticas Player")]
     public float velocidad;
-    public valorFlotante vidaActual;
-    [Header("Eventos del jugador globales")]
+    public valorFlotante vidaActualPlayer;
+    [Header("Evento que actualiza la vida en pantalla")]
     public evento eventoVidaJugador;
+    [Header("Evento para animar la pantalla al recivir golpe")]
     public evento reciveGolpePlayer;
     [Header("Variables globales del player")]
     public valorVectorial posicionPlayerMapa;
@@ -33,6 +34,19 @@ public class movimientoPlayer : MonoBehaviour
     public SpriteRenderer spriteObjetoMostrar;
     [Header("Estado general de la escena")]
     public cambioEscena estadoCambioEscenas;
+    [Header("Proyectil que dispara el arma actual a distancia")]
+    public GameObject proyectil;
+    [Header("Evento que decrementa la magia")]
+    public evento decrementaMagia;
+    [Header("Objeto que representa el arco")]
+    public objeto arco;
+    //[Header("")]
+    public Color colorFlash;
+    public Color colorNormal;
+    public float tiempoFlash;
+    public int numeroFlash;
+    public Collider2D colisionTrigger;
+    public SpriteRenderer spritePlayer;
 
     public void setEstadoActualPlayer(PlayerState nuevoEstado)
     {
@@ -49,7 +63,7 @@ public class movimientoPlayer : MonoBehaviour
 
     void Start()
     {
-        if (estadoCambioEscenas.cambioEjecucion)
+        if (estadoCambioEscenas.cambieEscenaEjecucion)
         {
             estadoActualPlayer = PlayerState.transicionando;
         }
@@ -101,21 +115,39 @@ public class movimientoPlayer : MonoBehaviour
                 }
             }
         }
-        gameObject.transform.position = posicionPlayerMapa.valorEjecucion;
+        gameObject.transform.position = posicionPlayerMapa.valorVectorialEjecucion;
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Atacar") 
-            && estadoActualPlayer != PlayerState.atacando 
+        if (Input.GetButtonDown("Atacar")
+            && estadoActualPlayer != PlayerState.atacando
             && estadoActualPlayer != PlayerState.interactuando
             && estadoActualPlayer != PlayerState.transicionando
             && estadoActualPlayer != PlayerState.estuneado
             && estadoActualPlayer != PlayerState.inactivo
-            && (estadoActualPlayer == PlayerState.caminando || estadoActualPlayer == PlayerState.ninguno))
+            && (estadoActualPlayer == PlayerState.caminando 
+                || estadoActualPlayer == PlayerState.ninguno))
         {
             estadoActualPlayer = PlayerState.atacando;
             StartCoroutine(Atacar());
+        }
+        else 
+        {
+            if (Input.GetButtonDown("Atacar 2")
+                && estadoActualPlayer != PlayerState.atacando
+                && estadoActualPlayer != PlayerState.interactuando
+                && estadoActualPlayer != PlayerState.transicionando
+                && estadoActualPlayer != PlayerState.estuneado
+                && estadoActualPlayer != PlayerState.inactivo
+                && (estadoActualPlayer == PlayerState.caminando 
+                    || estadoActualPlayer == PlayerState.ninguno)
+                && inventarioPlayer.verificaObjeto(arco)
+                && inventarioPlayer.magiaEjecucion > 0)
+            {
+                estadoActualPlayer = PlayerState.atacando;
+                StartCoroutine(Atacar2());
+            }
         }
     }
 
@@ -232,6 +264,40 @@ public class movimientoPlayer : MonoBehaviour
         }
     }
 
+    private IEnumerator Atacar2()
+    {
+        creaFlecha();
+        yield return new WaitForSeconds(0.5f);
+        if (estadoActualPlayer != PlayerState.caminando
+            && estadoActualPlayer == PlayerState.atacando
+            && estadoActualPlayer != PlayerState.interactuando
+            && estadoActualPlayer != PlayerState.transicionando
+            && estadoActualPlayer != PlayerState.ninguno
+            && estadoActualPlayer != PlayerState.estuneado
+            && estadoActualPlayer != PlayerState.inactivo)
+        {
+            estadoActualPlayer = PlayerState.ninguno;
+        }
+    }
+
+    private void creaFlecha() 
+    {
+        if (inventarioPlayer.magiaEjecucion > 0) 
+        {
+            Vector2 vectorTemporal = new Vector2(playerAnimator.GetFloat("MovimientoX"), playerAnimator.GetFloat("MovimientoY"));
+            flecha flecha = Instantiate(proyectil, gameObject.transform.position, Quaternion.identity).GetComponent<flecha>();
+            flecha.setUp(vectorTemporal, eligeDireccionFlecha());
+            inventarioPlayer.decrementaMagia(flecha.costoMagia);
+            decrementaMagia.invocaFunciones();
+        }
+    }
+
+    private Vector3 eligeDireccionFlecha() 
+    {
+        float direccionZ = Mathf.Atan2(playerAnimator.GetFloat("MovimientoY"), playerAnimator.GetFloat("MovimientoX")) * Mathf.Rad2Deg;
+        return new Vector3(0,0, direccionZ);
+    }
+
     public void comienzaEmpujaPlayer(float tiempoAplicarFuerza, float vidaMenos)
     {
         estadoActualPlayer = PlayerState.estuneado;
@@ -241,9 +307,9 @@ public class movimientoPlayer : MonoBehaviour
 
     private void quitaVidaPlayer(float vidaMenos)
     {
-        vidaActual.valorEjecucion -= vidaMenos;
+        vidaActualPlayer.valorFlotanteEjecucion -= vidaMenos;
         eventoVidaJugador.invocaFunciones();
-        if (vidaActual.valorEjecucion <= 0)
+        if (vidaActualPlayer.valorFlotanteEjecucion <= 0)
         {
             estadoActualPlayer = PlayerState.inactivo;
             gameObject.SetActive(false);
@@ -255,6 +321,7 @@ public class movimientoPlayer : MonoBehaviour
         if (playerRigidBody != null)
         {
             reciveGolpePlayer.invocaFunciones();
+            StartCoroutine(flash());
             yield return new WaitForSeconds(tiempoAplicarFuerza);
 
             playerRigidBody.velocity = Vector2.zero;
@@ -283,5 +350,20 @@ public class movimientoPlayer : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator flash() 
+    {
+        int numeroFlashTemporal = 0;
+        colisionTrigger.enabled = false;
+        while (numeroFlashTemporal < numeroFlash) 
+        {
+            spritePlayer.color = colorFlash;
+            yield return new WaitForSeconds(tiempoFlash);
+            spritePlayer.color = colorNormal;
+            yield return new WaitForSeconds(tiempoFlash);
+            numeroFlashTemporal++;
+        }
+        colisionTrigger.enabled = true;
     }
 }

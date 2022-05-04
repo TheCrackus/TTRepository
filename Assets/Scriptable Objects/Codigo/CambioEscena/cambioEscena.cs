@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class cambioEscena : ScriptableObject, ISerializationCallbackReceiver
+[System.Serializable]
+public class cambioEscena : ScriptableObject
 {
 
-    public string nombreInicial;
+    public string nombreTextoCuartoInicial;
 
-    public string nombreEjecucion;
+    public string nombreTextoCuartoEjecucion;
 
-    public bool cambioInicial;
+    public bool cambieEscenaInicial;
 
-    public bool cambioEjecucion;
+    public bool cambieEscenaEjecucion;
 
     public bool muestraTextoInicial;
 
@@ -26,37 +27,23 @@ public class cambioEscena : ScriptableObject, ISerializationCallbackReceiver
 
     public bool pausoContadorEjecucion;
 
-    public string nombreEjecutarInicial;
+    public string nombreTansicionDestinoInicial;
 
-    public string nombreEjecutarEjecucion;
+    public string nombreTansicionDestinoEjecucion;
 
-    public Vector3 camaraPosicionMaximaInicial;
+    public string escenaActualInicial;
 
-    public Vector3 camaraPosicionMaximaEjecucion;
+    public string escenaActualEjecucion;
 
-    public Vector3 camaraPosicionMinimaInicial;
-
-    public Vector3 camaraPosicionMinimaEjecucion;
-
-    public Vector3 camaraPosicionInicial;
-
-    public Vector3 camaraPosicionEjecucion;
-
-    public void OnAfterDeserialize()
+    public void reiniciaValores()
     {
-        nombreEjecucion = nombreInicial;
-        cambioEjecucion = cambioInicial;
+        nombreTextoCuartoEjecucion = nombreTextoCuartoInicial;
+        cambieEscenaEjecucion= cambieEscenaInicial;
         muestraTextoEjecucion = muestraTextoInicial;
         direccionPlayerEjecucion = direccionPlayerInicial;
         pausoContadorEjecucion = pausoContadorInicial;
-        nombreEjecutarEjecucion = nombreEjecutarInicial;
-        camaraPosicionMaximaEjecucion = camaraPosicionMaximaInicial;
-        camaraPosicionMinimaEjecucion = camaraPosicionMinimaInicial;
-        camaraPosicionEjecucion = camaraPosicionInicial;
+        nombreTansicionDestinoEjecucion = nombreTansicionDestinoInicial;
+        escenaActualEjecucion = escenaActualInicial;
     }
 
-    public void OnBeforeSerialize()
-    {
-        
-    }
 }

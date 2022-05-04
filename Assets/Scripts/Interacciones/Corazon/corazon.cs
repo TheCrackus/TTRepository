@@ -15,13 +15,13 @@ public class corazon : incrementoEstadisticas
     {
         if (colision.gameObject.CompareTag("Player") && colision.isTrigger)
         {
-            vidaPlayer.valorEjecucion += incrementoValorEstadistica;
-            if (vidaPlayer.valorEjecucion > (contenedorCorazones.valorEjecucion * 2f))
+            vidaPlayer.valorFlotanteEjecucion += incrementoValorEstadistica;
+            if (vidaPlayer.valorFlotanteEjecucion > (contenedorCorazones.valorFlotanteEjecucion * 2f))
             {
-                vidaPlayer.valorEjecucion = contenedorCorazones.valorEjecucion * 2f;
+                vidaPlayer.valorFlotanteEjecucion = contenedorCorazones.valorFlotanteEjecucion * 2f;
             }
             eventoIncrementoEstadistica.invocaFunciones();
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

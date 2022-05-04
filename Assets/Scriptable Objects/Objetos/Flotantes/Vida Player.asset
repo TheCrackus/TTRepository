@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2509b261aad71147a2e4d043c0e0dfb, type: 3}
   m_Name: Vida Player
   m_EditorClassIdentifier: 
-  valorInicial: 4
-  valorEjecucion: 3
+  valorFlotanteInicial: 4
+  valorFlotanteEjecucion: 4

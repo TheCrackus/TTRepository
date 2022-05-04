@@ -50,6 +50,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: e82f11005d9631e4c89664eb0c56eb98, type: 3}
+  - {fileID: 21300000, guid: 16356450b559e714c82b75cf0a59abf1, type: 3}
   - {fileID: 21300000, guid: 41d9a4d0a8a4fa44599e522d24a3796e, type: 3}
   - {fileID: 21300000, guid: eb6589e0cf6674847873e27128264207, type: 3}
   - {fileID: -1580347878817688430, guid: 980ae0626e40b47408c71c624a8143db, type: 3}
@@ -1450,6 +1451,7 @@ SpriteAtlas:
   - {fileID: -6960371683831875272, guid: 366137647e6c39a4f8ad6bf5460bfcd8, type: 3}
   - {fileID: 6469460937200175538, guid: 366137647e6c39a4f8ad6bf5460bfcd8, type: 3}
   - {fileID: 2924928888349640390, guid: 366137647e6c39a4f8ad6bf5460bfcd8, type: 3}
+  - {fileID: 21300000, guid: 9f5ba6a4c2b229444b7fe736ebd1b58d, type: 3}
   - {fileID: -1898101141213099369, guid: 55c1e4f4f5218dc47a7c13917f8bf21c, type: 3}
   - {fileID: 7927429830950459127, guid: 55c1e4f4f5218dc47a7c13917f8bf21c, type: 3}
   - {fileID: 1571176116747660993, guid: 55c1e4f4f5218dc47a7c13917f8bf21c, type: 3}
@@ -1466,7 +1468,23 @@ SpriteAtlas:
   - {fileID: -7597207668663345718, guid: 55c1e4f4f5218dc47a7c13917f8bf21c, type: 3}
   - {fileID: 6119314509959758635, guid: 55c1e4f4f5218dc47a7c13917f8bf21c, type: 3}
   - {fileID: 8627847960000431974, guid: 55c1e4f4f5218dc47a7c13917f8bf21c, type: 3}
-  - {fileID: 21300000, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -1790513009360131488, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: 6796940128468367395, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: 7257679221847934946, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -8018767669905319889, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: 3471414262902695032, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -5174125284999604879, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: 4411923371137299535, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -7544729849536096197, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: 109808345321430783, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -984706229473049029, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -2757298984738394219, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -3297999012176952179, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -6431366237039918707, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -8922353081226294202, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: 8869442856293547957, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: -1466947835845212873, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
+  - {fileID: 21300000, guid: 4d6bb695ec8e3594ca56b543d9213d1a, type: 3}
   - {fileID: 21300000, guid: 46f49bd546884a34bb1b890a73b71045, type: 3}
   - {fileID: -2284584081643799824, guid: 29a4af373355ffc40b30587a834c339e, type: 3}
   - {fileID: -8487411814235573663, guid: 29a4af373355ffc40b30587a834c339e, type: 3}
@@ -1574,6 +1592,9 @@ SpriteAtlas:
   - {fileID: 5199810481066779406, guid: 29a4af373355ffc40b30587a834c339e, type: 3}
   - {fileID: 223697747491157391, guid: 29a4af373355ffc40b30587a834c339e, type: 3}
   - {fileID: 21300000, guid: 439406e70cced3a47a1ee6fc61de1910, type: 3}
+  - {fileID: -2413806693520163455, guid: 8aa70a28bc0f67c43b913921f8272c32, type: 3}
+  - {fileID: 21300000, guid: 2e0adc28b9ccff74ebccc6094d66f7e8, type: 3}
+  - {fileID: 21300000, guid: 8bba3bd8c8a4b4b4a978d010f3482952, type: 3}
   - {fileID: 3059174765694063163, guid: 4e07b8e86be44cd4f98890fdb5aaea4c, type: 3}
   - {fileID: -34017176892466219, guid: 4e07b8e86be44cd4f98890fdb5aaea4c, type: 3}
   - {fileID: 2376815873980901129, guid: 4e07b8e86be44cd4f98890fdb5aaea4c, type: 3}
@@ -1749,7 +1770,10 @@ SpriteAtlas:
   - {fileID: 7465504349221928740, guid: 12bf927a331ac544eb671dd3524d8ee3, type: 3}
   - {fileID: 349743148773028476, guid: 12bf927a331ac544eb671dd3524d8ee3, type: 3}
   - {fileID: 21300000, guid: 6031316b88d5c2f4da6577d72357ed2e, type: 3}
+  - {fileID: 21300000, guid: 520870ebbd049674490aa4931d54fd7a, type: 3}
+  - {fileID: 21300000, guid: dca0c52cc3530ad4a95927b8735137a0, type: 3}
   - {fileID: 21300000, guid: c85e037ce6c69744ab67eeccd1b14371, type: 3}
+  - {fileID: 21300000, guid: c472397c85751e7498c13087bb306e85, type: 3}
   - {fileID: 8214460410680543443, guid: 4c92c72d2ad33d64988fc21f33514d47, type: 3}
   - {fileID: -2209268926219498575, guid: 4c92c72d2ad33d64988fc21f33514d47, type: 3}
   - {fileID: -6061661825506106821, guid: 4c92c72d2ad33d64988fc21f33514d47, type: 3}
@@ -2786,9 +2810,11 @@ SpriteAtlas:
   - {fileID: 538826285080647454, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
   - {fileID: 1107736971085435061, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
   - {fileID: -377563455374678323, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
+  - {fileID: 7482667652216324306, guid: 8e38d71f9a8d7a648ab82898335354d7, type: 3}
   - {fileID: 21300000, guid: 9871f57fa70c0154d86e788f8fef1bcb, type: 3}
   m_PackedSpriteNamesToIndex:
   - gradients
+  - Room Blank
   - Kobold
   - door
   - character_17
@@ -4189,6 +4215,7 @@ SpriteAtlas:
   - Overworld_623
   - Overworld_673
   - Overworld_129
+  - arrow
   - orge_10
   - orge_11
   - orge_12
@@ -4205,7 +4232,23 @@ SpriteAtlas:
   - orge_6
   - orge_9
   - orge_8
-  - NPC_test
+  - NPC_test_11
+  - NPC_test_10
+  - NPC_test_13
+  - NPC_test_12
+  - NPC_test_6
+  - NPC_test_7
+  - NPC_test_4
+  - NPC_test_5
+  - NPC_test_2
+  - NPC_test_3
+  - NPC_test_0
+  - NPC_test_1
+  - NPC_test_8
+  - NPC_test_9
+  - NPC_test_15
+  - NPC_test_14
+  - Minimap mask
   - White Rabbit
   - RPG_GUI_v1_58
   - RPG_GUI_v1_59
@@ -4313,6 +4356,9 @@ SpriteAtlas:
   - RPG_GUI_v1_3
   - RPG_GUI_v1_2
   - font
+  - Circle
+  - PlayerMarker
+  - bow
   - log_8
   - log_9
   - log_2
@@ -4488,7 +4534,10 @@ SpriteAtlas:
   - undefined - Imgur_12
   - undefined - Imgur_13
   - Shadow Deamon
+  - Minimap Overlay
+  - magic bottle
   - Kobold Spearmen
+  - magic bar
   - Woodlands Tileset WIP (v2)_608
   - Woodlands Tileset WIP (v2)_671
   - Woodlands Tileset WIP (v2)_609
@@ -5525,6 +5574,7 @@ SpriteAtlas:
   - objects_119
   - objects_109
   - objects_108
+  - Square
   - paper background
   m_RenderDataMap: {}
   m_Tag: Sprite_atlas

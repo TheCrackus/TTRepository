@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class controladorDialogos : interactuador
 {
     [Header("Objeto contenedor del Texto a mostrar")]
     public GameObject objetoContenedorTextoDialogos;
     [Header("Objeto texto para mostrar los dialogos")]
-    public Text textoDialogos;
+    public TextMeshProUGUI textoDialogos;
     [Header("Texto a mostrar")]
     public string dialogo;    
 
-    void Update()
+    public virtual void Update()
     {
         if (Input.GetButtonDown("Interactuar") && playerEnRango) 
         {

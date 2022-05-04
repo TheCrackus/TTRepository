@@ -1,36 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class manejadorEscenas : MonoBehaviour
 {
 
+    private PlayableDirector cinematicaInicial;
+    [Header("Posicion del Player en el mapa")]
     public valorVectorial posicionPlayerMapa;
-    public cambioEscena estadoCambioEscenas;
+    [Header("Objeto que contiene la informacion del juego en ejecucion")]
+    public cambioEscena estadoCambioEscena;
+    [Header("Objeto que contiene las cinematicas")]
+    public GameObject[] contenedoresCinematicas;
+    [Header("Empezo nueva partida?")]
+    public valorBooleano empezoPartida;
 
-    public void Awake()
+    void Awake()
     {
-        if (!estadoCambioEscenas.cambioEjecucion) 
+        if (estadoCambioEscena.escenaActualEjecucion == "" || estadoCambioEscena.escenaActualEjecucion == null)
         {
-            Scene escenaActual = SceneManager.GetActiveScene();
-            string nombreEscena = escenaActual.name;
-            if (nombreEscena == "Laberintos")
+            estadoCambioEscena.escenaActualEjecucion = "Principal";
+        }
+        if (contenedoresCinematicas != null)
+        {
+            foreach (GameObject contenedorCinematica in contenedoresCinematicas)
             {
-                posicionPlayerMapa.valorEjecucion = new Vector3(2, -13.5f, 0);
-                estadoCambioEscenas.direccionPlayerEjecucion = new Vector2(1, 0);
-                estadoCambioEscenas.camaraPosicionEjecucion = new Vector3(11, -18, -10);
-            }
-            else
-            {
-                if (nombreEscena == "Mazmorra")
+                if (contenedorCinematica.gameObject.CompareTag("CinematicaInicial"))
                 {
-                    posicionPlayerMapa.valorEjecucion = new Vector3(12.5f, -23.5f, 0);
-                    estadoCambioEscenas.direccionPlayerEjecucion = new Vector2(0, 1);
-                    estadoCambioEscenas.camaraPosicionEjecucion = new Vector3(11, -18, -10);
-
+                    cinematicaInicial = contenedorCinematica.gameObject.GetComponent<PlayableDirector>();
                 }
             }
+        }
+        if (empezoPartida.valorBooleanoEjecucion && estadoCambioEscena.escenaActualEjecucion == "Laberintos")
+        {
+            cinematicaInicial.Play();
+            empezoPartida.valorBooleanoEjecucion = false;
+        }
+        string nombreTemporal = SceneManager.GetActiveScene().name;
+        if (nombreTemporal != estadoCambioEscena.escenaActualEjecucion)
+        {
+            estadoCambioEscena.escenaActualEjecucion = nombreTemporal;
+            StartCoroutine(cambioEscena(nombreTemporal));
+        }
+    }
+
+    private IEnumerator cambioEscena(string nombreEscena)
+    {
+        AsyncOperation accion = SceneManager.LoadSceneAsync(nombreEscena);
+        while (!accion.isDone)
+        {
+            yield return null;
         }
     }
 }

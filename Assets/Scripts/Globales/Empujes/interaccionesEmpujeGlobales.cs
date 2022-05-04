@@ -54,7 +54,10 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                     && gameObject.CompareTag("ProyectilEnemigo"))
                     ||
                     (colisionDetectada.gameObject.CompareTag("Player")
-                    && gameObject.CompareTag("ArmaObjetoEnemigo")))
+                    && gameObject.CompareTag("ArmaObjetoEnemigo"))
+                    ||
+                    (colisionDetectada.gameObject.CompareTag("Enemigo")
+                    && gameObject.CompareTag("ProyectilPlayer")))
                 {
                     Rigidbody2D rigidBodyAfectado = colisionDetectada.gameObject.GetComponent<Rigidbody2D>();
                     if (rigidBodyAfectado != null)
@@ -94,6 +97,16 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                                         gameObject.GetComponentInParent<enemigo>().setPuedoMoverme(false);
                                         colisionDetectada.gameObject.GetComponent<movimientoPlayer>().comienzaEmpujaPlayer(tiempoAplicarFuerza, vidaRestar);
                                         puedoGolpear = false;
+                                    }
+                                    else 
+                                    {
+                                        if (colisionDetectada.gameObject.CompareTag("Enemigo")
+                                            && gameObject.CompareTag("ProyectilPlayer")
+                                            && colisionDetectada.isTrigger)
+                                        {
+                                            colisionDetectada.gameObject.GetComponent<enemigo>().comienzaEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza, vidaRestar);
+                                            puedoGolpear = false;
+                                        }
                                     }
                                 }
                             }

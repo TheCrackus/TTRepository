@@ -152,5 +152,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadMovimiento: 1
-  tiempoVida: 1
+  tiempoVidaProyectil: 2
   proyectilRigidBody: {fileID: 8853671634870005007}

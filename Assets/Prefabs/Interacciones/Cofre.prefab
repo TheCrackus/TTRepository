@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4483599273861943402}
   m_Layer: 0
   m_Name: Cofre
-  m_TagString: Untagged
+  m_TagString: Abrible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,9 +193,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   simboloActivoDesactivo: {fileID: 11400000, guid: 5aa15c8b7adddd24ebf64699d2ca3bc2, type: 2}
   playerEnRango: 0
-  objetoContenido: {fileID: 11400000, guid: d7af9e1365be41743af3ff5ab424d122, type: 2}
+  objetoContenido: {fileID: 0}
   muestraObjeto: {fileID: 11400000, guid: 62cf7872f1d6726458ee7a1a7d288da3, type: 2}
   objetoContenedorTextoDialogos: {fileID: 0}
   textoDialogos: {fileID: 0}
   inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
-  estadoCofre: {fileID: 11400000, guid: 36adf18358ab56b489b330c1408d4fc1, type: 2}
+  estadoCofre: {fileID: 0}

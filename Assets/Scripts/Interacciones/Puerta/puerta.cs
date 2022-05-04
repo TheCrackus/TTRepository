@@ -32,9 +32,9 @@ public class puerta : interactuador
             {
                 if (playerEnRango && tipoPuerta == tipoPuerta.llave)
                 {
-                    if (inventarioPlayer.numeroLlaves > 0)
+                    if (inventarioPlayer.numeroLlavesEjecucion > 0)
                     {
-                        inventarioPlayer.numeroLlaves--;
+                        inventarioPlayer.numeroLlavesEjecucion--;
                         abrir();
                     }
                 }

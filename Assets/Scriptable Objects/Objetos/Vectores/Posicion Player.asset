@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367150f06767db74a82f12e9c6007dd1, type: 3}
   m_Name: Posicion Player
   m_EditorClassIdentifier: 
-  valorInicial: {x: 2, y: -13.5}
-  valorEjecucion: {x: 2, y: -13.5}
+  valorVectorialInicial: {x: 2, y: -13.5, z: 0}
+  valorVectorialEjecucion: {x: 2, y: -13.5, z: 0}

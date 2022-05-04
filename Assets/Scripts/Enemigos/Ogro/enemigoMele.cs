@@ -26,7 +26,7 @@ public class enemigoMele : trepaCielosCorrupto
     public override void OnEnable()
     {
         miPosicionMapa.transform.position = posicionOriginal;
-        setVidaEnemigo(vidaMaxima.valorInicial);
+        setVidaEnemigo(vidaMaxima.valorFlotanteInicial);
         setObjetivoPerseguir(GameObject.FindWithTag("Player").transform);
         setEnemigoRigidBody(gameObject.GetComponent<Rigidbody2D>());
         setEnemigoAnimator(gameObject.GetComponent<Animator>());
@@ -45,7 +45,7 @@ public class enemigoMele : trepaCielosCorrupto
                     || getEstadoActualEnemigo() == EnemyState.durmiendo
                     || getEstadoActualEnemigo() == EnemyState.ninguno))
             {
-                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, velocidadMovimientoEnemigo * Time.deltaTime);
+                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, velocidadMovimientoEnemigo * Time.fixedDeltaTime);
                 Vector3 refAnimacion = getObjetivoPerseguir().position - vectorTemporal;
                 Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
                 getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * velocidadMovimientoEnemigo * Time.fixedDeltaTime);

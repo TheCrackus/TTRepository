@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2509b261aad71147a2e4d043c0e0dfb, type: 3}
   m_Name: Vida Enemigo Ogro
   m_EditorClassIdentifier: 
-  valorInicial: 10
-  valorEjecucion: 10
+  valorFlotanteInicial: 8
+  valorFlotanteEjecucion: 8

@@ -14,11 +14,19 @@ TagManager:
   - MoverEscena
   - ProyectilEnemigo
   - ArmaObjetoEnemigo
+  - ProyectilPlayer
+  - Observador
+  - Leible
+  - Abrible
+  - Recojible
+  - Pulsable
+  - Terreno
+  - CinematicaInicial
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - MiniMapa
   - Water
   - UI
   - 
@@ -54,11 +62,11 @@ TagManager:
   - name: Carteles
     uniqueID: 2733357933
     locked: 0
-  - name: Player
-    uniqueID: 1508288005
-    locked: 0
   - name: Rompible
     uniqueID: 4080413259
+    locked: 0
+  - name: Player
+    uniqueID: 1508288005
     locked: 0
   - name: Simbolos
     uniqueID: 4164994501

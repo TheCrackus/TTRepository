@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class valorFlotante : ScriptableObject, ISerializationCallbackReceiver
+[System.Serializable]
+public class valorFlotante : ScriptableObject
 {
     
-    public float valorInicial;
+    public float valorFlotanteInicial;
 
-    public float valorEjecucion;
+    public float valorFlotanteEjecucion;
 
-    public void OnAfterDeserialize()
+    public void reiniciaValores()
     {
-        valorEjecucion = valorInicial;
+        valorFlotanteEjecucion = valorFlotanteInicial;
     }
 
-    public void OnBeforeSerialize()
-    {
-        
-    }
 }

@@ -5,19 +5,19 @@ using UnityEngine;
 public class movimientoCamara : MonoBehaviour
 {
 
-    public Transform objetivo;
-    public float suavizado;
-    private Vector3 posicionMaxima;
-    private Vector3 posicionMinima;
-    public cambioEscena estadoCambioEscena;
     private Animator camaraAnimator;
+    private Transform objetivo;
+    public float suavizado;
+    public valorVectorial posicionCamaraMaxima;
+    public valorVectorial posicionCamaraMinima;
+    public valorVectorial posicionCamara;
+    public cambioEscena estadoCambioEscena;
 
     void Start()
     {
+        objetivo = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
         camaraAnimator = gameObject.GetComponent<Animator>();
-        posicionMaxima = estadoCambioEscena.camaraPosicionMaximaEjecucion;
-        posicionMinima = estadoCambioEscena.camaraPosicionMinimaEjecucion;
-        gameObject.transform.position = estadoCambioEscena.camaraPosicionEjecucion;
+        gameObject.transform.position = posicionCamara.valorVectorialEjecucion;
     }
 
     void FixedUpdate() 
@@ -25,31 +25,10 @@ public class movimientoCamara : MonoBehaviour
         if (transform.position != objetivo.position) 
         {
             Vector3 posicionObjetivo = new Vector3(objetivo.position.x, objetivo.position.y, transform.position.z);
-            posicionObjetivo.x = Mathf.Clamp(posicionObjetivo.x, posicionMinima.x, posicionMaxima.x);
-            posicionObjetivo.y = Mathf.Clamp(posicionObjetivo.y, posicionMinima.y, posicionMaxima.y);
+            posicionObjetivo.x = Mathf.Clamp(posicionObjetivo.x, posicionCamaraMinima.valorVectorialEjecucion.x, posicionCamaraMaxima.valorVectorialEjecucion.x);
+            posicionObjetivo.y = Mathf.Clamp(posicionObjetivo.y, posicionCamaraMinima.valorVectorialEjecucion.y, posicionCamaraMaxima.valorVectorialEjecucion.y);
             transform.position = Vector3.Lerp(transform.position, posicionObjetivo, suavizado);
         }
-    }
-
-    public void setPosicionMaxima(Vector3 posicionMaxima) 
-    {
-        this.posicionMaxima = posicionMaxima;
-;   }
-
-    public Vector3 getPosicionMaxima() 
-    {
-        return posicionMaxima;
-    }
-
-    public void setPosicionMinima(Vector3 posicionMinima)
-    {
-        this.posicionMinima = posicionMinima;
-        ;
-    }
-
-    public Vector3 getPosicionMinima()
-    {
-        return posicionMinima;
     }
 
     public void empiezaAnimacionGolpePLayer() 

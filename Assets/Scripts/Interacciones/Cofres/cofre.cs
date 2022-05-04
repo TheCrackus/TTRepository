@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class cofre : interactuador
 {
@@ -16,7 +17,7 @@ public class cofre : interactuador
     [Header("Objeto que contiene el texto a mostrar")]
     public GameObject objetoContenedorTextoDialogos;
     [Header("Objeto texto a mostrar")]
-    public Text textoDialogos;
+    public TextMeshProUGUI textoDialogos;
     [Header("Inventario del player")]
     public inventario inventarioPlayer;
     [Header("Fue Abrieto este cofre?")]
@@ -26,8 +27,8 @@ public class cofre : interactuador
     void Start()
     {
         cofreAnimator = gameObject.GetComponent<Animator>();
-        cofreAbierto = estadoCofre.valorEjecucion;
-        cofreVacio = estadoCofre.valorEjecucion;
+        cofreAbierto = estadoCofre.valorBooleanoEjecucion;
+        cofreVacio = estadoCofre.valorBooleanoEjecucion;
         if (cofreAbierto && cofreVacio) 
         {
             cofreAnimator.SetBool("Abrir", true);
@@ -58,7 +59,7 @@ public class cofre : interactuador
         muestraObjeto.invocaFunciones();
         simboloActivoDesactivo.invocaFunciones();
         cofreAbierto = true;
-        estadoCofre.valorEjecucion = true;
+        estadoCofre.valorBooleanoEjecucion = true;
         cofreAnimator.SetBool("Abrir", true);
     }
 

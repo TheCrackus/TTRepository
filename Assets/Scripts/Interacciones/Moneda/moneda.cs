@@ -11,7 +11,7 @@ public class moneda : incrementoEstadisticas
     {
         if (colision.gameObject.CompareTag("Player") && colision.isTrigger)
         {
-            inventarioPlayer.numeroMonedas += 1;
+            inventarioPlayer.numeroMonedasEjecucion += 1;
             eventoIncrementoEstadistica.invocaFunciones();
             Destroy(this.gameObject);
         }

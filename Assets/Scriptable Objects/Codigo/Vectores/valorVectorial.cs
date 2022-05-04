@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class valorVectorial : ScriptableObject, ISerializationCallbackReceiver
+[System.Serializable]
+public class valorVectorial : ScriptableObject
 {
+    [Header("Valor inicial del vector")]
+    public Vector3 valorVectorialInicial;
+    [Header("Valor en ejecucion del juego del vector")]
+    public Vector3 valorVectorialEjecucion;
 
-    public Vector3 valorInicial;
-
-    public Vector3 valorEjecucion;
-
-    public void OnAfterDeserialize()
+    public void reiniciaValores() 
     {
-        valorEjecucion = valorInicial;
+        valorVectorialEjecucion = valorVectorialInicial;
     }
 
-    public void OnBeforeSerialize()
-    {
-
-    }
 }

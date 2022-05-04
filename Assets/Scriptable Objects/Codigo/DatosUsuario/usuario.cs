@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class usuario : ScriptableObject, ISerializationCallbackReceiver
+[System.Serializable]
+public class usuario : ScriptableObject
 {
     [System.Serializable]
     public struct configuracion
@@ -33,33 +34,27 @@ public class usuario : ScriptableObject, ISerializationCallbackReceiver
     [System.Serializable]
     public struct datosUsuario
     {
-        public int id_jugador;
-        public string Sobrenombre;
+        public int idJugador;
+        public string sobrenombre;
         public string nacimiento;
         public string mail;
         public string password;
-        public int Puntos;
-        public int Enemigos;
-        public int NivelesT;
+        public int puntos;
+        public int enemigos;
+        public int nivelesT;
+        public partida partida;
+        public logro[] logros;
         public configuracion Configuracion;
-        public partida Partida;
-        public logro[] Logros;
     }
 
     [Header("Datos usuario iniciales")]
     public datosUsuario datosIniciales;
-    [Header("Datos usuario en ejecucion")]
+    [Header("Datos usuario en ejecucion del juego")]
     public datosUsuario datosEjecucion;
-    [Header("Datos usuario para cerrar sesion")]
-    public datosUsuario datosReset;
 
-    public void OnAfterDeserialize()
+
+    public void reiniciaValores()
     {
         datosEjecucion = datosIniciales;
-    }
-
-    public void OnBeforeSerialize()
-    {
-
     }
 }

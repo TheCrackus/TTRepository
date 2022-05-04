@@ -10,7 +10,7 @@ public class loot
 }
 
 [CreateAssetMenu]
-public class tablaLoot : ScriptableObject, ISerializationCallbackReceiver
+public class tablaLoot : ScriptableObject
 {
     public loot[] loots;
 
@@ -27,15 +27,5 @@ public class tablaLoot : ScriptableObject, ISerializationCallbackReceiver
             }
         }
         return null;
-    }
-
-    public void OnAfterDeserialize()
-    {
-        
-    }
-
-    public void OnBeforeSerialize()
-    {
-        
     }
 }

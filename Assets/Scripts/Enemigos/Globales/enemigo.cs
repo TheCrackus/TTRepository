@@ -104,13 +104,13 @@ public class enemigo : MonoBehaviour
 
     public virtual void Awake()
     {
-        vidaEnemigo = vidaMaxima.valorInicial;
+        vidaEnemigo = vidaMaxima.valorFlotanteInicial;
     }
 
     public virtual void OnEnable()
     {
         miPosicionMapa.transform.position = posicionOriginal;
-        vidaEnemigo = vidaMaxima.valorInicial;
+        vidaEnemigo = vidaMaxima.valorFlotanteInicial;
 
     }
 
