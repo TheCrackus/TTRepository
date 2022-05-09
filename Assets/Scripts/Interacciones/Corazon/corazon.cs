@@ -13,7 +13,8 @@ public class corazon : incrementoEstadisticas
 
     private void OnTriggerEnter2D(Collider2D colision)
     {
-        if (colision.gameObject.CompareTag("Player") && colision.isTrigger)
+        if (colision.gameObject.CompareTag("Player") 
+            && colision.isTrigger)
         {
             vidaPlayer.valorFlotanteEjecucion += incrementoValorEstadistica;
             if (vidaPlayer.valorFlotanteEjecucion > (contenedorCorazones.valorFlotanteEjecucion * 2f))

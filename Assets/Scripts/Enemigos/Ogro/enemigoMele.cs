@@ -12,7 +12,7 @@ public class enemigoMele : trepaCielosCorrupto
         setEnemigoRigidBody(gameObject.GetComponent<Rigidbody2D>());
         setEnemigoAnimator(gameObject.GetComponent<Animator>());
         setEstadoActualEnemigo(EnemyState.ninguno);
-        setContadorEsperaMovimiento(tiempoEsperaMovimiento);
+        setContadorEsperaMovimiento(getTiempoEsperaMovimiento());
         setPuedoMoverme(true);
         foreach (AnimationClip clip in getEnemigoAnimator().runtimeAnimatorController.animationClips)
         {
@@ -25,8 +25,7 @@ public class enemigoMele : trepaCielosCorrupto
 
     public override void OnEnable()
     {
-        miPosicionMapa.transform.position = posicionOriginal;
-        setVidaEnemigo(vidaMaxima.valorFlotanteInicial);
+        getPosicionMapa().transform.position = getPosicionOriginal();
         setObjetivoPerseguir(GameObject.FindWithTag("Player").transform);
         setEnemigoRigidBody(gameObject.GetComponent<Rigidbody2D>());
         setEnemigoAnimator(gameObject.GetComponent<Animator>());
@@ -45,10 +44,10 @@ public class enemigoMele : trepaCielosCorrupto
                     || getEstadoActualEnemigo() == EnemyState.durmiendo
                     || getEstadoActualEnemigo() == EnemyState.ninguno))
             {
-                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, velocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
                 Vector3 refAnimacion = getObjetivoPerseguir().position - vectorTemporal;
                 Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
-                getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * velocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
                 setEstadoActualEnemigo(EnemyState.caminando);
             }
         }

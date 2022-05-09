@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6462158546855597051}
   - component: {fileID: 6462158546855596935}
   - component: {fileID: 6462158546855596932}
-  - component: {fileID: 6462158546855596934}
+  - component: {fileID: 7497311309515799148}
   m_Layer: 0
   m_Name: Moneda
   m_TagString: Recojible
@@ -152,7 +152,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6322644, y: 0.6333195}
   m_EdgeRadius: 0
---- !u!114 &6462158546855596934
+--- !u!114 &7497311309515799148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,5 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd37ac45f220bfc408f4edbb669ed126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventoIncrementoEstadistica: {fileID: 11400000, guid: 445f70a81960fac4d90389920c217d64, type: 2}
-  inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
+  inventariopPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
+  itemAgrgarInventario: {fileID: 11400000, guid: dfcd9e334d76d014aadc23c1dbb8a038, type: 2}
+  eventoIncrementoInterfaz: {fileID: 11400000, guid: 445f70a81960fac4d90389920c217d64, type: 2}

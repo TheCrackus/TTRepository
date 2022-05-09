@@ -7,11 +7,7 @@ using UnityEngine;
 
 public class manejadorDatosGuardados : MonoBehaviour
 {
-    public datosJuego datos;    
+    
 
-    void OnEnable()
-    {
-        datos.cargaObjetosScriptable();
-    }
 
 }

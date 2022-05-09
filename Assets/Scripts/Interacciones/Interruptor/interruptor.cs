@@ -5,20 +5,19 @@ using UnityEngine;
 public class interruptor : MonoBehaviour
 {
 
-    private bool activo;
-    private SpriteRenderer interruptorSpriteRenderer;
+    [Header("El manejador de sprites de este objeto")]
+    [SerializeField] private SpriteRenderer interruptorSpriteRenderer;
     [Header("Esta activo el interruptor?")]
-    public valorBooleano estadoInterruptor;
+    [SerializeField] private valorBooleano estadoInterruptor;
     [Header("Sprite para el interruptor pulsado")]
-    public Sprite spriteInterruptorActivo;
+    [SerializeField] private Sprite spriteInterruptorActivo;
     [Header("Objeto puerta a abrir")]
-    public puerta puertaAbrir;
+    [SerializeField] private puerta puertaAbrir;
 
     void Start()
     {
-        activo = estadoInterruptor.valorBooleanoEjecucion;
         interruptorSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        if (activo) 
+        if (estadoInterruptor.valorBooleanoEjecucion) 
         {
             activaInterruptor();
         }
@@ -26,7 +25,6 @@ public class interruptor : MonoBehaviour
 
     public void activaInterruptor() 
     {
-        activo = true;
         estadoInterruptor.valorBooleanoEjecucion = true;
         puertaAbrir.abrir();
         interruptorSpriteRenderer.sprite = spriteInterruptorActivo;

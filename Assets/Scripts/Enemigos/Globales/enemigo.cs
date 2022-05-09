@@ -14,30 +14,22 @@ public enum EnemyState
 
 public class enemigo : MonoBehaviour
 {
-    public EnemyState estadoActualEnemigo;
-    private float vidaEnemigo;
-    private float contadorEsperaMovimiento;
-    private bool puedoMoverme;
-    [Header("Vida del enemigo")]
-    public valorFlotante vidaMaxima;
+    [Header("El estado en el que se encuentra el enemigo")]
+    [SerializeField] private EnemyState estadoActualEnemigo;
+    [Header("Contador auxiliar para volver al movimiento")]
+    [SerializeField] private float contadorEsperaMovimiento;
+    [Header("Puedo volver al movimiento?")]
+    [SerializeField] private bool puedoMoverme;
     [Header("Nombre del enemigo")]
-    public string nombreEnemigo;
+    [SerializeField] private string nombreEnemigo;
     [Header("Velocidad del enemigo")]
-    public float velocidadMovimientoEnemigo;
+    [SerializeField] private float velocidadMovimientoEnemigo;
     [Header("Posicion por defecto del enemigo")]
-    public Vector3 posicionOriginal;
-    [Header("Objeto contenedor de efecto")]
-    public GameObject efectoMuerteEnemigo;
-    [Header("Clip de muerte del enemigo")]
-    public AnimationClip muerteEnemigoClip;
-    [Header("Evento para cuartos con enemigos (abre puerta)")]
-    public evento estadoEnemigosCuarto;
-    [Header("Objetos que dejara al morir")]
-    public tablaLoot miLoot;
+    [SerializeField] private Vector3 posicionOriginal;
     [Header("Tiempo para mover despues de atacar")]
-    public float tiempoEsperaMovimiento;
+    [SerializeField] private float tiempoEsperaMovimiento;
     [Header("GameObject para la posicion de este objeto")]
-    public GameObject miPosicionMapa;
+    [SerializeField] private GameObject posicionMapa;
 
     public void setEstadoActualEnemigo(EnemyState estadoActualEnemigo)
     {
@@ -52,34 +44,74 @@ public class enemigo : MonoBehaviour
         return estadoActualEnemigo;
     }
 
-    public void setVidaEnemigo(float vidaEnemigo) 
-    {
-        this.vidaEnemigo = vidaEnemigo;
-    }
-
-    public float getVidaEnemigo() 
-    {
-        return vidaEnemigo;
-    }
-
-    public void setPuedoMoverme(bool puedoMoverme) 
+    public void setPuedoMoverme(bool puedoMoverme)
     {
         this.puedoMoverme = puedoMoverme;
     }
 
-    public bool getPuedoMoverme() 
+    public bool getPuedoMoverme()
     {
         return puedoMoverme;
     }
 
-    public void setContadorEsperaMovimiento(float contadorEsperaMovimiento) 
+    public void setContadorEsperaMovimiento(float contadorEsperaMovimiento)
     {
         this.contadorEsperaMovimiento = contadorEsperaMovimiento;
     }
 
-    public float getContadorEsperaMovimiento() 
+    public float getContadorEsperaMovimiento()
     {
         return contadorEsperaMovimiento;
+    }
+
+    public void setPosicionOriginal(Vector3 posicionOriginal)
+    {
+        this.posicionOriginal = posicionOriginal;
+    }
+
+    public Vector3 getPosicionOriginal()
+    {
+        return posicionOriginal;
+    }
+
+    public void setTiempoEsperaMovimiento(float tiempoEsperaMovimiento)
+    {
+        this.tiempoEsperaMovimiento = tiempoEsperaMovimiento;
+    }
+
+    public float getTiempoEsperaMovimiento()
+    {
+        return tiempoEsperaMovimiento;
+    }
+
+    public void setVelocidadMovimientoEnemigo(float velocidadMovimientoEnemigo)
+    {
+        this.velocidadMovimientoEnemigo = velocidadMovimientoEnemigo;
+    }
+
+    public float getVelocidadMovimientoEnemigo()
+    {
+        return velocidadMovimientoEnemigo;
+    }
+
+    public void setPosicionMapa(GameObject posicionMapa)
+    {
+        this.posicionMapa = posicionMapa;
+    }
+
+    public GameObject getPosicionMapa() 
+    {
+        return posicionMapa;
+    }
+
+    public virtual void Awake()
+    {
+        posicionOriginal = posicionMapa.gameObject.transform.position;
+    }
+
+    public virtual void OnEnable()
+    {
+        posicionMapa.transform.position = posicionOriginal;
     }
 
     public virtual void Start()
@@ -88,12 +120,12 @@ public class enemigo : MonoBehaviour
         puedoMoverme = true;
     }
 
-    public virtual void Update() 
+    public virtual void Update()
     {
-        if (!puedoMoverme) 
+        if (!puedoMoverme)
         {
             contadorEsperaMovimiento -= Time.deltaTime;
-            if (contadorEsperaMovimiento <= 0) 
+            if (contadorEsperaMovimiento <= 0)
             {
                 puedoMoverme = true;
                 contadorEsperaMovimiento = tiempoEsperaMovimiento;
@@ -102,39 +134,10 @@ public class enemigo : MonoBehaviour
         }
     }
 
-    public virtual void Awake()
-    {
-        vidaEnemigo = vidaMaxima.valorFlotanteInicial;
-    }
-
-    public virtual void OnEnable()
-    {
-        miPosicionMapa.transform.position = posicionOriginal;
-        vidaEnemigo = vidaMaxima.valorFlotanteInicial;
-
-    }
-
-    public void comienzaEmpujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza, float vidaMenos) 
+    public void comienzaEmpujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza) 
     {
         estadoActualEnemigo = EnemyState.estuneado;
         StartCoroutine(empujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
-        tomaMenosVida(vidaMenos);
-    }
-
-    private void tomaMenosVida(float vidaMenos)
-    {
-        vidaEnemigo -= vidaMenos;
-        if (vidaEnemigo <= 0)
-        {
-            muerteEnemigoAnimacion();
-            procesaLoot();
-            estadoActualEnemigo = EnemyState.inactivo;
-            if (estadoEnemigosCuarto != null) 
-            {
-                estadoEnemigosCuarto.invocaFunciones();
-            }
-            gameObject.SetActive(false);
-        }
     }
 
     private IEnumerator empujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
@@ -146,25 +149,5 @@ public class enemigo : MonoBehaviour
             estadoActualEnemigo = EnemyState.ninguno;
         }
     }
-
-    private void muerteEnemigoAnimacion() 
-    {
-        if (efectoMuerteEnemigo != null) 
-        {
-            GameObject efecto = Instantiate(efectoMuerteEnemigo, gameObject.transform.position, Quaternion.identity);
-            Destroy(efecto, muerteEnemigoClip.length);
-        }
-    }
-
-    private void procesaLoot() 
-    {
-        if (miLoot != null) 
-        {
-            incrementoEstadisticas incrementoActual = miLoot.lootIncrementoEstadisticas();
-            if (incrementoActual != null) 
-            {
-                Instantiate(incrementoActual.gameObject, gameObject.transform.position, Quaternion.identity);
-            }
-        }
-    }
+    
 }

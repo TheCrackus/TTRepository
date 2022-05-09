@@ -1,5 +1,112 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2543133302275394148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8103686805760463359}
+  - component: {fileID: 2304148772903738273}
+  - component: {fileID: 7123134729066407677}
+  - component: {fileID: 4961642846731704212}
+  - component: {fileID: 7360848488857236219}
+  m_Layer: 0
+  m_Name: "SistemaVidaDa\xF1o"
+  m_TagString: Enemigo
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8103686805760463359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2543133302275394148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4063579534507519864}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2304148772903738273
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2543133302275394148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0018806458, y: -0.14561987}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.81191635, y: 1.2456388}
+  m_EdgeRadius: 0
+--- !u!114 &7123134729066407677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2543133302275394148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c86f0cceac09b48a8a3b14a033a8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaMaxima: {fileID: 11400000, guid: 1e3be81f1002cab4ea326851b599d49f, type: 2}
+  vidaActual: 0
+  efectoMuerte: {fileID: 755099225653218745, guid: 5086d25ea712d8b4f88bca10f2db084f, type: 3}
+  muerteClip: {fileID: 7400000, guid: ce3f48e2b1ff8b848aec99a2e3bea931, type: 2}
+  miLoot: {fileID: 11400000, guid: e97340749cc8b274988a1fbae0c9e64b, type: 2}
+  objeto: {fileID: 5799077720624876057}
+--- !u!114 &4961642846731704212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2543133302275394148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerza: 1
+  tiempoAplicarFuerza: 0.1
+  colisionDetectadaTag: Player
+--- !u!114 &7360848488857236219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2543133302275394148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 1
+  colisionDetectadaTag: Player
 --- !u!1 &5799077720624876057
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,9 +119,7 @@ GameObject:
   - component: {fileID: 4098858842874553353}
   - component: {fileID: 751780073784560076}
   - component: {fileID: 7677009096521104965}
-  - component: {fileID: 1057940294932694479}
   - component: {fileID: 6878951000891081256}
-  - component: {fileID: 4249376314678014627}
   - component: {fileID: 5799077720624876056}
   m_Layer: 0
   m_Name: TrepaCielosCorruptoTorreta
@@ -30,10 +135,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5799077720624876057}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8103686805760463359}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,7 +181,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1508288005
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -5034061168752090764, guid: 4e07b8e86be44cd4f98890fdb5aaea4c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -135,32 +241,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.56609344, y: 0.39389324}
   m_EdgeRadius: 0
---- !u!61 &1057940294932694479
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5799077720624876057}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0018806458, y: -0.14561987}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.81191635, y: 1.2456388}
-  m_EdgeRadius: 0
 --- !u!95 &6878951000891081256
 Animator:
   serializedVersion: 3
@@ -180,22 +260,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4249376314678014627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5799077720624876057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuerza: 3
-  tiempoAplicarFuerza: 0.2
-  vidaRestar: 1
-  tiempoEntreGolpes: 0.1
 --- !u!114 &5799077720624876056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,16 +272,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e2bc36f48681a4eae975d4f9d6c60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: {fileID: 11400000, guid: 1e3be81f1002cab4ea326851b599d49f, type: 2}
+  estadoActualEnemigo: 0
+  contadorEsperaMovimiento: 0
+  puedoMoverme: 0
   nombreEnemigo: Trepa Cielos Corrupto
   velocidadMovimientoEnemigo: 0
   posicionOriginal: {x: 0, y: 0, z: 0}
-  efectoMuerteEnemigo: {fileID: 755099225653218745, guid: 5086d25ea712d8b4f88bca10f2db084f, type: 3}
-  muerteEnemigoClip: {fileID: 7400000, guid: ce3f48e2b1ff8b848aec99a2e3bea931, type: 2}
   estadoEnemigosCuarto: {fileID: 0}
-  miLoot: {fileID: 11400000, guid: e97340749cc8b274988a1fbae0c9e64b, type: 2}
   tiempoEsperaMovimiento: 1
-  miPosicionMapa: {fileID: 5799077720624876057}
+  posicionMapa: {fileID: 5799077720624876057}
   radioPersecucion: 4
   radioAtaque: 0.1
   proyectilPiedra: {fileID: 8853671634870005005, guid: 33623850b879320419cf749702cdeb92, type: 3}

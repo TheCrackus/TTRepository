@@ -15,6 +15,8 @@ public class datosJuego : ScriptableObject
     public List<usuario> usuarios = new List<usuario>();
     public List<cambioEscena> escenas = new List<cambioEscena>();
     public List<inventario> inventarios = new List<inventario>();
+    public List<listaInventario> listaInventarios = new List<listaInventario>();
+    public List<inventarioItem> items = new List<inventarioItem>();
 
     private void reiniciaValoresScriptable()
     {
@@ -41,6 +43,14 @@ public class datosJuego : ScriptableObject
         foreach (inventario inventario in inventarios)
         {
             inventario.reiniciaValores();
+        }
+        foreach (inventarioItem item in items)
+        {
+            item.reiniciaValores();
+        }
+        foreach (listaInventario listaInventario in listaInventarios) 
+        {
+            listaInventario.reiniciaValores();
         }
     }
 

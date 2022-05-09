@@ -7,17 +7,25 @@ public class manejadorBarraMagica : MonoBehaviour
 {
     [Header("Objeto que representa la barra de magia")]
     public Slider barraMagica;
-    [Header("Inventario del jugador")]
-    public inventario inventarioPlayer;
+    [Header("La cantidad de magia que tiene el Player")]
+    public valorFlotante magiaPlayer;
+    [Header("La cantidad maxima de magia que tiene el Player")]
+    public valorFlotante magiaPlayerMaxima;
 
     void Start()
     {
-        barraMagica.maxValue = inventarioPlayer.magiaInicial;
-        barraMagica.value = inventarioPlayer.magiaEjecucion;
+        inciaMagia();
+        actualizaMagia();
+    }
+
+    public void inciaMagia() 
+    {
+        barraMagica.maxValue = magiaPlayerMaxima.valorFlotanteEjecucion;
     }
 
     public void actualizaMagia() 
     {
-        barraMagica.value = inventarioPlayer.magiaEjecucion;
+        
+        barraMagica.value = magiaPlayer.valorFlotanteEjecucion;
     }
 }

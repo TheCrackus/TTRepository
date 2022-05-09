@@ -6,23 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class manejadorEscenas : MonoBehaviour
 {
-
-    private PlayableDirector cinematicaInicial;
+    [Header("El nombre de la escena en ejecucion")]
+    [SerializeField]private string nombreEscenaActual;
+    [Header("La primer cinematica a ejecutar")]
+    [SerializeField]private PlayableDirector cinematicaInicial;
     [Header("Posicion del Player en el mapa")]
-    public valorVectorial posicionPlayerMapa;
+    public valorVectorial poscicioPlayer;
     [Header("Objeto que contiene la informacion del juego en ejecucion")]
     public cambioEscena estadoCambioEscena;
     [Header("Objeto que contiene las cinematicas")]
     public GameObject[] contenedoresCinematicas;
     [Header("Empezo nueva partida?")]
     public valorBooleano empezoPartida;
+    [Header("Los datos guardados localmente de la partida")]
+    public datosJuego datos;
 
     void Awake()
     {
-        if (estadoCambioEscena.escenaActualEjecucion == "" || estadoCambioEscena.escenaActualEjecucion == null)
-        {
-            estadoCambioEscena.escenaActualEjecucion = "Principal";
-        }
+        nombreEscenaActual = SceneManager.GetActiveScene().name;
         if (contenedoresCinematicas != null)
         {
             foreach (GameObject contenedorCinematica in contenedoresCinematicas)
@@ -33,25 +34,37 @@ public class manejadorEscenas : MonoBehaviour
                 }
             }
         }
-        if (empezoPartida.valorBooleanoEjecucion && estadoCambioEscena.escenaActualEjecucion == "Laberintos")
+        if (empezoPartida.valorBooleanoEjecucion && !estadoCambioEscena.cambieEscenaEjecucion && nombreEscenaActual == "Laberintos")
         {
-            cinematicaInicial.Play();
-            empezoPartida.valorBooleanoEjecucion = false;
-        }
-        string nombreTemporal = SceneManager.GetActiveScene().name;
-        if (nombreTemporal != estadoCambioEscena.escenaActualEjecucion)
-        {
-            estadoCambioEscena.escenaActualEjecucion = nombreTemporal;
-            StartCoroutine(cambioEscena(nombreTemporal));
+            //cinematicaInicial.Play();
         }
     }
 
-    private IEnumerator cambioEscena(string nombreEscena)
+    void OnEnable()
     {
-        AsyncOperation accion = SceneManager.LoadSceneAsync(nombreEscena);
-        while (!accion.isDone)
+        if (!estadoCambioEscena.cambieEscenaEjecucion) 
         {
-            yield return null;
+            if (nombreEscenaActual == "Laberintos")
+            {
+                //datos.cargaObjetosScriptable();
+                poscicioPlayer.valorVectorialEjecucion = new Vector3(2f, -13.5f, 0);
+            }
+            else
+            {
+                if (nombreEscenaActual == "Mazmorra")
+                {
+                    //datos.cargaObjetosScriptable();
+                    poscicioPlayer.valorVectorialEjecucion = new Vector3(12.5f, -22.5f, 0);
+                }
+                else 
+                {
+                    if (nombreEscenaActual == "Casa1") 
+                    {
+                        //datos.cargaObjetosScriptable();
+                        poscicioPlayer.valorVectorialEjecucion = new Vector3(8f, -9f, 0);
+                    }
+                }
+            }
         }
     }
 }

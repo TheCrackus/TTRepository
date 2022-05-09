@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moneda : incrementoEstadisticas
+public class moneda : itemFisico
 {
-    [Header("Inventario del player")]
-    public inventario inventarioPlayer;
 
-    private void OnTriggerEnter2D(Collider2D colision)
+    [Header("Evento que incrementa una estadistica en la interfaz")]
+    [SerializeField] private evento eventoIncrementoInterfaz;
+
+    public override void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        if (colision.gameObject.CompareTag("Player") && colision.isTrigger)
+        base.OnTriggerEnter2D(colisionDetectada);
+        if (colisionDetectada.gameObject.CompareTag("Player")
+            && colisionDetectada.isTrigger)
         {
-            inventarioPlayer.numeroMonedasEjecucion += 1;
-            eventoIncrementoEstadistica.invocaFunciones();
-            Destroy(this.gameObject);
+            if (eventoIncrementoInterfaz)
+            {
+                eventoIncrementoInterfaz.invocaFunciones();
+            }
         }
     }
+
 }

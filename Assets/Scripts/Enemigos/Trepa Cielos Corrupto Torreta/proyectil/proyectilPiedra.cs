@@ -5,13 +5,13 @@ using UnityEngine;
 public class proyectilPiedra : proyectil
 {
 
-    void Start()
+    private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        
+        if (colisionDetectada.gameObject.CompareTag("Player")
+            && colisionDetectada.isTrigger)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void Update()
-    {
-        
-    }
 }

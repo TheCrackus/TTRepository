@@ -7,21 +7,24 @@ using TMPro;
 public class cofre : interactuador
 {
 
-    private Animator cofreAnimator;
-    private bool cofreAbierto = false;
-    private bool cofreVacio = false;
-    [Header("Objeto que contiene el cofre")]
-    public objeto objetoContenido;
+    [Header("Animador de este objeto")]
+    [SerializeField] private Animator cofreAnimator;
+    [Header("Esta abierto este cofre?")]
+    [SerializeField] private bool cofreAbierto = false;
+    [Header("Esta vacio este cofre?")]
+    [SerializeField] private bool cofreVacio = false;
     [Header("Evento para mostrar un objeto")]
-    public evento muestraObjeto;
+    [SerializeField] private evento muestraObjeto;
     [Header("Objeto que contiene el texto a mostrar")]
-    public GameObject objetoContenedorTextoDialogos;
+    [SerializeField] private GameObject objetoContenedorTextoDialogos;
     [Header("Objeto texto a mostrar")]
-    public TextMeshProUGUI textoDialogos;
-    [Header("Inventario del player")]
-    public inventario inventarioPlayer;
+    [SerializeField] private TextMeshProUGUI textoDialogos;
     [Header("Fue Abrieto este cofre?")]
-    public valorBooleano estadoCofre;
+    [SerializeField] private valorBooleano estadoCofre;
+    [Header("El inventario general del Player")]
+    [SerializeField] private listaInventario inventariopPlayerItems;
+    [Header("El item a agregar al inventario")]
+    [SerializeField] private inventarioItem itemAgrgarInventario;
 
 
     void Start()
@@ -37,7 +40,12 @@ public class cofre : interactuador
 
     void Update()
     {
-        if (Input.GetButtonDown("Interactuar") && playerEnRango)
+        if (Input.GetButtonDown("Interactuar") 
+            && playerEnRango 
+            && estadoCofre != null
+            && itemAgrgarInventario != null
+            && objetoContenedorTextoDialogos != null 
+            && textoDialogos != null)
         {
             if (!cofreAbierto && !cofreVacio)
             {
@@ -52,10 +60,22 @@ public class cofre : interactuador
 
     public void abreCofre() 
     {
-        textoDialogos.text = objetoContenido.descripcionObjeto;
+        itemAgrgarInventario.mostrarItem = false;
+        textoDialogos.text = itemAgrgarInventario.descripcionItem;
         objetoContenedorTextoDialogos.SetActive(true);
-        inventarioPlayer.agregaObjeto(objetoContenido);
-        inventarioPlayer.objetoActual = objetoContenido;
+        if (inventariopPlayerItems && itemAgrgarInventario)
+        {
+            if (inventariopPlayerItems.inventario.Contains(itemAgrgarInventario) && !itemAgrgarInventario.esUnico)
+            {
+                itemAgrgarInventario.cantidadItem += 1;
+            }
+            else
+            {
+                inventariopPlayerItems.inventario.Add(itemAgrgarInventario);
+                itemAgrgarInventario.cantidadItem += 1;
+            }
+        }
+        itemAgrgarInventario.mostrarItem = true;
         muestraObjeto.invocaFunciones();
         simboloActivoDesactivo.invocaFunciones();
         cofreAbierto = true;

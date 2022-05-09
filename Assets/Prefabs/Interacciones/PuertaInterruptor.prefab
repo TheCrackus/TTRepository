@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b340915d0a370d4aaa2012f44f8fb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interruptorSpriteRenderer: {fileID: 0}
   estadoInterruptor: {fileID: 11400000, guid: 5fcd5a16a80e47c438d385bf349def2b, type: 2}
   spriteInterruptorActivo: {fileID: -2639854583086408205, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
   puertaAbrir: {fileID: 5716353382680340182}
@@ -352,6 +353,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   simboloActivoDesactivo: {fileID: 11400000, guid: 5aa15c8b7adddd24ebf64699d2ca3bc2, type: 2}
   playerEnRango: 0
+  puertaSpriteRenderer: {fileID: 0}
+  puertaColliders: []
   tipoPuerta: 2
-  estaAbierta: 0
-  inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
+  estaAbierta: {fileID: 0}
+  inventariopPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
+  llaveCorta: {fileID: 11400000, guid: c64aa3b966e53e441b95de6c2b8128de, type: 2}

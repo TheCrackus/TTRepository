@@ -8,14 +8,11 @@ public class inventario : ScriptableObject
 {
     [Header("Objeto actual que posee el Player")]
     public objeto objetoActual;
-    [Header("")]
     public List<objeto> objetosEjecucion = new List<objeto>();
     public int numeroLlavesInicial;
     public int numeroLlavesEjecucion;
     public int numeroMonedasInicial;
     public int numeroMonedasEjecucion;
-    public float magiaInicial;
-    public float magiaEjecucion;
 
     public bool verificaObjeto(objeto objeto) 
     {
@@ -26,33 +23,6 @@ public class inventario : ScriptableObject
         else 
         {
             return false;
-        }
-    }
-
-    public void decrementaMagia(float costoMagia) 
-    {
-        magiaEjecucion -= costoMagia;
-        verificaMagia();
-    }
-
-    public void aumentaMagia(float aumentoMagia)
-    {
-        magiaEjecucion += aumentoMagia;
-        verificaMagia();
-    }
-
-    public void verificaMagia() 
-    {
-        if (magiaEjecucion >= magiaInicial)
-        {
-            magiaEjecucion = magiaInicial;
-        }
-        else
-        {
-            if (magiaEjecucion <= 0)
-            {
-                magiaEjecucion = 0;
-            }
         }
     }
 
@@ -75,7 +45,6 @@ public class inventario : ScriptableObject
     {
         numeroLlavesEjecucion = numeroLlavesInicial;
         numeroMonedasInicial = numeroLlavesInicial;
-        magiaInicial = magiaEjecucion;
         objetosEjecucion.Clear();
     }
 }

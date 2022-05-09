@@ -23,24 +23,23 @@ public class movimientoPlayer : MonoBehaviour
     public PlayerState estadoActualPlayer;
     [Header("Estadisticas Player")]
     public float velocidad;
-    public valorFlotante vidaActualPlayer;
-    [Header("Evento que actualiza la vida en pantalla")]
-    public evento eventoVidaJugador;
     [Header("Evento para animar la pantalla al recivir golpe")]
     public evento reciveGolpePlayer;
     [Header("Variables globales del player")]
-    public valorVectorial posicionPlayerMapa;
-    public inventario inventarioPlayer;
+    public valorVectorial posicionPlayer;
     public SpriteRenderer spriteObjetoMostrar;
+    [Header("El inventario general del Player")]
+    [SerializeField] private listaInventario inventariopPlayerItems;
     [Header("Estado general de la escena")]
     public cambioEscena estadoCambioEscenas;
     [Header("Proyectil que dispara el arma actual a distancia")]
     public GameObject proyectil;
     [Header("Evento que decrementa la magia")]
     public evento decrementaMagia;
+    [Header("La cantidad de magia que tiene el Player")]
+    public valorFlotante magiaPlayer;
     [Header("Objeto que representa el arco")]
-    public objeto arco;
-    //[Header("")]
+    public inventarioItem arco;
     public Color colorFlash;
     public Color colorNormal;
     public float tiempoFlash;
@@ -115,7 +114,7 @@ public class movimientoPlayer : MonoBehaviour
                 }
             }
         }
-        gameObject.transform.position = posicionPlayerMapa.valorVectorialEjecucion;
+        gameObject.transform.position = posicionPlayer.valorVectorialEjecucion;
     }
 
     void Update()
@@ -142,8 +141,8 @@ public class movimientoPlayer : MonoBehaviour
                 && estadoActualPlayer != PlayerState.inactivo
                 && (estadoActualPlayer == PlayerState.caminando 
                     || estadoActualPlayer == PlayerState.ninguno)
-                && inventarioPlayer.verificaObjeto(arco)
-                && inventarioPlayer.magiaEjecucion > 0)
+                && inventariopPlayerItems.verififcaItem(arco)
+                && magiaPlayer.valorFlotanteEjecucion > 0)
             {
                 estadoActualPlayer = PlayerState.atacando;
                 StartCoroutine(Atacar2());
@@ -282,12 +281,16 @@ public class movimientoPlayer : MonoBehaviour
 
     private void creaFlecha() 
     {
-        if (inventarioPlayer.magiaEjecucion > 0) 
+        if (magiaPlayer.valorFlotanteEjecucion > 0) 
         {
             Vector2 vectorTemporal = new Vector2(playerAnimator.GetFloat("MovimientoX"), playerAnimator.GetFloat("MovimientoY"));
             flecha flecha = Instantiate(proyectil, gameObject.transform.position, Quaternion.identity).GetComponent<flecha>();
-            flecha.setUp(vectorTemporal, eligeDireccionFlecha());
-            inventarioPlayer.decrementaMagia(flecha.costoMagia);
+            flecha.dispara(vectorTemporal, eligeDireccionFlecha());
+            magiaPlayer.valorFlotanteEjecucion -= flecha.costoMagia;
+            if (magiaPlayer.valorFlotanteEjecucion <= 0) 
+            {
+                magiaPlayer.valorFlotanteEjecucion = 0;
+            }
             decrementaMagia.invocaFunciones();
         }
     }
@@ -298,22 +301,10 @@ public class movimientoPlayer : MonoBehaviour
         return new Vector3(0,0, direccionZ);
     }
 
-    public void comienzaEmpujaPlayer(float tiempoAplicarFuerza, float vidaMenos)
+    public void comienzaEmpujaPlayer(float tiempoAplicarFuerza)
     {
         estadoActualPlayer = PlayerState.estuneado;
         StartCoroutine(empujaPlayer(tiempoAplicarFuerza));
-        quitaVidaPlayer(vidaMenos);
-    }
-
-    private void quitaVidaPlayer(float vidaMenos)
-    {
-        vidaActualPlayer.valorFlotanteEjecucion -= vidaMenos;
-        eventoVidaJugador.invocaFunciones();
-        if (vidaActualPlayer.valorFlotanteEjecucion <= 0)
-        {
-            estadoActualPlayer = PlayerState.inactivo;
-            gameObject.SetActive(false);
-        }
     }
 
     private IEnumerator empujaPlayer(float tiempoAplicarFuerza)
@@ -331,23 +322,32 @@ public class movimientoPlayer : MonoBehaviour
 
     public void muestrObjeto() 
     {
-        if (inventarioPlayer.objetoActual != null)
+        inventarioItem itemMostrar = null;
+        foreach (inventarioItem itemLoop in inventariopPlayerItems.inventario) 
+        {
+            if (itemLoop.mostrarItem) 
+            {
+                itemMostrar = itemLoop;
+                break;
+            }
+        }
+        if (itemMostrar != null)
         {
             if (estadoActualPlayer != PlayerState.interactuando)
             {
                 playerAnimator.SetBool("MostrandoObjeto", true);
                 estadoActualPlayer = PlayerState.interactuando;
-                spriteObjetoMostrar.sprite = inventarioPlayer.objetoActual.spriteObjeto;
+                spriteObjetoMostrar.sprite = itemMostrar.imagenItem;
+                itemMostrar.mostrarItem = false;
             }
-            else
+        }
+        else 
+        {
+            if (estadoActualPlayer == PlayerState.interactuando)
             {
-                if (estadoActualPlayer == PlayerState.interactuando) 
-                {
-                    playerAnimator.SetBool("MostrandoObjeto", false);
-                    estadoActualPlayer = PlayerState.ninguno;
-                    inventarioPlayer.objetoActual = null;
-                    spriteObjetoMostrar.sprite = null;
-                }
+                playerAnimator.SetBool("MostrandoObjeto", false);
+                estadoActualPlayer = PlayerState.ninguno;
+                spriteObjetoMostrar.sprite = null;
             }
         }
     }

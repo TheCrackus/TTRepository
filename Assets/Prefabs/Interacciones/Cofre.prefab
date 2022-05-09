@@ -193,9 +193,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   simboloActivoDesactivo: {fileID: 11400000, guid: 5aa15c8b7adddd24ebf64699d2ca3bc2, type: 2}
   playerEnRango: 0
+  cofreAnimator: {fileID: 0}
+  cofreAbierto: 0
+  cofreVacio: 0
   objetoContenido: {fileID: 0}
   muestraObjeto: {fileID: 11400000, guid: 62cf7872f1d6726458ee7a1a7d288da3, type: 2}
   objetoContenedorTextoDialogos: {fileID: 0}
   textoDialogos: {fileID: 0}
-  inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
+  inventarioPlayerTemporal: {fileID: 0}
   estadoCofre: {fileID: 0}
+  inventariopPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
+  itemAgrgarInventario: {fileID: 0}

@@ -5,29 +5,28 @@ using UnityEngine;
 public class movimientoCamara : MonoBehaviour
 {
 
-    private Animator camaraAnimator;
-    private Transform objetivo;
-    public float suavizado;
-    public valorVectorial posicionCamaraMaxima;
-    public valorVectorial posicionCamaraMinima;
-    public valorVectorial posicionCamara;
-    public cambioEscena estadoCambioEscena;
+    [SerializeField] private Animator camaraAnimator;
+    [SerializeField] private Transform objetivoSeguir;
+    [SerializeField] private float suavizado;
+    [SerializeField] private valorVectorial posicionCamaraMaxima;
+    [SerializeField] private valorVectorial posicionCamaraMinima;
+    [SerializeField] private valorVectorial posicionCamara;
+    [SerializeField] private cambioEscena estadoCambioEscena;
 
     void Start()
     {
-        objetivo = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
         camaraAnimator = gameObject.GetComponent<Animator>();
         gameObject.transform.position = posicionCamara.valorVectorialEjecucion;
     }
 
     void FixedUpdate() 
     {
-        if (transform.position != objetivo.position) 
+        if (transform.position != objetivoSeguir.position) 
         {
-            Vector3 posicionObjetivo = new Vector3(objetivo.position.x, objetivo.position.y, transform.position.z);
+            Vector3 posicionObjetivo = new Vector3(objetivoSeguir.position.x, objetivoSeguir.position.y, gameObject.transform.position.z);
             posicionObjetivo.x = Mathf.Clamp(posicionObjetivo.x, posicionCamaraMinima.valorVectorialEjecucion.x, posicionCamaraMaxima.valorVectorialEjecucion.x);
             posicionObjetivo.y = Mathf.Clamp(posicionObjetivo.y, posicionCamaraMinima.valorVectorialEjecucion.y, posicionCamaraMaxima.valorVectorialEjecucion.y);
-            transform.position = Vector3.Lerp(transform.position, posicionObjetivo, suavizado);
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, posicionObjetivo, suavizado);
         }
     }
 

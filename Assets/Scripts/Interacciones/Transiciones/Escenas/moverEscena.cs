@@ -160,7 +160,6 @@ public class moverEscena : MonoBehaviour
             objetoTextoEscena.SetActive(true);
             textoEscena.text = estadoCambioEscena.nombreTextoCuartoEjecucion;
             textoEscenaAnimator.Play("Mostrar Texto");
-            estadoCambioEscena.cambieEscenaEjecucion = false;
             estadoCambioEscena.nombreTextoCuartoEjecucion = "";
             estadoCambioEscena.muestraTextoEjecucion = false;
             yield return new WaitForSeconds(mostrarTextoClip.length);
@@ -169,6 +168,7 @@ public class moverEscena : MonoBehaviour
             yield return new WaitForSeconds(ocultarTextoClip.length);
             objetoTextoEscena.SetActive(false);
         }
+        estadoCambioEscena.cambieEscenaEjecucion = false;
     }
 
     private IEnumerator cambioEscenaOut()

@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 691990550}
   - component: {fileID: 1398895126468970418}
   - component: {fileID: 1398895126468970417}
+  - component: {fileID: 1403516583132737536}
   m_Layer: 0
   m_Name: GolpeAbajo
   m_TagString: ArmaObjetoPlayer
@@ -292,10 +293,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 2
-  tiempoAplicarFuerza: 0.3
-  vidaRestar: 1
-  tiempoEntreGolpes: 0.1
+  fuerza: 1
+  tiempoAplicarFuerza: 0.1
+  colisionDetectadaTag: Enemigo
+--- !u!114 &1403516583132737536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895126468970420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 1
+  colisionDetectadaTag: Enemigo
 --- !u!1 &1398895126709478738
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +323,6 @@ GameObject:
   - component: {fileID: 1398895126709478748}
   - component: {fileID: 1398895126709478736}
   - component: {fileID: 1398895126709478737}
-  - component: {fileID: 1398895126709478747}
   - component: {fileID: 1398895126709478749}
   - component: {fileID: 1759186388}
   - component: {fileID: 1441881193787301406}
@@ -339,6 +352,7 @@ Transform:
   - {fileID: 1264945169}
   - {fileID: 3161165867578292050}
   - {fileID: 7345132060756847948}
+  - {fileID: 8003157536540551988}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -459,32 +473,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.50156426, y: 0.28526688}
   m_EdgeRadius: 0
---- !u!61 &1398895126709478747
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398895126709478738}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.15285063}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.62742615, y: 0.93959904}
-  m_EdgeRadius: 0
 --- !u!114 &1398895126709478749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,21 +487,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estadoActualPlayer: 0
   velocidad: 4
-  vidaActualPlayer: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
-  eventoVidaJugador: {fileID: 11400000, guid: ea1b00a7cd78273419b168b303342e10, type: 2}
   reciveGolpePlayer: {fileID: 11400000, guid: a22c4645bb8328747ae3d66b9a5b2bc9, type: 2}
-  posicionPlayerMapa: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
-  inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
+  posicionPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   spriteObjetoMostrar: {fileID: 1264945170}
+  inventariopPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
   estadoCambioEscenas: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   proyectil: {fileID: 3471983792348979942, guid: 9a4b6248702aa724fa70375e2b3dc671, type: 3}
   decrementaMagia: {fileID: 11400000, guid: b06e932502f2e19428ce95955cf150d7, type: 2}
-  arco: {fileID: 11400000, guid: 10c280cdbc6950c47ba329be250292c9, type: 2}
+  magiaPlayer: {fileID: 11400000, guid: 63f122bcfafa86641a2fe8205c8309df, type: 2}
+  arco: {fileID: 11400000, guid: b66fdf8472482134d88c1b6d8b2fdd1f, type: 2}
   colorFlash: {r: 1, g: 0, b: 0, a: 0.5882353}
   colorNormal: {r: 1, g: 1, b: 1, a: 1}
   tiempoFlash: 0.08
   numeroFlash: 4
-  colisionTrigger: {fileID: 1398895126709478747}
+  colisionTrigger: {fileID: 3383634834918515800}
   spritePlayer: {fileID: 1398895126709478751}
 --- !u!114 &1759186388
 MonoBehaviour:
@@ -568,6 +555,7 @@ GameObject:
   - component: {fileID: 558398525}
   - component: {fileID: 1398895126822302275}
   - component: {fileID: 1398895126822302274}
+  - component: {fileID: 2053339627388650225}
   m_Layer: 0
   m_Name: GolpeArriba
   m_TagString: ArmaObjetoPlayer
@@ -655,10 +643,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 2
-  tiempoAplicarFuerza: 0.3
-  vidaRestar: 1
-  tiempoEntreGolpes: 0.1
+  fuerza: 1
+  tiempoAplicarFuerza: 0.1
+  colisionDetectadaTag: Enemigo
+--- !u!114 &2053339627388650225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895126822302277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 1
+  colisionDetectadaTag: Enemigo
 --- !u!1 &1398895126840300046
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +672,7 @@ GameObject:
   - component: {fileID: 1679227120}
   - component: {fileID: 1398895126840300044}
   - component: {fileID: 1398895126840300043}
+  - component: {fileID: 7145101178715244573}
   m_Layer: 0
   m_Name: GolpeDerecha
   m_TagString: ArmaObjetoPlayer
@@ -758,10 +760,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 2
-  tiempoAplicarFuerza: 0.3
-  vidaRestar: 1
-  tiempoEntreGolpes: 0.1
+  fuerza: 1
+  tiempoAplicarFuerza: 0.1
+  colisionDetectadaTag: Enemigo
+--- !u!114 &7145101178715244573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895126840300046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 1
+  colisionDetectadaTag: Enemigo
 --- !u!1 &1398895127746540363
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +789,7 @@ GameObject:
   - component: {fileID: 305910461}
   - component: {fileID: 1398895127746540361}
   - component: {fileID: 1398895127746540360}
+  - component: {fileID: 2909407458596950167}
   m_Layer: 0
   m_Name: GolpeIzquierda
   m_TagString: ArmaObjetoPlayer
@@ -861,10 +877,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 2
-  tiempoAplicarFuerza: 0.3
-  vidaRestar: 1
-  tiempoEntreGolpes: 0.1
+  fuerza: 1
+  tiempoAplicarFuerza: 0.1
+  colisionDetectadaTag: Enemigo
+--- !u!114 &2909407458596950167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895127746540363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 1
+  colisionDetectadaTag: Enemigo
 --- !u!1 &3644980980112193712
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,6 +976,83 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6582588203709584349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8003157536540551988}
+  - component: {fileID: 3383634834918515800}
+  - component: {fileID: 5795056107401489821}
+  m_Layer: 0
+  m_Name: sistemaVida
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8003157536540551988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582588203709584349}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1398895126709478750}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &3383634834918515800
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582588203709584349}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0019425452, y: -0.028527886}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.802255, y: 1.1338532}
+  m_EdgeRadius: 0
+--- !u!114 &5795056107401489821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582588203709584349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73021a9ba0374ff4d87bbc787192cc14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaMaxima: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
+  vidaActual: 0
+  efectoMuerte: {fileID: 0}
+  muerteClip: {fileID: 0}
+  miLoot: {fileID: 0}
+  objeto: {fileID: 1398895126709478738}
+  eventoVidaPlayer: {fileID: 11400000, guid: ea1b00a7cd78273419b168b303342e10, type: 2}
 --- !u!1 &6805978223701107724
 GameObject:
   m_ObjectHideFlags: 0

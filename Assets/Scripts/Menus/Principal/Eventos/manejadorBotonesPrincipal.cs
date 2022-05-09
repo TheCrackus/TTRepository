@@ -21,7 +21,7 @@ public class manejadorBotonesPrincipal : MonoBehaviour
         return pulseBoton;
     }
 
-    public void setPulseBoton(bool pulseBoton) 
+    public void setPulseBoton(bool pulseBoton)
     {
         this.pulseBoton = pulseBoton;
     }
@@ -42,7 +42,7 @@ public class manejadorBotonesPrincipal : MonoBehaviour
 
     public void botonCierraSesion()
     {
-        if (!pulseBoton) 
+        if (!pulseBoton)
         {
             conexion.cierraSesion();
             pulseBoton = true;
@@ -50,7 +50,7 @@ public class manejadorBotonesPrincipal : MonoBehaviour
         }
     }
 
-    public void botonEliminaUsuario() 
+    public void botonEliminaUsuario()
     {
         if (!pulseBoton)
         {
@@ -60,7 +60,7 @@ public class manejadorBotonesPrincipal : MonoBehaviour
         }
     }
 
-    public void botonModificaUsuario() 
+    public void botonModificaUsuario()
     {
         if (!pulseBoton)
         {
@@ -70,14 +70,23 @@ public class manejadorBotonesPrincipal : MonoBehaviour
         }
     }
 
-    public void botonNuevaPartida() 
+    public void botonNuevaPartida()
     {
         if (!pulseBoton)
         {
             pulseBoton = true;
-            datos.reiniciaObjetosScriptable();
-            estadoCambioEscena.escenaActualEjecucion = escenaLaberintos;
+            //datos.reiniciaObjetosScriptable();
+            //datos.guardaObjetosScriptable();
             StartCoroutine(cambioEscena(escenaLaberintos));
+        }
+    }
+
+    public void botonContinuarPartida() 
+    {
+        if (!pulseBoton)
+        {
+            pulseBoton = true;
+            
         }
     }
 

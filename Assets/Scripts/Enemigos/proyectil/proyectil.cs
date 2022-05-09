@@ -13,12 +13,12 @@ public class proyectil : MonoBehaviour
     [Header("El RigidBody que pertenece al proyectil")]
     public Rigidbody2D proyectilRigidBody;
 
-    void Start()
+    public virtual void Start()
     {
         contadorVidaProyectil = tiempoVidaProyectil;
     }
 
-    void Update()
+    public virtual void Update()
     {
         contadorVidaProyectil -= Time.deltaTime;
         if (contadorVidaProyectil <= 0) 
@@ -27,25 +27,15 @@ public class proyectil : MonoBehaviour
         }
     }
 
-    public void arroja(Vector2 direccionInicial) 
+    public virtual void arroja(Vector2 direccionInicial) 
     {
         proyectilRigidBody.velocity = direccionInicial * velocidadMovimiento;
     }
 
-    public virtual void OnTriggerEnter2D(Collider2D colisionDetectada) 
+    public virtual void dispara(Vector2 direccionInicial, Vector3 rotacion)
     {
-        if (colisionDetectada.gameObject.CompareTag("Player")
-            && colisionDetectada.isTrigger)
-        {
-            Destroy(gameObject);
-        }
-        else 
-        {
-            if (!colisionDetectada.gameObject.CompareTag("Enemigo")
-                && !colisionDetectada.isTrigger)
-            {
-                Destroy(gameObject);
-            }
-        }
+        Debug.Log(" direccion: "+direccionInicial+" rotacion: "+rotacion);
+        proyectilRigidBody.velocity = direccionInicial * velocidadMovimiento;
+        gameObject.transform.rotation = Quaternion.Euler(rotacion);
     }
 }

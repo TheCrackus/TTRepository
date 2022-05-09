@@ -26,10 +26,10 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
                     || getEstadoActualEnemigo() == EnemyState.durmiendo
                     || getEstadoActualEnemigo() == EnemyState.ninguno))
             {
-                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, velocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
                 Vector3 refAnimacion = getObjetivoPerseguir().position - vectorTemporal;
                 Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
-                getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * velocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
             }
         }
         else
@@ -38,10 +38,10 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
             {
                 if (Vector3.Distance(gameObject.transform.position, camino[puntoActual].position) > distanciaAlPunto)
                 {
-                    Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, camino[puntoActual].position, velocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                    Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, camino[puntoActual].position, getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
                     Vector3 refAnimacion = camino[puntoActual].position - vectorTemporal;
                     Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
-                    getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * velocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                    getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
                 }
                 else
                 {

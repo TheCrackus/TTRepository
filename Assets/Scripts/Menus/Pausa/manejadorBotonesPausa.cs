@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class manejadorBotonesPausa : MonoBehaviour
 {
     private bool estaPausado;
-    [Header("El panel que contiene el menu de pausa")]
+    [Header("Interfaz grafica que contiene el menu de pausa")]
     public GameObject panelPausa;
+    [Header("Interfaz grafica que contiene el inventario")]
+    public GameObject panelInventario;
     [Header("Nombre de la escena con el menu principal")]
     public string escenaMenuPrincipal;
     public datosJuego datos;
@@ -23,23 +25,47 @@ public class manejadorBotonesPausa : MonoBehaviour
     {
         if (Input.GetButtonDown("Pausa")) 
         {
-            abreCierraMenuPausa();
+            if (Input.GetButtonDown("Pausa") && panelInventario.activeInHierarchy)
+            {
+                abreCierraInventario();
+            }
+            else 
+            {
+                if (Input.GetButtonDown("Pausa")) 
+                {
+                    abreCierraMenuPausa();
+                }
+            }
+        }
+        else 
+        {
+            if (Input.GetButtonDown("Inventario")) 
+            {
+                abreCierraInventario();
+            }
         }
     }
 
     public void abreCierraMenuPausa() 
     {
         estaPausado = !estaPausado;
+        panelPausa.SetActive(estaPausado);
         if (estaPausado)
         {
-            panelPausa.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
-            panelPausa.SetActive(false);
             Time.timeScale = 1f;
         }
+    }
+
+    public void abreCierraInventario()
+    {
+        manejadorBotonesInventario manejadorInventario = panelInventario.GetComponent<manejadorBotonesInventario>();
+        manejadorInventario.activaBotonEnviaTexto("", false, null);
+        estaPausado = !estaPausado;
+        panelInventario.SetActive(estaPausado);
     }
 
     public void botonRegresar() 
@@ -49,9 +75,19 @@ public class manejadorBotonesPausa : MonoBehaviour
 
     public void botonMenuPrincipal()
     {
-        datos.cargaObjetosScriptable();
         estadoCambioEscena.escenaActualEjecucion = escenaMenuPrincipal;
         StartCoroutine(cargaEscena(escenaMenuPrincipal));
+    }
+
+    public void botonInventario() 
+    {
+        abreCierraMenuPausa();
+        abreCierraInventario();
+    }
+
+    public void botonReiniciaGuardado() 
+    {
+        datos.reiniciaObjetosScriptable();
     }
 
     private IEnumerator cargaEscena(string nombreEscena)

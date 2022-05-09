@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6225800779530228758}
   - component: {fileID: -8257854426489876318}
   - component: {fileID: 8231544522238110986}
+  - component: {fileID: 3767406484110123865}
   - component: {fileID: 1932832591663576746}
   m_Layer: 0
   m_Name: Flecha
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1508288005
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9f5ba6a4c2b229444b7fe736ebd1b58d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -147,8 +148,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuerza: 1
   tiempoAplicarFuerza: 0.1
-  vidaRestar: 0.5
-  tiempoEntreGolpes: 0.1
+  colisionDetectadaTag: Enemigo
+--- !u!114 &3767406484110123865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471983792348979942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 1
+  colisionDetectadaTag: Enemigo
 --- !u!114 &1932832591663576746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e728e1f2d9773e644b0739819f3abe65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rapidez: 6
-  rigidbodyFlecha: {fileID: 6225800779530228758}
-  tiempoVidaFlecha: 2
+  velocidadMovimiento: 5
+  tiempoVidaProyectil: 3
+  proyectilRigidBody: {fileID: 6225800779530228758}
   costoMagia: 1

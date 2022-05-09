@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class manejadorVentanaEmergente : MonoBehaviour
 {
     private float contadorTiempoCerrar;
     private bool empiezaContador;
-    public Text textoVentanaEmergente;
+    public TextMeshProUGUI textoVentanaEmergente;
     public float tiempoCerrar;
 
     void Awake()

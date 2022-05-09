@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 782428628100432219}
   - component: {fileID: 782428628100432217}
   - component: {fileID: 782428628100432218}
+  - component: {fileID: 7805580910430417572}
   m_Layer: 0
   m_Name: GolpeIzquierda
   m_TagString: ArmaObjetoEnemigo
@@ -99,10 +100,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 2
-  tiempoAplicarFuerza: 0.3
-  vidaRestar: 1
-  tiempoEntreGolpes: 0.1
+  fuerza: 1
+  tiempoAplicarFuerza: 0.1
+  colisionDetectadaTag: Player
+--- !u!114 &7805580910430417572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782428628100432165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 2
+  colisionDetectadaTag: Player
 --- !u!1 &782428628429104405
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +129,7 @@ GameObject:
   - component: {fileID: 782428628429104395}
   - component: {fileID: 782428628429104393}
   - component: {fileID: 782428628429104394}
+  - component: {fileID: 3171023955796453786}
   m_Layer: 0
   m_Name: GolpeDerecha
   m_TagString: ArmaObjetoEnemigo
@@ -202,10 +217,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 2
-  tiempoAplicarFuerza: 0.3
-  vidaRestar: 1
-  tiempoEntreGolpes: 0.1
+  fuerza: 1
+  tiempoAplicarFuerza: 0.1
+  colisionDetectadaTag: Player
+--- !u!114 &3171023955796453786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782428628429104405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 2
+  colisionDetectadaTag: Player
 --- !u!1 &782428628798917721
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +246,7 @@ GameObject:
   - component: {fileID: 782428628798917727}
   - component: {fileID: 782428628798917725}
   - component: {fileID: 782428628798917726}
+  - component: {fileID: 1056419045504042699}
   m_Layer: 0
   m_Name: GolpeAbajo
   m_TagString: ArmaObjetoEnemigo
@@ -305,10 +334,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 2
-  tiempoAplicarFuerza: 0.3
-  vidaRestar: 1
-  tiempoEntreGolpes: 0.1
+  fuerza: 1
+  tiempoAplicarFuerza: 0.1
+  colisionDetectadaTag: Player
+--- !u!114 &1056419045504042699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782428628798917721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 2
+  colisionDetectadaTag: Player
 --- !u!1 &782428629345166897
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +363,7 @@ GameObject:
   - component: {fileID: 782428629345166903}
   - component: {fileID: 782428629345166901}
   - component: {fileID: 782428629345166902}
+  - component: {fileID: 6236864798838596751}
   m_Layer: 0
   m_Name: GolpeArriba
   m_TagString: ArmaObjetoEnemigo
@@ -408,10 +451,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f185144d7c73864abc56c8aaeab171b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuerza: 2
-  tiempoAplicarFuerza: 0.3
-  vidaRestar: 1
-  tiempoEntreGolpes: 0.1
+  fuerza: 1
+  tiempoAplicarFuerza: 0.1
+  colisionDetectadaTag: Player
+--- !u!114 &6236864798838596751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782428629345166897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a04faa9862bba44a5bcfa8fefafcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 2
+  colisionDetectadaTag: Player
 --- !u!1 &782428629808839180
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +480,6 @@ GameObject:
   - component: {fileID: 782428629808839171}
   - component: {fileID: 782428629808839175}
   - component: {fileID: 782428629808839168}
-  - component: {fileID: 782428629808839169}
   - component: {fileID: 782428629808839174}
   - component: {fileID: 782428629808839173}
   m_Layer: 0
@@ -449,6 +504,7 @@ Transform:
   - {fileID: 782428628429104404}
   - {fileID: 782428628100432164}
   - {fileID: 782428629345166896}
+  - {fileID: 3788128562810261811}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -550,32 +606,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.25}
   m_EdgeRadius: 0
---- !u!61 &782428629808839169
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782428629808839180}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 1.15}
-  m_EdgeRadius: 0
 --- !u!95 &782428629808839174
 Animator:
   serializedVersion: 3
@@ -608,15 +638,89 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   estadoActualEnemigo: 0
-  vidaMaxima: {fileID: 11400000, guid: ec65bbf1cd3b01d4d9bc199020538ba3, type: 2}
+  contadorEsperaMovimiento: 0
+  puedoMoverme: 0
   nombreEnemigo: Ogro
   velocidadMovimientoEnemigo: 1
   posicionOriginal: {x: 0, y: 0, z: 0}
-  efectoMuerteEnemigo: {fileID: 755099225653218745, guid: 5086d25ea712d8b4f88bca10f2db084f, type: 3}
-  muerteEnemigoClip: {fileID: 7400000, guid: ce3f48e2b1ff8b848aec99a2e3bea931, type: 2}
-  estadoEnemigosCuarto: {fileID: 0}
-  miLoot: {fileID: 11400000, guid: e97340749cc8b274988a1fbae0c9e64b, type: 2}
   tiempoEsperaMovimiento: 1
-  miPosicionMapa: {fileID: 782428629808839180}
+  posicionMapa: {fileID: 782428629808839180}
   radioPersecucion: 5
   radioAtaque: 1
+--- !u!1 &3307744504249019282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3788128562810261811}
+  - component: {fileID: 7518157128956035801}
+  - component: {fileID: 7056351348184488134}
+  m_Layer: 0
+  m_Name: SistemaVida
+  m_TagString: Enemigo
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3788128562810261811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307744504249019282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 782428629808839170}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7518157128956035801
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307744504249019282}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 1.15}
+  m_EdgeRadius: 0
+--- !u!114 &7056351348184488134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307744504249019282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c86f0cceac09b48a8a3b14a033a8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaMaxima: {fileID: 11400000, guid: ec65bbf1cd3b01d4d9bc199020538ba3, type: 2}
+  vidaActual: 0
+  efectoMuerte: {fileID: 755099225653218745, guid: 5086d25ea712d8b4f88bca10f2db084f, type: 3}
+  muerteClip: {fileID: 7400000, guid: ce3f48e2b1ff8b848aec99a2e3bea931, type: 2}
+  miLoot: {fileID: 11400000, guid: e97340749cc8b274988a1fbae0c9e64b, type: 2}
+  objeto: {fileID: 782428629808839180}
+  estadoEnemigosCuarto: {fileID: 0}

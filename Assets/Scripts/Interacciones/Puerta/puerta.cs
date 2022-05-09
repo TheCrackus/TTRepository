@@ -11,30 +11,44 @@ public enum tipoPuerta
 
 public class puerta : interactuador
 {
-    [Header("Variables de la puerta")]
-    public tipoPuerta tipoPuerta;
-    public bool estaAbierta;
-    public inventario inventarioPlayer;
-    private SpriteRenderer puertaSprite;
-    private BoxCollider2D[] puertaColliders;
+    [Header("El manejador de sprites de este objeto")]
+    [SerializeField] private SpriteRenderer puertaSpriteRenderer;
+    [Header("Las colisiones de esta puerta")]
+    [SerializeField] private BoxCollider2D[] puertaColliders;
+    [Header("Que tipo de puerta soy?")]
+    [SerializeField] private tipoPuerta tipoPuerta;
+    [Header("Estoy abierta?")]
+    [SerializeField] valorBooleano estaAbierta;
+    [Header("El inventario general del Player")]
+    [SerializeField] private listaInventario inventariopPlayerItems;
+    [Header("Objeto que representa la llave corta")]
+    [SerializeField] private inventarioItem llaveCorta;
+    
 
     void Start()
     {
-        puertaSprite = gameObject.GetComponent<SpriteRenderer>();
+        puertaSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         puertaColliders = gameObject.GetComponents<BoxCollider2D>();
+        if (estaAbierta != null) 
+        {
+            if (estaAbierta.valorBooleanoEjecucion) 
+            {
+                abrir();
+            }
+        }
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Interactuar"))
         {
-            if (playerEnRango)
+            if (playerEnRango && tipoPuerta == tipoPuerta.llave)
             {
-                if (playerEnRango && tipoPuerta == tipoPuerta.llave)
+                if (inventariopPlayerItems && llaveCorta)
                 {
-                    if (inventarioPlayer.numeroLlavesEjecucion > 0)
+                    if (inventariopPlayerItems.verififcaItem(llaveCorta))
                     {
-                        inventarioPlayer.numeroLlavesEjecucion--;
+                        llaveCorta.invocaEventoUsaItem();
                         abrir();
                     }
                 }
@@ -44,21 +58,28 @@ public class puerta : interactuador
 
     public void abrir() 
     {
-        puertaSprite.enabled = false;
-        estaAbierta = true;
-        foreach (BoxCollider2D colision in puertaColliders) 
+        if (puertaColliders != null && estaAbierta != null && puertaSpriteRenderer != null) 
         {
-            colision.enabled = false;
+            puertaSpriteRenderer.enabled = false;
+            estaAbierta.valorBooleanoEjecucion = true;
+            foreach (BoxCollider2D colision in puertaColliders)
+            {
+                colision.enabled = false;
+            }
         }
+        
     }
 
     public void cerrar() 
     {
-        puertaSprite.enabled = true;
-        estaAbierta = false;
-        foreach (BoxCollider2D colision in puertaColliders)
+        if (puertaColliders != null && estaAbierta != null && puertaSpriteRenderer != null)
         {
-            colision.enabled = true;
+            puertaSpriteRenderer.enabled = true;
+            estaAbierta.valorBooleanoEjecucion = false;
+            foreach (BoxCollider2D colision in puertaColliders)
+            {
+                colision.enabled = true;
+            }
         }
     }
 }

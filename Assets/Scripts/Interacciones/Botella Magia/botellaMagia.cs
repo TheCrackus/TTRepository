@@ -5,8 +5,10 @@ using UnityEngine;
 public class botellaMagia : incrementoEstadisticas
 {
 
-    [Header("Inventario del jugador")]
-    public inventario inventarioPlayer;
+    [Header("La cantidad de magia que tiene el Player")]
+    public valorFlotante magiaPlayer;
+    [Header("La cantidad maxima de magia que puede tener el Player")]
+    public valorFlotante magiaMaximaPlayer;
     [Header("Cantidad de magia a aumentar")]
     public float magiaAumento;
 
@@ -15,7 +17,11 @@ public class botellaMagia : incrementoEstadisticas
         if (colisionDetectada.gameObject.CompareTag("Player")
             && colisionDetectada.isTrigger) 
         {
-            inventarioPlayer.aumentaMagia(magiaAumento);
+            magiaPlayer.valorFlotanteEjecucion += magiaAumento;
+            if (magiaPlayer.valorFlotanteEjecucion > magiaMaximaPlayer.valorFlotanteEjecucion)
+            {
+                magiaPlayer.valorFlotanteEjecucion = magiaMaximaPlayer.valorFlotanteEjecucion;
+            }
             eventoIncrementoEstadistica.invocaFunciones();
             Destroy(gameObject);
         }

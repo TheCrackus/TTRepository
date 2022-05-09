@@ -1,119 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class interaccionesEmpujeGlobales : MonoBehaviour
 {
-    private float contadorEntreGolpes;
-    private bool puedoGolpear;
-    [Header("Estadisticas globales para atacar")]
-    public float fuerza;
-    public float tiempoAplicarFuerza;
-    public float vidaRestar;
-    [Header("Tiempo antes de volver a golpear")]
-    public float tiempoEntreGolpes;
 
-    void Start()
-    {
-        puedoGolpear = true;
-        contadorEntreGolpes = tiempoEntreGolpes;    
-    }
-
-    void Update()
-    {
-        if (!puedoGolpear) 
-        {
-            contadorEntreGolpes -= Time.deltaTime;
-            if (contadorEntreGolpes <= 0)
-            {
-                puedoGolpear = true;
-                contadorEntreGolpes = tiempoEntreGolpes;
-            }
-        }
-    }
+    [Header("Fuerza de empuje al objetivo")]
+    [SerializeField] private float fuerza;
+    [Header("Tiempo en el que la fuerza sera aplicada")]
+    [SerializeField] private float tiempoAplicarFuerza;
+    [Header("El objetivo para aplicar un empuje")]
+    [SerializeField] private string colisionDetectadaTag;
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        if (puedoGolpear) 
+        if (colisionDetectada.gameObject.CompareTag(colisionDetectadaTag)
+            && colisionDetectada.isTrigger)
         {
-            if (colisionDetectada.gameObject.CompareTag("Rompible")
-            && gameObject.CompareTag("ArmaObjetoPlayer"))
+            Rigidbody2D rigidBodyAfectado = colisionDetectada.gameObject.GetComponentInParent<Rigidbody2D>();
+            if (rigidBodyAfectado != null) 
             {
-                colisionDetectada.GetComponent<jarro>().Romper();
-                puedoGolpear = false;
-            }
-            else
-            {
-                if ((colisionDetectada.gameObject.CompareTag("Enemigo")
-                    && gameObject.CompareTag("ArmaObjetoPlayer"))
-                    ||
-                    (colisionDetectada.gameObject.CompareTag("Player")
-                    && gameObject.CompareTag("Enemigo"))
-                    ||
-                    (colisionDetectada.gameObject.CompareTag("Player")
-                    && gameObject.CompareTag("ProyectilEnemigo"))
-                    ||
-                    (colisionDetectada.gameObject.CompareTag("Player")
-                    && gameObject.CompareTag("ArmaObjetoEnemigo"))
-                    ||
-                    (colisionDetectada.gameObject.CompareTag("Enemigo")
-                    && gameObject.CompareTag("ProyectilPlayer")))
+                Vector3 diferencia = rigidBodyAfectado.transform.position - gameObject.transform.position;
+                diferencia = diferencia.normalized * fuerza;
+                rigidBodyAfectado.DOMove(rigidBodyAfectado.transform.position + diferencia, tiempoAplicarFuerza);
+                if (gameObject.CompareTag("ArmaObjetoPlayer"))
                 {
-                    Rigidbody2D rigidBodyAfectado = colisionDetectada.gameObject.GetComponent<Rigidbody2D>();
-                    if (rigidBodyAfectado != null)
+                    colisionDetectada.gameObject.GetComponentInParent<enemigo>().comienzaEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza);
+                }
+                else
+                {
+                    if (gameObject.CompareTag("Enemigo"))
                     {
-                        if (colisionDetectada.gameObject.CompareTag("Enemigo")
-                            && gameObject.CompareTag("ArmaObjetoPlayer")
-                            && colisionDetectada.isTrigger)
+                        gameObject.GetComponentInParent<enemigo>().setPuedoMoverme(false);
+                        colisionDetectada.gameObject.GetComponentInParent<movimientoPlayer>().comienzaEmpujaPlayer(tiempoAplicarFuerza);
+                    }
+                    else
+                    {
+                        if (gameObject.CompareTag("ProyectilEnemigo"))
                         {
-                            colisionDetectada.gameObject.GetComponent<enemigo>().comienzaEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza, vidaRestar);
-                            puedoGolpear = false;
+                            colisionDetectada.gameObject.GetComponentInParent<movimientoPlayer>().comienzaEmpujaPlayer(tiempoAplicarFuerza);
                         }
                         else
                         {
-                            if (colisionDetectada.gameObject.CompareTag("Player")
-                                && gameObject.CompareTag("Enemigo")
-                                && colisionDetectada.isTrigger)
+                            if (gameObject.CompareTag("ArmaObjetoEnemigo"))
                             {
-                                gameObject.GetComponent<enemigo>().setPuedoMoverme(false);
-                                colisionDetectada.gameObject.GetComponent<movimientoPlayer>().comienzaEmpujaPlayer(tiempoAplicarFuerza, vidaRestar);
-                                puedoGolpear = false;
+                                gameObject.GetComponentInParent<enemigo>().setPuedoMoverme(false);
+                                colisionDetectada.gameObject.GetComponentInParent<movimientoPlayer>().comienzaEmpujaPlayer(tiempoAplicarFuerza);
                             }
                             else
                             {
-                                if (colisionDetectada.gameObject.CompareTag("Player")
-                                    && gameObject.CompareTag("ProyectilEnemigo")
-                                    && colisionDetectada.isTrigger)
+                                if (gameObject.CompareTag("ProyectilPlayer"))
                                 {
-                                    colisionDetectada.gameObject.GetComponent<movimientoPlayer>().comienzaEmpujaPlayer(tiempoAplicarFuerza, vidaRestar);
-                                    puedoGolpear = false;
-                                }
-                                else 
-                                {
-                                    if (colisionDetectada.gameObject.CompareTag("Player")
-                                        && gameObject.CompareTag("ArmaObjetoEnemigo")
-                                        && colisionDetectada.isTrigger)
-                                    {
-                                        gameObject.GetComponentInParent<enemigo>().setPuedoMoverme(false);
-                                        colisionDetectada.gameObject.GetComponent<movimientoPlayer>().comienzaEmpujaPlayer(tiempoAplicarFuerza, vidaRestar);
-                                        puedoGolpear = false;
-                                    }
-                                    else 
-                                    {
-                                        if (colisionDetectada.gameObject.CompareTag("Enemigo")
-                                            && gameObject.CompareTag("ProyectilPlayer")
-                                            && colisionDetectada.isTrigger)
-                                        {
-                                            colisionDetectada.gameObject.GetComponent<enemigo>().comienzaEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza, vidaRestar);
-                                            puedoGolpear = false;
-                                        }
-                                    }
+                                    colisionDetectada.gameObject.GetComponentInParent<enemigo>().comienzaEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza);
                                 }
                             }
                         }
-                        Vector2 diferencia = rigidBodyAfectado.transform.position - gameObject.transform.position;
-                        Vector2 direccion = diferencia.normalized * fuerza;
-                        rigidBodyAfectado.AddForce(direccion, ForceMode2D.Impulse);
                     }
                 }
             }

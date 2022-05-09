@@ -47,7 +47,7 @@ public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
                 {
                     Vector3 vectorTemporal = getObjetivoPerseguir().transform.position - gameObject.transform.position;
                     GameObject proyectilActual = Instantiate(proyectilPiedra, gameObject.transform.position, Quaternion.identity);
-                    proyectilActual.GetComponent<proyectilPiedra>().arroja(vectorTemporal);
+                    proyectilActual.GetComponent<proyectilPiedra>().arroja(vectorTemporal.normalized);
                     puedoDisparar = false;
                 }
                 setEstadoActualEnemigo(EnemyState.caminando);

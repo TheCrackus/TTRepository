@@ -6,15 +6,29 @@ public class contenedorCorazon : incrementoEstadisticas
 {
 
     [Header("Numero de corazones que posee el jugador")]
-    public valorFlotante corazonesMaximos;
+    [SerializeField] private valorFlotante corazonesMaximos;
     [Header("La vida actual del jugador")]
-    public valorFlotante vidaActualPlayer;
+    [SerializeField] private valorFlotante vidaActualPlayer;
+    [Header("Estoy obtenido?")]
+    [SerializeField] private valorBooleano contenedorCorazonObtenido;
+
+    void Start()
+    {
+        if (contenedorCorazonObtenido != null) 
+        {
+            if (contenedorCorazonObtenido.valorBooleanoEjecucion) 
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.gameObject.CompareTag("Player")
             && colisionDetectada.isTrigger) 
         {
+            contenedorCorazonObtenido.valorBooleanoEjecucion = true;
             corazonesMaximos.valorFlotanteEjecucion += 1;
             vidaActualPlayer.valorFlotanteEjecucion = corazonesMaximos.valorFlotanteEjecucion * 2;
             eventoIncrementoEstadistica.invocaFunciones();

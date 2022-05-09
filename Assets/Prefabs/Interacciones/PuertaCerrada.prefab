@@ -175,4 +175,5 @@ MonoBehaviour:
   playerEnRango: 0
   tipoPuerta: 0
   estaAbierta: 0
-  inventarioPlayer: {fileID: 11400000, guid: 9f00523f2db8ef6419e6d2b3677c1305, type: 2}
+  inventariopPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
+  llaveCorta: {fileID: 11400000, guid: c64aa3b966e53e441b95de6c2b8128de, type: 2}
