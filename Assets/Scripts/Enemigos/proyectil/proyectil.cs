@@ -34,7 +34,6 @@ public class proyectil : MonoBehaviour
 
     public virtual void dispara(Vector2 direccionInicial, Vector3 rotacion)
     {
-        Debug.Log(" direccion: "+direccionInicial+" rotacion: "+rotacion);
         proyectilRigidBody.velocity = direccionInicial * velocidadMovimiento;
         gameObject.transform.rotation = Quaternion.Euler(rotacion);
     }

@@ -27,9 +27,9 @@ public enum conexionState
 
 public class conexionWeb : MonoBehaviour
 {
-    private string respuestaServidor;
-    private conexionState estadoActualConexion;
-    public usuario miUsuario;
+    [SerializeField] private string respuestaServidor;
+    [SerializeField] private conexionState estadoActualConexion;
+    [SerializeField] private usuario miUsuario;
 
     public void Start()
     {
@@ -59,6 +59,16 @@ public class conexionWeb : MonoBehaviour
         return estadoActualConexion;
     }
 
+    public void setMiUsuario(usuario miUsuario) 
+    {
+        this.miUsuario = miUsuario;
+    }
+
+    public usuario getMiUsuario() 
+    {
+        return miUsuario;
+    }
+
     public void iniciaSesion(string email, string password) 
     {
         if (estadoActualConexion != conexionState.iniciandoSesion) 
@@ -79,16 +89,23 @@ public class conexionWeb : MonoBehaviour
         {
             respuestaServidor = web.downloadHandler.text;
             Debug.Log(respuestaServidor);
-            miUsuario.datosEjecucion = JsonUtility.FromJson<usuario.datosUsuario>(web.downloadHandler.text);
-            if (miUsuario.datosEjecucion.idJugador == 0)
+            if (respuestaServidor != "ERROR")
             {
-                estadoActualConexion = conexionState.falleIniciarSesionDatos;
+                string[] datos = web.downloadHandler.text.Split('>');
+                miUsuario.datosEjecucion = JsonUtility.FromJson<usuario.datosUsuario>(datos[1]);
+                if (miUsuario.datosEjecucion.idJugador == 0)
+                {
+                    estadoActualConexion = conexionState.falleIniciarSesionDatos;
+                }
+                else
+                {
+                    estadoActualConexion = conexionState.termineIniciarSesion;
+                }
             }
             else 
             {
-                estadoActualConexion = conexionState.termineIniciarSesion;
+                estadoActualConexion = conexionState.falleIniciarSesionDatos;
             }
-            
         }
         else 
         {
@@ -178,7 +195,7 @@ public class conexionWeb : MonoBehaviour
         }
     }
 
-    private IEnumerator modifica(string sobrenombre, string nacimiento, string email, string password)
+    private IEnumerator modifica(string email, string password, string sobrenombre, string nacimiento)
     {
         WWWForm forma = new WWWForm();
         forma.AddField("id_jugador", miUsuario.datosEjecucion.idJugador);

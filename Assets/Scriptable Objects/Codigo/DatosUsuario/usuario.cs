@@ -7,24 +7,6 @@ using UnityEngine;
 public class usuario : ScriptableObject
 {
     [System.Serializable]
-    public struct configuracion
-    {
-        public int volumen;
-        public string resolucion;
-    }
-
-    [System.Serializable]
-    public struct partida
-    {
-        public int id_partida;
-        public int Vida;
-        public int Puntos;
-        public int Enemigos;
-        public int id_punto_control;
-        public string[] Inventario;
-    }
-
-    [System.Serializable]
     public struct logro
     {
         public int nombre;
@@ -39,12 +21,10 @@ public class usuario : ScriptableObject
         public string nacimiento;
         public string mail;
         public string password;
-        public int puntos;
+        public string puntos;
         public int enemigos;
         public int nivelesT;
-        public partida partida;
         public logro[] logros;
-        public configuracion Configuracion;
     }
 
     [Header("Datos usuario iniciales")]
@@ -55,6 +35,6 @@ public class usuario : ScriptableObject
 
     public void reiniciaValores()
     {
-        datosEjecucion = datosIniciales;
+        //datosEjecucion = datosIniciales;
     }
 }

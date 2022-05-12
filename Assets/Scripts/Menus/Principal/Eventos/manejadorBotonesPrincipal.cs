@@ -30,9 +30,9 @@ public class manejadorBotonesPrincipal : MonoBehaviour
     {
         pulseBoton = false;
         conexion = gameObject.GetComponent<conexionWeb>();
-        if (conexion.miUsuario.datosEjecucion.idJugador != 0)
+        if (conexion.getMiUsuario().datosEjecucion.idJugador != 0)
         {
-            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Bienvenido: " + conexion.miUsuario.datosEjecucion.sobrenombre, true);
+            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Bienvenido: " + conexion.getMiUsuario().datosEjecucion.sobrenombre, true);
         }
         else
         {

@@ -23,15 +23,19 @@ public class contenedorCorazon : incrementoEstadisticas
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D colisionDetectada)
+    public override void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
+        base.OnTriggerEnter2D(colisionDetectada);
         if (colisionDetectada.gameObject.CompareTag("Player")
             && colisionDetectada.isTrigger) 
         {
-            contenedorCorazonObtenido.valorBooleanoEjecucion = true;
+            if (contenedorCorazonObtenido) 
+            {
+                contenedorCorazonObtenido.valorBooleanoEjecucion = true;
+            }
             corazonesMaximos.valorFlotanteEjecucion += 1;
             vidaActualPlayer.valorFlotanteEjecucion = corazonesMaximos.valorFlotanteEjecucion * 2;
-            eventoIncrementoEstadistica.invocaFunciones();
+            getEventoIncrementoEstadistica().invocaFunciones();
             Destroy(gameObject);
         }
     }

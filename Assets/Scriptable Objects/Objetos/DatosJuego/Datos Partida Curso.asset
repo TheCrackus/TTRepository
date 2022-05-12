@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1e92c5d6b6cd55e4685891cfc7c09650, type: 2}
   - {fileID: 11400000, guid: 5fcd5a16a80e47c438d385bf349def2b, type: 2}
   - {fileID: 11400000, guid: a32bbfc85bc2821458793334441d56ad, type: 2}
+  - {fileID: 11400000, guid: bac1be29ed319ea4da6943c643f2210e, type: 2}
   - {fileID: 11400000, guid: 57da1b59c4f04654f938ba36ad352e2c, type: 2}
   - {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   - {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
@@ -54,6 +55,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5fcd5a16a80e47c438d385bf349def2b, type: 2}
   - {fileID: 11400000, guid: a32bbfc85bc2821458793334441d56ad, type: 2}
   - {fileID: 11400000, guid: 57da1b59c4f04654f938ba36ad352e2c, type: 2}
+  - {fileID: 11400000, guid: bac1be29ed319ea4da6943c643f2210e, type: 2}
   usuarios:
   - {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
   escenas:

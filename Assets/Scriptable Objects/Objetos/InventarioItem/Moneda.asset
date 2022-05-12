@@ -16,7 +16,7 @@ MonoBehaviour:
   descripcionItem: "\xA1Una moneda!, \xBFDonde podr\xEDa usar esto?..."
   imagenItem: {fileID: -6998631668141411158, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
   cantidadItem: 0
-  esUsabe: 0
+  esUsable: 0
   esUnico: 0
   mostrarItem: 0
   eventoUsaItem:

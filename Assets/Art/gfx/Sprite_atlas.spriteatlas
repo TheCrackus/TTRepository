@@ -1488,6 +1488,15 @@ SpriteAtlas:
   - {fileID: -1466947835845212873, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
   - {fileID: 21300000, guid: 4d6bb695ec8e3594ca56b543d9213d1a, type: 3}
   - {fileID: 21300000, guid: 46f49bd546884a34bb1b890a73b71045, type: 3}
+  - {fileID: 2515199229311499541, guid: f0bde027bd5834449ba9a6d56d309e44, type: 3}
+  - {fileID: 2250955099441671600, guid: f0bde027bd5834449ba9a6d56d309e44, type: 3}
+  - {fileID: 767855357453826493, guid: f0bde027bd5834449ba9a6d56d309e44, type: 3}
+  - {fileID: -1848285581465623219, guid: f0bde027bd5834449ba9a6d56d309e44, type: 3}
+  - {fileID: -6248616909273500618, guid: f0bde027bd5834449ba9a6d56d309e44, type: 3}
+  - {fileID: -8525927711094809070, guid: f0bde027bd5834449ba9a6d56d309e44, type: 3}
+  - {fileID: 6302788477290959059, guid: f0bde027bd5834449ba9a6d56d309e44, type: 3}
+  - {fileID: -1059315664915386208, guid: f0bde027bd5834449ba9a6d56d309e44, type: 3}
+  - {fileID: 1680644201780510419, guid: f0bde027bd5834449ba9a6d56d309e44, type: 3}
   - {fileID: -2284584081643799824, guid: 29a4af373355ffc40b30587a834c339e, type: 3}
   - {fileID: -8487411814235573663, guid: 29a4af373355ffc40b30587a834c339e, type: 3}
   - {fileID: 6350279486701005820, guid: 29a4af373355ffc40b30587a834c339e, type: 3}
@@ -4257,6 +4266,15 @@ SpriteAtlas:
   - NPC_test_14
   - Minimap mask
   - White Rabbit
+  - Shadow Deamon 1_5
+  - Shadow Deamon 1_4
+  - Shadow Deamon 1_7
+  - Shadow Deamon 1_6
+  - Shadow Deamon 1_1
+  - Shadow Deamon 1_0
+  - Shadow Deamon 1_3
+  - Shadow Deamon 1_2
+  - Shadow Deamon 1_8
   - RPG_GUI_v1_58
   - RPG_GUI_v1_59
   - RPG_GUI_v1_38

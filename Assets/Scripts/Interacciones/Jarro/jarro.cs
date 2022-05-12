@@ -5,10 +5,17 @@ using UnityEngine;
 public class jarro : MonoBehaviour
 {
 
-    private Animator jarroAnimator;
-    private AnimationClip romperJarroClip;
+    [Header("Manejador de animaciones")]
+    [SerializeField] private Animator jarroAnimator;
+    [Header("Clip cuando el jarro se rompe")]
+    [SerializeField] private AnimationClip romperJarroClip;
+    [Header("Contenedor de un audio a reporducir")]
+    [SerializeField] private GameObject audioEmergente;
+    [Header("Audio cuando se rompa el jarro")]
+    [SerializeField] private AudioSource audioRomperJarron;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioRomperJarron;
 
-    // Start is called before the first frame update
     void Start()
     {
         jarroAnimator = GetComponent<Animator>();
@@ -21,14 +28,20 @@ public class jarro : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void reproduceAudio(AudioSource audio, float velocidad)
     {
-        
+        if (audio)
+        {
+            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
+            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
+            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
+            audioEmergenteTemp.reproduceAudioClick();
+        }
     }
 
-    public void Romper() 
+    public void romperJarro() 
     {
+        reproduceAudio(audioRomperJarron, velocidadAudioRomperJarron);
         jarroAnimator.SetBool("Romper", true);
         StartCoroutine(inhabilita(romperJarroClip.length));
     }
@@ -37,5 +50,14 @@ public class jarro : MonoBehaviour
     {
         yield return new WaitForSeconds(tiempo);
         gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D colisionDetectada)
+    {
+        if (colisionDetectada.gameObject.CompareTag("ArmaObjetoPlayer")
+            && colisionDetectada.isTrigger) 
+        {
+            romperJarro();
+        }
     }
 }

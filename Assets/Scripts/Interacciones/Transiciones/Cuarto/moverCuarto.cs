@@ -39,7 +39,12 @@ public class moverCuarto : MonoBehaviour
     public evento contadorRegresivoInicia;
     public evento contadorRegresivoDeten;
     public evento contadorRegresivoReinicia;
-
+    [Header("Objeto con audio generico")]
+    [SerializeField] private GameObject audioEmergente;
+    [Header("Audio de la transicion")]
+    [SerializeField] private AudioSource audioTransicion;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioTransicion;
 
     public void Start()
     {
@@ -76,13 +81,22 @@ public class moverCuarto : MonoBehaviour
         }
     }
 
+    public void reproduceAudio(AudioSource audio, float velocidad)
+    {
+        if (audio)
+        {
+            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
+            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
+            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
+            audioEmergenteTemp.reproduceAudioClick();
+        }
+    }
+
     public void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.gameObject.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
-            movP.setEstadoActualPlayer(PlayerState.interactuando);
             if (comienzaContador)
             {
                 contadorRegresivoInicia.invocaFunciones();
@@ -101,6 +115,10 @@ public class moverCuarto : MonoBehaviour
 
     public IEnumerator cambioCuarto(GameObject player) 
     {
+        reproduceAudio(audioTransicion, velocidadAudioTransicion);
+        movimientoPlayer movP = player.GetComponent<movimientoPlayer>();
+        movP.setEstadoPlayer(estadoGenerico.transicionando);
+
         objetoPanel.SetActive(true);
         panelAnimator.Play("FadeOut");
         yield return new WaitForSeconds(fadeOutClip.length);
@@ -117,6 +135,7 @@ public class moverCuarto : MonoBehaviour
         posicionCamara.valorVectorialEjecucion = movCam.gameObject.transform.position;
         yield return new WaitForSeconds(1f);
 
+        reproduceAudio(audioTransicion, velocidadAudioTransicion);
         panelAnimator.Play("FadeIn");
         yield return new WaitForSeconds(fadeInClip.length);
 
@@ -125,7 +144,7 @@ public class moverCuarto : MonoBehaviour
         {
             contadorRegresivoInicia.invocaFunciones();
         }
-        player.GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.ninguno);
+        player.GetComponent<movimientoPlayer>().setEstadoPlayer(estadoGenerico.ninguno); ;
         if (debeMostrarTexto)
         {
 

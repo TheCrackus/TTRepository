@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367150f06767db74a82f12e9c6007dd1, type: 3}
   m_Name: Posicion Camara Maxima
   m_EditorClassIdentifier: 
-  valorVectorialInicial: {x: 14.5, y: -6, z: -10}
-  valorVectorialEjecucion: {x: 14.5, y: -6, z: -10}
+  valorVectorialInicial: {x: 14.3, y: -6, z: -10}
+  valorVectorialEjecucion: {x: 14.3, y: -6, z: -10}

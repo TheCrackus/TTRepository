@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1508288005
-  m_SortingLayer: 3
+  m_SortingLayerID: -1561609363
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2757298984738394219, guid: 77b307f4858ba0846851d171e4fe4846, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -183,6 +183,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   simboloActivoDesactivo: {fileID: 11400000, guid: 5aa15c8b7adddd24ebf64699d2ca3bc2, type: 2}
   playerEnRango: 0
+  objetoContenedorTextoDialogos: {fileID: 0}
+  textoDialogos: {fileID: 0}
+  dialogo: "\xA1Todos mis amigos ahora se esconden en troncos! Estoy asustado\u2026 "
+  audioEmergente: {fileID: 0}
+  audioAbrirDialogo: {fileID: 0}
+  velocidadAudioAbrirDialogo: 0
+  audioCerrarDialogo: {fileID: 0}
+  velocidadAudioCerrarDialogo: 0
   velocidad: 2
   colisionLimite: {fileID: 5137242892932707741}
   tiempoMovimientoMaximo: 5

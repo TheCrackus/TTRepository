@@ -25,6 +25,20 @@ public class cofre : interactuador
     [SerializeField] private listaInventario inventariopPlayerItems;
     [Header("El item a agregar al inventario")]
     [SerializeField] private inventarioItem itemAgrgarInventario;
+    [Header("Objeto con audio generico")]
+    [SerializeField] private GameObject audioEmergente;
+    [Header("Audio al abrir el cofre")]
+    [SerializeField] private AudioSource audioAbrirCofre;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioAbrirCofre;
+    [Header("Audio al abrir el dialogo")]
+    [SerializeField] private AudioSource audioAbrirDialogo;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioAbrirDialogo;
+    [Header("Audio al cerrar el dialogo")]
+    [SerializeField] private AudioSource audioCerrarDialogo;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioCerrarDialogo;
 
 
     void Start()
@@ -41,7 +55,7 @@ public class cofre : interactuador
     void Update()
     {
         if (Input.GetButtonDown("Interactuar") 
-            && playerEnRango 
+            && getPlayerEnRango() 
             && estadoCofre != null
             && itemAgrgarInventario != null
             && objetoContenedorTextoDialogos != null 
@@ -58,8 +72,20 @@ public class cofre : interactuador
         }
     }
 
+    public void reproduceAudio(AudioSource audio, float velocidad)
+    {
+        if (audio)
+        {
+            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
+            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
+            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
+            audioEmergenteTemp.reproduceAudioClick();
+        }
+    }
+
     public void abreCofre() 
     {
+        reproduceAudio(audioAbrirCofre, velocidadAudioAbrirCofre);
         itemAgrgarInventario.mostrarItem = false;
         textoDialogos.text = itemAgrgarInventario.descripcionItem;
         objetoContenedorTextoDialogos.SetActive(true);
@@ -77,7 +103,7 @@ public class cofre : interactuador
         }
         itemAgrgarInventario.mostrarItem = true;
         muestraObjeto.invocaFunciones();
-        simboloActivoDesactivo.invocaFunciones();
+        getSimboloActivoDesactivo().invocaFunciones();
         cofreAbierto = true;
         estadoCofre.valorBooleanoEjecucion = true;
         cofreAnimator.SetBool("Abrir", true);
@@ -89,7 +115,7 @@ public class cofre : interactuador
             textoDialogos.text = "";
             objetoContenedorTextoDialogos.SetActive(false);
             muestraObjeto.invocaFunciones();
-            simboloActivoDesactivo.invocaFunciones();
+            getSimboloActivoDesactivo().invocaFunciones();
             cofreVacio = true;
         }
         else 
@@ -97,11 +123,13 @@ public class cofre : interactuador
             if (objetoContenedorTextoDialogos.activeInHierarchy)
             {
                 objetoContenedorTextoDialogos.SetActive(false);
+                reproduceAudio(audioCerrarDialogo, velocidadAudioCerrarDialogo);
             }
             else 
             {
                 textoDialogos.text = "Un cofre vacío...";
                 objetoContenedorTextoDialogos.SetActive(true);
+                reproduceAudio(audioAbrirDialogo, velocidadAudioAbrirDialogo);
             }
         }
     }
@@ -112,8 +140,8 @@ public class cofre : interactuador
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            simboloActivoDesactivo.invocaFunciones();
-            playerEnRango = false;
+            getSimboloActivoDesactivo().invocaFunciones();
+            setPlayerEnRango(false);
             textoDialogos.text = "";
             objetoContenedorTextoDialogos.SetActive(false);
         }

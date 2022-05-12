@@ -16,7 +16,7 @@ MonoBehaviour:
   descripcionItem: "Destella luz m\xE1gica..."
   imagenItem: {fileID: 21300000, guid: 111d325d14b557a488272dfa6847e56f, type: 3}
   cantidadItem: 0
-  esUsabe: 1
+  esUsable: 1
   esUnico: 0
   mostrarItem: 0
   eventoUsaItem:

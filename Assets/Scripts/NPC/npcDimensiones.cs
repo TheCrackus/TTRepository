@@ -48,7 +48,7 @@ public class npcDimensiones : controladorDialogos
                 contadorMovimiento = Random.Range(tiempoMovimientoMinimo, tiempoMovimientoMaximo); ;
                 enMovimiento = false;
             }
-            if (!playerEnRango)
+            if (!getPlayerEnRango())
             {
                 mueve();
             }

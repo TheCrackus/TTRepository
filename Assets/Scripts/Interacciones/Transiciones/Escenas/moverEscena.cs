@@ -7,49 +7,98 @@ using TMPro;
 
 public class moverEscena : MonoBehaviour
 {
-    private GameObject objetoPanel;
-    private Animator panelAnimator;
-    private AnimationClip fadeOutClip;
-    private AnimationClip fadeInClip;
-    private GameObject objetoTextoEscena;
-    private TextMeshProUGUI textoEscena;
-    private Animator textoEscenaAnimator;
-    private AnimationClip mostrarTextoClip;
-    private AnimationClip ocultarTextoClip;
-    private GameObject nCanvas;
-    private GameObject pCanvas;
+    [Header("Panel que activa efecto")]
+    [SerializeField] private GameObject objetoPanel;
+    [Header("Manejador del animador del panel")]
+    [SerializeField] private Animator panelAnimator;
+    [Header("Clip Fade Out")]
+    [SerializeField] private AnimationClip fadeOutClip;
+    [Header("Clip Fade In")]
+    [SerializeField] private AnimationClip fadeInClip;
+    [Header("Contenedor de Texto")]
+    [SerializeField] private GameObject objetoTextoEscena;
+    [Header("Texto a mostrar en escena")]
+    [SerializeField] private TextMeshProUGUI textoEscena;
+    [Header("Manejador de animaciones del Texto")]
+    [SerializeField] private Animator textoEscenaAnimator;
+    [Header("Clip para mostrar el texto")]
+    [SerializeField] private AnimationClip mostrarTextoClip;
+    [Header("Clip para ocultar el texto")]
+    [SerializeField] private AnimationClip ocultarTextoClip;
+    [Header("Canvas temporal FadeInOut")]
+    [SerializeField] private GameObject nCanvas;
+    [Header("Canvas del Player")]
+    [SerializeField] private GameObject pCanvas;
     [Header("Escena destino")]
-    public string escenaCarga;
-    [Header("Valores para la posicion del player")]
-    public Vector3 nuevaPosicionPlayer;
-    public valorVectorial posicionPlayer;
+    [SerializeField] private string escenaCarga;
+    [Header("Nueva posicion Player")]
+    [SerializeField] private Vector3 nuevaPosicionPlayer;
+    [Header("Posicion del Player")]
+    [SerializeField] private valorVectorial posicionPlayer;
     [Header("Estado actual de la escena")]
-    public cambioEscena estadoCambioEscena;
+    [SerializeField] private cambioEscena estadoCambioEscena;
     [Header("Panel para animar la transicion")]
-    public GameObject fadeInFadeOutCanvas;
-    [Header("Valores para mostrar el titulo de los escenarios")]
-    public bool debeMostrarTexto;
-    public string nombreMostrar;
-    [Header("Valores para la posicion del player")]
-    public Vector2 direccionPlayer;
-    [Header("Tipo de interaccion con el contador")]
-    public bool comienzaContador;
-    public bool terminaContador;
-    public bool pausaContador;
-    [Header("Valores para ejecutar una transicion")]
-    public string nombreTransicionDestino;
-    public string nombreTransicionActual;
-    [Header("Valores para limites de la camara")]
-    public Vector3 nuevaPosicionCamara;
-    public Vector3 nuevaPosicionCamaraMaxima;
-    public Vector3 nuevaPosicionCamaraMinima;
-    public valorVectorial posicionCamaraMaxima;
-    public valorVectorial posicionCamaraMinima;
-    public valorVectorial posicionCamara;
-    [Header("Eventos para controlar el ontador")]
-    public evento contadorRegresivoInicia;
-    public evento contadorRegresivoDeten;
-    public evento contadorRegresivoReinicia;
+    [SerializeField] private GameObject fadeInFadeOutCanvas;
+    [Header("Debo mostrar un texto al transicionar?")]
+    [SerializeField] private bool debeMostrarTexto;
+    [Header("Valor del Texto a mostrar")]
+    [SerializeField] private string nombreMostrar;
+    [Header("Direccion a la que apunta el Player")]
+    [SerializeField] private Vector2 direccionPlayer;
+    [Header("Debo comenzar un contador?")]
+    [SerializeField] private bool comienzaContador;
+    [Header("Debo terminar un contador?")]
+    [SerializeField] private bool terminaContador;
+    [Header("Debo pausar un contador?")]
+    [SerializeField] private bool pausaContador;
+    [Header("Nombre del objeto que termina una transicion en otra escena")]
+    [SerializeField] private string nombreTransicionDestino;
+    [Header("Nombre del objeto que comienza una transicion")]
+    [SerializeField] private string nombreTransicionActual;
+    [Header("Nueva posicion camara")]
+    [SerializeField] private Vector3 nuevaPosicionCamara;
+    [Header("Nueva posicion camara maxima")]
+    [SerializeField] private Vector3 nuevaPosicionCamaraMaxima;
+    [Header("Nueva posicion camara minima")]
+    [SerializeField] private Vector3 nuevaPosicionCamaraMinima;
+    [Header("Posicion camara maxima")]
+    [SerializeField] private valorVectorial posicionCamaraMaxima;
+    [Header("Posicion camara minima")]
+    [SerializeField] private valorVectorial posicionCamaraMinima;
+    [Header("Posicion camara")]
+    [SerializeField] private valorVectorial posicionCamara;
+    [Header("Evento que comienza un contador")]
+    [SerializeField] private evento contadorRegresivoInicia;
+    [Header("Evento que termina un contador")]
+    [SerializeField] private evento contadorRegresivoDeten;
+    [Header("Evento que reinicia un contador")]
+    [SerializeField] private evento contadorRegresivoReinicia;
+    [Header("Objeto con audio generico")]
+    [SerializeField] private GameObject audioEmergente;
+    [Header("Audio de la transicion")]
+    [SerializeField] private AudioSource audioTransicion;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioTransicion;
+
+    public void Awake()
+    {
+        if (estadoCambioEscena.cambieEscenaEjecucion && estadoCambioEscena.nombreTansicionDestinoEjecucion == nombreTransicionActual)
+        {
+            iniciaCanvas();
+            StartCoroutine(cambioEscenaIn());
+        }
+    }
+
+    public void reproduceAudio(AudioSource audio, float velocidad)
+    {
+        if (audio)
+        {
+            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
+            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
+            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
+            audioEmergenteTemp.reproduceAudioClick();
+        }
+    }
 
     public void iniciaCanvas()
     {
@@ -100,15 +149,6 @@ public class moverEscena : MonoBehaviour
         }
     }
 
-    public void Start()
-    {
-        if (estadoCambioEscena.cambieEscenaEjecucion && estadoCambioEscena.nombreTansicionDestinoEjecucion == nombreTransicionActual)
-        {
-            iniciaCanvas();
-            StartCoroutine(cambioEscenaIn());
-        }
-    }
-
     public void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.gameObject.CompareTag("Player")
@@ -116,32 +156,14 @@ public class moverEscena : MonoBehaviour
         {
             movimientoPlayer movP = colisionDetectada.GetComponent<movimientoPlayer>();
             iniciaCanvas();
-            movP.setEstadoActualPlayer(PlayerState.interactuando);
-            posicionPlayer.valorVectorialEjecucion = nuevaPosicionPlayer;
-            estadoCambioEscena.cambieEscenaEjecucion = true;
-            estadoCambioEscena.nombreTextoCuartoEjecucion = nombreMostrar;
-            estadoCambioEscena.muestraTextoEjecucion = debeMostrarTexto;
-            estadoCambioEscena.direccionPlayerEjecucion = direccionPlayer;
-            estadoCambioEscena.nombreTansicionDestinoEjecucion = nombreTransicionDestino;
-            estadoCambioEscena.escenaActualEjecucion = escenaCarga;
-            posicionCamaraMaxima.valorVectorialEjecucion = nuevaPosicionCamaraMaxima;
-            posicionCamaraMinima.valorVectorialEjecucion = nuevaPosicionCamaraMinima;
-            posicionCamara.valorVectorialEjecucion = nuevaPosicionCamara;
-            if (pausaContador)
-            {
-                contadorRegresivoDeten.invocaFunciones();
-                estadoCambioEscena.pausoContadorEjecucion = true;
-            }
-            if (terminaContador)
-            {
-                contadorRegresivoReinicia.invocaFunciones();
-            }
-            StartCoroutine(cambioEscenaOut());
+            StartCoroutine(cambioEscenaOut(movP));
         }
     }
 
     public IEnumerator cambioEscenaIn()
     {
+        reproduceAudio(audioTransicion, velocidadAudioTransicion);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<movimientoPlayer>().setEstadoPlayer(estadoGenerico.transicionando);
         if (estadoCambioEscena.pausoContadorEjecucion)
         {
             contadorRegresivoInicia.invocaFunciones();
@@ -154,7 +176,7 @@ public class moverEscena : MonoBehaviour
 
         pCanvas.SetActive(true);
         objetoPanel.SetActive(false);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.ninguno);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<movimientoPlayer>().setEstadoPlayer(estadoGenerico.ninguno);
         if (estadoCambioEscena.muestraTextoEjecucion)
         {
             objetoTextoEscena.SetActive(true);
@@ -171,13 +193,34 @@ public class moverEscena : MonoBehaviour
         estadoCambioEscena.cambieEscenaEjecucion = false;
     }
 
-    private IEnumerator cambioEscenaOut()
+    private IEnumerator cambioEscenaOut(movimientoPlayer movP)
     {
+        reproduceAudio(audioTransicion, velocidadAudioTransicion);
+        movP.setEstadoPlayer(estadoGenerico.transicionando);
         pCanvas.SetActive(false);
         objetoPanel.SetActive(true);
         panelAnimator.Play("FadeOut");
         yield return new WaitForSeconds(fadeOutClip.length);
 
+        posicionPlayer.valorVectorialEjecucion = nuevaPosicionPlayer;
+        estadoCambioEscena.cambieEscenaEjecucion = true;
+        estadoCambioEscena.nombreTextoCuartoEjecucion = nombreMostrar;
+        estadoCambioEscena.muestraTextoEjecucion = debeMostrarTexto;
+        estadoCambioEscena.direccionPlayerEjecucion = direccionPlayer;
+        estadoCambioEscena.nombreTansicionDestinoEjecucion = nombreTransicionDestino;
+        estadoCambioEscena.ultimaEscenaGuardadaEjecucion = escenaCarga;
+        posicionCamaraMaxima.valorVectorialEjecucion = nuevaPosicionCamaraMaxima;
+        posicionCamaraMinima.valorVectorialEjecucion = nuevaPosicionCamaraMinima;
+        posicionCamara.valorVectorialEjecucion = nuevaPosicionCamara;
+        if (pausaContador)
+        {
+            contadorRegresivoDeten.invocaFunciones();
+            estadoCambioEscena.pausoContadorEjecucion = true;
+        }
+        if (terminaContador)
+        {
+            contadorRegresivoReinicia.invocaFunciones();
+        }
         AsyncOperation accion = SceneManager.LoadSceneAsync(escenaCarga);
         while (!accion.isDone)
         {

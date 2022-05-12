@@ -1421,6 +1421,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 97123490582020484, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
   m_PrefabInstance: {fileID: 517252638}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &520400314
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1539641537}
+    m_Modifications:
+    - target: {fileID: 920449810654205892, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: de0f394982d00a741b94544da9e63f6e, type: 3}
+    - target: {fileID: 4483599273861943402, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: estadoCofre
+      value: 
+      objectReference: {fileID: 11400000, guid: bac1be29ed319ea4da6943c643f2210e, type: 2}
+    - target: {fileID: 4483599273861943402, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: textoDialogos
+      value: 
+      objectReference: {fileID: 588866751}
+    - target: {fileID: 4483599273861943402, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: itemAgrgarInventario
+      value: 
+      objectReference: {fileID: 11400000, guid: 0498361776c55f842b62cf651e820a20, type: 2}
+    - target: {fileID: 4483599273861943402, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: objetoContenedorTextoDialogos
+      value: 
+      objectReference: {fileID: 5069806313787804699}
+    - target: {fileID: 4483599273861943405, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_Name
+      value: Cofre
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+--- !u!4 &520400315 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4483599273861943407, guid: 0eb569eb24a9d6a4499b8144cf6634c2, type: 3}
+  m_PrefabInstance: {fileID: 520400314}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &536434017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3785,8 +3867,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 676352301, guid: 9fc369bf9a61b594ebed26979ba4c246, type: 3}
       propertyPath: dialogo
-      value: "Despu\xE9s de 5 minutos de estar en el bosque profundo regresaras siempre
-        aqu\xED. "
+      value: "Despu\xE9s de 5 minutos de estar en el bosque profundo regresaras aqu\xED. "
       objectReference: {fileID: 0}
     - target: {fileID: 676352301, guid: 9fc369bf9a61b594ebed26979ba4c246, type: 3}
       propertyPath: textoDialogos
@@ -4307,10 +4388,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1050050515}
     m_Modifications:
     - target: {fileID: 5137242891800638754, guid: d80967323f20d9743a0eb3e455229c57, type: 3}
-      propertyPath: dialogo
-      value: "\xA1Todos mis amigos ahora se esconden en troncos! Estoy asustado\u2026 "
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137242891800638754, guid: d80967323f20d9743a0eb3e455229c57, type: 3}
       propertyPath: textoDialogos
       value: 
       objectReference: {fileID: 588866751}
@@ -4536,6 +4613,7 @@ Transform:
   - {fileID: 270232592}
   - {fileID: 1812009821}
   - {fileID: 1518272993}
+  - {fileID: 520400315}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5906,11 +5984,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3413865011879603947, guid: ccd8c6588fd566b45b79a5cb665ad062, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.75
+      value: 14.3
       objectReference: {fileID: 0}
     - target: {fileID: 3413865011879603947, guid: ccd8c6588fd566b45b79a5cb665ad062, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 3413865011879603947, guid: ccd8c6588fd566b45b79a5cb665ad062, type: 3}
       propertyPath: m_LocalPosition.z

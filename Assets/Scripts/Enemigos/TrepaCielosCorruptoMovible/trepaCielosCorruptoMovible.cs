@@ -19,17 +19,15 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
         if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioPersecucion
             && Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) >= radioAtaque)
         {
-            if (getEstadoActualEnemigo() != EnemyState.estuneado
-                && getEstadoActualEnemigo() != EnemyState.atacando
-                && getEstadoActualEnemigo() != EnemyState.inactivo
-                && (getEstadoActualEnemigo() == EnemyState.caminando
-                    || getEstadoActualEnemigo() == EnemyState.durmiendo
-                    || getEstadoActualEnemigo() == EnemyState.ninguno))
+            if (getEstadoEnemigo() == estadoGenerico.caminando
+                || getEstadoEnemigo() == estadoGenerico.durmiendo
+                || getEstadoEnemigo() == estadoGenerico.ninguno)
             {
                 Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
                 Vector3 refAnimacion = getObjetivoPerseguir().position - vectorTemporal;
                 Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
                 getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
+                setEstadoEnemigo(estadoGenerico.caminando);
             }
         }
         else
@@ -42,6 +40,7 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
                     Vector3 refAnimacion = camino[puntoActual].position - vectorTemporal;
                     Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
                     getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
+                    setEstadoEnemigo(estadoGenerico.caminando);
                 }
                 else
                 {

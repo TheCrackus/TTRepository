@@ -7,19 +7,15 @@ using UnityEngine;
 public class listaInventario : ScriptableObject
 {
 
-    [Header("La lista de objetos por default del Player")]
-    public listaInventarioDefault inventarioDefault;
     [Header("La lista de objetos tipo item")]
     public List<inventarioItem> inventario = new List<inventarioItem>();
+    [Header("Objeto equipado por el player para atacar")]
+    public inventarioItem objetoEquipado;
 
     public void reiniciaValores() 
     {
         inventario.Clear();
-        foreach (inventarioItem item in inventarioDefault.inventario) 
-        {
-            inventario.Add(item);
-            item.cantidadItem = 1;
-        }
+        objetoEquipado = null;
     }
 
     public bool verififcaItem(inventarioItem item) 

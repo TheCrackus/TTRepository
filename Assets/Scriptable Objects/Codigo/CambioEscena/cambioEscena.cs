@@ -31,9 +31,9 @@ public class cambioEscena : ScriptableObject
 
     public string nombreTansicionDestinoEjecucion;
 
-    public string escenaActualInicial;
+    public string ultimaEscenaGuardadaInicial;
 
-    public string escenaActualEjecucion;
+    public string ultimaEscenaGuardadaEjecucion;
 
     public void reiniciaValores()
     {
@@ -43,7 +43,7 @@ public class cambioEscena : ScriptableObject
         direccionPlayerEjecucion = direccionPlayerInicial;
         pausoContadorEjecucion = pausoContadorInicial;
         nombreTansicionDestinoEjecucion = nombreTansicionDestinoInicial;
-        escenaActualEjecucion = escenaActualInicial;
+        ultimaEscenaGuardadaEjecucion = ultimaEscenaGuardadaInicial;
     }
 
 }

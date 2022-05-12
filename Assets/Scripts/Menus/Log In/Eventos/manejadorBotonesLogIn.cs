@@ -6,13 +6,25 @@ using UnityEngine.UI;
 
 public class manejadorBotonesLogIn : MonoBehaviour
 {
-    private conexionWeb conexion;
-    private bool pulseBoton;
-    public InputField emailField;
-    public InputField passwordFiled;
-    public GameObject ventanaEmergente;
-    public string escenaPrincipal;
-    public string escenaRegistra;
+
+    [SerializeField] private conexionWeb conexion;
+    [Header("Pulse un boton de la interfaz?")]
+    [SerializeField] private bool pulseBoton;
+    [SerializeField] private InputField emailField;
+    [SerializeField] private InputField passwordFiled;
+    [SerializeField] private GameObject ventanaEmergente;
+    [SerializeField] private string escenaPrincipal;
+    [SerializeField] private string escenaRegistra;
+    [Header("Contenedor de un audio a reporducir")]
+    [SerializeField] private GameObject audioEmergente;
+    [Header("Audio al abrir una interfaz o presionar un boton")]
+    [SerializeField] private AudioSource audioClickAbrir;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioClickAbrir;
+    [Header("Audio al cerrar una interfaz o presionar un boton")]
+    [SerializeField] private AudioSource audioClickCerrar;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioClickCerrar;
 
     public bool getPulseBoton()
     {
@@ -30,13 +42,25 @@ public class manejadorBotonesLogIn : MonoBehaviour
         conexion = gameObject.GetComponent<conexionWeb>();
     }
 
+    public void reproduceAudio(AudioSource audio, float velocidad)
+    {
+        if (audio)
+        {
+            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
+            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
+            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
+            audioEmergenteTemp.reproduceAudioClick();
+        }
+    }
+
     public void botonIniciaSesion()
     {
         if (!pulseBoton) 
         {
+            reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
             conexion.iniciaSesion(emailField.text.ToString(), passwordFiled.text.ToString());
-            pulseBoton = true;
             StartCoroutine(esperaDatosInicioSesion());
+            pulseBoton = true;
         }
     }
 
@@ -44,8 +68,9 @@ public class manejadorBotonesLogIn : MonoBehaviour
     {
         if (!pulseBoton)
         {
-            pulseBoton = true;
+            reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
             StartCoroutine(cambioEscena(escenaRegistra));
+            pulseBoton = true;
         }
     }
 

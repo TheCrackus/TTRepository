@@ -5,23 +5,24 @@ using UnityEngine;
 public class corazon : incrementoEstadisticas
 {
     [Header("Vida del player")]
-    public valorFlotante vidaPlayer;
+    [SerializeField] private valorFlotante vidaPlayer;
     [Header("Numero de corazones del player")]
-    public valorFlotante contenedorCorazones;
+    [SerializeField] private valorFlotante contenedorCorazones;
     [Header("Incremento de vida para el player")]
-    public float incrementoValorEstadistica;
+    [SerializeField] private float incrementoValorEstadistica;
 
-    private void OnTriggerEnter2D(Collider2D colision)
+    public override void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        if (colision.gameObject.CompareTag("Player") 
-            && colision.isTrigger)
+        base.OnTriggerEnter2D(colisionDetectada);
+        if (colisionDetectada.gameObject.CompareTag("Player") 
+            && colisionDetectada.isTrigger)
         {
             vidaPlayer.valorFlotanteEjecucion += incrementoValorEstadistica;
             if (vidaPlayer.valorFlotanteEjecucion > (contenedorCorazones.valorFlotanteEjecucion * 2f))
             {
                 vidaPlayer.valorFlotanteEjecucion = contenedorCorazones.valorFlotanteEjecucion * 2f;
             }
-            eventoIncrementoEstadistica.invocaFunciones();
+            getEventoIncrementoEstadistica().invocaFunciones();
             Destroy(gameObject);
         }
     }

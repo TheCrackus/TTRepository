@@ -39,7 +39,10 @@ public class manejadorVentanaEmergente : MonoBehaviour
     {
         if (gameObject.activeInHierarchy) 
         {
-            textoVentanaEmergente.text = "Advertencias:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-";
+            if (textoVentanaEmergente) 
+            {
+                textoVentanaEmergente.text = "Advertencias:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-";
+            }
             gameObject.SetActive(false);
         }
     }
@@ -49,12 +52,18 @@ public class manejadorVentanaEmergente : MonoBehaviour
         if (!gameObject.activeInHierarchy)
         {
             gameObject.SetActive(true);
-            textoVentanaEmergente.text = textoMostrar;
+            if (textoVentanaEmergente) 
+            {
+                textoVentanaEmergente.text = textoMostrar;
+            }
             empiezaContador = debeEmpezarContador;
         }
         else 
         {
-            textoVentanaEmergente.text = textoMostrar;
+            if (textoVentanaEmergente) 
+            {
+                textoVentanaEmergente.text = textoMostrar;
+            }
             empiezaContador = debeEmpezarContador;
         }
     }

@@ -315,7 +315,7 @@ public class manejadorBotonesModifica : MonoBehaviour
                             passwordCorrecta = false;
                             msjFormulario += "Tu contraseña nueva no es válida, debe tener al menos 4 caracteres.";
                         }
-                        if (!passwordFieldConf.text.ToString().Equals(conexion.miUsuario.datosEjecucion.password)) 
+                        if (!passwordFieldConf.text.ToString().Equals(conexion.getMiUsuario().datosEjecucion.password)) 
                         {
                             passwordCorrecta = false;
                             msjFormulario += "Tu contraseña actual no es válida, ingresa la correcta.";

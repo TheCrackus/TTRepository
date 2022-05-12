@@ -2,20 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyState 
-{
-    ninguno,
-    caminando,
-    atacando,
-    estuneado,
-    durmiendo,
-    inactivo
-}
-
 public class enemigo : MonoBehaviour
 {
     [Header("El estado en el que se encuentra el enemigo")]
-    [SerializeField] private EnemyState estadoActualEnemigo;
+    [SerializeField] private estadoObjeto estadoEnemigo;
     [Header("Contador auxiliar para volver al movimiento")]
     [SerializeField] private float contadorEsperaMovimiento;
     [Header("Puedo volver al movimiento?")]
@@ -31,17 +21,14 @@ public class enemigo : MonoBehaviour
     [Header("GameObject para la posicion de este objeto")]
     [SerializeField] private GameObject posicionMapa;
 
-    public void setEstadoActualEnemigo(EnemyState estadoActualEnemigo)
+    public void setEstadoEnemigo(estadoGenerico estado)
     {
-        if (this.estadoActualEnemigo != estadoActualEnemigo)
-        {
-            this.estadoActualEnemigo = estadoActualEnemigo;
-        }
+        this.estadoEnemigo.setEstadoActualObjeto(estado);
     }
 
-    public EnemyState getEstadoActualEnemigo()
+    public estadoGenerico getEstadoEnemigo()
     {
-        return estadoActualEnemigo;
+        return estadoEnemigo.getEstadoActualObjeto();
     }
 
     public void setPuedoMoverme(bool puedoMoverme)
@@ -129,14 +116,14 @@ public class enemigo : MonoBehaviour
             {
                 puedoMoverme = true;
                 contadorEsperaMovimiento = tiempoEsperaMovimiento;
-                estadoActualEnemigo = EnemyState.ninguno;
+                estadoEnemigo.setEstadoActualObjeto(estadoGenerico.ninguno);
             }
         }
     }
 
     public void comienzaEmpujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza) 
     {
-        estadoActualEnemigo = EnemyState.estuneado;
+        estadoEnemigo.setEstadoActualObjeto(estadoGenerico.estuneado);
         StartCoroutine(empujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
     }
 
@@ -146,7 +133,7 @@ public class enemigo : MonoBehaviour
         {
             yield return new WaitForSeconds(tiempoAplicarFuerza);
             rigidBodyAfectado.velocity = Vector2.zero;
-            estadoActualEnemigo = EnemyState.ninguno;
+            estadoEnemigo.setEstadoActualObjeto(estadoGenerico.ninguno);
         }
     }
     

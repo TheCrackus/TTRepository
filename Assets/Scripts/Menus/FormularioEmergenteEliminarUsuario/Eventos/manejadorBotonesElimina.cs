@@ -41,7 +41,7 @@ public class manejadorBotonesElimina : MonoBehaviour
     {
         if (!pulseBoton)
         {
-            if (passwordFiled.text.ToString().Equals(conexion.miUsuario.datosEjecucion.password)) 
+            if (passwordFiled.text.ToString().Equals(conexion.getMiUsuario().datosEjecucion.password)) 
             {
                 conexion.eliminaUsuario();
                 pulseBoton = true;

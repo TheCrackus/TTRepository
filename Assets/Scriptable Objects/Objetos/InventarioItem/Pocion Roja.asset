@@ -16,7 +16,7 @@ MonoBehaviour:
   descripcionItem: Tiene un olor agradable...
   imagenItem: {fileID: 21300000, guid: 09452793785f23f4ea7cd446ea9de07b, type: 3}
   cantidadItem: 0
-  esUsabe: 1
+  esUsable: 1
   esUnico: 0
   mostrarItem: 0
   eventoUsaItem:

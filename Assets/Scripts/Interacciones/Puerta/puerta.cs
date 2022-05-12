@@ -23,7 +23,21 @@ public class puerta : interactuador
     [SerializeField] private listaInventario inventariopPlayerItems;
     [Header("Objeto que representa la llave corta")]
     [SerializeField] private inventarioItem llaveCorta;
-    
+    [Header("Objeto con audio generico")]
+    [SerializeField] private GameObject audioEmergente;
+    [Header("Audio al abrir puerta")]
+    [SerializeField] private AudioSource audioAbrirPuerta;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioAbrirPuerta;
+    [Header("Audio al cerrar puerta")]
+    [SerializeField] private AudioSource audioCerrarPuerta;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioCerrarPuerta;
+    [Header("Audio al romper puerta")]
+    [SerializeField] private AudioSource audioRomperPuerta;
+    [Header("Velocidad de reproduccion del Audio y agudez")]
+    [SerializeField] private float velocidadAudioRomperPuerta;
+
 
     void Start()
     {
@@ -42,7 +56,7 @@ public class puerta : interactuador
     {
         if (Input.GetButtonDown("Interactuar"))
         {
-            if (playerEnRango && tipoPuerta == tipoPuerta.llave)
+            if (getPlayerEnRango() && tipoPuerta == tipoPuerta.llave)
             {
                 if (inventariopPlayerItems && llaveCorta)
                 {
@@ -56,26 +70,66 @@ public class puerta : interactuador
         }
     }
 
+    public void reproduceAudio(AudioSource audio, float velocidad)
+    {
+        if (audio)
+        {
+            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
+            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
+            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
+            audioEmergenteTemp.reproduceAudioClick();
+        }
+    }
+
     public void abrir() 
     {
-        if (puertaColliders != null && estaAbierta != null && puertaSpriteRenderer != null) 
+        if (puertaColliders != null && puertaSpriteRenderer != null)
         {
+            if (tipoPuerta == tipoPuerta.llave
+                || tipoPuerta == tipoPuerta.boton)
+            {
+                reproduceAudio(audioAbrirPuerta, velocidadAudioAbrirPuerta);
+            }
+            else 
+            {
+                if (tipoPuerta == tipoPuerta.enemigo) 
+                {
+                    reproduceAudio(audioRomperPuerta, velocidadAudioRomperPuerta);
+                }
+            }
             puertaSpriteRenderer.enabled = false;
-            estaAbierta.valorBooleanoEjecucion = true;
+            if(estaAbierta != null) 
+            {
+                estaAbierta.valorBooleanoEjecucion = true;
+            }
             foreach (BoxCollider2D colision in puertaColliders)
             {
                 colision.enabled = false;
             }
-        }
-        
+        } 
     }
 
     public void cerrar() 
     {
-        if (puertaColliders != null && estaAbierta != null && puertaSpriteRenderer != null)
+        if (puertaColliders != null && puertaSpriteRenderer != null)
         {
+            if (tipoPuerta == tipoPuerta.llave
+                || tipoPuerta == tipoPuerta.boton)
+            {
+                reproduceAudio(audioCerrarPuerta, velocidadAudioCerrarPuerta);
+            }
+            else
+            {
+                if (tipoPuerta == tipoPuerta.enemigo)
+                {
+                    reproduceAudio(audioRomperPuerta, velocidadAudioRomperPuerta);
+                }
+            }
             puertaSpriteRenderer.enabled = true;
-            estaAbierta.valorBooleanoEjecucion = false;
+            if (estaAbierta != null) 
+            {
+                estaAbierta.valorBooleanoEjecucion = false;
+            }
             foreach (BoxCollider2D colision in puertaColliders)
             {
                 colision.enabled = true;

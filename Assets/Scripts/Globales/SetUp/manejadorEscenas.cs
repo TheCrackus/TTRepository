@@ -38,11 +38,12 @@ public class manejadorEscenas : MonoBehaviour
         {
             //cinematicaInicial.Play();
         }
+        estadoCambioEscena.ultimaEscenaGuardadaEjecucion = nombreEscenaActual;
     }
 
     void OnEnable()
     {
-        if (!estadoCambioEscena.cambieEscenaEjecucion) 
+        if (!estadoCambioEscena.cambieEscenaEjecucion && empezoPartida.valorBooleanoEjecucion) 
         {
             if (nombreEscenaActual == "Laberintos")
             {
@@ -65,6 +66,12 @@ public class manejadorEscenas : MonoBehaviour
                     }
                 }
             }
+            empezoPartida.valorBooleanoEjecucion = false;
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        datos.reiniciaObjetosScriptable();
     }
 }

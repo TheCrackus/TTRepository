@@ -16,7 +16,7 @@ public class inventarioItem : ScriptableObject
     [Header("La cantidad de este objeto en el inventario")]
     public int cantidadItem;
     [Header("Este objeto se puede usar?")]
-    public bool esUsabe;
+    public bool esUsable;
     [Header("Este objeto es unico?")]
     public bool esUnico;
     [Header("Estoy mostrando este objeto?")]

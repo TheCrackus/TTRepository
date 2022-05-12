@@ -8,9 +8,9 @@ public class observadorCuartoMazmorraEnemigos : observadorCuartoMazmorra
 
     public void verificaEnemigosActivos() 
     {
-        for (int i  = 0; i < enemigos.Length; i++) 
+        foreach (enemigo enemigo in enemigos) 
         {
-            if (enemigos[i].gameObject.activeInHierarchy && (i < enemigos.Length - 1))
+            if (enemigo.gameObject.activeInHierarchy) 
             {
                 return;
             }

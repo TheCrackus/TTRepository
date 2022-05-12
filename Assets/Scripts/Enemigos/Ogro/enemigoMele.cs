@@ -11,7 +11,7 @@ public class enemigoMele : trepaCielosCorrupto
         setObjetivoPerseguir(GameObject.FindWithTag("Player").transform);
         setEnemigoRigidBody(gameObject.GetComponent<Rigidbody2D>());
         setEnemigoAnimator(gameObject.GetComponent<Animator>());
-        setEstadoActualEnemigo(EnemyState.ninguno);
+        setEstadoEnemigo(estadoGenerico.ninguno);
         setContadorEsperaMovimiento(getTiempoEsperaMovimiento());
         setPuedoMoverme(true);
         foreach (AnimationClip clip in getEnemigoAnimator().runtimeAnimatorController.animationClips)
@@ -29,7 +29,7 @@ public class enemigoMele : trepaCielosCorrupto
         setObjetivoPerseguir(GameObject.FindWithTag("Player").transform);
         setEnemigoRigidBody(gameObject.GetComponent<Rigidbody2D>());
         setEnemigoAnimator(gameObject.GetComponent<Animator>());
-        setEstadoActualEnemigo(EnemyState.ninguno);
+        setEstadoEnemigo(estadoGenerico.ninguno);
     }
 
     public override void gestionDistancias()
@@ -37,18 +37,14 @@ public class enemigoMele : trepaCielosCorrupto
         if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioPersecucion
             && Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) >= radioAtaque)
         {
-            if (getEstadoActualEnemigo() != EnemyState.estuneado
-                && getEstadoActualEnemigo() != EnemyState.atacando
-                && getEstadoActualEnemigo() != EnemyState.inactivo
-                && (getEstadoActualEnemigo() == EnemyState.caminando
-                    || getEstadoActualEnemigo() == EnemyState.durmiendo
-                    || getEstadoActualEnemigo() == EnemyState.ninguno))
+            if (getEstadoEnemigo() == estadoGenerico.caminando
+                || getEstadoEnemigo() == estadoGenerico.ninguno)
             {
                 Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
                 Vector3 refAnimacion = getObjetivoPerseguir().position - vectorTemporal;
                 Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
                 getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                setEstadoActualEnemigo(EnemyState.caminando);
+                setEstadoEnemigo(estadoGenerico.caminando);
             }
         }
         else
@@ -56,14 +52,10 @@ public class enemigoMele : trepaCielosCorrupto
             if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioPersecucion
             && Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioAtaque)
             {
-                if (getEstadoActualEnemigo() != EnemyState.estuneado
-                && getEstadoActualEnemigo() != EnemyState.atacando
-                && getEstadoActualEnemigo() != EnemyState.inactivo
-                && (getEstadoActualEnemigo() == EnemyState.caminando
-                    || getEstadoActualEnemigo() == EnemyState.durmiendo
-                    || getEstadoActualEnemigo() == EnemyState.ninguno))
+                if (getEstadoEnemigo() == estadoGenerico.caminando
+                    || getEstadoEnemigo() == estadoGenerico.ninguno)
                 {
-                    setEstadoActualEnemigo(EnemyState.atacando);
+                    setEstadoEnemigo(estadoGenerico.atacando);
                     StartCoroutine(ataca());
                 }
             }
@@ -75,14 +67,9 @@ public class enemigoMele : trepaCielosCorrupto
         getEnemigoAnimator().SetBool("Atacar", true);
         yield return new WaitForSeconds(atacandoClip.length);
         getEnemigoAnimator().SetBool("Atacar", false);
-        if (getEstadoActualEnemigo() != EnemyState.caminando
-            && getEstadoActualEnemigo() == EnemyState.atacando
-            && getEstadoActualEnemigo() != EnemyState.ninguno
-            && getEstadoActualEnemigo() != EnemyState.estuneado
-            && getEstadoActualEnemigo() != EnemyState.durmiendo
-            && getEstadoActualEnemigo() != EnemyState.inactivo)
+        if (getEstadoEnemigo() == estadoGenerico.atacando)
         {
-            setEstadoActualEnemigo(EnemyState.ninguno);
+            setEstadoEnemigo(estadoGenerico.ninguno);
         }
     }
 }

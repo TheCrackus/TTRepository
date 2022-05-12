@@ -94,7 +94,7 @@ public class manejadorContador : MonoBehaviour
                 {
                     GameObject player = GameObject.FindGameObjectWithTag("Player");
                     movimientoPlayer movP = player.GetComponent<movimientoPlayer>();
-                    movP.setEstadoActualPlayer(PlayerState.interactuando);
+                    movP.setEstadoPlayer(estadoGenerico.transicionando);
                     StartCoroutine(cambioCuarto(player));
                 }
                 else 
@@ -154,7 +154,7 @@ public class manejadorContador : MonoBehaviour
         yield return new WaitForSeconds(fadeInClip.length);
 
         objetoPanel.SetActive(false);
-        player.GetComponent<movimientoPlayer>().setEstadoActualPlayer(PlayerState.ninguno);
+        player.GetComponent<movimientoPlayer>().setEstadoPlayer(estadoGenerico.ninguno);
         if (debeMostrarTexto)
         {
 
