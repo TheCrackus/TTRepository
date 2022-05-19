@@ -6,22 +6,34 @@ public class npcDimensiones : controladorDialogos
 {
 
     private Vector3 vectorDireccion;
+
     private Transform npcTransform;
+
     private Rigidbody2D npcRigidBody;
+
     private Animator npcAnimator;
+
     private float contadorMovimiento;
+
     private float contadorEspera;
+
     private bool enMovimiento;
+
     [Header("La velocidad con la que se mueve este objeto")]
     public float velocidad;
+
     [Header("La colision limite del NPC")]
     public Collider2D colisionLimite;
+
     [Header("Tiempo maximo en el que el NPC se movera")]
     public float tiempoMovimientoMaximo;
+
     [Header("Tiempo minimo en el que el NPC se movera")]
     public float tiempoMovimientoMinimo;
+
     [Header("Tiempo maximo en el que el NPC estara estatico")]
     public float tiempoEsperaMaximo;
+
     [Header("Tiempo minimo en el que el NPC estara estatico")]
     public float tiempoEsperaMinimo;
 
@@ -48,7 +60,7 @@ public class npcDimensiones : controladorDialogos
                 contadorMovimiento = Random.Range(tiempoMovimientoMinimo, tiempoMovimientoMaximo); ;
                 enMovimiento = false;
             }
-            if (!getPlayerEnRango())
+            if (!PlayerEnRango)
             {
                 mueve();
             }

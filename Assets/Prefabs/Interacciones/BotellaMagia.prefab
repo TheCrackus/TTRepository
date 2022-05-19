@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 7008915914828331861}
   - component: {fileID: 7008915914828331862}
   - component: {fileID: 7008915914828331860}
+  - component: {fileID: 8148152627936889519}
   m_Layer: 0
   m_Name: BotellaMagia
   m_TagString: Untagged
@@ -273,9 +274,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventoIncrementoEstadistica: {fileID: 11400000, guid: b06e932502f2e19428ce95955cf150d7, type: 2}
-  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
-  audioRecojer: {fileID: 7727726255246782965}
-  velocidadAudioRecojer: 1
   magiaPlayer: {fileID: 11400000, guid: 63f122bcfafa86641a2fe8205c8309df, type: 2}
   magiaMaximaPlayer: {fileID: 11400000, guid: 9f208d0e2a3b02f439f3f2e2d51ee238, type: 2}
   magiaAumento: 2
+--- !u!114 &8148152627936889519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7008915914828331857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f329dbb9e7b7a7045a7cf4d7656c5f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
+  audioRecojer: {fileID: 7727726255246782965}
+  velocidadAudioRecojer: 1

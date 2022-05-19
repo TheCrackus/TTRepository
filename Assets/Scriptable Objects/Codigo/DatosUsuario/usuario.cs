@@ -35,6 +35,6 @@ public class usuario : ScriptableObject
 
     public void reiniciaValores()
     {
-        //datosEjecucion = datosIniciales;
+        datosEjecucion = datosIniciales;
     }
 }

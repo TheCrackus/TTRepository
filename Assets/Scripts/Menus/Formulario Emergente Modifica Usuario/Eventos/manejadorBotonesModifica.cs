@@ -4,34 +4,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class manejadorBotonesModifica : MonoBehaviour
+public class manejadorBotonesModifica : formulario
 {
     private string msjFormulario;
+
     private bool fechaCorrecta;
+
     private bool emailCorrecto;
+
     private bool sobrenombreCorrecto;
+
     private bool passwordCorrecta;
-    private bool pulseBoton;
+
     private conexionWeb conexion;
-    public InputField emailFiled;
-    public InputField passwordFiled;
-    public InputField passwordFieldConf;
-    public InputField sobrenombreFiled;
-    public InputField diaFiled;
-    public InputField mesFiled;
-    public InputField añoFiled;
-    public GameObject ventanaEmergente;
-    public GameObject manejadorPrincipal;
 
-    public bool getPulseBoton()
-    {
-        return pulseBoton;
-    }
+    [Header("Componentes graficos que contienen la informacion del formulario")]
+    [SerializeField] private InputField emailFiled;
 
-    public void setPulseBoton(bool pulseBoton)
-    {
-        this.pulseBoton = pulseBoton;
-    }
+    [SerializeField] private InputField passwordFiled;
+
+    [SerializeField] private InputField passwordFieldConf;
+
+    [SerializeField] private InputField sobrenombreFiled;
+
+    [SerializeField] private InputField diaFiled;
+
+    [SerializeField] private InputField mesFiled;
+
+    [SerializeField] private InputField añoFiled;
 
     void Start()
     {
@@ -40,24 +40,15 @@ public class manejadorBotonesModifica : MonoBehaviour
         emailCorrecto = true;
         passwordCorrecta = true;
         sobrenombreCorrecto = true;
-        pulseBoton = false;
+        reiniciaBotones();
         conexion = gameObject.GetComponent<conexionWeb>();
-    }
-
-    public void botonRegresar()
-    {
-        if (!pulseBoton)
-        {
-            pulseBoton = true;
-            manejadorPrincipal.GetComponent<manejadorBotonesPrincipal>().setPulseBoton(false);
-            gameObject.SetActive(false);
-        }
     }
 
     public void botonModifica() 
     {
-        if (!pulseBoton)
+        if (!PulseBoton)
         {
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
             string dia = "";
             string mes = "";
             string año = "";
@@ -327,40 +318,68 @@ public class manejadorBotonesModifica : MonoBehaviour
             if (fechaCorrecta && emailCorrecto && sobrenombreCorrecto && passwordCorrecta)
             {
                 conexion.modificaUsuario(emailFiled.text.ToString(), passwordFiled.text.ToString(), sobrenombreFiled.text.ToString(), nacimiento);
-                pulseBoton = true;
+                PulseBoton = true;
                 StartCoroutine(esperaDatosModificar());
             }
             else
             {
-                ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente(msjFormulario, true);
+                iniciaVentanaEmergente();
+                ManejadorVentanaEmergente.enviaTexto(msjFormulario);
+                ManejadorVentanaEmergente.reiniciaTiempo();
                 msjFormulario = "Favor de verificar la siguiente información:\n\n";
                 fechaCorrecta = true;
                 emailCorrecto = true;
                 sobrenombreCorrecto = true;
                 passwordCorrecta = true;
-                pulseBoton = false;
+                reiniciaBotones();
             }
         }
     }
 
+    public void botonRegresar()
+    {
+        if (!PulseBoton)
+        {
+            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
+            EventoReiniciaBotones.invocaFunciones();
+            PulseBoton = true;
+            Destroy(CanvasFormulario);
+        }
+        else 
+        {
+            EventoReiniciaBotones.invocaFunciones();
+            EventoCierraSesion.invocaFunciones();
+            Destroy(CanvasFormulario);
+        }
+    }
+
+    public void cierraSesion()
+    {
+        EventoReiniciaBotones.invocaFunciones();
+        EventoCierraSesion.invocaFunciones();
+        Destroy(CanvasFormulario);
+    }
+
     private IEnumerator esperaDatosModificar()
     {
-        ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Procesando datos...", false);
+        iniciaVentanaEmergente();
+        ManejadorVentanaEmergente.enviaTexto("Procesando datos...");
+        ManejadorVentanaEmergente.reiniciaTiempo();
         yield return new WaitWhile(() => (conexion.getEstadoActualConexion() == conexionState.iniciandoModificacion));
         if (conexion.getEstadoActualConexion() == conexionState.termineModificacion)
         {
-            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Registro completo...", false);
+            ManejadorVentanaEmergente.enviaTexto("Registro completo...");
+            ManejadorVentanaEmergente.reiniciaTiempo();
             yield return new WaitForSeconds(1f);
             conexion.setEstadoActualConexion(conexionState.ninguno);
-            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().cierraVentanaEmergente();
-            manejadorPrincipal.GetComponent<manejadorBotonesPrincipal>().setPulseBoton(false);
-            botonRegresar();
+            cierraSesion();
         }
         else
         {
             if (conexion.getEstadoActualConexion() == conexionState.falleModificacionConexion)
             {
-                ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Fallo de conexión...", true);
+                ManejadorVentanaEmergente.enviaTexto("Fallo de conexión...");
+                ManejadorVentanaEmergente.reiniciaTiempo();
                 yield return new WaitForSeconds(1f);
                 conexion.setEstadoActualConexion(conexionState.ninguno);
             }
@@ -368,12 +387,13 @@ public class manejadorBotonesModifica : MonoBehaviour
             {
                 if (conexion.getEstadoActualConexion() == conexionState.falleModificacionDatos)
                 {
-                    ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("El usuario no pudo ser modificado...", true);
+                    ManejadorVentanaEmergente.enviaTexto("El usuario no pudo ser modificado...");
+                    ManejadorVentanaEmergente.reiniciaTiempo();
                     yield return new WaitForSeconds(1f);
                     conexion.setEstadoActualConexion(conexionState.ninguno);
                 }
             }
         }
-        pulseBoton = false;
+        reiniciaBotones();
     }
 }

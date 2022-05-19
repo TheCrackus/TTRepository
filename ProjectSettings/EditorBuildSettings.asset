@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mazmorra.unity
     guid: bd34eb29166a3b640bc42891431df14a
+  - enabled: 1
+    path: Assets/Scenes/PuzzleNivel2.unity
+    guid: 001d7a1d578033a4db7ac18007af359c
   m_configObjects: {}

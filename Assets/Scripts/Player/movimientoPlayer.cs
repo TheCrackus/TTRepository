@@ -5,47 +5,56 @@ using UnityEngine;
 public class movimientoPlayer : MonoBehaviour
 {
 
-    [Header("El manejador de fisicas de este objeto")]
-    [SerializeField] private Rigidbody2D rigidBodyPlayer;
-    [Header("Vector a donde se mueve este objeto")]
-    [SerializeField] private Vector3 vectorMovimiento;
-    [Header("El manejador de animaciones de este objeto")]
-    [SerializeField] private Animator animatorPlayer;
+    private Rigidbody2D rigidBodyPlayer;
+
+    private Vector3 vectorMovimiento;
+
+    private Animator animatorPlayer;
+
     [Header("Estado actual del Player")]
     [SerializeField] private estadoObjeto estadoPlayer;
+
     [Header("Estadisticas Player")]
     [SerializeField] private float velocidad;
+
     [Header("Evento para animar la pantalla al recivir golpe")]
     [SerializeField] private evento reciveGolpePlayer;
-    [Header("Variables globales del player")]
+
+    [Header("Posicion del Player en el mapa")]
     [SerializeField] private valorVectorial posicionPlayer;
+
+    [Header("Manejador de Sprite del objeto emergente a mostrar")]
     [SerializeField] private SpriteRenderer spriteObjetoMostrar;
+
     [Header("El inventario general del Player")]
     [SerializeField] private listaInventario inventariopPlayerItems;
+
     [Header("Estado general de la escena")]
     [SerializeField] private cambioEscena estadoCambioEscenas;
+
     [Header("Proyectil que dispara el arma actual a distancia")]
     [SerializeField] private GameObject proyectil;
+
     [Header("Evento que decrementa la magia")]
     [SerializeField] private evento decrementaMagia;
+
     [Header("La cantidad de magia que tiene el Player")]
     [SerializeField] private valorFlotante magiaPlayer;
+
     [Header("Objeto que representa el arco")]
     [SerializeField] private inventarioItem arco;
+
     [Header("Objeto que representa la espada")]
     [SerializeField] private inventarioItem espada;
+
     [Header("Manejador de la vida del Player")]
     [SerializeField] private vidaPlayer vidaPlayer;
-    [Header("Objeto con audio generico")]
-    [SerializeField] private GameObject audioEmergente;
-    [Header("Audio atacar con espada")]
-    [SerializeField] private AudioSource audioAtaqueEspada;
-    [Header("Velocidad de reproduccion del Audio y agudez")]
-    [SerializeField] private float velocidadAudioAtaqueEspada;
-    [Header("Audio arroja proyectil")]
-    [SerializeField] private AudioSource audioArrojaProyectil;
-    [Header("Velocidad de reproduccion del Audio y agudez")]
-    [SerializeField] private float velocidadAudioArrojaProyectil;
+
+    [Header("Manejador de audio del Player arma mele")]
+    [SerializeField] private audioMelee manejadorAudioMelee;
+
+    [Header("Manejador de audio del Player arma distancia")]
+    [SerializeField] private audioDistancia manejadorAudioDistancia;
 
     public void setEstadoPlayer(estadoGenerico estado)
     {
@@ -165,17 +174,6 @@ public class movimientoPlayer : MonoBehaviour
         }
     }
 
-    public void reproduceAudio(AudioSource audio, float velocidad)
-    {
-        if (audio)
-        {
-            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
-            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
-            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
-            audioEmergenteTemp.reproduceAudioClick();
-        }
-    }
-
     private void ActualizarMovimiento()
     {
         vectorMovimiento.Normalize();
@@ -196,7 +194,7 @@ public class movimientoPlayer : MonoBehaviour
                     animatorPlayer.SetBool("Atacando", true);
                     yield return null;
 
-                    reproduceAudio(audioAtaqueEspada, velocidadAudioAtaqueEspada);
+                    manejadorAudioMelee.reproduceAudioMelee();
                     animatorPlayer.SetBool("Atacando", false);
                     yield return new WaitForSeconds(0.6f);
 
@@ -209,7 +207,7 @@ public class movimientoPlayer : MonoBehaviour
                 { 
                     if (estadoPlayer.getEstadoActualObjeto() == estadoGenerico.atacando)
                     {
-                        reproduceAudio(audioArrojaProyectil, velocidadAudioArrojaProyectil);
+                        manejadorAudioDistancia.reproduceAudioDistancia();
                         creaFlecha();
                         yield return new WaitForSeconds(0.5f);
 

@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 2191699866429183453}
   - component: {fileID: 2191699866429183454}
   - component: {fileID: 2191699866429183449}
+  - component: {fileID: 6332338524969161978}
   m_Layer: 0
   m_Name: Jarro
   m_TagString: Rompible
@@ -293,6 +294,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jarroAnimator: {fileID: 0}
+  romperJarroClip: {fileID: 0}
+--- !u!114 &6332338524969161978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2191699866429183426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95e158f0f83d2143be95c609a613d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
-  audioRomperJarron: {fileID: 6314554939093241280}
-  velocidadAudioRomperJarron: 2
+  audioRomperObjeto: {fileID: 6314554939093241280}
+  velocidadAudioRomperObjeto: 2

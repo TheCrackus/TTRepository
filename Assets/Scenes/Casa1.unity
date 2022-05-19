@@ -394,6 +394,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2016617359, guid: 48ed07384e0b29044968e1fad0c35e58, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000045776367
+      objectReference: {fileID: 0}
     - target: {fileID: 8465310478907857927, guid: 48ed07384e0b29044968e1fad0c35e58, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -870,8 +874,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3230322103667937639, guid: d8341849cb34f614e999e2c10b3b8e58, type: 3}
       propertyPath: escenaCarga
-      value: Laberintos
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: 84687b5074e6e694da6e1cdae161ebba, type: 2}
     - target: {fileID: 3230322103667937639, guid: d8341849cb34f614e999e2c10b3b8e58, type: 3}
       propertyPath: nombreEscena
       value: El pueblo
@@ -934,12 +938,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3230322103667937639, guid: d8341849cb34f614e999e2c10b3b8e58, type: 3}
       propertyPath: nombreTransicionActual
-      value: Casa1Regreso
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: a22ea59b370513b4da5e890fa120cf5d, type: 2}
     - target: {fileID: 3230322103667937639, guid: d8341849cb34f614e999e2c10b3b8e58, type: 3}
       propertyPath: nombreTransicionDestino
-      value: Casa1Ida
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: 40fa91e8b01bedb479dd0da45176baf1, type: 2}
     - target: {fileID: 3230322103667937639, guid: d8341849cb34f614e999e2c10b3b8e58, type: 3}
       propertyPath: nuevaPosicionCamaraMaxima.x
       value: 14.3

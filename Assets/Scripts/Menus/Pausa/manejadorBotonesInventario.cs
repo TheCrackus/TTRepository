@@ -8,23 +8,25 @@ public class manejadorBotonesInventario : MonoBehaviour
 {
 
     [Header("El inventario que contiene los items del Player")]
-    public listaInventario inventariopPlayerItems;
+    public listaInventario inventarioPlayerItems;
+
     [Header("El espacio fisico en la interfaz que muestra un item en el inventario")]
     [SerializeField] private GameObject espacioInventarioVacio;
+
     [Header("El espacio fisico en la interfaz que contiene el inventario")]
     [SerializeField] private GameObject contenedorInventario;
+
     [Header("Texto de la interfaz que muestra la descripcion de un item en el inventario")]
     [SerializeField] private TextMeshProUGUI textoDescripcionItem;
+
     [Header("Boton de la interfaz que permite usar un item")]
     [SerializeField] private GameObject botonUsarItem;
+
     [Header("El item que actualmente se muestra en la interfaz")]
     [SerializeField] private inventarioItem itemActual;
-    [Header("Contenedor de un audio a reporducir")]
-    [SerializeField] private GameObject audioEmergente;
-    [Header("Audio al abrir una interfaz o presionar un boton")]
-    [SerializeField] private AudioSource audioClickAbrir;
-    [Header("Velocidad de reproduccion del Audio y agudez")]
-    [SerializeField] private float velocidadAudioClickAbrir;
+
+    [Header("Manejador de audio de interfaces")]
+    [SerializeField] private audioInterfaz manejadorAudioInterfaz;
 
     void OnEnable()
     {
@@ -32,17 +34,6 @@ public class manejadorBotonesInventario : MonoBehaviour
         limpiaEspaciosInventario();
         creaEspaciosInventario();
         activaBotonEnviaTexto("", false, null);
-    }
-
-    public void reproduceAudio(AudioSource audio, float velocidad)
-    {
-        if (audio)
-        {
-            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
-            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
-            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
-            audioEmergenteTemp.reproduceAudioClick();
-        }
     }
 
     public void activaBotonEnviaTexto(string descripcion, bool activaBoton, inventarioItem nuevoItem) 
@@ -55,9 +46,9 @@ public class manejadorBotonesInventario : MonoBehaviour
 
     void creaEspaciosInventario() 
     {
-        if (inventariopPlayerItems != null) 
+        if (inventarioPlayerItems != null) 
         {
-            foreach(inventarioItem item in inventariopPlayerItems.inventario) 
+            foreach(inventarioItem item in inventarioPlayerItems.inventario) 
             {
                 if (espacioInventarioVacio != null) 
                 {
@@ -84,13 +75,13 @@ public class manejadorBotonesInventario : MonoBehaviour
 
     void limpiaListaInventario()
     {
-        if (inventariopPlayerItems != null)
+        if (inventarioPlayerItems != null)
         {
-            foreach (inventarioItem item in inventariopPlayerItems.inventario.ToArray())
+            foreach (inventarioItem item in inventarioPlayerItems.inventario.ToArray())
             {
                 if (item.cantidadItem <= 0)
                 {
-                    inventariopPlayerItems.inventario.Remove(item);
+                    inventarioPlayerItems.inventario.Remove(item);
                 }
             }
         }
@@ -100,7 +91,7 @@ public class manejadorBotonesInventario : MonoBehaviour
     {
         if (itemActual) 
         {
-            reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
+            manejadorAudioInterfaz.reproduceAudioClickAbrir();
             itemActual.invocaEventoUsaItem();
             limpiaListaInventario();
             limpiaEspaciosInventario();

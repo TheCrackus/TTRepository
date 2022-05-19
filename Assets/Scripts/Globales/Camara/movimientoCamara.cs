@@ -5,13 +5,12 @@ using UnityEngine;
 public class movimientoCamara : MonoBehaviour
 {
 
-    [SerializeField] private Animator camaraAnimator;
+    private Animator camaraAnimator;
     [SerializeField] private Transform objetivoSeguir;
     [SerializeField] private float suavizado;
     [SerializeField] private valorVectorial posicionCamaraMaxima;
     [SerializeField] private valorVectorial posicionCamaraMinima;
     [SerializeField] private valorVectorial posicionCamara;
-    [SerializeField] private cambioEscena estadoCambioEscena;
 
     void Start()
     {

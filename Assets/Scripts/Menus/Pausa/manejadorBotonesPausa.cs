@@ -7,28 +7,27 @@ public class manejadorBotonesPausa : MonoBehaviour
 
     [Header("Pulse un boton de la interfaz?")]
     [SerializeField] private bool pulseBoton;
+
     [Header("Esta pausado el juego?")]
     [SerializeField] private bool estaPausado;
+
     [Header("Interfaz grafica que contiene el menu de pausa")]
     [SerializeField] private GameObject panelPausa;
+
     [Header("Interfaz grafica que contiene el inventario")]
     [SerializeField] private GameObject panelInventario;
+
     [Header("Nombre de la escena con el menu principal")]
-    [SerializeField] private string escenaMenuPrincipal;
+    [SerializeField] private valorString escenaMenuPrincipal;
+
     [Header("Los datos de la partida en curso")]
     [SerializeField] private datosJuego datos;
+
     [Header("Objeto que contiene la informacion del juego en ejecucion")]
     [SerializeField] private cambioEscena estadoCambioEscena;
-    [Header("Contenedor de un audio a reporducir")]
-    [SerializeField] private GameObject audioEmergente;
-    [Header("Audio al cerrar una interfaz o presionar un boton")]
-    [SerializeField] private AudioSource audioClickCerrar;
-    [Header("Velocidad de reproduccion del Audio y agudez")]
-    [SerializeField] private float velocidadAudioClickCerrar;
-    [Header("Audio al abrir una interfaz o presionar un boton")]
-    [SerializeField] private AudioSource audioClickAbrir;
-    [Header("Velocidad de reproduccion del Audio y agudez")]
-    [SerializeField] private float velocidadAudioClickAbrir;
+
+    [Header("Manejador de audio de interfaces")]
+    [SerializeField] private audioInterfaz manejadorAudioInterfaz;
 
     void Start()
     {
@@ -42,7 +41,7 @@ public class manejadorBotonesPausa : MonoBehaviour
         {
             if (Input.GetButtonDown("Pausa") && panelInventario.activeInHierarchy)
             {
-                reproduceAudio(audioClickCerrar, velocidadAudioClickCerrar);
+                manejadorAudioInterfaz.reproduceAudioClickCerrar();
                 abreCierraInventario();
             }
             else 
@@ -52,11 +51,11 @@ public class manejadorBotonesPausa : MonoBehaviour
                     abreCierraMenuPausa();
                     if (panelPausa.activeInHierarchy)
                     {
-                        reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
+                        manejadorAudioInterfaz.reproduceAudioClickAbrir();
                     }
                     else 
                     {
-                        reproduceAudio(audioClickCerrar, velocidadAudioClickCerrar); 
+                        manejadorAudioInterfaz.reproduceAudioClickCerrar();
                     }
                 }
             }
@@ -68,24 +67,13 @@ public class manejadorBotonesPausa : MonoBehaviour
                 abreCierraInventario();
                 if (panelInventario.activeInHierarchy)
                 {
-                    reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
+                    manejadorAudioInterfaz.reproduceAudioClickAbrir();
                 }
                 else
                 {
-                    reproduceAudio(audioClickCerrar, velocidadAudioClickCerrar);
+                    manejadorAudioInterfaz.reproduceAudioClickCerrar();
                 }
             }
-        }
-    }
-
-    public void reproduceAudio(AudioSource audio, float velocidad)
-    {
-        if (audio)
-        {
-            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
-            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
-            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
-            audioEmergenteTemp.reproduceAudioClick();
         }
     }
 
@@ -131,7 +119,7 @@ public class manejadorBotonesPausa : MonoBehaviour
     {
         if (!pulseBoton) 
         {
-            reproduceAudio(audioClickCerrar, velocidadAudioClickCerrar);
+            manejadorAudioInterfaz.reproduceAudioClickCerrar();
             abreCierraMenuPausa();
             pulseBoton = true;
         }
@@ -141,9 +129,9 @@ public class manejadorBotonesPausa : MonoBehaviour
     {
         if (!pulseBoton)
         {
-            reproduceAudio(audioClickCerrar, velocidadAudioClickCerrar);
+            manejadorAudioInterfaz.reproduceAudioClickCerrar();
             datos.reiniciaObjetosScriptable();
-            StartCoroutine(cargaEscena(escenaMenuPrincipal, audioClickCerrar.clip.length));
+            StartCoroutine(cargaEscena(escenaMenuPrincipal.valorStringEjecucion));
             pulseBoton = true;
         }
     }
@@ -152,7 +140,7 @@ public class manejadorBotonesPausa : MonoBehaviour
     {
         if (!pulseBoton)
         {
-            reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
+            manejadorAudioInterfaz.reproduceAudioClickAbrir();
             abreCierraMenuPausa();
             abreCierraInventario();
             pulseBoton = true;
@@ -163,16 +151,15 @@ public class manejadorBotonesPausa : MonoBehaviour
     {
         if (!pulseBoton)
         {
-            reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
+            manejadorAudioInterfaz.reproduceAudioClickAbrir();
             datos.reiniciaObjetosScriptable();
             pulseBoton = true;
         }
     }
 
-    private IEnumerator cargaEscena(string nombreEscena, float tiempoEspera)
+    private IEnumerator cargaEscena(string nombreEscena)
     {
         Time.timeScale = 1f;
-        yield return new WaitForSeconds(tiempoEspera);
         AsyncOperation accion = SceneManager.LoadSceneAsync(nombreEscena);
         while (!accion.isDone)
         {

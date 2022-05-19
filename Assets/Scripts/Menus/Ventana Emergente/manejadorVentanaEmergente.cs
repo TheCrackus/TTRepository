@@ -6,19 +6,30 @@ using UnityEngine.UI;
 
 public class manejadorVentanaEmergente : MonoBehaviour
 {
-    private float contadorTiempoCerrar;
-    private bool empiezaContador;
-    public TextMeshProUGUI textoVentanaEmergente;
-    public float tiempoCerrar;
 
-    void Awake()
-    {
-        empiezaContador = false;
-    }
+    private bool pulseBoton;
+
+    private float contadorTiempoCerrar;
+
+    private bool empiezaContador;
+
+    [Header("El texto que muestra esta ventana ")]
+    [SerializeField] private TextMeshProUGUI textoVentanaEmergente;
+
+    [Header("El tiempo en el que esta ventana se cierra (segundos)")]
+    [SerializeField] private float tiempoCerrar;
+
+    [Header("El canvas que contiene esta ventana emergente")]
+    [SerializeField] private GameObject canvasVentanaEmergente;
+
+    [Header("Manejador de audio de interfaces")]
+    [SerializeField] private audioInterfaz manejadorAudioInterfaz;
 
     void Start()
     {
-        contadorTiempoCerrar = tiempoCerrar;    
+        contadorTiempoCerrar = tiempoCerrar;
+        empiezaContador = true;
+        pulseBoton = false;
     }
 
     void Update()
@@ -28,43 +39,39 @@ public class manejadorVentanaEmergente : MonoBehaviour
             contadorTiempoCerrar -= Time.deltaTime;
             if (contadorTiempoCerrar <= 0) 
             {
-                cierraVentanaEmergente();
                 contadorTiempoCerrar = tiempoCerrar;
                 empiezaContador = false;
+                cierraVentanaEmergente();
             }
         }
     }
 
-    public void cierraVentanaEmergente()
+    public void enviaTexto(string texto) 
     {
-        if (gameObject.activeInHierarchy) 
+        textoVentanaEmergente.text = texto;
+    }
+
+    public void botonCierraVentanaEmergente() 
+    {
+        if (!pulseBoton) 
         {
-            if (textoVentanaEmergente) 
-            {
-                textoVentanaEmergente.text = "Advertencias:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-";
-            }
-            gameObject.SetActive(false);
+            manejadorAudioInterfaz.reproduceAudioClickCerrar();
+            pulseBoton = true;
+            cierraVentanaEmergente();
         }
     }
 
-    public void abreVentanaEmergente(string textoMostrar, bool debeEmpezarContador) 
+    public void cierraVentanaEmergente() 
     {
-        if (!gameObject.activeInHierarchy)
+        if (canvasVentanaEmergente != null) 
         {
-            gameObject.SetActive(true);
-            if (textoVentanaEmergente) 
-            {
-                textoVentanaEmergente.text = textoMostrar;
-            }
-            empiezaContador = debeEmpezarContador;
-        }
-        else 
-        {
-            if (textoVentanaEmergente) 
-            {
-                textoVentanaEmergente.text = textoMostrar;
-            }
-            empiezaContador = debeEmpezarContador;
+            Destroy(canvasVentanaEmergente);
         }
     }
+
+    public void reiniciaTiempo() 
+    {
+        contadorTiempoCerrar = tiempoCerrar;
+    }
+
 }

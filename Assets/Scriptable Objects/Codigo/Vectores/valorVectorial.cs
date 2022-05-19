@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "Nuevo Vector", menuName = "Valores/Vectorial")]
 [System.Serializable]
 public class valorVectorial : ScriptableObject
 {

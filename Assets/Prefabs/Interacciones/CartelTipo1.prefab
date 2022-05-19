@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 906470344907594666}
   - component: {fileID: 664281596917086568}
   - component: {fileID: 676352301}
+  - component: {fileID: 2941371152161676167}
   m_Layer: 0
   m_Name: CartelTipo1
   m_TagString: Leible
@@ -175,9 +176,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   simboloActivoDesactivo: {fileID: 11400000, guid: 5aa15c8b7adddd24ebf64699d2ca3bc2, type: 2}
   playerEnRango: 0
-  objetoContenedorTextoDialogos: {fileID: 0}
-  textoDialogos: {fileID: 0}
+  fadeInFadeOutCanvas: {fileID: 8745939805210079820, guid: 60dc23bc450bfb446ba135d3ae12a426, type: 3}
   dialogo: 
+  manejadorAudioDialogos: {fileID: 2941371152161676167}
+--- !u!114 &2941371152161676167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906470344907594665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d61dcf6ee273f45a2f6441ebbbcdba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
   audioAbrirDialogo: {fileID: 1479243687092257994}
   velocidadAudioAbrirDialogo: 1

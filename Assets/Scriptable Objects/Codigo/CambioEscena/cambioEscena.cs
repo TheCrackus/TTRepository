@@ -31,10 +31,6 @@ public class cambioEscena : ScriptableObject
 
     public string nombreTansicionDestinoEjecucion;
 
-    public string ultimaEscenaGuardadaInicial;
-
-    public string ultimaEscenaGuardadaEjecucion;
-
     public void reiniciaValores()
     {
         nombreTextoCuartoEjecucion = nombreTextoCuartoInicial;
@@ -43,7 +39,6 @@ public class cambioEscena : ScriptableObject
         direccionPlayerEjecucion = direccionPlayerInicial;
         pausoContadorEjecucion = pausoContadorInicial;
         nombreTansicionDestinoEjecucion = nombreTansicionDestinoInicial;
-        ultimaEscenaGuardadaEjecucion = ultimaEscenaGuardadaInicial;
     }
 
 }

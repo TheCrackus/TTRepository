@@ -3,75 +3,78 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class manejadorBotonesElimina : MonoBehaviour
+public class manejadorBotonesElimina : formulario
 {
-    private bool pulseBoton;
+
     private conexionWeb conexion;
-    public GameObject ventanaEmergente;
-    public InputField passwordFiled;
-    public GameObject manejadorPrincipal;
 
-    public bool getPulseBoton()
-    {
-        return pulseBoton;
-    }
-
-    public void setPulseBoton(bool pulseBoton)
-    {
-        this.pulseBoton = pulseBoton;
-    }
+    [Header("Componentes graficos que contienen la informacion del formulario")]
+    [SerializeField] private InputField passwordFiled;
 
     void Start()
     {
-        pulseBoton = false;
+        reiniciaBotones();
         conexion = gameObject.GetComponent<conexionWeb>();
-    }
-
-    public void botonRegresar()
-    {
-        if (!pulseBoton)
-        {
-            pulseBoton = true;
-            gameObject.SetActive(false);
-            manejadorPrincipal.GetComponent<manejadorBotonesPrincipal>().setPulseBoton(false);
-        }
     }
 
     public void botonEliminaUsuario()
     {
-        if (!pulseBoton)
+        if (!PulseBoton)
         {
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
             if (passwordFiled.text.ToString().Equals(conexion.getMiUsuario().datosEjecucion.password)) 
             {
                 conexion.eliminaUsuario();
-                pulseBoton = true;
+                PulseBoton = true;
                 StartCoroutine(esperaDatosEliminaUsuario());
             }
             else 
             {
-                ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("La contraseña proporcionada es incorrecta.", true);
+                iniciaVentanaEmergente();
+                ManejadorVentanaEmergente.enviaTexto("La contraseña proporcionada es incorrecta.");
+                ManejadorVentanaEmergente.reiniciaTiempo();
             }
         }
     }
 
+    public void botonRegresar()
+    {
+        if (!PulseBoton)
+        {
+            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
+            EventoReiniciaBotones.invocaFunciones();
+            PulseBoton = true;
+            Destroy(CanvasFormulario);
+        }
+    }
+
+    public void cierraSesion() 
+    {
+        EventoReiniciaBotones.invocaFunciones();
+        EventoCierraSesion.invocaFunciones();
+        Destroy(CanvasFormulario);
+    }
+
     private IEnumerator esperaDatosEliminaUsuario()
     {
-        ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Procesando datos...", false);
+        iniciaVentanaEmergente();
+        ManejadorVentanaEmergente.enviaTexto("Procesando datos...");
+        ManejadorVentanaEmergente.reiniciaTiempo();
         yield return new WaitWhile(() => (conexion.getEstadoActualConexion() == conexionState.iniciandoEliminacion));
         if (conexion.getEstadoActualConexion() == conexionState.termineEliminacion)
         {
-            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Eliminación completa...", false);
+            ManejadorVentanaEmergente.enviaTexto("Eliminación completa...");
+            ManejadorVentanaEmergente.reiniciaTiempo();
             yield return new WaitForSeconds(1f);
             conexion.setEstadoActualConexion(conexionState.ninguno);
-            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().cierraVentanaEmergente();
-            manejadorPrincipal.GetComponent<manejadorBotonesPrincipal>().setPulseBoton(false);
-            manejadorPrincipal.GetComponent<manejadorBotonesPrincipal>().botonCierraSesion();
+            cierraSesion();
         }
         else
         {
             if (conexion.getEstadoActualConexion() == conexionState.falleEliminacionConexion)
             {
-                ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Fallo de conexión...", true);
+                ManejadorVentanaEmergente.enviaTexto("Fallo de conexión...");
+                ManejadorVentanaEmergente.reiniciaTiempo();
                 yield return new WaitForSeconds(1f);
                 conexion.setEstadoActualConexion(conexionState.ninguno);
             }
@@ -79,12 +82,13 @@ public class manejadorBotonesElimina : MonoBehaviour
             {
                 if (conexion.getEstadoActualConexion() == conexionState.falleEliminacionDatos)
                 {
-                    ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("El usuario no pudo ser eliminado...", true);
+                    ManejadorVentanaEmergente.enviaTexto("El usuario no pudo ser eliminado...");
+                    ManejadorVentanaEmergente.reiniciaTiempo();
                     yield return new WaitForSeconds(1f);
                     conexion.setEstadoActualConexion(conexionState.ninguno);
                 }
             }
         }
-        pulseBoton = false;
+        reiniciaBotones();
     }
 }

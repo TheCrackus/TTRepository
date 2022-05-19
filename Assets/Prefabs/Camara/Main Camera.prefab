@@ -214,13 +214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e90f6387cb6ca469548490456ea8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camaraAnimator: {fileID: 0}
   objetivoSeguir: {fileID: 0}
   suavizado: 0.1
   posicionCamaraMaxima: {fileID: 11400000, guid: 84a706b1a4866e2489ca60493dd176c9, type: 2}
   posicionCamaraMinima: {fileID: 11400000, guid: ee43b5ebcf573744894a71b2b04063ad, type: 2}
   posicionCamara: {fileID: 11400000, guid: b7e938756b42de74eb849309e4d4008f, type: 2}
-  estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
 --- !u!114 &3413865011879603946
 MonoBehaviour:
   m_ObjectHideFlags: 0

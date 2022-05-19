@@ -11,9 +11,8 @@ public class corazon : incrementoEstadisticas
     [Header("Incremento de vida para el player")]
     [SerializeField] private float incrementoValorEstadistica;
 
-    public override void OnTriggerEnter2D(Collider2D colisionDetectada)
+    private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
-        base.OnTriggerEnter2D(colisionDetectada);
         if (colisionDetectada.gameObject.CompareTag("Player") 
             && colisionDetectada.isTrigger)
         {

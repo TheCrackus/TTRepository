@@ -3,90 +3,107 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class manejadorBotonesPrincipal : MonoBehaviour
+public class manejadorBotonesPrincipal : formulario
 {
-    private bool pulseBoton;
+
     private conexionWeb conexion;
-    public GameObject ventanaEmergente;
-    public string escenaLogIn;
-    public string escenaLaberintos;
-    public GameObject manejadorElimina;
-    public GameObject manejadorModifica;
-    public datosJuego datos;
-    [Header("Objeto que contiene la informacion del juego en ejecucion")]
-    public cambioEscena estadoCambioEscena;
 
-    public bool getPulseBoton()
-    {
-        return pulseBoton;
-    }
+    [Header("Canvas que contiene el formulario de eliminacion")]
+    [SerializeField] private GameObject canvasElimina;
 
-    public void setPulseBoton(bool pulseBoton)
-    {
-        this.pulseBoton = pulseBoton;
-    }
+    [Header("Canvas que contiene el formulario de modificacion")]
+    [SerializeField] private GameObject canvasModifica;
+
+    [Header("Nombre de la escena de LogIn")]
+    [SerializeField] private valorString escenaLogIn;
+
+    [Header("Nombre de la escena de Laberintos")]
+    [SerializeField] private valorString escenaLaberintos;
+
+    [Header("Datos de la partida en curso")]
+    [SerializeField] private datosJuego datos;
 
     void Start()
     {
-        pulseBoton = false;
+        reiniciaBotones();
         conexion = gameObject.GetComponent<conexionWeb>();
         if (conexion.getMiUsuario().datosEjecucion.idJugador != 0)
         {
-            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Bienvenido: " + conexion.getMiUsuario().datosEjecucion.sobrenombre, true);
+            iniciaVentanaEmergente();
+            ManejadorVentanaEmergente.enviaTexto("Bienvenido: " + conexion.getMiUsuario().datosEjecucion.sobrenombre);
+            ManejadorVentanaEmergente.reiniciaTiempo();
         }
         else
         {
-            //StartCoroutine(cambioEscena(escenaLogIn));
+            botonCierraSesion();
+        }
+    }
+
+    public void iniciaCanvasElimina()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasEliminar"))
+        {
+            Instantiate(canvasElimina, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    public void iniciaCanvasModifica()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasModificar"))
+        {
+            Instantiate(canvasModifica, Vector3.zero, Quaternion.identity);
         }
     }
 
     public void botonCierraSesion()
     {
-        if (!pulseBoton)
+        if (!PulseBoton)
         {
+            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
             conexion.cierraSesion();
-            pulseBoton = true;
-            StartCoroutine(cambioEscena(escenaLogIn));
+            StartCoroutine(cambioEscena(escenaLogIn.valorStringEjecucion));
+            PulseBoton = true;
         }
     }
 
     public void botonEliminaUsuario()
     {
-        if (!pulseBoton)
+        if (!PulseBoton)
         {
-            manejadorElimina.SetActive(true);
-            manejadorElimina.GetComponent<manejadorBotonesElimina>().setPulseBoton(false);
-            pulseBoton = true;
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            iniciaCanvasElimina();
+            PulseBoton = true;
         }
     }
 
     public void botonModificaUsuario()
     {
-        if (!pulseBoton)
+        if (!PulseBoton)
         {
-            manejadorModifica.SetActive(true);
-            manejadorModifica.GetComponent<manejadorBotonesModifica>().setPulseBoton(false);
-            pulseBoton = true;
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            iniciaCanvasModifica();
+            PulseBoton = true;
         }
     }
 
     public void botonNuevaPartida()
     {
-        if (!pulseBoton)
+        if (!PulseBoton)
         {
-            pulseBoton = true;
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
             //datos.reiniciaObjetosScriptable();
             //datos.guardaObjetosScriptable();
-            StartCoroutine(cambioEscena(escenaLaberintos));
+            StartCoroutine(cambioEscena(escenaLaberintos.valorStringEjecucion));
+            PulseBoton = true;
         }
     }
 
     public void botonContinuarPartida() 
     {
-        if (!pulseBoton)
+        if (!PulseBoton)
         {
-            pulseBoton = true;
-            
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            PulseBoton = true;
         }
     }
 

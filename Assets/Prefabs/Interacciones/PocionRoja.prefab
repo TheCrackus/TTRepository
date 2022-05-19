@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 7568635697099099579}
   - component: {fileID: 7568635697099099578}
   - component: {fileID: 7568635697099099580}
+  - component: {fileID: 3534928654913977340}
   m_Layer: 0
   m_Name: PocionRoja
   m_TagString: Untagged
@@ -294,6 +295,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventariopPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
   itemAgrgarInventario: {fileID: 11400000, guid: 75a19932fa4a694408d0405f87533f01, type: 2}
+--- !u!114 &3534928654913977340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7568635697099099558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f329dbb9e7b7a7045a7cf4d7656c5f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
   audioRecojer: {fileID: 9158107114495565110}
   velocidadAudioRecojer: 1

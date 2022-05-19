@@ -22,6 +22,14 @@ TagManager:
   - Pulsable
   - Terreno
   - CinematicaInicial
+  - Puzzle
+  - ManejadorContador
+  - CanvasRegistro
+  - CanvasVentanaEmergente
+  - CanvasEliminar
+  - CanvasModificar
+  - SetUp
+  - Singleton
   layers:
   - Default
   - TransparentFX
@@ -70,4 +78,7 @@ TagManager:
     locked: 0
   - name: Simbolos
     uniqueID: 4164994501
+    locked: 0
+  - name: PiezasPuzle
+    uniqueID: 3500556965
     locked: 0

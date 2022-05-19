@@ -324,6 +324,8 @@ GameObject:
   - component: {fileID: 1398895126709478736}
   - component: {fileID: 1398895126709478737}
   - component: {fileID: 1398895126709478749}
+  - component: {fileID: 8091535967502496593}
+  - component: {fileID: 6969811969200749101}
   - component: {fileID: 1759186388}
   - component: {fileID: 1441881193787301406}
   m_Layer: 0
@@ -355,8 +357,6 @@ Transform:
   - {fileID: 8003157536540551988}
   - {fileID: 7290752089123280940}
   - {fileID: 1402662573231024167}
-  - {fileID: 3050731712119056657}
-  - {fileID: 2741180029955247340}
   - {fileID: 1868903071138020744}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -494,7 +494,7 @@ MonoBehaviour:
   vectorMovimiento: {x: 0, y: 0, z: 0}
   animatorPlayer: {fileID: 0}
   estadoPlayer: {fileID: 5930619697012177412}
-  velocidad: 4
+  velocidad: 3
   reciveGolpePlayer: {fileID: 11400000, guid: a22c4645bb8328747ae3d66b9a5b2bc9, type: 2}
   posicionPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   spriteObjetoMostrar: {fileID: 1264945170}
@@ -506,9 +506,36 @@ MonoBehaviour:
   arco: {fileID: 11400000, guid: b66fdf8472482134d88c1b6d8b2fdd1f, type: 2}
   espada: {fileID: 11400000, guid: 0498361776c55f842b62cf651e820a20, type: 2}
   vidaPlayer: {fileID: 5795056107401489821}
+  manejadorAudioMelee: {fileID: 8091535967502496593}
+  manejadorAudioDistancia: {fileID: 6969811969200749101}
+--- !u!114 &8091535967502496593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895126709478738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec7afb538f0a5d44ba794f248bd1f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
-  audioAtaqueEspada: {fileID: 242482615076518691}
-  velocidadAudioAtaqueEspada: 2
+  audioAtaqueMelee: {fileID: 242482615076518691}
+  velocidadAudioAtaqueMelee: 2
+--- !u!114 &6969811969200749101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398895126709478738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da14937754a116d48afa3da110097eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
   audioArrojaProyectil: {fileID: 2277938230579820125}
   velocidadAudioArrojaProyectil: 2
 --- !u!114 &1759186388
@@ -932,7 +959,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1398895126709478750}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2277938230579820125
 AudioSource:
@@ -1295,6 +1322,9 @@ GameObject:
   - component: {fileID: 3383634834918515800}
   - component: {fileID: 5795056107401489821}
   - component: {fileID: 13999326}
+  - component: {fileID: 2239597630576312625}
+  - component: {fileID: 7835759031782937087}
+  - component: {fileID: 2963479657177266617}
   m_Layer: 0
   m_Name: SistemaVida
   m_TagString: Player
@@ -1312,7 +1342,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3050731712119056657}
+  - {fileID: 2741180029955247340}
   m_Father: {fileID: 1398895126709478750}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1367,19 +1399,8 @@ MonoBehaviour:
   numeroFlash: 5
   colisionTrigger: {fileID: 3383634834918515800}
   spritePlayer: {fileID: 1398895126709478751}
-  "audioDa\xF1o": {fileID: 3508381225328700042}
-  "velocidadAudioDa\xF1o": 3
-  audioTransicion: {fileID: 2746917235088531982}
-  velocidadAudioTransicion: 1
-  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
-  objetoPanel: {fileID: 0}
-  panelAnimator: {fileID: 0}
-  fadeOutClip: {fileID: 0}
-  nCanvas: {fileID: 0}
-  pCanvas: {fileID: 0}
-  estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
-  fadeInFadeOutCanvas: {fileID: 8745939805210079820, guid: 60dc23bc450bfb446ba135d3ae12a426, type: 3}
-  datos: {fileID: 11400000, guid: a43b7be3eb7dc514f90a93b84c6a9a4e, type: 2}
+  manejadorAudioRecibeGolpe: {fileID: 2239597630576312625}
+  manejadorEscenaPuntoControl: {fileID: 7835759031782937087}
 --- !u!114 &13999326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1408,6 +1429,79 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2239597630576312625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582588203709584349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3cbd25db8dca4e4ebb2f2822cef0770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
+  audioGolpe: {fileID: 3508381225328700042}
+  velocidadAudioGolpe: 3
+--- !u!114 &7835759031782937087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582588203709584349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511501a51063408479279d5f9eecc8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInFadeOutCanvas: {fileID: 8745939805210079820, guid: 60dc23bc450bfb446ba135d3ae12a426, type: 3}
+  posicionPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
+  nuevaDireccionPlayer: {x: 0, y: 0}
+  posicionCamaraMaxima: {fileID: 11400000, guid: 84a706b1a4866e2489ca60493dd176c9, type: 2}
+  posicionCamaraMinima: {fileID: 11400000, guid: ee43b5ebcf573744894a71b2b04063ad, type: 2}
+  posicionCamara: {fileID: 11400000, guid: b7e938756b42de74eb849309e4d4008f, type: 2}
+  debeMostrarTexto: 0
+  nombreMostrar: 
+  contadorRegresivoInicia: {fileID: 11400000, guid: 44f42969ead8f514eb7f17ce8ef15b71, type: 2}
+  contadorRegresivoDeten: {fileID: 11400000, guid: 52e43ba2e78e79649bbd417d363b932c, type: 2}
+  contadorRegresivoReinicia: {fileID: 11400000, guid: f6cdd663aa8c6094b83aabade28e9e6a, type: 2}
+  manejadorAudioTransicion: {fileID: 2963479657177266617}
+  enumAccionContador: 1
+  enumTipoTransicion: 1
+  escenaActual: {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
+  escenas:
+  - {fileID: 11400000, guid: c951c50b7d0dae94aa9ddc99c9e83af6, type: 2}
+  - {fileID: 11400000, guid: 84687b5074e6e694da6e1cdae161ebba, type: 2}
+  - {fileID: 11400000, guid: b0af4cadb963a174da75694466327f52, type: 2}
+  - {fileID: 11400000, guid: aeb234d6858a5a14dab7c840c91cf9fc, type: 2}
+  - {fileID: 11400000, guid: 2d3d75730c114a24cb4758708fecd842, type: 2}
+  - {fileID: 11400000, guid: 034cd9a1768459b4d9ff539c5c06ae3f, type: 2}
+  nombreTransicionDestino: {fileID: 11400000, guid: aaacf6d405e604d47b2282b3dbddabc4, type: 2}
+  nombreTransicionActual: {fileID: 11400000, guid: aaacf6d405e604d47b2282b3dbddabc4, type: 2}
+  estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
+  escenaCarga: {fileID: 0}
+  nuevaPosicionPlayer: {x: 0, y: 0, z: 0}
+  nuevaPosicionCamara: {x: 0, y: 0, z: 0}
+  nuevaPosicionCamaraMaxima: {x: 0, y: 0, z: 0}
+  nuevaPosicionCamaraMinima: {x: 0, y: 0, z: 0}
+  datos: {fileID: 11400000, guid: a43b7be3eb7dc514f90a93b84c6a9a4e, type: 2}
+--- !u!114 &2963479657177266617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582588203709584349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a19116e255403c4abe8307c7e540a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
+  audioTransiciona: {fileID: 2746917235088531982}
+  velocidadAudioTransiciona: 1
 --- !u!1 &6735795128634758032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,12 +1526,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6735795128634758032}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1398895126709478750}
-  m_RootOrder: 11
+  m_Father: {fileID: 8003157536540551988}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &3508381225328700042
 AudioSource:
@@ -1633,12 +1727,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7287948672994367097}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1398895126709478750}
-  m_RootOrder: 12
+  m_Father: {fileID: 8003157536540551988}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2746917235088531982
 AudioSource:

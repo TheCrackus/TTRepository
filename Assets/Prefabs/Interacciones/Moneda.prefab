@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 6462158546855596935}
   - component: {fileID: 6462158546855596932}
   - component: {fileID: 7497311309515799148}
+  - component: {fileID: 7398617317813196058}
   m_Layer: 0
   m_Name: Moneda
   m_TagString: Recojible
@@ -294,7 +295,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventariopPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
   itemAgrgarInventario: {fileID: 11400000, guid: dfcd9e334d76d014aadc23c1dbb8a038, type: 2}
+  eventoIncrementoInterfaz: {fileID: 11400000, guid: 445f70a81960fac4d90389920c217d64, type: 2}
+--- !u!114 &7398617317813196058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462158546855597050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f329dbb9e7b7a7045a7cf4d7656c5f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
   audioRecojer: {fileID: 1037944663745979525}
   velocidadAudioRecojer: 1
-  eventoIncrementoInterfaz: {fileID: 11400000, guid: 445f70a81960fac4d90389920c217d64, type: 2}

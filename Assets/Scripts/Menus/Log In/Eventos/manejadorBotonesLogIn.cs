@@ -4,93 +4,87 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class manejadorBotonesLogIn : MonoBehaviour
+public class manejadorBotonesLogIn : formulario
 {
 
-    [SerializeField] private conexionWeb conexion;
-    [Header("Pulse un boton de la interfaz?")]
-    [SerializeField] private bool pulseBoton;
+    private conexionWeb conexion;
+
+    [Header("Nombre de la escena con el menu principal")]
+    [SerializeField] private valorString escenaMenuPrincipal;
+
+    [Header("Canvas que contiene el formulario de registro")]
+    [SerializeField] private GameObject canvasRegistro;
+
+    [Header("Componentes graficos que contienen la informacion del formulario")]
     [SerializeField] private InputField emailField;
+
     [SerializeField] private InputField passwordFiled;
-    [SerializeField] private GameObject ventanaEmergente;
-    [SerializeField] private string escenaPrincipal;
-    [SerializeField] private string escenaRegistra;
-    [Header("Contenedor de un audio a reporducir")]
-    [SerializeField] private GameObject audioEmergente;
-    [Header("Audio al abrir una interfaz o presionar un boton")]
-    [SerializeField] private AudioSource audioClickAbrir;
-    [Header("Velocidad de reproduccion del Audio y agudez")]
-    [SerializeField] private float velocidadAudioClickAbrir;
-    [Header("Audio al cerrar una interfaz o presionar un boton")]
-    [SerializeField] private AudioSource audioClickCerrar;
-    [Header("Velocidad de reproduccion del Audio y agudez")]
-    [SerializeField] private float velocidadAudioClickCerrar;
+
+    void Start()
+    {
+        reiniciaBotones();
+        conexion = gameObject.GetComponent<conexionWeb>();
+    }
+
+    public void iniciaCanvasRegistro() 
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasRegistro"))
+        {
+            Instantiate(canvasRegistro, Vector3.zero, Quaternion.identity);
+        }
+    }
 
     public bool getPulseBoton()
     {
-        return pulseBoton;
+        return PulseBoton;
     }
 
     public void setPulseBoton(bool pulseBoton)
     {
-        this.pulseBoton = pulseBoton;
-    }
-
-    void Start()
-    {
-        pulseBoton = false;
-        conexion = gameObject.GetComponent<conexionWeb>();
-    }
-
-    public void reproduceAudio(AudioSource audio, float velocidad)
-    {
-        if (audio)
-        {
-            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
-            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
-            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
-            audioEmergenteTemp.reproduceAudioClick();
-        }
+        this.PulseBoton = pulseBoton;
     }
 
     public void botonIniciaSesion()
     {
-        if (!pulseBoton) 
+        if (!PulseBoton) 
         {
-            reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
             conexion.iniciaSesion(emailField.text.ToString(), passwordFiled.text.ToString());
             StartCoroutine(esperaDatosInicioSesion());
-            pulseBoton = true;
+            PulseBoton = true;
         }
     }
 
     public void botonRegistra() 
     {
-        if (!pulseBoton)
+        if (!PulseBoton)
         {
-            reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
-            StartCoroutine(cambioEscena(escenaRegistra));
-            pulseBoton = true;
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            iniciaCanvasRegistro();
+            PulseBoton = true;
         }
     }
 
     private IEnumerator esperaDatosInicioSesion()
     {
-        ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Procesando datos...", false);
+        iniciaVentanaEmergente();
+        ManejadorVentanaEmergente.enviaTexto("Procesando datos...");
+        ManejadorVentanaEmergente.reiniciaTiempo();
         yield return new WaitWhile(() => (conexion.getEstadoActualConexion() == conexionState.iniciandoSesion));
         if (conexion.getEstadoActualConexion() == conexionState.termineIniciarSesion)
         {
-            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Datos listos...", false);
+            ManejadorVentanaEmergente.enviaTexto("Datos listos...");
+            ManejadorVentanaEmergente.reiniciaTiempo();
             yield return new WaitForSeconds(1f);
             conexion.setEstadoActualConexion(conexionState.ninguno);
-            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().cierraVentanaEmergente();
-            StartCoroutine(cambioEscena(escenaPrincipal));
+            StartCoroutine(cambioEscena(escenaMenuPrincipal.valorStringEjecucion));
         }
         else
         {
             if (conexion.getEstadoActualConexion() == conexionState.falleIniciarSesionConexion)
             {
-                ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Fallo de conexión...", true);
+                ManejadorVentanaEmergente.enviaTexto("Fallo de conexión...");
+                ManejadorVentanaEmergente.reiniciaTiempo();
                 yield return new WaitForSeconds(1f);
                 conexion.setEstadoActualConexion(conexionState.ninguno);
             }
@@ -98,13 +92,14 @@ public class manejadorBotonesLogIn : MonoBehaviour
             {
                 if (conexion.getEstadoActualConexion() == conexionState.falleIniciarSesionDatos)
                 {
-                    ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("El usuario no existe...", true);
+                    ManejadorVentanaEmergente.enviaTexto("El usuario no existe...");
+                    ManejadorVentanaEmergente.reiniciaTiempo();
                     yield return new WaitForSeconds(1f);
                     conexion.setEstadoActualConexion(conexionState.ninguno);
                 }
             }
         }
-        pulseBoton = false;
+        reiniciaBotones();
     }
 
     private IEnumerator cambioEscena(string escenaCarga) 

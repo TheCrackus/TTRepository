@@ -16,6 +16,7 @@ public class datosJuego : ScriptableObject
     public List<cambioEscena> escenas = new List<cambioEscena>();
     public List<listaInventario> listaInventarios = new List<listaInventario>();
     public List<inventarioItem> items = new List<inventarioItem>();
+    public List<valorString> strings = new List<valorString>();
 
     private void reiniciaValoresScriptable()
     {
@@ -47,49 +48,47 @@ public class datosJuego : ScriptableObject
         {
             listaInventario.reiniciaValores();
         }
+        foreach (valorString lstring in strings) 
+        {
+            lstring.reiniciaValores();
+        }
     }
 
     public void reiniciaObjetosScriptable()
     {
         reiniciaValoresScriptable();
-        int numeroObjeto = 0;
         foreach (ScriptableObject objeto in objetosPersistentesGeneral)
         {
-            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", numeroObjeto)))
+            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name)))
             {
-                File.Delete(Application.persistentDataPath + string.Format("/{0}.dat", numeroObjeto));
+                File.Delete(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name));
             }
-            numeroObjeto++;
         }
     }
 
     public void guardaObjetosScriptable()
     {
-        int numeroObjeto = 0;
         foreach (ScriptableObject objeto in objetosPersistentesGeneral)
         {
-            FileStream archivo = File.Create(Application.persistentDataPath + string.Format("/{0}.dat", numeroObjeto));
+            FileStream archivo = File.Create(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name));
             BinaryFormatter binario = new BinaryFormatter();
             var json = JsonUtility.ToJson(objeto);
             binario.Serialize(archivo, json);
             archivo.Close();
-            numeroObjeto++;
         }
     }
 
     public void cargaObjetosScriptable()
     {
-        int numeroObjeto = 0;
         foreach (ScriptableObject objeto in objetosPersistentesGeneral)
         {
-            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", numeroObjeto)))
+            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name)))
             {
-                FileStream archivo = File.Open(Application.persistentDataPath + string.Format("/{0}.dat", numeroObjeto), FileMode.Open);
+                FileStream archivo = File.Open(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name), FileMode.Open);
                 BinaryFormatter binario = new BinaryFormatter();
                 JsonUtility.FromJsonOverwrite((string)binario.Deserialize(archivo), objeto);
                 archivo.Close();
             }
-            numeroObjeto++;
         }
     }
 }

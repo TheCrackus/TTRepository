@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5392485079746215287}
   m_Layer: 0
   m_Name: SetUp
-  m_TagString: Untagged
+  m_TagString: SetUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,11 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df3560058b153884eabca45571fb75cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreEscenaActual: 
-  cinematicaInicial: {fileID: 0}
-  poscicioPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
+  posicionPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   contenedoresCinematicas:
   - {fileID: 0}
   empezoPartida: {fileID: 11400000, guid: 1e92c5d6b6cd55e4685891cfc7c09650, type: 2}
   datos: {fileID: 11400000, guid: a43b7be3eb7dc514f90a93b84c6a9a4e, type: 2}
+  escenaActual: {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
+  singleton: {fileID: 2462799494399164431, guid: 1bae6d2885d94694a9a3ef276c99992d, type: 3}

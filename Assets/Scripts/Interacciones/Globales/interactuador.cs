@@ -1,31 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class interactuador : MonoBehaviour
 {
+
+    private GameObject nCanvas;
+
+    private GameObject contenedorTextoDialogos;
+
+    private TextMeshProUGUI textoDialogos;
+
     [Header("Evento que activa un simbolo")]
     [SerializeField] private evento simboloActivoDesactivo;
+
     [Header("Interactua?")]
     [SerializeField] private bool playerEnRango;
-    public void setSimboloActivoDesactivo(evento simboloActivoDesactivo) 
-    {
-        this.simboloActivoDesactivo = simboloActivoDesactivo;
-    }
 
-    public evento getSimboloActivoDesactivo() 
-    {
-        return simboloActivoDesactivo;
-    }
+    [Header("Panel para mostrar un dialogo")]
+    [SerializeField] private GameObject fadeInFadeOutCanvas;
 
-    public void setPlayerEnRango(bool playerEnRango) 
-    {
-        this.playerEnRango = playerEnRango;
-    }
+    public GameObject ContenedorTextoDialogos { get => contenedorTextoDialogos; set => contenedorTextoDialogos = value; }
+    public TextMeshProUGUI TextoDialogos { get => textoDialogos; set => textoDialogos = value; }
+    public evento SimboloActivoDesactivo { get => simboloActivoDesactivo; set => simboloActivoDesactivo = value; }
+    public bool PlayerEnRango { get => playerEnRango; set => playerEnRango = value; }
+    public GameObject NCanvas { get => nCanvas; set => nCanvas = value; }
 
-    public bool getPlayerEnRango() 
+    public void iniciaCanvas()
     {
-        return playerEnRango;
+        if (fadeInFadeOutCanvas != null)
+        {
+            if (!GameObject.FindGameObjectWithTag("CanvasEscenas"))
+            {
+                NCanvas = Instantiate(fadeInFadeOutCanvas, Vector3.zero, Quaternion.identity);
+            }
+            else
+            {
+                NCanvas = GameObject.FindGameObjectWithTag("CanvasEscenas");
+            }
+
+            ContenedorTextoDialogos = NCanvas.transform.Find("ContenedorTextoDialogos").gameObject;
+            TextoDialogos = ContenedorTextoDialogos.transform.Find("TextoDialogos").gameObject.GetComponent<TextMeshProUGUI>();
+        }
     }
 
     public virtual void OnTriggerEnter2D(Collider2D colisionDetectada)
@@ -33,8 +50,8 @@ public class interactuador : MonoBehaviour
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            simboloActivoDesactivo.invocaFunciones();
-            playerEnRango = true;
+            SimboloActivoDesactivo.invocaFunciones();
+            PlayerEnRango = true;
         }
     }
 
@@ -43,8 +60,8 @@ public class interactuador : MonoBehaviour
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            simboloActivoDesactivo.invocaFunciones();
-            playerEnRango = false;
+            SimboloActivoDesactivo.invocaFunciones();
+            PlayerEnRango = false;
         }
     }
 }

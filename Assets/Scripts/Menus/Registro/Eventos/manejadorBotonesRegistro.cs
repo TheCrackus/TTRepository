@@ -5,33 +5,33 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class manejadorBotonesRegistro : MonoBehaviour
+public class manejadorBotonesRegistro : formulario
 {
+
     private string msjFormulario;
+
     private bool fechaCorrecta;
+
     private bool emailCorrecto;
+
     private bool sobrenombreCorrecto;
+
     private bool passwordCorrecta;
-    private bool pulseBoton;
+
     private conexionWeb conexion;
-    public InputField emailFiled;
-    public InputField passwordFiled;
-    public InputField sobrenombreFiled;
-    public InputField diaFiled;
-    public InputField mesFiled;
-    public InputField añoFiled;
-    public GameObject ventanaEmergente;
-    public string escenaLogIn;
+ 
+    [Header("Componentes graficos que contienen la informacion del formulario")]
+    [SerializeField] private InputField emailFiled;
 
-    public bool getPulseBoton()
-    {
-        return pulseBoton;
-    }
+    [SerializeField] private InputField passwordFiled;
 
-    public void setPulseBoton(bool pulseBoton)
-    {
-        this.pulseBoton = pulseBoton;
-    }
+    [SerializeField] private InputField sobrenombreFiled;
+
+    [SerializeField] private InputField diaFiled;
+
+    [SerializeField] private InputField mesFiled;
+
+    [SerializeField] private InputField añoFiled;
 
     void Start()
     {
@@ -40,14 +40,15 @@ public class manejadorBotonesRegistro : MonoBehaviour
         emailCorrecto = true;
         passwordCorrecta = true;
         sobrenombreCorrecto = true;
-        pulseBoton = false;
+        reiniciaBotones();
         conexion = gameObject.GetComponent<conexionWeb>();
     }
 
     public void botonRegistrar() 
     {
-        if (!pulseBoton)
+        if (!PulseBoton)
         {
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
             string dia = "";
             string mes = "";
             string año = "";
@@ -311,48 +312,61 @@ public class manejadorBotonesRegistro : MonoBehaviour
             if (fechaCorrecta && emailCorrecto && sobrenombreCorrecto && passwordCorrecta)
             {
                 conexion.registraUsuario(emailFiled.text.ToString(), passwordFiled.text.ToString(), sobrenombreFiled.text.ToString(), nacimiento);
-                pulseBoton = true;
+                PulseBoton = true;
                 StartCoroutine(esperaDatosRegistro());
             }
             else 
             {
-                ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente(msjFormulario, true);
+                iniciaVentanaEmergente();
+                ManejadorVentanaEmergente.enviaTexto(msjFormulario);
+                ManejadorVentanaEmergente.reiniciaTiempo();
                 msjFormulario = "Favor de verificar la siguiente información:\n\n";
                 fechaCorrecta = true;
                 emailCorrecto = true;
                 sobrenombreCorrecto = true;
                 passwordCorrecta = true;
-                pulseBoton = false;
+                reiniciaBotones();
             }
         }
     }
 
     public void botonRegresar() 
     {
-        if (!pulseBoton) 
+        if (!PulseBoton)
         {
-            pulseBoton = true;
-            StartCoroutine(cambioEscena(escenaLogIn));
+            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
+            EventoReiniciaBotones.invocaFunciones();
+            PulseBoton = true;
+            Destroy(CanvasFormulario);
         }
+    }
+
+    public void cierraFormulario()
+    {
+        EventoReiniciaBotones.invocaFunciones();
+        Destroy(CanvasFormulario);
     }
 
     private IEnumerator esperaDatosRegistro()
     {
-        ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Procesando datos...", false);
+        iniciaVentanaEmergente();
+        ManejadorVentanaEmergente.enviaTexto("Procesando datos...");
+        ManejadorVentanaEmergente.reiniciaTiempo();
         yield return new WaitWhile(() => (conexion.getEstadoActualConexion() == conexionState.iniciandoRegistro));
         if (conexion.getEstadoActualConexion() == conexionState.termineRegistro)
         {
-            ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Registro completo...", false);
+            ManejadorVentanaEmergente.enviaTexto("Registro completo...");
+            ManejadorVentanaEmergente.reiniciaTiempo();
             yield return new WaitForSeconds(1f);
             conexion.setEstadoActualConexion(conexionState.ninguno);
-            pulseBoton = false;
-            botonRegresar();
+            cierraFormulario();
         }
         else
         {
             if (conexion.getEstadoActualConexion() == conexionState.falleRegistroConexion)
             {
-                ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("Fallo de conexión...", true);
+                ManejadorVentanaEmergente.enviaTexto("Fallo de conexión...");
+                ManejadorVentanaEmergente.reiniciaTiempo();
                 yield return new WaitForSeconds(1f);
                 conexion.setEstadoActualConexion(conexionState.ninguno);
             }
@@ -360,22 +374,14 @@ public class manejadorBotonesRegistro : MonoBehaviour
             {
                 if (conexion.getEstadoActualConexion() == conexionState.falleRegistroDatos)
                 {
-                    ventanaEmergente.GetComponent<manejadorVentanaEmergente>().abreVentanaEmergente("El usuario no pudo ser registrado...", true);
+                    ManejadorVentanaEmergente.enviaTexto("El usuario no pudo ser registrado...");
+                    ManejadorVentanaEmergente.reiniciaTiempo();
                     yield return new WaitForSeconds(1f);
                     conexion.setEstadoActualConexion(conexionState.ninguno);
                 }
             }
         }
-        pulseBoton = false;
-    }
-
-    private IEnumerator cambioEscena(string escenaCarga)
-    {
-        AsyncOperation accion = SceneManager.LoadSceneAsync(escenaCarga);
-        while (!accion.isDone)
-        {
-            yield return null;
-        }
+        reiniciaBotones();
     }
 
 }

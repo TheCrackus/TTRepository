@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "Nuevo Booleano", menuName = "Valores/Booleano")]
 [System.Serializable]
 public class valorBooleano : ScriptableObject
 {
