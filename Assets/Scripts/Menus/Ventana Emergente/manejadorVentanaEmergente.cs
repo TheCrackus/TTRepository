@@ -41,7 +41,7 @@ public class manejadorVentanaEmergente : MonoBehaviour
             {
                 contadorTiempoCerrar = tiempoCerrar;
                 empiezaContador = false;
-                cierraVentanaEmergente();
+                //cierraVentanaEmergente();
             }
         }
     }

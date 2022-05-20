@@ -31,7 +31,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 386a89ac20b9fcd45ae0bcc25680eccb, type: 2}
   - {fileID: 11400000, guid: 1eda8f3a457dea24eb33ffb54ff336ce, type: 2}
   - {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
-  - {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
   - {fileID: 11400000, guid: 6ea0953e838e11049865526c4e5295c5, type: 2}
   - {fileID: 11400000, guid: 9f208d0e2a3b02f439f3f2e2d51ee238, type: 2}
   - {fileID: 11400000, guid: 63f122bcfafa86641a2fe8205c8309df, type: 2}
@@ -53,16 +52,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c90c7ca55a927d48b7c519900c14a9e, type: 2}
   - {fileID: 11400000, guid: a671a0af3e2defa408d549d9bf8b49a8, type: 2}
   - {fileID: 11400000, guid: 5eac702ed829aa046b6b24f9cd29e210, type: 2}
-  - {fileID: 11400000, guid: 84a706b1a4866e2489ca60493dd176c9, type: 2}
-  - {fileID: 11400000, guid: ee43b5ebcf573744894a71b2b04063ad, type: 2}
-  - {fileID: 11400000, guid: b7e938756b42de74eb849309e4d4008f, type: 2}
   - {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   - {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
   - {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
+  - {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
   vectores:
-  - {fileID: 11400000, guid: 84a706b1a4866e2489ca60493dd176c9, type: 2}
-  - {fileID: 11400000, guid: ee43b5ebcf573744894a71b2b04063ad, type: 2}
-  - {fileID: 11400000, guid: b7e938756b42de74eb849309e4d4008f, type: 2}
   - {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   flotantes:
   - {fileID: 11400000, guid: 6ea0953e838e11049865526c4e5295c5, type: 2}

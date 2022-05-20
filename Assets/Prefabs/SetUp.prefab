@@ -49,5 +49,10 @@ MonoBehaviour:
   - {fileID: 0}
   empezoPartida: {fileID: 11400000, guid: 1e92c5d6b6cd55e4685891cfc7c09650, type: 2}
   datos: {fileID: 11400000, guid: a43b7be3eb7dc514f90a93b84c6a9a4e, type: 2}
+  nombreEscenaLaberintos: {fileID: 11400000, guid: 84687b5074e6e694da6e1cdae161ebba, type: 2}
+  nombreEscenaMazmorra: {fileID: 11400000, guid: b0af4cadb963a174da75694466327f52, type: 2}
+  nombreEscenaPuzzle: {fileID: 11400000, guid: aeb234d6858a5a14dab7c840c91cf9fc, type: 2}
+  nombreEscenaJefeFinal: {fileID: 11400000, guid: 034cd9a1768459b4d9ff539c5c06ae3f, type: 2}
+  nombreEscenaCasa1: {fileID: 11400000, guid: c951c50b7d0dae94aa9ddc99c9e83af6, type: 2}
   escenaActual: {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
   singleton: {fileID: 2462799494399164431, guid: 1bae6d2885d94694a9a3ef276c99992d, type: 3}

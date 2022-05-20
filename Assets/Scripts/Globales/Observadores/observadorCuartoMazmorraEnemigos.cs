@@ -8,7 +8,7 @@ public class observadorCuartoMazmorraEnemigos : observadorCuartoMazmorra
 
     public void verificaEnemigosActivos() 
     {
-        foreach (enemigo enemigo in enemigos) 
+        foreach (enemigo enemigo in Enemigos) 
         {
             if (enemigo.gameObject.activeInHierarchy) 
             {
@@ -38,15 +38,16 @@ public class observadorCuartoMazmorraEnemigos : observadorCuartoMazmorra
     {
         if (colisionDetectada.CompareTag("Player") && !colisionDetectada.isTrigger)
         {
-            foreach (enemigo enemigo in enemigos)
+            foreach (enemigo enemigo in Enemigos)
             {
                 cambiaActivacion(enemigo, true);
             }
-            foreach (jarro rompible in rompibles)
+            foreach (jarro rompible in Rompibles)
             {
                 cambiaActivacion(rompible, true);
             }
             cierraPuertas();
+            CamaraVirtual.SetActive(true);
         }
     }
 
@@ -54,14 +55,15 @@ public class observadorCuartoMazmorraEnemigos : observadorCuartoMazmorra
     {
         if (colisionDetectada.CompareTag("Player") && !colisionDetectada.isTrigger)
         {
-            foreach (enemigo enemigo in enemigos)
+            foreach (enemigo enemigo in Enemigos)
             {
                 cambiaActivacion(enemigo, false);
             }
-            foreach (jarro rompible in rompibles)
+            foreach (jarro rompible in Rompibles)
             {
                 cambiaActivacion(rompible, false);
             }
+            CamaraVirtual.SetActive(false);
         }
     }
 }

@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class observadorCuarto : MonoBehaviour
 {
-    public enemigo[] enemigos;
-    public jarro[] rompibles;
+
+    [Header("Enemigos que se encuentran en esta sala")]
+    [SerializeField] private enemigo[] enemigos;
+
+    [Header("Objetos rompibles quwe se encuentran en esta sala")]
+    [SerializeField] private jarro[] rompibles;
+
+    [Header("Camara de esta sala")]
+    [SerializeField] private GameObject camaraVirtual;
+
+    public enemigo[] Enemigos { get => enemigos; set => enemigos = value; }
+    public jarro[] Rompibles { get => rompibles; set => rompibles = value; }
+    public GameObject CamaraVirtual { get => camaraVirtual; set => camaraVirtual = value; }
 
     public void cambiaActivacion(Component componente, bool estadoActivacion) 
     {
@@ -34,6 +45,7 @@ public class observadorCuarto : MonoBehaviour
             {
                 cambiaActivacion(rompible, true);
             }
+            camaraVirtual.SetActive(true);
         }
     }
 
@@ -49,6 +61,7 @@ public class observadorCuarto : MonoBehaviour
             {
                 cambiaActivacion(rompible, false);
             }
+            camaraVirtual.SetActive(false);
         }
     }
 }

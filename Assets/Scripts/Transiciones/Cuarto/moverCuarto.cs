@@ -7,18 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class moverCuarto : transicion
 {
-    private movimientoCamara movCam;
     [Header("Vector suma a la posicion del player")]
     public Vector3 cambioSumaPoscicionPlayer;
     [Header("Vector suma a la posicion de la camara (maxima y minima)")]
     public Vector3 cambioSumaPosicionCamara;
     [Header("Lugar destino de la transicion")]
     public GameObject moverCuartoRef;
-
-    public void Start()
-    {
-        movCam = Camera.main.GetComponent<movimientoCamara>();
-    }
 
     public void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
@@ -43,9 +37,6 @@ public class moverCuarto : transicion
                 }
                 moverE.NuevaDireccionPlayer = new Vector2(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1));
                 moverE.NuevaPosicionPlayer = gameObject.transform.position + new Vector3(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1), 0);
-                moverE.NuevaPosicionCamaraMinima = PosicionCamaraMinima.valorVectorialEjecucion;
-                moverE.NuevaPosicionCamaraMaxima = PosicionCamaraMaxima.valorVectorialEjecucion;
-                moverE.NuevaPosicionCamara = PosicionCamara.valorVectorialInicial;
             }
             else 
             {
@@ -95,13 +86,6 @@ public class moverCuarto : transicion
         estableceDireccionPlayer(player);
         player.transform.position = moverCuartoRef.transform.position + cambioSumaPoscicionPlayer;
         PosicionPlayer.valorVectorialEjecucion = player.transform.position;
-        PosicionCamaraMaxima.valorVectorialEjecucion = PosicionCamaraMaxima.valorVectorialEjecucion += cambioSumaPosicionCamara;
-        PosicionCamaraMinima.valorVectorialEjecucion = PosicionCamaraMinima.valorVectorialEjecucion += cambioSumaPosicionCamara;
-        movCam.gameObject.transform.position = new Vector3(
-        movCam.gameObject.transform.position.x + cambioSumaPosicionCamara.x,
-        movCam.gameObject.transform.position.y + cambioSumaPosicionCamara.y,
-        -10);
-        PosicionCamara.valorVectorialEjecucion = movCam.gameObject.transform.position;
 
         if (ManejadorAudioTransicion != null)
         {

@@ -34,7 +34,7 @@ public class datosJuego : ScriptableObject
         }
         foreach (usuario usuario in usuarios)
         {
-            usuario.reiniciaValores();
+            //usuario.reiniciaValores();
         }
         foreach (cambioEscena escena in escenas)
         {

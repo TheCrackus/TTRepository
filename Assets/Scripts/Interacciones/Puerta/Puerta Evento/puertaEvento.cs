@@ -5,8 +5,6 @@ using UnityEngine;
 public class puertaEvento : puerta
 {
 
-    private bool cumploEvento;
-
     [Header("Texto a mostrar")]
     [SerializeField] private string dialogoPositivo;
 
@@ -27,27 +25,20 @@ public class puertaEvento : puerta
             {
                 if (InventarioPlayerItems && piezas != null && piezas.Length > 0)
                 {
+                    iniciaCanvas();
                     foreach (inventarioItem itemLoop in piezas)
                     {
                         if (InventarioPlayerItems.verififcaItem(itemLoop))
                         {
-                            cumploEvento = true;
                             continue;
                         }
                         else
                         {
-                            cumploEvento = false;
+                            abreEscenaEvento(dialogoNegativo, false);
+                            return;
                         }
                     }
-                    iniciaCanvas();
-                    if (cumploEvento)
-                    {
-                        abreEscenaEvento(dialogoPositivo, cumploEvento);
-                    }
-                    else
-                    {
-                        abreEscenaEvento(dialogoNegativo, cumploEvento);
-                    }
+                    abreEscenaEvento(dialogoPositivo, true);
                 }
             }
         }

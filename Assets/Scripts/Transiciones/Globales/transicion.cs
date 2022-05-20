@@ -49,15 +49,6 @@ public class transicion : MonoBehaviour
     [Header("Direccion a la que apuntara el Player")]
     [SerializeField] private Vector2 nuevaDireccionPlayer;
 
-    [Header("Posicion limite camara maxima")]
-    [SerializeField] private valorVectorial posicionCamaraMaxima;
-
-    [Header("Posicion limite camara minima")]
-    [SerializeField] private valorVectorial posicionCamaraMinima;
-
-    [Header("Posicion camara")]
-    [SerializeField] private valorVectorial posicionCamara;
-
     [Header("Debo mostrar un texto al transicionar?")]
     [SerializeField] private bool debeMostrarTexto;
 
@@ -103,9 +94,6 @@ public class transicion : MonoBehaviour
     public GameObject FadeInFadeOutCanvas { get => fadeInFadeOutCanvas; set => fadeInFadeOutCanvas = value; }
     public valorVectorial PosicionPlayer { get => posicionPlayer; set => posicionPlayer = value; }
     public Vector2 NuevaDireccionPlayer { get => nuevaDireccionPlayer; set => nuevaDireccionPlayer = value; }
-    public valorVectorial PosicionCamaraMaxima { get => posicionCamaraMaxima; set => posicionCamaraMaxima = value; }
-    public valorVectorial PosicionCamaraMinima { get => posicionCamaraMinima; set => posicionCamaraMinima = value; }
-    public valorVectorial PosicionCamara { get => posicionCamara; set => posicionCamara = value; }
     public bool DebeMostrarTexto { get => debeMostrarTexto; set => debeMostrarTexto = value; }
     public string NombreMostrar { get => nombreMostrar; set => nombreMostrar = value; }
     public evento ContadorRegresivoInicia { get => contadorRegresivoInicia; set => contadorRegresivoInicia = value; }

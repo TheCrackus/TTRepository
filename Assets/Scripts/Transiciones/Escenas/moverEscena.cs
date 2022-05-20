@@ -23,23 +23,11 @@ public class moverEscena : transicion
     [Header("Nueva posicion Player")]
     [SerializeField] private Vector3 nuevaPosicionPlayer;
 
-    [Header("Nueva posicion camara")]
-    [SerializeField] private Vector3 nuevaPosicionCamara;
-
-    [Header("Nueva posicion camara maxima")]
-    [SerializeField] private Vector3 nuevaPosicionCamaraMaxima;
-
-    [Header("Nueva posicion camara minima")]
-    [SerializeField] private Vector3 nuevaPosicionCamaraMinima;
-
     public valorString NombreTransicionDestino { get => nombreTransicionDestino; set => nombreTransicionDestino = value; }
     public valorString NombreTransicionActual { get => nombreTransicionActual; set => nombreTransicionActual = value; }
     public cambioEscena EstadoCambioEscena { get => estadoCambioEscena; set => estadoCambioEscena = value; }
     public valorString EscenaCarga { get => escenaCarga; set => escenaCarga = value; }
     public Vector3 NuevaPosicionPlayer { get => nuevaPosicionPlayer; set => nuevaPosicionPlayer = value; }
-    public Vector3 NuevaPosicionCamara { get => nuevaPosicionCamara; set => nuevaPosicionCamara = value; }
-    public Vector3 NuevaPosicionCamaraMaxima { get => nuevaPosicionCamaraMaxima; set => nuevaPosicionCamaraMaxima = value; }
-    public Vector3 NuevaPosicionCamaraMinima { get => nuevaPosicionCamaraMinima; set => nuevaPosicionCamaraMinima = value; }
 
     public virtual void Awake()
     {
@@ -91,9 +79,6 @@ public class moverEscena : transicion
             }
             moverE.NuevaDireccionPlayer = new Vector2(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1));
             moverE.NuevaPosicionPlayer = gameObject.transform.position + new Vector3(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1), 0);
-            moverE.NuevaPosicionCamaraMinima = PosicionCamaraMinima.valorVectorialEjecucion;
-            moverE.NuevaPosicionCamaraMaxima = PosicionCamaraMaxima.valorVectorialEjecucion;
-            moverE.NuevaPosicionCamara = PosicionCamara.valorVectorialInicial;
         }
         else
         {
@@ -217,15 +202,9 @@ public class moverEscena : transicion
             PanelAnimator.Play("FadeOut");
             yield return new WaitForSeconds(FadeOutClip.length);
 
-            if (PosicionPlayer != null
-                && PosicionCamara != null
-                && PosicionCamaraMaxima != null
-                && PosicionCamaraMinima != null)
+            if (PosicionPlayer != null)
             {
                 PosicionPlayer.valorVectorialEjecucion = NuevaPosicionPlayer;
-                PosicionCamaraMaxima.valorVectorialEjecucion = NuevaPosicionCamaraMaxima;
-                PosicionCamaraMinima.valorVectorialEjecucion = NuevaPosicionCamaraMinima;
-                PosicionCamara.valorVectorialEjecucion = NuevaPosicionCamara;
                 if (EstadoCambioEscena != null)
                 {
                     EstadoCambioEscena.cambieEscenaEjecucion = true;

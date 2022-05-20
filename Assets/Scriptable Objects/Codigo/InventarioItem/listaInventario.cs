@@ -26,6 +26,7 @@ public class listaInventario : ScriptableObject
             if (itemLoop == item && itemLoop.cantidadItem > 0)
             {
                 verificacion = true;
+                break;
             }
             else 
             {

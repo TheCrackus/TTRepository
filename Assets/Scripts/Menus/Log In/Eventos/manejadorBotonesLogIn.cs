@@ -20,10 +20,17 @@ public class manejadorBotonesLogIn : formulario
 
     [SerializeField] private InputField passwordFiled;
 
+    [Header("Datos de la partida en curso")]
+    [SerializeField] private datosJuego datos;
+
     void Start()
     {
         reiniciaBotones();
         conexion = gameObject.GetComponent<conexionWeb>();
+        if (conexion.getMiUsuario().datosEjecucion.idJugador != 0)
+        {
+            StartCoroutine(cambioEscena(escenaMenuPrincipal.valorStringEjecucion));
+        }
     }
 
     public void iniciaCanvasRegistro() 
@@ -65,6 +72,16 @@ public class manejadorBotonesLogIn : formulario
         }
     }
 
+    public void botonCierraJuego()
+    {
+        if (!PulseBoton)
+        {
+            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
+            PulseBoton = true;
+            Application.Quit();
+        }
+    }
+
     private IEnumerator esperaDatosInicioSesion()
     {
         iniciaVentanaEmergente();
@@ -77,6 +94,7 @@ public class manejadorBotonesLogIn : formulario
             ManejadorVentanaEmergente.reiniciaTiempo();
             yield return new WaitForSeconds(1f);
             conexion.setEstadoActualConexion(conexionState.ninguno);
+            datos.reiniciaObjetosScriptable();
             StartCoroutine(cambioEscena(escenaMenuPrincipal.valorStringEjecucion));
         }
         else

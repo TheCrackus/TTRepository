@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LogIn.unity
     guid: 7c1ed1f574dc8764bb003e9cc93623d3
   - enabled: 1
-    path: Assets/Scenes/Registro.unity
-    guid: 8b9b17ba56555c64bbc73a4defdfd843
-  - enabled: 1
     path: Assets/Scenes/Principal.unity
     guid: 028fb6157fe08934ca417ac0c658323b
   - enabled: 1
@@ -26,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PuzzleNivel2.unity
     guid: 001d7a1d578033a4db7ac18007af359c
+  - enabled: 1
+    path: Assets/Scenes/JefeFinal.unity
+    guid: 5147d60b500419b4c90b1224db8ff8f6
   m_configObjects: {}

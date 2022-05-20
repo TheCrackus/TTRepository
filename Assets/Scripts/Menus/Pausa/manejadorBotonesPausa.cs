@@ -130,7 +130,6 @@ public class manejadorBotonesPausa : MonoBehaviour
         if (!pulseBoton)
         {
             manejadorAudioInterfaz.reproduceAudioClickCerrar();
-            datos.reiniciaObjetosScriptable();
             StartCoroutine(cargaEscena(escenaMenuPrincipal.valorStringEjecucion));
             pulseBoton = true;
         }
@@ -153,6 +152,7 @@ public class manejadorBotonesPausa : MonoBehaviour
         {
             manejadorAudioInterfaz.reproduceAudioClickAbrir();
             datos.reiniciaObjetosScriptable();
+            StartCoroutine(cargaEscena(escenaMenuPrincipal.valorStringEjecucion));
             pulseBoton = true;
         }
     }

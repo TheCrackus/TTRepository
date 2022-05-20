@@ -20,6 +20,15 @@ public class manejadorBotonesPrincipal : formulario
     [Header("Nombre de la escena de Laberintos")]
     [SerializeField] private valorString escenaLaberintos;
 
+    [Header("Nombre de la escena de Mazmorra")]
+    [SerializeField] private valorString escenaMazmorra;
+
+    [Header("Nombre de la escena de Laberintos")]
+    [SerializeField] private valorString escenaJefeFinal;
+
+    [Header("Escena de la partida en curso")]
+    [SerializeField] private valorString escenaActual;
+
     [Header("Datos de la partida en curso")]
     [SerializeField] private datosJuego datos;
 
@@ -88,22 +97,80 @@ public class manejadorBotonesPrincipal : formulario
 
     public void botonNuevaPartida()
     {
-        if (!PulseBoton)
+        if (!PulseBoton
+            && escenaLaberintos != null
+            && escenaLaberintos.valorStringEjecucion != "")
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
-            //datos.reiniciaObjetosScriptable();
+            datos.reiniciaObjetosScriptable();
             //datos.guardaObjetosScriptable();
             StartCoroutine(cambioEscena(escenaLaberintos.valorStringEjecucion));
             PulseBoton = true;
         }
     }
 
-    public void botonContinuarPartida() 
+    public void botonNivel1()
     {
-        if (!PulseBoton)
+        if (!PulseBoton
+            && escenaLaberintos != null
+            && escenaLaberintos.valorStringEjecucion != "")
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            datos.reiniciaObjetosScriptable();
+            //datos.guardaObjetosScriptable();
+            StartCoroutine(cambioEscena(escenaLaberintos.valorStringEjecucion));
             PulseBoton = true;
+        }
+    }
+
+    public void botonNivel2()
+    {
+        if (!PulseBoton
+            && escenaMazmorra != null
+            && escenaMazmorra.valorStringEjecucion != "")
+        {
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            datos.reiniciaObjetosScriptable();
+            //datos.guardaObjetosScriptable();
+            StartCoroutine(cambioEscena(escenaMazmorra.valorStringEjecucion));
+            PulseBoton = true;
+        }
+    }
+
+    public void botonNivel3()
+    {
+        if (!PulseBoton
+            && escenaJefeFinal != null
+            && escenaJefeFinal.valorStringEjecucion != "")
+        {
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            datos.reiniciaObjetosScriptable();
+            //datos.guardaObjetosScriptable();
+            StartCoroutine(cambioEscena(escenaJefeFinal.valorStringEjecucion));
+            PulseBoton = true;
+        }
+    }
+
+    public void botonContinuarPartida() 
+    {
+        if (!PulseBoton
+            && escenaActual!= null
+            && escenaActual.valorStringEjecucion != ""
+            && escenaActual.valorStringEjecucion.Length > 0)
+        {
+            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            StartCoroutine(cambioEscena(escenaActual.valorStringEjecucion));
+            PulseBoton = true;
+        }
+    }
+
+    public void botonCierraJuego()
+    {
+        if (!PulseBoton) 
+        {
+            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
+            PulseBoton = true;
+            Application.Quit();
         }
     }
 
