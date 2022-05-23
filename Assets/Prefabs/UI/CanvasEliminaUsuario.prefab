@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 3228596875334232919}
   - component: {fileID: 3228596875334232918}
   m_Layer: 5
-  m_Name: Pass
+  m_Name: PassField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -632,6 +632,7 @@ GameObject:
   - component: {fileID: 3228596875608688756}
   - component: {fileID: 3228596875608688759}
   - component: {fileID: 3228596875608688754}
+  - component: {fileID: 837599930281238242}
   - component: {fileID: 3228596875608688757}
   - component: {fileID: 3228596875608688755}
   m_Layer: 5
@@ -711,9 +712,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2a439d4ca96484abf4b0f75196d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respuestaServidor: 
   estadoActualConexion: 0
   miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
+--- !u!114 &837599930281238242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3228596875608688761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3ff4b8af813554383533df5127b6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primerInput: {fileID: 3228596875334232918}
+  canvasFormulario: {fileID: 3228596876640309175}
+  canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
+  enterInputEliminar: {fileID: 3228596876298816409}
+  enterInputRegresar: {fileID: 3228596875195877273}
+  botonEliminar: {fileID: 3228596876298816409}
+  botonRegresar: {fileID: 3228596875195877273}
+  passwordFiled: {fileID: 3228596875334232918}
 --- !u!114 &3228596875608688757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,12 +746,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6707acfd8840b6841bc28c62847fdd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conexion: {fileID: 3228596875608688754}
+  graficos: {fileID: 837599930281238242}
+  manejadorAudioInterfaz: {fileID: 3228596875608688755}
   eventoReiniciaBotones: {fileID: 11400000, guid: 4497d5c3c73dbe54bb3ae8e0fa669947, type: 2}
   eventoCierraSesion: {fileID: 11400000, guid: 1337c2f44109bbe4b820f3b9c90a7f21, type: 2}
-  canvasFormulario: {fileID: 3228596876640309175}
-  canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
-  manejadorAudioInterfaz: {fileID: 3228596875608688755}
-  passwordFiled: {fileID: 3228596875334232918}
 --- !u!114 &3228596875608688755
 MonoBehaviour:
   m_ObjectHideFlags: 0

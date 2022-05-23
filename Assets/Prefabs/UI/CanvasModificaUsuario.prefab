@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 5740944825978540192}
   - component: {fileID: 5740944825978540195}
   m_Layer: 5
-  m_Name: "A\xF1o "
+  m_Name: "A\xF1oFileld"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 5740944826273710693}
   - component: {fileID: 5740944826273710692}
   m_Layer: 5
-  m_Name: Dia
+  m_Name: DiaField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1201,7 +1201,7 @@ GameObject:
   - component: {fileID: 5740944826300548393}
   - component: {fileID: 5740944826300548392}
   m_Layer: 5
-  m_Name: Modificar
+  m_Name: BotonModificar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1413,7 +1413,7 @@ GameObject:
   - component: {fileID: 5740944826412426828}
   - component: {fileID: 5740944826412426831}
   m_Layer: 5
-  m_Name: Pass
+  m_Name: PassField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1688,7 +1688,7 @@ GameObject:
   - component: {fileID: 5740944826420738995}
   - component: {fileID: 5740944826420738994}
   m_Layer: 5
-  m_Name: Regresar
+  m_Name: BotonRegresar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2922,7 +2922,7 @@ GameObject:
   - component: {fileID: 5740944826973592398}
   - component: {fileID: 5740944826973592401}
   m_Layer: 5
-  m_Name: Mail
+  m_Name: MailField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3794,6 +3794,7 @@ GameObject:
   - component: {fileID: 5740944827271084977}
   - component: {fileID: 5740944827271084976}
   - component: {fileID: 5740944827271084979}
+  - component: {fileID: 8959677960064388899}
   - component: {fileID: 5740944827271084978}
   - component: {fileID: 5740944827271084974}
   m_Layer: 5
@@ -3873,9 +3874,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2a439d4ca96484abf4b0f75196d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respuestaServidor: 
   estadoActualConexion: 0
   miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
+--- !u!114 &8959677960064388899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5740944827271084980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67a69ca49716e14bb97db58a7bb74cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primerInput: {fileID: 5740944826973592401}
+  canvasFormulario: {fileID: 5740944827401726407}
+  canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
+  enterInputModificar: {fileID: 5740944826300548392}
+  enterInputRegresar: {fileID: 5740944826420738994}
+  botonModificar: {fileID: 5740944826300548392}
+  botonRegresar: {fileID: 5740944826420738994}
+  emailFiled: {fileID: 5740944826973592401}
+  passwordFiled: {fileID: 5740944826412426831}
+  passwordFieldConf: {fileID: 5740944828059034516}
+  sobrenombreFiled: {fileID: 5740944827355944075}
+  diaFiled: {fileID: 5740944826273710692}
+  mesFiled: {fileID: 5740944827755319026}
+  "a\xF1oFiled": {fileID: 5740944825978540195}
 --- !u!114 &5740944827271084978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3888,18 +3914,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea29050f65655f46809c2a3f7fb548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conexion: {fileID: 5740944827271084979}
+  graficos: {fileID: 8959677960064388899}
+  manejadorAudioInterfaz: {fileID: 5740944827271084974}
   eventoReiniciaBotones: {fileID: 11400000, guid: 4497d5c3c73dbe54bb3ae8e0fa669947, type: 2}
   eventoCierraSesion: {fileID: 11400000, guid: 1337c2f44109bbe4b820f3b9c90a7f21, type: 2}
-  canvasFormulario: {fileID: 5740944827401726407}
-  canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
-  manejadorAudioInterfaz: {fileID: 5740944827271084974}
-  emailFiled: {fileID: 5740944826973592401}
-  passwordFiled: {fileID: 5740944826412426831}
-  passwordFieldConf: {fileID: 5740944828059034516}
-  sobrenombreFiled: {fileID: 5740944827355944075}
-  diaFiled: {fileID: 5740944826273710692}
-  mesFiled: {fileID: 5740944827755319026}
-  "a\xF1oFiled": {fileID: 5740944825978540195}
 --- !u!114 &5740944827271084974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4066,7 +4085,7 @@ GameObject:
   - component: {fileID: 5740944827355944072}
   - component: {fileID: 5740944827355944075}
   m_Layer: 5
-  m_Name: Sobrenombre
+  m_Name: SobrenombreField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4736,7 +4755,7 @@ GameObject:
   - component: {fileID: 5740944827755319027}
   - component: {fileID: 5740944827755319026}
   m_Layer: 5
-  m_Name: Mes
+  m_Name: MesField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5116,7 +5135,7 @@ GameObject:
   - component: {fileID: 5740944828059034517}
   - component: {fileID: 5740944828059034516}
   m_Layer: 5
-  m_Name: PassConf
+  m_Name: PassConfField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

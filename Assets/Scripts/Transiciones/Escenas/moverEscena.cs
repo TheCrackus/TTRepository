@@ -36,9 +36,9 @@ public class moverEscena : transicion
 
     public void iniciaTransicionIn()
     {
-        if (EstadoCambioEscena != null && NombreTransicionActual != null) 
+        if (estadoCambioEscena != null && nombreTransicionActual != null) 
         {
-            if (EstadoCambioEscena.cambieEscenaEjecucion && EstadoCambioEscena.nombreTansicionDestinoEjecucion == NombreTransicionActual.valorStringEjecucion)
+            if (estadoCambioEscena.cambieEscenaEjecucion && estadoCambioEscena.nombreTansicionDestinoEjecucion == nombreTransicionActual.valorStringEjecucion)
             {
                 iniciaCanvas();
                 movimientoPlayer movP = null;
@@ -63,9 +63,9 @@ public class moverEscena : transicion
             {
                 ContadorRegresivoDeten.invocaFunciones();
             }
-            if (EstadoCambioEscena != null)
+            if (estadoCambioEscena != null)
             {
-                EstadoCambioEscena.pausoContadorEjecucion = true;
+                estadoCambioEscena.pausoContadorEjecucion = true;
             }
             manejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<manejadorContador>();
             moverEscena moverE = manejadorC.GetComponent<moverEscena>();
@@ -88,9 +88,9 @@ public class moverEscena : transicion
                 {
                     ContadorRegresivoDeten.invocaFunciones();
                 }
-                if (EstadoCambioEscena != null)
+                if (estadoCambioEscena != null)
                 {
-                    EstadoCambioEscena.pausoContadorEjecucion = true;
+                    estadoCambioEscena.pausoContadorEjecucion = true;
                 }
             }
             else
@@ -132,15 +132,15 @@ public class moverEscena : transicion
         {
             movP.setEstadoPlayer(estadoGenerico.transicionando);
         }
-        if (EstadoCambioEscena != null)
+        if (estadoCambioEscena != null)
         {
-            if (EstadoCambioEscena.pausoContadorEjecucion)
+            if (estadoCambioEscena.pausoContadorEjecucion)
             {
                 if (ContadorRegresivoInicia != null)
                 {
                     ContadorRegresivoInicia.invocaFunciones();
                 }
-                EstadoCambioEscena.pausoContadorEjecucion = false;
+                estadoCambioEscena.pausoContadorEjecucion = false;
             }
         }
         if (ObjetoPanel != null && PanelAnimator != null && FadeInClip != null)
@@ -154,17 +154,17 @@ public class moverEscena : transicion
             {
                 movP.setEstadoPlayer(estadoGenerico.ninguno);
             }
-            if (EstadoCambioEscena != null)
+            if (estadoCambioEscena != null)
             {
-                if (EstadoCambioEscena.muestraTextoEjecucion)
+                if (estadoCambioEscena.muestraTextoEjecucion)
                 {
                     if (ObjetoTextoEscena != null && TextoEscena != null && TextoEscenaAnimator != null)
                     {
                         ObjetoTextoEscena.SetActive(true);
-                        TextoEscena.text = EstadoCambioEscena.nombreTextoCuartoEjecucion;
+                        TextoEscena.text = estadoCambioEscena.nombreTextoCuartoEjecucion;
                         TextoEscenaAnimator.Play("Mostrar Texto");
-                        EstadoCambioEscena.nombreTextoCuartoEjecucion = "";
-                        EstadoCambioEscena.muestraTextoEjecucion = false;
+                        estadoCambioEscena.nombreTextoCuartoEjecucion = "";
+                        estadoCambioEscena.muestraTextoEjecucion = false;
                         yield return new WaitForSeconds(MostrarTextoClip.length);
 
                         TextoEscenaAnimator.Play("Ocultar Texto");
@@ -172,11 +172,11 @@ public class moverEscena : transicion
                         ObjetoTextoEscena.SetActive(false);
                     }
                 }
-                if (EstadoCambioEscena != null) 
+                if (estadoCambioEscena != null) 
                 {
-                    if (EstadoCambioEscena.cambieEscenaEjecucion)
+                    if (estadoCambioEscena.cambieEscenaEjecucion)
                     {
-                        EstadoCambioEscena.cambieEscenaEjecucion = false;
+                        estadoCambioEscena.cambieEscenaEjecucion = false;
                     }
                 }
             }
@@ -204,20 +204,20 @@ public class moverEscena : transicion
 
             if (PosicionPlayer != null)
             {
-                PosicionPlayer.valorVectorialEjecucion = NuevaPosicionPlayer;
+                PosicionPlayer.valorVectorialEjecucion = nuevaPosicionPlayer;
                 if (EstadoCambioEscena != null)
                 {
-                    EstadoCambioEscena.cambieEscenaEjecucion = true;
-                    EstadoCambioEscena.nombreTextoCuartoEjecucion = NombreMostrar;
-                    EstadoCambioEscena.muestraTextoEjecucion = DebeMostrarTexto;
-                    EstadoCambioEscena.direccionPlayerEjecucion = NuevaDireccionPlayer;
-                    EstadoCambioEscena.nombreTansicionDestinoEjecucion = NombreTransicionDestino.valorStringEjecucion;
-                    EscenaActual.valorStringEjecucion = EscenaCarga.valorStringEjecucion;
+                    estadoCambioEscena.cambieEscenaEjecucion = true;
+                    estadoCambioEscena.nombreTextoCuartoEjecucion = NombreMostrar;
+                    estadoCambioEscena.muestraTextoEjecucion = DebeMostrarTexto;
+                    estadoCambioEscena.direccionPlayerEjecucion = NuevaDireccionPlayer;
+                    estadoCambioEscena.nombreTansicionDestinoEjecucion = nombreTransicionDestino.valorStringEjecucion;
+                    EscenaActual.valorStringEjecucion = escenaCarga.valorStringEjecucion;
                 }
             }
         }
 
-        AsyncOperation accion = SceneManager.LoadSceneAsync(EscenaCarga.valorStringEjecucion);
+        AsyncOperation accion = SceneManager.LoadSceneAsync(escenaCarga.valorStringEjecucion);
         while (!accion.isDone)
         {
             yield return null;

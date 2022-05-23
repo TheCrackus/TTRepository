@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public enum conexionState
+public enum estadoConexion
 {
     iniciandoSesion,
     termineIniciarSesion,
@@ -27,53 +27,28 @@ public enum conexionState
 
 public class conexionWeb : MonoBehaviour
 {
-    [SerializeField] private string respuestaServidor;
-    [SerializeField] private conexionState estadoActualConexion;
+
+    private string respuestaServidor;
+
+    [Header("Estado de la conexion actual")]
+    [SerializeField] private estadoConexion estadoActualConexion;
+
+    [Header("Contenedor del usuario")]
     [SerializeField] private usuario miUsuario;
+
+    public usuario MiUsuario { get => miUsuario; set => miUsuario = value; }
+    public estadoConexion EstadoActualConexion { get => estadoActualConexion; set => estadoActualConexion = value; }
 
     public void Start()
     {
-        estadoActualConexion = conexionState.ninguno;
-    }
-
-    public string getRespuestaServidor() 
-    {
-        return respuestaServidor;
-    }
-
-    public void setRespuestaServidor(string respuestaServidor) 
-    {
-        this.respuestaServidor = respuestaServidor;
-    }
-
-    public void setEstadoActualConexion(conexionState nuevoEstado)
-    {
-        if (estadoActualConexion != nuevoEstado)
-        {
-            estadoActualConexion = nuevoEstado;
-        }
-    }
-
-    public conexionState getEstadoActualConexion()
-    {
-        return estadoActualConexion;
-    }
-
-    public void setMiUsuario(usuario miUsuario) 
-    {
-        this.miUsuario = miUsuario;
-    }
-
-    public usuario getMiUsuario() 
-    {
-        return miUsuario;
+        estadoActualConexion = estadoConexion.ninguno;
     }
 
     public void iniciaSesion(string email, string password) 
     {
-        if (estadoActualConexion != conexionState.iniciandoSesion) 
+        if (estadoActualConexion != estadoConexion.iniciandoSesion) 
         {
-            estadoActualConexion = conexionState.iniciandoSesion;
+            estadoActualConexion = estadoConexion.iniciandoSesion;
             StartCoroutine(inicia(email, password));
         }
     }
@@ -95,29 +70,29 @@ public class conexionWeb : MonoBehaviour
                 miUsuario.datosEjecucion = JsonUtility.FromJson<usuario.datosUsuario>(datos[1]);
                 if (miUsuario.datosEjecucion.idJugador == 0)
                 {
-                    estadoActualConexion = conexionState.falleIniciarSesionDatos;
+                    estadoActualConexion = estadoConexion.falleIniciarSesionDatos;
                 }
                 else
                 {
-                    estadoActualConexion = conexionState.termineIniciarSesion;
+                    estadoActualConexion = estadoConexion.termineIniciarSesion;
                 }
             }
             else 
             {
-                estadoActualConexion = conexionState.falleIniciarSesionDatos;
+                estadoActualConexion = estadoConexion.falleIniciarSesionDatos;
             }
         }
         else 
         {
-            estadoActualConexion = conexionState.falleIniciarSesionConexion;
+            estadoActualConexion = estadoConexion.falleIniciarSesionConexion;
         }
     }
 
     public void registraUsuario(string email, string password, string sobrenombre, string nacimiento) 
     {
-        if (estadoActualConexion != conexionState.iniciandoRegistro)
+        if (estadoActualConexion != estadoConexion.iniciandoRegistro)
         { 
-            estadoActualConexion = conexionState.iniciandoRegistro;
+            estadoActualConexion = estadoConexion.iniciandoRegistro;
             StartCoroutine(registra(email, password, sobrenombre, nacimiento));
         } 
     }
@@ -137,24 +112,24 @@ public class conexionWeb : MonoBehaviour
             Debug.Log(respuestaServidor);
             if (respuestaServidor.Contains("Correcto"))
             {
-                estadoActualConexion = conexionState.termineRegistro;
+                estadoActualConexion = estadoConexion.termineRegistro;
             }
             else 
             {
-                estadoActualConexion = conexionState.falleRegistroDatos;
+                estadoActualConexion = estadoConexion.falleRegistroDatos;
             }
         }
         else
         {
-            estadoActualConexion = conexionState.falleRegistroConexion;
+            estadoActualConexion = estadoConexion.falleRegistroConexion;
         }
     }
 
     public void eliminaUsuario() 
     {
-        if (estadoActualConexion != conexionState.iniciandoEliminacion)
+        if (estadoActualConexion != estadoConexion.iniciandoEliminacion)
         {
-            estadoActualConexion = conexionState.iniciandoEliminacion;
+            estadoActualConexion = estadoConexion.iniciandoEliminacion;
             StartCoroutine(elimina());
         }
     }
@@ -173,24 +148,24 @@ public class conexionWeb : MonoBehaviour
             Debug.Log(respuestaServidor);
             if (respuestaServidor.Contains("Correcto"))
             {
-                estadoActualConexion = conexionState.termineEliminacion;
+                estadoActualConexion = estadoConexion.termineEliminacion;
             }
             else
             {
-                estadoActualConexion = conexionState.falleEliminacionDatos;
+                estadoActualConexion = estadoConexion.falleEliminacionDatos;
             }
         }
         else
         {
-            estadoActualConexion = conexionState.falleEliminacionConexion;
+            estadoActualConexion = estadoConexion.falleEliminacionConexion;
         }
     }
 
     public void modificaUsuario(string sobrenombre, string nacimiento, string email, string password) 
     {
-        if (estadoActualConexion != conexionState.iniciandoModificacion)
+        if (estadoActualConexion != estadoConexion.iniciandoModificacion)
         {
-            estadoActualConexion = conexionState.iniciandoModificacion;
+            estadoActualConexion = estadoConexion.iniciandoModificacion;
             StartCoroutine(modifica(sobrenombre, nacimiento, email, password));
         }
     }
@@ -211,22 +186,22 @@ public class conexionWeb : MonoBehaviour
             Debug.Log(respuestaServidor);
             if (respuestaServidor.Contains("Correcto"))
             {
-                estadoActualConexion = conexionState.termineModificacion;
+                estadoActualConexion = estadoConexion.termineModificacion;
             }
             else
             {
-                estadoActualConexion = conexionState.falleModificacionDatos;
+                estadoActualConexion = estadoConexion.falleModificacionDatos;
             }
         }
         else
         {
-            estadoActualConexion = conexionState.falleModificacionConexion;
+            estadoActualConexion = estadoConexion.falleModificacionConexion;
         }
     }
 
     public void cierraSesion() 
     {
-        miUsuario.datosEjecucion = miUsuario.datosIniciales;
-        estadoActualConexion = conexionState.cerreSesion;
+        miUsuario.reiniciaValores();
     }
+
 }

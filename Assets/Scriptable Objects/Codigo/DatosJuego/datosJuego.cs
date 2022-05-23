@@ -7,18 +7,19 @@ using UnityEngine;
 [CreateAssetMenu]
 public class datosJuego : ScriptableObject
 {
-    [Header("Objetos que no deben ser reiniciados")]
+
+    [Header("Objetos que no deben ser reiniciados al cambiar la escena")]
     public List<ScriptableObject> objetosPersistentesGeneral = new List<ScriptableObject>();
     public List<valorVectorial> vectores = new List<valorVectorial>();
     public List<valorFlotante> flotantes = new List<valorFlotante>();
     public List<valorBooleano> booleanos = new List<valorBooleano>();
-    public List<usuario> usuarios = new List<usuario>();
+    public usuario miUsuario;
     public List<cambioEscena> escenas = new List<cambioEscena>();
     public List<listaInventario> listaInventarios = new List<listaInventario>();
     public List<inventarioItem> items = new List<inventarioItem>();
     public List<valorString> strings = new List<valorString>();
 
-    private void reiniciaValoresScriptable()
+    public void reiniciaValoresScriptable()
     {
         foreach (valorVectorial vector in vectores)
         {
@@ -31,10 +32,6 @@ public class datosJuego : ScriptableObject
         foreach (valorBooleano booleano in booleanos)
         {
             booleano.reiniciaValores();
-        }
-        foreach (usuario usuario in usuarios)
-        {
-            //usuario.reiniciaValores();
         }
         foreach (cambioEscena escena in escenas)
         {

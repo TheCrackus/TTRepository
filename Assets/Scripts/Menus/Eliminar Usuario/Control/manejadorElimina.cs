@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class manejadorBotonesElimina : formulario
+public class manejadorElimina : formulario
 {
-
-    private conexionWeb conexion;
-
-    [Header("Componentes graficos que contienen la informacion del formulario")]
-    [SerializeField] private InputField passwordFiled;
 
     void Start()
     {
+        ManejadorAudioInterfaz.reproduceAudioAbrirVentana();
         reiniciaBotones();
-        conexion = gameObject.GetComponent<conexionWeb>();
     }
 
     public void botonEliminaUsuario()
@@ -22,9 +17,9 @@ public class manejadorBotonesElimina : formulario
         if (!PulseBoton)
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
-            if (passwordFiled.text.ToString().Equals(conexion.getMiUsuario().datosEjecucion.password)) 
+            if (((componentesGraficosEliminaUsuario) Graficos).PasswordFiled.text.ToString().Equals(Conexion.MiUsuario.datosEjecucion.password)) 
             {
-                conexion.eliminaUsuario();
+                Conexion.eliminaUsuario();
                 PulseBoton = true;
                 StartCoroutine(esperaDatosEliminaUsuario());
             }
@@ -32,7 +27,6 @@ public class manejadorBotonesElimina : formulario
             {
                 iniciaVentanaEmergente();
                 ManejadorVentanaEmergente.enviaTexto("La contraseña proporcionada es incorrecta.");
-                ManejadorVentanaEmergente.reiniciaTiempo();
             }
         }
     }
@@ -44,48 +38,43 @@ public class manejadorBotonesElimina : formulario
             ManejadorAudioInterfaz.reproduceAudioClickCerrar();
             EventoReiniciaBotones.invocaFunciones();
             PulseBoton = true;
-            Destroy(CanvasFormulario);
+            Destroy(Graficos.CanvasFormulario);
         }
     }
 
     public void cierraSesion() 
     {
-        EventoReiniciaBotones.invocaFunciones();
         EventoCierraSesion.invocaFunciones();
-        Destroy(CanvasFormulario);
+        Destroy(Graficos.CanvasFormulario);
     }
 
     private IEnumerator esperaDatosEliminaUsuario()
     {
         iniciaVentanaEmergente();
         ManejadorVentanaEmergente.enviaTexto("Procesando datos...");
-        ManejadorVentanaEmergente.reiniciaTiempo();
-        yield return new WaitWhile(() => (conexion.getEstadoActualConexion() == conexionState.iniciandoEliminacion));
-        if (conexion.getEstadoActualConexion() == conexionState.termineEliminacion)
+        yield return new WaitWhile(() => (Conexion.EstadoActualConexion == estadoConexion.iniciandoEliminacion));
+        if (Conexion.EstadoActualConexion == estadoConexion.termineEliminacion)
         {
             ManejadorVentanaEmergente.enviaTexto("Eliminación completa...");
-            ManejadorVentanaEmergente.reiniciaTiempo();
             yield return new WaitForSeconds(1f);
-            conexion.setEstadoActualConexion(conexionState.ninguno);
+            Conexion.EstadoActualConexion = estadoConexion.ninguno;
             cierraSesion();
         }
         else
         {
-            if (conexion.getEstadoActualConexion() == conexionState.falleEliminacionConexion)
+            if (Conexion.EstadoActualConexion == estadoConexion.falleEliminacionConexion)
             {
                 ManejadorVentanaEmergente.enviaTexto("Fallo de conexión...");
-                ManejadorVentanaEmergente.reiniciaTiempo();
                 yield return new WaitForSeconds(1f);
-                conexion.setEstadoActualConexion(conexionState.ninguno);
+                Conexion.EstadoActualConexion = estadoConexion.ninguno;
             }
             else
             {
-                if (conexion.getEstadoActualConexion() == conexionState.falleEliminacionDatos)
+                if (Conexion.EstadoActualConexion == estadoConexion.falleEliminacionDatos)
                 {
                     ManejadorVentanaEmergente.enviaTexto("El usuario no pudo ser eliminado...");
-                    ManejadorVentanaEmergente.reiniciaTiempo();
                     yield return new WaitForSeconds(1f);
-                    conexion.setEstadoActualConexion(conexionState.ninguno);
+                    Conexion.EstadoActualConexion = estadoConexion.ninguno;
                 }
             }
         }

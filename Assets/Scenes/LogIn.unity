@@ -1233,7 +1233,7 @@ GameObject:
   - component: {fileID: 753657092}
   - component: {fileID: 753657091}
   m_Layer: 5
-  m_Name: RecuperaPass
+  m_Name: BotonRecuperaPass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1366,7 +1366,7 @@ GameObject:
   - component: {fileID: 796023677}
   - component: {fileID: 796023676}
   m_Layer: 5
-  m_Name: Mail
+  m_Name: MailField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1587,10 +1587,10 @@ GameObject:
   - component: {fileID: 1063888311}
   - component: {fileID: 1063888310}
   - component: {fileID: 1063888313}
-  - component: {fileID: 1063888312}
+  - component: {fileID: 1063888317}
   - component: {fileID: 1063888314}
-  - component: {fileID: 1063888315}
   - component: {fileID: 1063888316}
+  - component: {fileID: 1063888315}
   m_Layer: 5
   m_Name: FondoLogIn
   m_TagString: Untagged
@@ -1659,25 +1659,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063888308}
   m_CullTransparentMesh: 1
---- !u!114 &1063888312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063888308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84568c754acddaf498bc2ad3c8e373d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primerInput: {fileID: 796023676}
-  enterInputLogIn: {fileID: 1772512064}
-  enterInputRegistro: {fileID: 1891570988}
-  enterInputRecuperaPass: {fileID: 753657091}
-  botonLogIn: {fileID: 1772512064}
-  botonRegistro: {fileID: 1891570988}
-  botonRecuperaPass: {fileID: 753657091}
 --- !u!114 &1063888313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,7 +1671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2a439d4ca96484abf4b0f75196d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respuestaServidor: 
   estadoActualConexion: 0
   miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
 --- !u!114 &1063888314
@@ -1705,15 +1685,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4fe2637bda55c4b8db9bd5cb086338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conexion: {fileID: 1063888313}
+  manejadorAudioInterfaz: {fileID: 1063888315}
   eventoReiniciaBotones: {fileID: 11400000, guid: 4497d5c3c73dbe54bb3ae8e0fa669947, type: 2}
   eventoCierraSesion: {fileID: 11400000, guid: 1337c2f44109bbe4b820f3b9c90a7f21, type: 2}
-  canvasFormulario: {fileID: 374845259}
-  canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
-  manejadorAudioInterfaz: {fileID: 1063888315}
+  graficos: {fileID: 1063888317}
   escenaMenuPrincipal: {fileID: 11400000, guid: 2d3d75730c114a24cb4758708fecd842, type: 2}
-  canvasRegistro: {fileID: 6157919008839910029, guid: 34c222a1da327cf4ab056a829c5696a1, type: 3}
-  emailField: {fileID: 796023676}
-  passwordFiled: {fileID: 1447478765}
   datos: {fileID: 11400000, guid: a43b7be3eb7dc514f90a93b84c6a9a4e, type: 2}
 --- !u!114 &1063888315
 MonoBehaviour:
@@ -1762,6 +1739,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1063888317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063888308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3939b438b6c5ad41a5fbe6436596eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primerInput: {fileID: 796023676}
+  canvasFormulario: {fileID: 374845259}
+  canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
+  enterInputLogIn: {fileID: 1772512064}
+  enterInputRegistro: {fileID: 1891570988}
+  enterInputRecuperaPass: {fileID: 753657091}
+  enterInputCierraJuego: {fileID: 1185461667}
+  botonLogIn: {fileID: 1772512064}
+  botonRegistro: {fileID: 1891570988}
+  botonRecuperaPass: {fileID: 753657091}
+  botonCierraJuego: {fileID: 1185461667}
+  canvasRegistro: {fileID: 6157919008839910029, guid: 34c222a1da327cf4ab056a829c5696a1, type: 3}
+  emailField: {fileID: 796023676}
+  passwordFiled: {fileID: 1447478765}
 --- !u!1 &1169667034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,7 +2311,7 @@ GameObject:
   - component: {fileID: 1447478766}
   - component: {fileID: 1447478765}
   m_Layer: 5
-  m_Name: Pass
+  m_Name: PassField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2717,7 +2720,7 @@ GameObject:
   - component: {fileID: 1772512065}
   - component: {fileID: 1772512064}
   m_Layer: 5
-  m_Name: LogIn
+  m_Name: BotonLogIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3126,7 +3129,7 @@ GameObject:
   - component: {fileID: 1891570989}
   - component: {fileID: 1891570988}
   m_Layer: 5
-  m_Name: Registro
+  m_Name: BotonRegistro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

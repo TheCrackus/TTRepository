@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class manejadorBotonesRegistro : formulario
+public class manejadorRegistro : formulario
 {
 
     private string msjFormulario;
@@ -18,21 +18,6 @@ public class manejadorBotonesRegistro : formulario
 
     private bool passwordCorrecta;
 
-    private conexionWeb conexion;
- 
-    [Header("Componentes graficos que contienen la informacion del formulario")]
-    [SerializeField] private InputField emailFiled;
-
-    [SerializeField] private InputField passwordFiled;
-
-    [SerializeField] private InputField sobrenombreFiled;
-
-    [SerializeField] private InputField diaFiled;
-
-    [SerializeField] private InputField mesFiled;
-
-    [SerializeField] private InputField añoFiled;
-
     void Start()
     {
         msjFormulario = "Favor de verificar la siguiente información:\n\n";
@@ -41,7 +26,6 @@ public class manejadorBotonesRegistro : formulario
         passwordCorrecta = true;
         sobrenombreCorrecto = true;
         reiniciaBotones();
-        conexion = gameObject.GetComponent<conexionWeb>();
     }
 
     public void botonRegistrar() 
@@ -53,25 +37,25 @@ public class manejadorBotonesRegistro : formulario
             string mes = "";
             string año = "";
             string nacimiento = "";
-            if (mesFiled.text.ToString() != ""
-                && diaFiled.text.ToString() != ""
-                && añoFiled.text.ToString() != ""
-                && emailFiled.text.ToString() != ""
-                && passwordFiled.text.ToString() != ""
-                && sobrenombreFiled.text.ToString() != "")
+            if (((componentesGraficosRegistro)Graficos).MesFiled.text.ToString() != ""
+                && ((componentesGraficosRegistro)Graficos).DiaFiled.text.ToString() != ""
+                && ((componentesGraficosRegistro)Graficos).AñoFiled.text.ToString() != ""
+                && ((componentesGraficosRegistro)Graficos).EmailFiled.text.ToString() != ""
+                && ((componentesGraficosRegistro)Graficos).PasswordFiled.text.ToString() != ""
+                && ((componentesGraficosRegistro)Graficos).SobrenombreFiled.text.ToString() != "")
             {
-                if (mesFiled.text.ToString().Contains("0"))
+                if (((componentesGraficosRegistro)Graficos).MesFiled.text.ToString().Contains("0"))
                 {
                     try
                     {
-                        if (int.Parse(mesFiled.text.ToString()) <= 0)
+                        if (int.Parse(((componentesGraficosRegistro)Graficos).MesFiled.text.ToString()) <= 0)
                         {
                             fechaCorrecta = false;
                             msjFormulario += "No existe un mes igual o menor a 0.";
                         }
                         else 
                         {
-                            mes = mesFiled.text.ToString();
+                            mes = ((componentesGraficosRegistro)Graficos).MesFiled.text.ToString();
                             while (mes.StartsWith("0"))
                             {
                                 mes = mes.Remove(0, 1);
@@ -85,23 +69,23 @@ public class manejadorBotonesRegistro : formulario
                 }
                 else
                 {
-                    mes = mesFiled.text.ToString();
+                    mes = ((componentesGraficosRegistro)Graficos).MesFiled.text.ToString();
                 }
                 if (fechaCorrecta) 
                 {
                     if (int.Parse(mes) <= 12)
                     {
-                        if (diaFiled.text.ToString().Contains("0"))
+                        if (((componentesGraficosRegistro)Graficos).DiaFiled.text.ToString().Contains("0"))
                         {
                             try
                             {
-                                if (int.Parse(diaFiled.text.ToString()) <= 0)
+                                if (int.Parse(((componentesGraficosRegistro)Graficos).DiaFiled.text.ToString()) <= 0)
                                 {
                                     fechaCorrecta = false;
                                     msjFormulario += "No existe un día igual o menor a 0.";
                                 }else
                                 {
-                                    dia = diaFiled.text.ToString();
+                                    dia = ((componentesGraficosRegistro)Graficos).DiaFiled.text.ToString();
                                     while (dia.StartsWith("0"))
                                     {
                                         dia = dia.Remove(0, 1);
@@ -115,7 +99,7 @@ public class manejadorBotonesRegistro : formulario
                         }
                         else
                         {
-                            dia = diaFiled.text.ToString();
+                            dia = ((componentesGraficosRegistro)Graficos).DiaFiled.text.ToString();
                         }
                         if (fechaCorrecta) 
                         {
@@ -208,18 +192,18 @@ public class manejadorBotonesRegistro : formulario
                             }
                             if (fechaCorrecta) 
                             {
-                                if (añoFiled.text.ToString().Contains("0"))
+                                if (((componentesGraficosRegistro)Graficos).AñoFiled.text.ToString().Contains("0"))
                                 {
                                     try
                                     {
-                                        if (int.Parse(añoFiled.text.ToString()) <= 0)
+                                        if (int.Parse(((componentesGraficosRegistro)Graficos).AñoFiled.text.ToString()) <= 0)
                                         {
                                             fechaCorrecta = false;
                                             msjFormulario += "No existe un año igual o menor a 0.";
                                         }
                                         else 
                                         {
-                                            año = añoFiled.text.ToString();
+                                            año = ((componentesGraficosRegistro)Graficos).AñoFiled.text.ToString();
                                             while (año.StartsWith("0"))
                                             {
                                                 año = año.Remove(0, 1);
@@ -233,7 +217,7 @@ public class manejadorBotonesRegistro : formulario
                                 }
                                 else
                                 {
-                                    año = añoFiled.text.ToString();
+                                    año = ((componentesGraficosRegistro)Graficos).AñoFiled.text.ToString();
                                 }
                                 if (fechaCorrecta) 
                                 {
@@ -271,17 +255,17 @@ public class manejadorBotonesRegistro : formulario
                     mes = "0" + mes;
                 }
                 nacimiento = año + "-" + mes + "-" + dia;
-                if (emailFiled.text.ToString().StartsWith("@")
-                    || emailFiled.text.ToString().Length < 13)
+                if (((componentesGraficosRegistro)Graficos).EmailFiled.text.ToString().StartsWith("@")
+                    || ((componentesGraficosRegistro)Graficos).EmailFiled.text.ToString().Length < 13)
                 {
                     emailCorrecto = false;
                     msjFormulario += "Tu correo electronico no es válido.";
                 }
                 else 
                 {
-                    if (emailFiled.text.ToString().EndsWith("@hotmail.com")
-                    || emailFiled.text.ToString().EndsWith("@gmail.com")
-                    || emailFiled.text.ToString().EndsWith("@outlook.com"))
+                    if (((componentesGraficosRegistro)Graficos).EmailFiled.text.ToString().EndsWith("@hotmail.com")
+                    || ((componentesGraficosRegistro)Graficos).EmailFiled.text.ToString().EndsWith("@gmail.com")
+                    || ((componentesGraficosRegistro)Graficos).EmailFiled.text.ToString().EndsWith("@outlook.com"))
                     {
 
                     }
@@ -293,14 +277,14 @@ public class manejadorBotonesRegistro : formulario
                 }
                 if (emailCorrecto)
                 {
-                    if (sobrenombreFiled.text.ToString().Length < 4) 
+                    if (((componentesGraficosRegistro)Graficos).SobrenombreFiled.text.ToString().Length < 4) 
                     {
                         sobrenombreCorrecto = false;
                         msjFormulario += "Tu sobrenombre no es válido, debe tener al menos 4 caracteres.";
                     }
                     if (sobrenombreCorrecto) 
                     {
-                        if (passwordFiled.text.ToString().Length < 4) 
+                        if (((componentesGraficosRegistro)Graficos).PasswordFiled.text.ToString().Length < 4) 
                         {
                             passwordCorrecta = false;
                             msjFormulario += "Tu contraseña no es válida, debe tener al menos 4 caracteres.";
@@ -311,7 +295,10 @@ public class manejadorBotonesRegistro : formulario
 
             if (fechaCorrecta && emailCorrecto && sobrenombreCorrecto && passwordCorrecta)
             {
-                conexion.registraUsuario(emailFiled.text.ToString(), passwordFiled.text.ToString(), sobrenombreFiled.text.ToString(), nacimiento);
+                Conexion.registraUsuario(((componentesGraficosRegistro)Graficos).EmailFiled.text.ToString(),
+                    ((componentesGraficosRegistro)Graficos).PasswordFiled.text.ToString(),
+                    ((componentesGraficosRegistro)Graficos).SobrenombreFiled.text.ToString(), 
+                    nacimiento);
                 PulseBoton = true;
                 StartCoroutine(esperaDatosRegistro());
             }
@@ -319,7 +306,6 @@ public class manejadorBotonesRegistro : formulario
             {
                 iniciaVentanaEmergente();
                 ManejadorVentanaEmergente.enviaTexto(msjFormulario);
-                ManejadorVentanaEmergente.reiniciaTiempo();
                 msjFormulario = "Favor de verificar la siguiente información:\n\n";
                 fechaCorrecta = true;
                 emailCorrecto = true;
@@ -337,47 +323,43 @@ public class manejadorBotonesRegistro : formulario
             ManejadorAudioInterfaz.reproduceAudioClickCerrar();
             EventoReiniciaBotones.invocaFunciones();
             PulseBoton = true;
-            Destroy(CanvasFormulario);
+            Destroy(Graficos.CanvasFormulario);
         }
     }
 
     public void cierraFormulario()
     {
         EventoReiniciaBotones.invocaFunciones();
-        Destroy(CanvasFormulario);
+        Destroy(Graficos.CanvasFormulario);
     }
 
     private IEnumerator esperaDatosRegistro()
     {
         iniciaVentanaEmergente();
         ManejadorVentanaEmergente.enviaTexto("Procesando datos...");
-        ManejadorVentanaEmergente.reiniciaTiempo();
-        yield return new WaitWhile(() => (conexion.getEstadoActualConexion() == conexionState.iniciandoRegistro));
-        if (conexion.getEstadoActualConexion() == conexionState.termineRegistro)
+        yield return new WaitWhile(() => Conexion.EstadoActualConexion == estadoConexion.iniciandoRegistro);
+        if (Conexion.EstadoActualConexion == estadoConexion.termineRegistro)
         {
             ManejadorVentanaEmergente.enviaTexto("Registro completo...");
-            ManejadorVentanaEmergente.reiniciaTiempo();
             yield return new WaitForSeconds(1f);
-            conexion.setEstadoActualConexion(conexionState.ninguno);
+            Conexion.EstadoActualConexion = estadoConexion.ninguno;
             cierraFormulario();
         }
         else
         {
-            if (conexion.getEstadoActualConexion() == conexionState.falleRegistroConexion)
+            if (Conexion.EstadoActualConexion == estadoConexion.falleRegistroConexion)
             {
                 ManejadorVentanaEmergente.enviaTexto("Fallo de conexión...");
-                ManejadorVentanaEmergente.reiniciaTiempo();
                 yield return new WaitForSeconds(1f);
-                conexion.setEstadoActualConexion(conexionState.ninguno);
+                Conexion.EstadoActualConexion = estadoConexion.ninguno;
             }
             else
             {
-                if (conexion.getEstadoActualConexion() == conexionState.falleRegistroDatos)
+                if (Conexion.EstadoActualConexion == estadoConexion.falleRegistroDatos)
                 {
                     ManejadorVentanaEmergente.enviaTexto("El usuario no pudo ser registrado...");
-                    ManejadorVentanaEmergente.reiniciaTiempo();
                     yield return new WaitForSeconds(1f);
-                    conexion.setEstadoActualConexion(conexionState.ninguno);
+                    Conexion.EstadoActualConexion = estadoConexion.ninguno;
                 }
             }
         }

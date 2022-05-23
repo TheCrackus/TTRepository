@@ -4,21 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class manejadorBotonesLogIn : formulario
+public class manejadorLogIn : formulario
 {
-
-    private conexionWeb conexion;
 
     [Header("Nombre de la escena con el menu principal")]
     [SerializeField] private valorString escenaMenuPrincipal;
-
-    [Header("Canvas que contiene el formulario de registro")]
-    [SerializeField] private GameObject canvasRegistro;
-
-    [Header("Componentes graficos que contienen la informacion del formulario")]
-    [SerializeField] private InputField emailField;
-
-    [SerializeField] private InputField passwordFiled;
 
     [Header("Datos de la partida en curso")]
     [SerializeField] private datosJuego datos;
@@ -26,18 +16,18 @@ public class manejadorBotonesLogIn : formulario
     void Start()
     {
         reiniciaBotones();
-        conexion = gameObject.GetComponent<conexionWeb>();
-        if (conexion.getMiUsuario().datosEjecucion.idJugador != 0)
+        if (Conexion.MiUsuario.datosEjecucion.idJugador != 0)
         {
             StartCoroutine(cambioEscena(escenaMenuPrincipal.valorStringEjecucion));
         }
+        
     }
 
     public void iniciaCanvasRegistro() 
     {
         if (!GameObject.FindGameObjectWithTag("CanvasRegistro"))
         {
-            Instantiate(canvasRegistro, Vector3.zero, Quaternion.identity);
+            Instantiate(((componentesGraficosLogIn) Graficos).CanvasRegistro, Vector3.zero, Quaternion.identity);
         }
     }
 
@@ -56,7 +46,8 @@ public class manejadorBotonesLogIn : formulario
         if (!PulseBoton) 
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
-            conexion.iniciaSesion(emailField.text.ToString(), passwordFiled.text.ToString());
+            Conexion.iniciaSesion(((componentesGraficosLogIn)Graficos).EmailField.text.ToString(), 
+                ((componentesGraficosLogIn)Graficos).PasswordFiled.text.ToString());
             StartCoroutine(esperaDatosInicioSesion());
             PulseBoton = true;
         }
@@ -86,34 +77,30 @@ public class manejadorBotonesLogIn : formulario
     {
         iniciaVentanaEmergente();
         ManejadorVentanaEmergente.enviaTexto("Procesando datos...");
-        ManejadorVentanaEmergente.reiniciaTiempo();
-        yield return new WaitWhile(() => (conexion.getEstadoActualConexion() == conexionState.iniciandoSesion));
-        if (conexion.getEstadoActualConexion() == conexionState.termineIniciarSesion)
+        yield return new WaitWhile(() => (Conexion.EstadoActualConexion == estadoConexion.iniciandoSesion));
+        if (Conexion.EstadoActualConexion == estadoConexion.termineIniciarSesion)
         {
             ManejadorVentanaEmergente.enviaTexto("Datos listos...");
-            ManejadorVentanaEmergente.reiniciaTiempo();
             yield return new WaitForSeconds(1f);
-            conexion.setEstadoActualConexion(conexionState.ninguno);
-            datos.reiniciaObjetosScriptable();
+            Conexion.EstadoActualConexion = estadoConexion.ninguno;
+            //falta reiniciar guardado
             StartCoroutine(cambioEscena(escenaMenuPrincipal.valorStringEjecucion));
         }
         else
         {
-            if (conexion.getEstadoActualConexion() == conexionState.falleIniciarSesionConexion)
+            if (Conexion.EstadoActualConexion == estadoConexion.falleIniciarSesionConexion)
             {
                 ManejadorVentanaEmergente.enviaTexto("Fallo de conexión...");
-                ManejadorVentanaEmergente.reiniciaTiempo();
                 yield return new WaitForSeconds(1f);
-                conexion.setEstadoActualConexion(conexionState.ninguno);
+                Conexion.EstadoActualConexion = estadoConexion.ninguno;
             }
             else 
             {
-                if (conexion.getEstadoActualConexion() == conexionState.falleIniciarSesionDatos)
+                if (Conexion.EstadoActualConexion == estadoConexion.falleIniciarSesionDatos)
                 {
                     ManejadorVentanaEmergente.enviaTexto("El usuario no existe...");
-                    ManejadorVentanaEmergente.reiniciaTiempo();
                     yield return new WaitForSeconds(1f);
-                    conexion.setEstadoActualConexion(conexionState.ninguno);
+                    Conexion.EstadoActualConexion = estadoConexion.ninguno;
                 }
             }
         }

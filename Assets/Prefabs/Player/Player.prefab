@@ -490,9 +490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4491f4a4d692a194ba84debdee2bc830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBodyPlayer: {fileID: 0}
-  vectorMovimiento: {x: 0, y: 0, z: 0}
-  animatorPlayer: {fileID: 0}
   estadoPlayer: {fileID: 5930619697012177412}
   velocidad: 3
   reciveGolpePlayer: {fileID: 11400000, guid: a22c4645bb8328747ae3d66b9a5b2bc9, type: 2}
@@ -1322,8 +1319,8 @@ GameObject:
   - component: {fileID: 3383634834918515800}
   - component: {fileID: 5795056107401489821}
   - component: {fileID: 13999326}
-  - component: {fileID: 2239597630576312625}
   - component: {fileID: 7835759031782937087}
+  - component: {fileID: 2239597630576312625}
   - component: {fileID: 2963479657177266617}
   m_Layer: 0
   m_Name: SistemaVida
@@ -1429,21 +1426,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2239597630576312625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6582588203709584349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3cbd25db8dca4e4ebb2f2822cef0770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
-  audioGolpe: {fileID: 3508381225328700042}
-  velocidadAudioGolpe: 3
 --- !u!114 &7835759031782937087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,9 +1441,6 @@ MonoBehaviour:
   fadeInFadeOutCanvas: {fileID: 8745939805210079820, guid: 60dc23bc450bfb446ba135d3ae12a426, type: 3}
   posicionPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   nuevaDireccionPlayer: {x: 0, y: 0}
-  posicionCamaraMaxima: {fileID: 11400000, guid: 84a706b1a4866e2489ca60493dd176c9, type: 2}
-  posicionCamaraMinima: {fileID: 11400000, guid: ee43b5ebcf573744894a71b2b04063ad, type: 2}
-  posicionCamara: {fileID: 11400000, guid: b7e938756b42de74eb849309e4d4008f, type: 2}
   debeMostrarTexto: 0
   nombreMostrar: 
   contadorRegresivoInicia: {fileID: 11400000, guid: 44f42969ead8f514eb7f17ce8ef15b71, type: 2}
@@ -1483,10 +1462,22 @@ MonoBehaviour:
   estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   escenaCarga: {fileID: 0}
   nuevaPosicionPlayer: {x: 0, y: 0, z: 0}
-  nuevaPosicionCamara: {x: 0, y: 0, z: 0}
-  nuevaPosicionCamaraMaxima: {x: 0, y: 0, z: 0}
-  nuevaPosicionCamaraMinima: {x: 0, y: 0, z: 0}
   datos: {fileID: 11400000, guid: a43b7be3eb7dc514f90a93b84c6a9a4e, type: 2}
+--- !u!114 &2239597630576312625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582588203709584349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3cbd25db8dca4e4ebb2f2822cef0770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
+  audioGolpe: {fileID: 3508381225328700042}
+  velocidadAudioGolpe: 3
 --- !u!114 &2963479657177266617
 MonoBehaviour:
   m_ObjectHideFlags: 0

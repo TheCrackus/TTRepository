@@ -3,16 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class manejadorBotonesPrincipal : formulario
+public class manejadorPrincipal : formulario
 {
-
-    private conexionWeb conexion;
-
-    [Header("Canvas que contiene el formulario de eliminacion")]
-    [SerializeField] private GameObject canvasElimina;
-
-    [Header("Canvas que contiene el formulario de modificacion")]
-    [SerializeField] private GameObject canvasModifica;
 
     [Header("Nombre de la escena de LogIn")]
     [SerializeField] private valorString escenaLogIn;
@@ -35,16 +27,14 @@ public class manejadorBotonesPrincipal : formulario
     void Start()
     {
         reiniciaBotones();
-        conexion = gameObject.GetComponent<conexionWeb>();
-        if (conexion.getMiUsuario().datosEjecucion.idJugador != 0)
+        iniciaVentanaEmergente();
+        if (Conexion.MiUsuario.datosEjecucion.idJugador != 0)
         {
-            iniciaVentanaEmergente();
-            ManejadorVentanaEmergente.enviaTexto("Bienvenido: " + conexion.getMiUsuario().datosEjecucion.sobrenombre);
-            ManejadorVentanaEmergente.reiniciaTiempo();
+            ManejadorVentanaEmergente.enviaTexto("Bienvenido: " + Conexion.MiUsuario.datosEjecucion.sobrenombre);
         }
-        else
+        if (Conexion.MiUsuario.datosEjecucion.verificado != "verificado")
         {
-            botonCierraSesion();
+            ManejadorVentanaEmergente.enviaTexto("Tu cuenta no está verificada, por favor, verifícala en tu correo electrónico proporcionado");
         }
     }
 
@@ -52,7 +42,7 @@ public class manejadorBotonesPrincipal : formulario
     {
         if (!GameObject.FindGameObjectWithTag("CanvasEliminar"))
         {
-            Instantiate(canvasElimina, Vector3.zero, Quaternion.identity);
+            Instantiate(((componentesGraficosPrincipal)Graficos).CanvasElimina, Vector3.zero, Quaternion.identity);
         }
     }
 
@@ -60,7 +50,7 @@ public class manejadorBotonesPrincipal : formulario
     {
         if (!GameObject.FindGameObjectWithTag("CanvasModificar"))
         {
-            Instantiate(canvasModifica, Vector3.zero, Quaternion.identity);
+            Instantiate(((componentesGraficosPrincipal) Graficos).CanvasModifica, Vector3.zero, Quaternion.identity);
         }
     }
 
@@ -69,10 +59,15 @@ public class manejadorBotonesPrincipal : formulario
         if (!PulseBoton)
         {
             ManejadorAudioInterfaz.reproduceAudioClickCerrar();
-            conexion.cierraSesion();
-            StartCoroutine(cambioEscena(escenaLogIn.valorStringEjecucion));
+            cierraSesion();
             PulseBoton = true;
         }
+    }
+
+    public void cierraSesion() 
+    {
+        Conexion.cierraSesion();
+        StartCoroutine(cambioEscena(escenaLogIn.valorStringEjecucion));
     }
 
     public void botonEliminaUsuario()
@@ -102,9 +97,19 @@ public class manejadorBotonesPrincipal : formulario
             && escenaLaberintos.valorStringEjecucion != "")
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
-            datos.reiniciaObjetosScriptable();
-            //datos.guardaObjetosScriptable();
-            StartCoroutine(cambioEscena(escenaLaberintos.valorStringEjecucion));
+            //--------------
+            datos.reiniciaValoresScriptable();
+            //--------------
+            //Reiniciar los datos
+            if (Conexion.MiUsuario.datosEjecucion.verificado == "verificado")
+            {
+                StartCoroutine(cambioEscena(escenaLaberintos.valorStringEjecucion));
+            }
+            else 
+            {
+                iniciaVentanaEmergente();
+                ManejadorVentanaEmergente.enviaTexto("Tu cuenta no está verificada, por favor, verifícala en tu correo electrónico proporcionado");
+            }
             PulseBoton = true;
         }
     }
@@ -116,8 +121,9 @@ public class manejadorBotonesPrincipal : formulario
             && escenaLaberintos.valorStringEjecucion != "")
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
-            datos.reiniciaObjetosScriptable();
-            //datos.guardaObjetosScriptable();
+            //--------------
+            datos.reiniciaValoresScriptable();
+            //--------------
             StartCoroutine(cambioEscena(escenaLaberintos.valorStringEjecucion));
             PulseBoton = true;
         }
@@ -130,8 +136,9 @@ public class manejadorBotonesPrincipal : formulario
             && escenaMazmorra.valorStringEjecucion != "")
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
-            datos.reiniciaObjetosScriptable();
-            //datos.guardaObjetosScriptable();
+            //--------------
+            datos.reiniciaValoresScriptable();
+            //--------------
             StartCoroutine(cambioEscena(escenaMazmorra.valorStringEjecucion));
             PulseBoton = true;
         }
@@ -144,8 +151,9 @@ public class manejadorBotonesPrincipal : formulario
             && escenaJefeFinal.valorStringEjecucion != "")
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
-            datos.reiniciaObjetosScriptable();
-            //datos.guardaObjetosScriptable();
+            //--------------
+            datos.reiniciaValoresScriptable();
+            //--------------
             StartCoroutine(cambioEscena(escenaJefeFinal.valorStringEjecucion));
             PulseBoton = true;
         }

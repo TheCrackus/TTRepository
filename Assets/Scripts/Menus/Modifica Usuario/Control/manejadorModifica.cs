@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class manejadorBotonesModifica : formulario
+public class manejadorModifica : formulario
 {
     private string msjFormulario;
 
@@ -16,32 +16,15 @@ public class manejadorBotonesModifica : formulario
 
     private bool passwordCorrecta;
 
-    private conexionWeb conexion;
-
-    [Header("Componentes graficos que contienen la informacion del formulario")]
-    [SerializeField] private InputField emailFiled;
-
-    [SerializeField] private InputField passwordFiled;
-
-    [SerializeField] private InputField passwordFieldConf;
-
-    [SerializeField] private InputField sobrenombreFiled;
-
-    [SerializeField] private InputField diaFiled;
-
-    [SerializeField] private InputField mesFiled;
-
-    [SerializeField] private InputField añoFiled;
-
     void Start()
     {
+        ManejadorAudioInterfaz.reproduceAudioAbrirVentana();
         msjFormulario = "Favor de verificar la siguiente información:\n\n";
         fechaCorrecta = true;
         emailCorrecto = true;
         passwordCorrecta = true;
         sobrenombreCorrecto = true;
         reiniciaBotones();
-        conexion = gameObject.GetComponent<conexionWeb>();
     }
 
     public void botonModifica() 
@@ -53,25 +36,25 @@ public class manejadorBotonesModifica : formulario
             string mes = "";
             string año = "";
             string nacimiento = "";
-            if (mesFiled.text.ToString() != ""
-                && diaFiled.text.ToString() != ""
-                && añoFiled.text.ToString() != ""
-                && emailFiled.text.ToString() != ""
-                && passwordFiled.text.ToString() != ""
-                && sobrenombreFiled.text.ToString() != "")
+            if (((componentesGraficosModificaUsuario) Graficos).MesFiled.text.ToString() != ""
+                && ((componentesGraficosModificaUsuario)Graficos).DiaFiled.text.ToString() != ""
+                && ((componentesGraficosModificaUsuario)Graficos).AñoFiled.text.ToString() != ""
+                && ((componentesGraficosModificaUsuario)Graficos).EmailFiled.text.ToString() != ""
+                && ((componentesGraficosModificaUsuario)Graficos).PasswordFiled.text.ToString() != ""
+                && ((componentesGraficosModificaUsuario)Graficos).SobrenombreFiled.text.ToString() != "")
             {
-                if (mesFiled.text.ToString().Contains("0"))
+                if (((componentesGraficosModificaUsuario)Graficos).MesFiled.text.ToString().Contains("0"))
                 {
                     try
                     {
-                        if (int.Parse(mesFiled.text.ToString()) <= 0)
+                        if (int.Parse(((componentesGraficosModificaUsuario)Graficos).MesFiled.text.ToString()) <= 0)
                         {
                             fechaCorrecta = false;
                             msjFormulario += "No existe un mes igual o menor a 0.";
                         }
                         else
                         {
-                            mes = mesFiled.text.ToString();
+                            mes = ((componentesGraficosModificaUsuario)Graficos).MesFiled.text.ToString();
                             while (mes.StartsWith("0"))
                             {
                                 mes = mes.Remove(0, 1);
@@ -85,24 +68,24 @@ public class manejadorBotonesModifica : formulario
                 }
                 else
                 {
-                    mes = mesFiled.text.ToString();
+                    mes = ((componentesGraficosModificaUsuario)Graficos).MesFiled.text.ToString();
                 }
                 if (fechaCorrecta)
                 {
                     if (int.Parse(mes) <= 12)
                     {
-                        if (diaFiled.text.ToString().Contains("0"))
+                        if (((componentesGraficosModificaUsuario)Graficos).DiaFiled.text.ToString().Contains("0"))
                         {
                             try
                             {
-                                if (int.Parse(diaFiled.text.ToString()) <= 0)
+                                if (int.Parse(((componentesGraficosModificaUsuario)Graficos).DiaFiled.text.ToString()) <= 0)
                                 {
                                     fechaCorrecta = false;
                                     msjFormulario += "No existe un día igual o menor a 0.";
                                 }
                                 else
                                 {
-                                    dia = diaFiled.text.ToString();
+                                    dia = ((componentesGraficosModificaUsuario)Graficos).DiaFiled.text.ToString();
                                     while (dia.StartsWith("0"))
                                     {
                                         dia = dia.Remove(0, 1);
@@ -116,7 +99,7 @@ public class manejadorBotonesModifica : formulario
                         }
                         else
                         {
-                            dia = diaFiled.text.ToString();
+                            dia = ((componentesGraficosModificaUsuario)Graficos).DiaFiled.text.ToString();
                         }
                         if (fechaCorrecta)
                         {
@@ -209,18 +192,18 @@ public class manejadorBotonesModifica : formulario
                             }
                             if (fechaCorrecta)
                             {
-                                if (añoFiled.text.ToString().Contains("0"))
+                                if (((componentesGraficosModificaUsuario)Graficos).AñoFiled.text.ToString().Contains("0"))
                                 {
                                     try
                                     {
-                                        if (int.Parse(añoFiled.text.ToString()) <= 0)
+                                        if (int.Parse(((componentesGraficosModificaUsuario)Graficos).AñoFiled.text.ToString()) <= 0)
                                         {
                                             fechaCorrecta = false;
                                             msjFormulario += "No existe un año igual o menor a 0.";
                                         }
                                         else
                                         {
-                                            año = añoFiled.text.ToString();
+                                            año = ((componentesGraficosModificaUsuario)Graficos).AñoFiled.text.ToString();
                                             while (año.StartsWith("0"))
                                             {
                                                 año = año.Remove(0, 1);
@@ -234,7 +217,7 @@ public class manejadorBotonesModifica : formulario
                                 }
                                 else
                                 {
-                                    año = añoFiled.text.ToString();
+                                    año = ((componentesGraficosModificaUsuario)Graficos).AñoFiled.text.ToString();
                                 }
                                 if (fechaCorrecta)
                                 {
@@ -272,17 +255,17 @@ public class manejadorBotonesModifica : formulario
                     mes = "0" + mes;
                 }
                 nacimiento = año + "-" + mes + "-" + dia;
-                if (emailFiled.text.ToString().StartsWith("@")
-                    || emailFiled.text.ToString().Length < 13)
+                if (((componentesGraficosModificaUsuario)Graficos).EmailFiled.text.ToString().StartsWith("@")
+                    || ((componentesGraficosModificaUsuario)Graficos).EmailFiled.text.ToString().Length < 13)
                 {
                     emailCorrecto = false;
                     msjFormulario += "Tu correo electronico nuevo no es válido.";
                 }
                 else
                 {
-                    if (emailFiled.text.ToString().EndsWith("@hotmail.com")
-                    || emailFiled.text.ToString().EndsWith("@gmail.com")
-                    || emailFiled.text.ToString().EndsWith("@outlook.com"))
+                    if (((componentesGraficosModificaUsuario)Graficos).EmailFiled.text.ToString().EndsWith("@hotmail.com")
+                    || ((componentesGraficosModificaUsuario)Graficos).EmailFiled.text.ToString().EndsWith("@gmail.com")
+                    || ((componentesGraficosModificaUsuario)Graficos).EmailFiled.text.ToString().EndsWith("@outlook.com"))
                     {
 
                     }
@@ -294,19 +277,19 @@ public class manejadorBotonesModifica : formulario
                 }
                 if (emailCorrecto)
                 {
-                    if (sobrenombreFiled.text.ToString().Length < 4)
+                    if (((componentesGraficosModificaUsuario)Graficos).SobrenombreFiled.text.ToString().Length < 4)
                     {
                         sobrenombreCorrecto = false;
                         msjFormulario += "Tu sobrenombre nuevo no es válido, debe tener al menos 4 caracteres.";
                     }
                     if (sobrenombreCorrecto)
                     {
-                        if (passwordFiled.text.ToString().Length < 4)
+                        if (((componentesGraficosModificaUsuario)Graficos).PasswordFiled.text.ToString().Length < 4)
                         {
                             passwordCorrecta = false;
                             msjFormulario += "Tu contraseña nueva no es válida, debe tener al menos 4 caracteres.";
                         }
-                        if (!passwordFieldConf.text.ToString().Equals(conexion.getMiUsuario().datosEjecucion.password)) 
+                        if (!((componentesGraficosModificaUsuario)Graficos).PasswordFieldConf.text.ToString().Equals(Conexion.MiUsuario.datosEjecucion.password)) 
                         {
                             passwordCorrecta = false;
                             msjFormulario += "Tu contraseña actual no es válida, ingresa la correcta.";
@@ -317,7 +300,10 @@ public class manejadorBotonesModifica : formulario
 
             if (fechaCorrecta && emailCorrecto && sobrenombreCorrecto && passwordCorrecta)
             {
-                conexion.modificaUsuario(emailFiled.text.ToString(), passwordFiled.text.ToString(), sobrenombreFiled.text.ToString(), nacimiento);
+                Conexion.modificaUsuario(((componentesGraficosModificaUsuario)Graficos).EmailFiled.text.ToString(),
+                    ((componentesGraficosModificaUsuario)Graficos).PasswordFiled.text.ToString(),
+                    ((componentesGraficosModificaUsuario)Graficos).SobrenombreFiled.text.ToString(), 
+                    nacimiento);
                 PulseBoton = true;
                 StartCoroutine(esperaDatosModificar());
             }
@@ -325,7 +311,6 @@ public class manejadorBotonesModifica : formulario
             {
                 iniciaVentanaEmergente();
                 ManejadorVentanaEmergente.enviaTexto(msjFormulario);
-                ManejadorVentanaEmergente.reiniciaTiempo();
                 msjFormulario = "Favor de verificar la siguiente información:\n\n";
                 fechaCorrecta = true;
                 emailCorrecto = true;
@@ -343,54 +328,43 @@ public class manejadorBotonesModifica : formulario
             ManejadorAudioInterfaz.reproduceAudioClickCerrar();
             EventoReiniciaBotones.invocaFunciones();
             PulseBoton = true;
-            Destroy(CanvasFormulario);
-        }
-        else 
-        {
-            EventoReiniciaBotones.invocaFunciones();
-            EventoCierraSesion.invocaFunciones();
-            Destroy(CanvasFormulario);
+            Destroy(Graficos.CanvasFormulario);
         }
     }
 
     public void cierraSesion()
     {
-        EventoReiniciaBotones.invocaFunciones();
         EventoCierraSesion.invocaFunciones();
-        Destroy(CanvasFormulario);
+        Destroy(Graficos.CanvasFormulario);
     }
 
     private IEnumerator esperaDatosModificar()
     {
         iniciaVentanaEmergente();
         ManejadorVentanaEmergente.enviaTexto("Procesando datos...");
-        ManejadorVentanaEmergente.reiniciaTiempo();
-        yield return new WaitWhile(() => (conexion.getEstadoActualConexion() == conexionState.iniciandoModificacion));
-        if (conexion.getEstadoActualConexion() == conexionState.termineModificacion)
+        yield return new WaitWhile(() => (Conexion.EstadoActualConexion == estadoConexion.iniciandoModificacion));
+        if (Conexion.EstadoActualConexion == estadoConexion.termineModificacion)
         {
             ManejadorVentanaEmergente.enviaTexto("Registro completo...");
-            ManejadorVentanaEmergente.reiniciaTiempo();
             yield return new WaitForSeconds(1f);
-            conexion.setEstadoActualConexion(conexionState.ninguno);
+            Conexion.EstadoActualConexion = estadoConexion.ninguno;
             cierraSesion();
         }
         else
         {
-            if (conexion.getEstadoActualConexion() == conexionState.falleModificacionConexion)
+            if (Conexion.EstadoActualConexion == estadoConexion.falleModificacionConexion)
             {
                 ManejadorVentanaEmergente.enviaTexto("Fallo de conexión...");
-                ManejadorVentanaEmergente.reiniciaTiempo();
                 yield return new WaitForSeconds(1f);
-                conexion.setEstadoActualConexion(conexionState.ninguno);
+                Conexion.EstadoActualConexion = estadoConexion.ninguno;
             }
             else
             {
-                if (conexion.getEstadoActualConexion() == conexionState.falleModificacionDatos)
+                if (Conexion.EstadoActualConexion == estadoConexion.falleModificacionDatos)
                 {
                     ManejadorVentanaEmergente.enviaTexto("El usuario no pudo ser modificado...");
-                    ManejadorVentanaEmergente.reiniciaTiempo();
                     yield return new WaitForSeconds(1f);
-                    conexion.setEstadoActualConexion(conexionState.ninguno);
+                    Conexion.EstadoActualConexion = estadoConexion.ninguno;
                 }
             }
         }

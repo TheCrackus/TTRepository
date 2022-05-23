@@ -83,8 +83,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1805fde77041bb94c86a6d8d329ed61d, type: 2}
   - {fileID: 11400000, guid: 386a89ac20b9fcd45ae0bcc25680eccb, type: 2}
   - {fileID: 11400000, guid: 1eda8f3a457dea24eb33ffb54ff336ce, type: 2}
-  usuarios:
-  - {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
+  miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
   escenas:
   - {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   listaInventarios:

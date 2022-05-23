@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 210073220}
   - component: {fileID: 210073219}
   m_Layer: 5
-  m_Name: "Configuraci\xF3n"
+  m_Name: "BotonConfiguraci\xF3n"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 417633652}
   - component: {fileID: 417633651}
   m_Layer: 5
-  m_Name: ModificarUsuario
+  m_Name: BotonModificarUsuario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1333,16 +1333,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primerInput: {fileID: 501468341}
+  canvasFormulario: {fileID: 807305850}
+  canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
+  enterInputContinuarPartida: {fileID: 1171480564}
   enterInputNuevaPartida: {fileID: 501468341}
+  enterInputNivel1: {fileID: 1765753481}
+  enterInputNivel2: {fileID: 1281569053}
+  enterInputNivel3: {fileID: 2018867554}
   enterInputConfiguracion: {fileID: 210073219}
   enterInputModificarUsuario: {fileID: 417633651}
   enterInputEliminarUsuario: {fileID: 1705915849}
   enterInputCerrarSesion: {fileID: 2083449077}
+  enterInputCierraJuego: {fileID: 711590452}
+  botonContinuarPartida: {fileID: 1171480564}
   botonNuevaPartida: {fileID: 501468341}
+  botonNivel1: {fileID: 1765753481}
+  botonNivel2: {fileID: 1281569053}
+  botonNivel3: {fileID: 2018867554}
   botonConfiguracion: {fileID: 210073219}
   botonModificarUsuario: {fileID: 417633651}
   botonEliminarUsuario: {fileID: 1705915849}
   botonCerrarSesion: {fileID: 2083449077}
+  botonCierraJuego: {fileID: 711590452}
+  canvasElimina: {fileID: 3228596876640309175, guid: 0bc2ab5b35489144fade238252cff510, type: 3}
+  canvasModifica: {fileID: 5740944827401726407, guid: 38914394830159f49a3a1eaef5cc5218, type: 3}
 --- !u!114 &726405899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,13 +1369,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e4959488dd3f4a438add38eef25d5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conexion: {fileID: 726405900}
+  graficos: {fileID: 726405898}
+  manejadorAudioInterfaz: {fileID: 726405904}
   eventoReiniciaBotones: {fileID: 11400000, guid: 4497d5c3c73dbe54bb3ae8e0fa669947, type: 2}
   eventoCierraSesion: {fileID: 11400000, guid: 1337c2f44109bbe4b820f3b9c90a7f21, type: 2}
-  canvasFormulario: {fileID: 807305850}
-  canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
-  manejadorAudioInterfaz: {fileID: 726405904}
-  canvasElimina: {fileID: 3228596876640309175, guid: 0bc2ab5b35489144fade238252cff510, type: 3}
-  canvasModifica: {fileID: 5740944827401726407, guid: 38914394830159f49a3a1eaef5cc5218, type: 3}
   escenaLogIn: {fileID: 11400000, guid: 66ba4d7d24af7c94dae2ba0b3768b45c, type: 2}
   escenaLaberintos: {fileID: 11400000, guid: 84687b5074e6e694da6e1cdae161ebba, type: 2}
   escenaMazmorra: {fileID: 11400000, guid: b0af4cadb963a174da75694466327f52, type: 2}
@@ -1380,7 +1392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2a439d4ca96484abf4b0f75196d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respuestaServidor: 
   estadoActualConexion: 0
   miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
 --- !u!114 &726405901
@@ -1458,8 +1469,8 @@ MonoBehaviour:
   velocidadAudioClickCerrar: 1
   audioClickAbrir: {fileID: 1664027702}
   velocidadAudioClickAbrir: 1
-  audioAbrirVentana: {fileID: 0}
-  velocidadAudioAbrirVentana: 0
+  audioAbrirVentana: {fileID: 954740915}
+  velocidadAudioAbrirVentana: 1
 --- !u!114 &726405905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,8 +1516,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 726405899}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonCierraSesion
+        m_TargetAssemblyTypeName: manejadorPrincipal, Assembly-CSharp
+        m_MethodName: cierraSesion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1744,6 +1755,7 @@ RectTransform:
   - {fileID: 726405903}
   - {fileID: 1664027701}
   - {fileID: 486731494}
+  - {fileID: 954740914}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1752,6 +1764,138 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &954740913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 954740914}
+  - component: {fileID: 954740915}
+  m_Layer: 5
+  m_Name: AudioAbrirVentana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &954740914
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954740913}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 807305854}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 960.00006, y: 540.00006}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &954740915
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954740913}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 10026784b1b370c438ae35cbde24fd55, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 7af91424d12cdcc4c83f5b3eafbb1fb0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1078856779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,7 +2992,7 @@ GameObject:
   - component: {fileID: 1705915850}
   - component: {fileID: 1705915849}
   m_Layer: 5
-  m_Name: EliminarUsuario
+  m_Name: BotonEliminarUsuario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3690,7 +3834,7 @@ GameObject:
   - component: {fileID: 2083449078}
   - component: {fileID: 2083449077}
   m_Layer: 5
-  m_Name: "CerrarSesi\xF3n"
+  m_Name: "BotonCerrarSesi\xF3n"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

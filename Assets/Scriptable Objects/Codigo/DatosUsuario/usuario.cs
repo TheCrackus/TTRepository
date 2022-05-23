@@ -25,6 +25,7 @@ public class usuario : ScriptableObject
         public int enemigos;
         public int nivelesT;
         public logro[] logros;
+        public string verificado;
     }
 
     [Header("Datos usuario iniciales")]
