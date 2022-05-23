@@ -21,9 +21,6 @@ public class manejadorPrincipal : formulario
     [Header("Escena de la partida en curso")]
     [SerializeField] private valorString escenaActual;
 
-    [Header("Datos de la partida en curso")]
-    [SerializeField] private datosJuego datos;
-
     void Start()
     {
         reiniciaBotones();
@@ -98,7 +95,10 @@ public class manejadorPrincipal : formulario
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
             //--------------
-            datos.reiniciaValoresScriptable();
+            if (singletonEventosEscenas.instance != null)
+            {
+                singletonEventosEscenas.instance.reiniciaScriptable();
+            }
             //--------------
             //Reiniciar los datos
             if (Conexion.MiUsuario.datosEjecucion.verificado == "verificado")
@@ -122,7 +122,10 @@ public class manejadorPrincipal : formulario
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
             //--------------
-            datos.reiniciaValoresScriptable();
+            if (singletonEventosEscenas.instance != null)
+            {
+                singletonEventosEscenas.instance.reiniciaScriptable();
+            }
             //--------------
             StartCoroutine(cambioEscena(escenaLaberintos.valorStringEjecucion));
             PulseBoton = true;
@@ -137,7 +140,10 @@ public class manejadorPrincipal : formulario
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
             //--------------
-            datos.reiniciaValoresScriptable();
+            if (singletonEventosEscenas.instance != null)
+            {
+                singletonEventosEscenas.instance.reiniciaScriptable();
+            }
             //--------------
             StartCoroutine(cambioEscena(escenaMazmorra.valorStringEjecucion));
             PulseBoton = true;
@@ -152,7 +158,10 @@ public class manejadorPrincipal : formulario
         {
             ManejadorAudioInterfaz.reproduceAudioClickAbrir();
             //--------------
-            datos.reiniciaValoresScriptable();
+            if (singletonEventosEscenas.instance != null)
+            {
+                singletonEventosEscenas.instance.reiniciaScriptable();
+            }
             //--------------
             StartCoroutine(cambioEscena(escenaJefeFinal.valorStringEjecucion));
             PulseBoton = true;

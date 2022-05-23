@@ -8,7 +8,7 @@ public class observadorCuarto : MonoBehaviour
     [Header("Enemigos que se encuentran en esta sala")]
     [SerializeField] private enemigo[] enemigos;
 
-    [Header("Objetos rompibles quwe se encuentran en esta sala")]
+    [Header("Objetos rompibles que se encuentran en esta sala")]
     [SerializeField] private jarro[] rompibles;
 
     [Header("Camara de esta sala")]

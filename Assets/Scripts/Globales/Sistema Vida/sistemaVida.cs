@@ -6,14 +6,19 @@ public class sistemaVida : MonoBehaviour
 {
     [Header("La vida que posee este objeto")]
     [SerializeField] private valorFlotante vidaMaxima;
+
     [Header("La vida actual del objeto")]
     [SerializeField] private float vidaActual;
+
     [Header("Objeto contenedor de efecto")]
     [SerializeField] private GameObject efectoMuerte;
+
     [Header("Clip de muerte del enemigo")]
     [SerializeField] private AnimationClip muerteClip;
+
     [Header("Objetos que dejara al morir")]
     [SerializeField] private tablaLoot miLoot;
+
     [Header("Objeto que posee esta vida")]
     [SerializeField] private GameObject objeto;
 

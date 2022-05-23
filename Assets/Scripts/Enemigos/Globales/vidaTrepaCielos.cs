@@ -6,10 +6,13 @@ public class vidaTrepaCielos : sistemaVida
 {
     [Header("Evento para cuartos con enemigos (abre puerta)")]
     [SerializeField] private evento estadoEnemigosCuarto;
+
     [Header("Audio al recibir daño")]
     [SerializeField] private AudioSource audioDaño;
+
     [Header("Velocidad de reproduccion del Audio y agudez")]
     [SerializeField] private float velocidadAudioDaño;
+
     [Header("Contenedor de un audio a reporducir")]
     [SerializeField] private GameObject audioEmergente;
 

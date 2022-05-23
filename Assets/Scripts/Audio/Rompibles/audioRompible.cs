@@ -10,13 +10,9 @@ public class audioRompible : sistemaAudio
     [Header("Velocidad de reproduccion del Audio y agudez")]
     [SerializeField] private float velocidadAudioRomperObjeto;
 
-    private void OnTriggerEnter2D(Collider2D colisionDetectada)
+    public void reproduceAudioRomperObjeto() 
     {
-        if (colisionDetectada.gameObject.CompareTag("ArmaObjetoPlayer")
-            && colisionDetectada.isTrigger)
-        {
-            reproduceAudio(audioRomperObjeto, velocidadAudioRomperObjeto);
-        }
+        reproduceAudio(audioRomperObjeto, velocidadAudioRomperObjeto);
     }
 
 }

@@ -19,7 +19,7 @@ public class datosJuego : ScriptableObject
     public List<inventarioItem> items = new List<inventarioItem>();
     public List<valorString> strings = new List<valorString>();
 
-    public void reiniciaValoresScriptable()
+    public void reiniciaScriptable()
     {
         foreach (valorVectorial vector in vectores)
         {
@@ -51,9 +51,9 @@ public class datosJuego : ScriptableObject
         }
     }
 
-    public void reiniciaObjetosScriptable()
+    public void reiniciaDatos()
     {
-        reiniciaValoresScriptable();
+        reiniciaScriptable();
         foreach (ScriptableObject objeto in objetosPersistentesGeneral)
         {
             if (File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name)))
@@ -63,7 +63,7 @@ public class datosJuego : ScriptableObject
         }
     }
 
-    public void guardaObjetosScriptable()
+    public void guardaDatos()
     {
         foreach (ScriptableObject objeto in objetosPersistentesGeneral)
         {
@@ -75,7 +75,7 @@ public class datosJuego : ScriptableObject
         }
     }
 
-    public void cargaObjetosScriptable()
+    public void cargaDatos()
     {
         foreach (ScriptableObject objeto in objetosPersistentesGeneral)
         {

@@ -25,6 +25,7 @@ public class moverCuarto : transicion
                 {
                     ContadorRegresivoInicia.invocaFunciones();
                 }
+                EscenaActual.valorStringEjecucion = SceneManager.GetActiveScene().name;
                 manejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<manejadorContador>();
                 moverEscena moverE = manejadorC.GetComponent<moverEscena>();
                 foreach (valorString nombre in Escenas) 

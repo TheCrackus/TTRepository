@@ -293,8 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7271efeb842dc45b0555fe4c2c60cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jarroAnimator: {fileID: 0}
-  romperJarroClip: {fileID: 0}
+  miLoot: {fileID: 11400000, guid: 1e83e8231cafab54b851f1b7c8bae55c, type: 2}
+  manejadorAudioRompible: {fileID: 6332338524969161978}
 --- !u!114 &6332338524969161978
 MonoBehaviour:
   m_ObjectHideFlags: 0

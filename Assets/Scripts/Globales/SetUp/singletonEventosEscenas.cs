@@ -10,6 +10,9 @@ public class singletonEventosEscenas : MonoBehaviour
     [Header("Eventos que se ejecutaran al cambiar de escena")]
     [SerializeField] private List<evento> eventos = new List<evento>();
 
+    [Header("Los datos guardados localmente del juego")]
+    [SerializeField] private datosJuego datos;
+
     void Awake()
     {
         instance = this;
@@ -41,6 +44,11 @@ public class singletonEventosEscenas : MonoBehaviour
                 eventoLoop.invocaFunciones();
             }
         }
+    }
+
+    public void reiniciaScriptable() 
+    {
+        datos.reiniciaScriptable();
     }
 
 }

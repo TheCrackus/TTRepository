@@ -5,10 +5,15 @@ using UnityEngine;
 public class jarro : MonoBehaviour
 {
 
-    [Header("Manejador de animaciones")]
-    [SerializeField] private Animator jarroAnimator;
-    [Header("Clip cuando el jarro se rompe")]
-    [SerializeField] private AnimationClip romperJarroClip;
+    private Animator jarroAnimator;
+
+    private AnimationClip romperJarroClip;
+
+    [Header("Objetos que dejara al morir")]
+    [SerializeField] private tablaLoot miLoot;
+
+    [Header("Manejador de audio rompibles")]
+    [SerializeField] private audioRompible manejadorAudioRompible;
 
     void Start()
     {
@@ -24,6 +29,7 @@ public class jarro : MonoBehaviour
 
     public void romperJarro() 
     {
+        manejadorAudioRompible.reproduceAudioRomperObjeto();
         jarroAnimator.SetBool("Romper", true);
         StartCoroutine(inhabilita(romperJarroClip.length));
     }
@@ -32,6 +38,19 @@ public class jarro : MonoBehaviour
     {
         yield return new WaitForSeconds(tiempo);
         gameObject.SetActive(false);
+        procesaLoot();
+    }
+
+    public void procesaLoot()
+    {
+        if (miLoot != null)
+        {
+            incrementoEstadisticas incrementoActual = miLoot.lootIncrementoEstadisticas();
+            if (incrementoActual != null)
+            {
+                Instantiate(incrementoActual.gameObject, gameObject.transform.position, Quaternion.identity);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)

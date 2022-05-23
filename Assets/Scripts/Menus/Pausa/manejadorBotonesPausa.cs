@@ -20,9 +20,6 @@ public class manejadorBotonesPausa : MonoBehaviour
     [Header("Nombre de la escena con el menu principal")]
     [SerializeField] private valorString escenaMenuPrincipal;
 
-    [Header("Los datos de la partida en curso")]
-    [SerializeField] private datosJuego datos;
-
     [Header("Objeto que contiene la informacion del juego en ejecucion")]
     [SerializeField] private cambioEscena estadoCambioEscena;
 
@@ -152,7 +149,10 @@ public class manejadorBotonesPausa : MonoBehaviour
         {
             manejadorAudioInterfaz.reproduceAudioClickAbrir();
             //--------------
-            datos.reiniciaValoresScriptable();
+            if (singletonEventosEscenas.instance != null)
+            {
+                singletonEventosEscenas.instance.reiniciaScriptable();
+            }
             //--------------
             StartCoroutine(cargaEscena(escenaMenuPrincipal.valorStringEjecucion));
             pulseBoton = true;
