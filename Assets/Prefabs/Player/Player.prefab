@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 1398895126709478737}
   - component: {fileID: 1398895126709478749}
   - component: {fileID: 8091535967502496593}
-  - component: {fileID: 6969811969200749101}
+  - component: {fileID: 780847299725038788}
   - component: {fileID: 1759186388}
   - component: {fileID: 1441881193787301406}
   m_Layer: 0
@@ -491,8 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   estadoPlayer: {fileID: 5930619697012177412}
-  velocidad: 3
-  reciveGolpePlayer: {fileID: 11400000, guid: a22c4645bb8328747ae3d66b9a5b2bc9, type: 2}
+  velocidad: 2.5
   posicionPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   spriteObjetoMostrar: {fileID: 1264945170}
   inventariopPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
@@ -502,9 +501,8 @@ MonoBehaviour:
   magiaPlayer: {fileID: 11400000, guid: 63f122bcfafa86641a2fe8205c8309df, type: 2}
   arco: {fileID: 11400000, guid: b66fdf8472482134d88c1b6d8b2fdd1f, type: 2}
   espada: {fileID: 11400000, guid: 0498361776c55f842b62cf651e820a20, type: 2}
-  vidaPlayer: {fileID: 5795056107401489821}
   manejadorAudioMelee: {fileID: 8091535967502496593}
-  manejadorAudioDistancia: {fileID: 6969811969200749101}
+  manejadorAudioProyectil: {fileID: 780847299725038788}
 --- !u!114 &8091535967502496593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +518,7 @@ MonoBehaviour:
   audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
   audioAtaqueMelee: {fileID: 242482615076518691}
   velocidadAudioAtaqueMelee: 2
---- !u!114 &6969811969200749101
+--- !u!114 &780847299725038788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -529,7 +527,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1398895126709478738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da14937754a116d48afa3da110097eb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b2d735e18521ce4386a945b5a2a00e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
@@ -1318,9 +1316,9 @@ GameObject:
   - component: {fileID: 8003157536540551988}
   - component: {fileID: 3383634834918515800}
   - component: {fileID: 5795056107401489821}
+  - component: {fileID: 2239597630576312625}
   - component: {fileID: 13999326}
   - component: {fileID: 7835759031782937087}
-  - component: {fileID: 2239597630576312625}
   - component: {fileID: 2963479657177266617}
   m_Layer: 0
   m_Name: SistemaVida
@@ -1383,21 +1381,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73021a9ba0374ff4d87bbc787192cc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
-  vidaActual: 0
+  vidaObjeto: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
+  vidaActualObjeto: 0
   efectoMuerte: {fileID: 0}
   muerteClip: {fileID: 0}
   miLoot: {fileID: 0}
   objeto: {fileID: 1398895126709478738}
-  eventoVidaPlayer: {fileID: 11400000, guid: ea1b00a7cd78273419b168b303342e10, type: 2}
   colorFlash: {r: 1, g: 0, b: 0, a: 1}
   colorNormal: {r: 1, g: 1, b: 1, a: 1}
   tiempoFlash: 0.1
   numeroFlash: 5
   colisionTrigger: {fileID: 3383634834918515800}
-  spritePlayer: {fileID: 1398895126709478751}
+  spriteObjeto: {fileID: 1398895126709478751}
   manejadorAudioRecibeGolpe: {fileID: 2239597630576312625}
+  manejadorAudioEfectoMuerte: {fileID: 0}
+  eventoVidaPlayer: {fileID: 11400000, guid: ea1b00a7cd78273419b168b303342e10, type: 2}
   manejadorEscenaPuntoControl: {fileID: 7835759031782937087}
+--- !u!114 &2239597630576312625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582588203709584349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3cbd25db8dca4e4ebb2f2822cef0770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
+  audioGolpe: {fileID: 3508381225328700042}
+  velocidadAudioGolpe: 3
 --- !u!114 &13999326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1415,8 +1429,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5795056107401489821}
-        m_TargetAssemblyTypeName: vidaPlayer, Assembly-CSharp
-        m_MethodName: actualizaVida
+        m_TargetAssemblyTypeName: sistemaVida, Assembly-CSharp
+        m_MethodName: vidaLlena
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1463,21 +1477,6 @@ MonoBehaviour:
   escenaCarga: {fileID: 0}
   nuevaPosicionPlayer: {x: 0, y: 0, z: 0}
   datos: {fileID: 11400000, guid: a43b7be3eb7dc514f90a93b84c6a9a4e, type: 2}
---- !u!114 &2239597630576312625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6582588203709584349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3cbd25db8dca4e4ebb2f2822cef0770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
-  audioGolpe: {fileID: 3508381225328700042}
-  velocidadAudioGolpe: 3
 --- !u!114 &2963479657177266617
 MonoBehaviour:
   m_ObjectHideFlags: 0

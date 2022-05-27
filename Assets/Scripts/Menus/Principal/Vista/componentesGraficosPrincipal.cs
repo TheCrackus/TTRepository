@@ -4,8 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class componentesGraficosPrincipal : componentesGraficosFormulario
+public class componentesGraficosPrincipal : componentesGraficos, ventanaEmergente, ordenInputs
 {
+
+    private EventSystem sistema;
+
+    [Header("El primer componente grafico del formulario")]
+    [SerializeField] private Selectable primerInput;
 
     [Header("Componentes graficos que permiten detectar una seleccion")]
     [SerializeField] private Selectable enterInputContinuarPartida;
@@ -55,12 +60,59 @@ public class componentesGraficosPrincipal : componentesGraficosFormulario
     [Header("Canvas que contiene el formulario de modificacion")]
     [SerializeField] private GameObject canvasModifica;
 
+    [Header("Canvas que contiene una ventana emergente")]
+    [SerializeField] private GameObject canvasVentanaEmergente;
+
+    public EventSystem Sistema { get => sistema; set => sistema = value; }
+    public Selectable PrimerInput { get => primerInput; set => primerInput = value; }
     public GameObject CanvasElimina { get => canvasElimina; set => canvasElimina = value; }
     public GameObject CanvasModifica { get => canvasModifica; set => canvasModifica = value; }
+    public GameObject CanvasVentanaEmergente { get => canvasVentanaEmergente; set => canvasVentanaEmergente = value; }
 
-    public override void Update()
+    public void Start()
     {
-        base.Update();
+        sistema = EventSystem.current;
+        primerInput.Select();
+    }
+
+    public void Update()
+    {
+        if (primerInput != null && sistema.currentSelectedGameObject != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
+            {
+                Selectable anterior = sistema.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
+                if (anterior != null)
+                {
+                    anterior.Select();
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    Selectable siguiente = sistema.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+                    if (siguiente != null)
+                    {
+                        siguiente.Select();
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
+            {
+                primerInput.Select();
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    primerInput.Select();
+                }
+            }
+        }
         if (Sistema.currentSelectedGameObject == enterInputNuevaPartida 
             || Sistema.currentSelectedGameObject == enterInputConfiguracion
             || Sistema.currentSelectedGameObject == enterInputModificarUsuario

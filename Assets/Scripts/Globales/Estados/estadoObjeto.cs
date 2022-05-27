@@ -19,17 +19,6 @@ public class estadoObjeto : MonoBehaviour
 {
     [SerializeField] private estadoGenerico estado;
 
-    public void setEstadoActualObjeto(estadoGenerico nuevoEstado)
-    {
-        if (estado != nuevoEstado)
-        {
-            estado = nuevoEstado;
-        }
-    }
-
-    public estadoGenerico getEstadoActualObjeto()
-    {
-        return estado;
-    }
+    public estadoGenerico Estado { get => estado; set => estado = value; }
 
 }

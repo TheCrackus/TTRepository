@@ -5,46 +5,65 @@ using UnityEngine;
 public class trepaCielosCorruptoMovible : trepaCielosCorrupto
 {
     private bool direccionAdelante = true;
+
     [Header("Objetivos a seguir")]
-    public Transform[] camino;
+    [SerializeField] private Transform[] camino;
+
     [Header("Numero del objetivo actual")]
-    public int puntoActual;
+    [SerializeField] private int puntoActual;
+
     [Header("Objetivo actual")]
-    public Transform puntoActualMeta;
+    [SerializeField] private Transform puntoActualMeta;
+
     [Header("Distancia para cambiar de objetivo")]
-    public float distanciaAlPunto;
+    [SerializeField] private float distanciaAlPunto;
 
     public override void gestionDistancias()
     {
-        if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioPersecucion
-            && Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) >= radioAtaque)
+        if (ObjetivoPerseguir != null) 
         {
-            if (getEstadoEnemigo() == estadoGenerico.caminando
-                || getEstadoEnemigo() == estadoGenerico.durmiendo
-                || getEstadoEnemigo() == estadoGenerico.ninguno)
+            if (Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) <= RadioPersecucion
+                && Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) >= RadioAtaque)
             {
-                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                Vector3 refAnimacion = getObjetivoPerseguir().position - vectorTemporal;
-                Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
-                getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                setEstadoEnemigo(estadoGenerico.caminando);
-            }
-        }
-        else
-        {
-            if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) > radioPersecucion)
-            {
-                if (Vector3.Distance(gameObject.transform.position, camino[puntoActual].position) > distanciaAlPunto)
+                if (EstadoEnemigo != null) 
                 {
-                    Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, camino[puntoActual].position, getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                    Vector3 refAnimacion = camino[puntoActual].position - vectorTemporal;
-                    Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
-                    getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                    setEstadoEnemigo(estadoGenerico.caminando);
+                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
+                        || EstadoEnemigo.Estado == estadoGenerico.durmiendo
+                        || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                    {
+                        Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, ObjetivoPerseguir.position, VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        Vector3 refAnimacion = ObjetivoPerseguir.position - vectorTemporal;
+                        cambiaAnimaciones(refAnimacion);
+                        if (EnemigoRigidBody != null)
+                        {
+                            EnemigoRigidBody.MovePosition(transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        }  
+                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                    }
                 }
-                else
+            }
+            else
+            {
+                if (Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) > RadioPersecucion)
                 {
-                    cambiaPuntoMeta();
+                    if (Vector3.Distance(gameObject.transform.position, camino[puntoActual].position) > distanciaAlPunto)
+                    {
+                        Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, camino[puntoActual].position, VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        Vector3 refAnimacion = camino[puntoActual].position - vectorTemporal;
+                        cambiaAnimaciones(refAnimacion);
+                        if (EnemigoRigidBody != null)
+                        {
+                            EnemigoRigidBody.MovePosition(transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        }
+                        if (EstadoEnemigo != null) 
+                        {
+                            EstadoEnemigo.Estado = estadoGenerico.caminando;
+                        }
+                    }
+                    else
+                    {
+                        cambiaPuntoMeta();
+                    }
                 }
             }
         }
@@ -55,7 +74,10 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
         if (direccionAdelante)
         {
             puntoActual++;
-            puntoActualMeta = camino[puntoActual];
+            if (puntoActualMeta != null) 
+            {
+                puntoActualMeta = camino[puntoActual];
+            }
             if (puntoActual == (camino.Length - 1))
             {
                 direccionAdelante = false;
@@ -64,7 +86,10 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
         else 
         {
             puntoActual--;
-            puntoActualMeta = camino[puntoActual];
+            if (puntoActualMeta != null)
+            {
+                puntoActualMeta = camino[puntoActual];
+            }
             if (puntoActual == 0)
             {
                 direccionAdelante = true;

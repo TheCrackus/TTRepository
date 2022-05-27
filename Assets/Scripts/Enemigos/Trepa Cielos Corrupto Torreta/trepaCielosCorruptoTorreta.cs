@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
 {
-    [Header("Contador para lanzar un proyectil")]
-    [SerializeField] private float tiempoDisparoSegundos;
-    [Header("Puedo disparar el proyectil?")]
-    [SerializeField] private bool puedoDisparar;
+    private float tiempoDisparoSegundos;
+
+    private bool puedoDisparar;
+
     [Header("El proyectil que arroja el enemigo")]
     [SerializeField] private GameObject proyectilPiedra;
+
     [Header("El tiempo entre cada disparo")]
     [SerializeField] private float tiempoDisparo;
-    [Header("Contenedor de un audio a reporducir")]
-    [SerializeField] private GameObject audioEmergente;
-    [Header("Audio para arrojar el proyectil")]
-    [SerializeField] private AudioSource audioArrojaProyectil;
-    [Header("Velocidad de reproduccion del Audio y agudez")]
-    [SerializeField] private float velocidadAudioArrojaProyectil;
+
+    [Header("Manejador de audio del proyectil")]
+    [SerializeField] private audioProyectil manejadorAudioProyectil;
 
     public override void Start()
     {
@@ -41,51 +39,58 @@ public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
 
     public override void FixedUpdate()
     {
-        getEnemigoRigidBody().constraints = RigidbodyConstraints2D.FreezeAll;
-        if (getPuedoMoverme())
+        if (EnemigoRigidBody != null) 
+        {
+            EnemigoRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        if (PuedoMoverme)
         {
             gestionDistancias();
         }
     }
 
-    public void reproduceAudio(AudioSource audio, float velocidad)
-    {
-        if (audio)
-        {
-            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
-            audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
-            audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
-            audioEmergenteTemp.reproduceAudioClick();
-        }
-    }
-
     public override void gestionDistancias()
     {
-        if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioPersecucion
-            && Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) >= radioAtaque)
+        if (ObjetivoPerseguir != null) 
         {
-            if (getEstadoEnemigo() == estadoGenerico.caminando
-                || getEstadoEnemigo() == estadoGenerico.durmiendo
-                || getEstadoEnemigo() == estadoGenerico.ninguno)
+            if (Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) <= RadioPersecucion
+            && Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) >= RadioAtaque)
             {
-                if (puedoDisparar) 
+                if (EstadoEnemigo != null) 
                 {
-                    reproduceAudio(audioArrojaProyectil, velocidadAudioArrojaProyectil);
-                    Vector3 vectorTemporal = getObjetivoPerseguir().transform.position - gameObject.transform.position;
-                    GameObject proyectilActual = Instantiate(proyectilPiedra, gameObject.transform.position, Quaternion.identity);
-                    proyectilActual.GetComponent<proyectilPiedra>().arroja(vectorTemporal.normalized);
-                    puedoDisparar = false;
+                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
+                        || EstadoEnemigo.Estado == estadoGenerico.durmiendo
+                        || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                    {
+                        if (puedoDisparar)
+                        {
+                            manejadorAudioProyectil.reproduceAudioProyectil();
+                            Vector3 vectorTemporal = ObjetivoPerseguir.transform.position - gameObject.transform.position;
+                            GameObject proyectilActual = Instantiate(proyectilPiedra, gameObject.transform.position, Quaternion.identity);
+                            proyectilActual.GetComponent<proyectilPiedra>().arroja(vectorTemporal.normalized);
+                            puedoDisparar = false;
+                        }
+                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                        if (EnemigoAnimator != null) 
+                        {
+                            EnemigoAnimator.SetBool("Despertar", true);
+                        }
+                    }
                 }
-                setEstadoEnemigo(estadoGenerico.caminando);
-                getEnemigoAnimator().SetBool("Despertar", true);
             }
-        }
-        else
-        {
-            if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) > radioPersecucion)
+            else
             {
-                getEnemigoAnimator().SetBool("Despertar", false);
-                setEstadoEnemigo(estadoGenerico.durmiendo);
+                if (Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) > RadioPersecucion)
+                {
+                    if (EnemigoAnimator != null)
+                    {
+                        EnemigoAnimator.SetBool("Despertar", false);
+                    }
+                    if (EstadoEnemigo != null)
+                    {
+                        EstadoEnemigo.Estado = estadoGenerico.durmiendo;
+                    }
+                }
             }
         }
     }

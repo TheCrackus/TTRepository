@@ -6,47 +6,27 @@ public class trepaCielosCorrupto : enemigo
 {
 
     private Rigidbody2D enemigoRigidBody;
+
     private Transform objetivoPerseguir;
+
     private Animator enemigoAnimator;
+
     [Header("Distancia de persecucion")]
-    public float radioPersecucion;
+    [SerializeField] private float radioPersecucion;
+
     [Header("Distancia de ataque")]
-    public float radioAtaque;
+    [SerializeField] private float radioAtaque;
 
-    public void setEnemigoRigidBody(Rigidbody2D enemigoRigidBody) 
-    {
-        this.enemigoRigidBody = enemigoRigidBody;
-    }
-
-    public Rigidbody2D getEnemigoRigidBody() 
-    {
-        return enemigoRigidBody;
-    }
-
-    public void setEnemigoAnimator(Animator enemigoAnimator) 
-    {
-        this.enemigoAnimator = enemigoAnimator;
-    }
-
-    public Animator getEnemigoAnimator() 
-    {
-        return enemigoAnimator;
-    }
-
-    public void setObjetivoPerseguir(Transform objetivoPerseguir) 
-    {
-        this.objetivoPerseguir = objetivoPerseguir;
-    }
-
-    public Transform getObjetivoPerseguir() 
-    {
-        return objetivoPerseguir;
-    }
+    public Rigidbody2D EnemigoRigidBody { get => enemigoRigidBody; set => enemigoRigidBody = value; }
+    public Transform ObjetivoPerseguir { get => objetivoPerseguir; set => objetivoPerseguir = value; }
+    public Animator EnemigoAnimator { get => enemigoAnimator; set => enemigoAnimator = value; }
+    public float RadioPersecucion { get => radioPersecucion; set => radioPersecucion = value; }
+    public float RadioAtaque { get => radioAtaque; set => radioAtaque = value; }
 
     public override void OnEnable()
     {
         base.OnEnable();
-        setEstadoEnemigo(estadoGenerico.durmiendo);
+        EstadoEnemigo.Estado = estadoGenerico.durmiendo;
         objetivoPerseguir = GameObject.FindWithTag("Player").transform;
         enemigoRigidBody = GetComponent<Rigidbody2D>();
         enemigoAnimator = GetComponent<Animator>();
@@ -56,7 +36,7 @@ public class trepaCielosCorrupto : enemigo
     public override void Start()
     {
         base.Start();
-        setEstadoEnemigo(estadoGenerico.ninguno);
+        EstadoEnemigo.Estado = estadoGenerico.ninguno;
         objetivoPerseguir = GameObject.FindWithTag("Player").transform;
         enemigoRigidBody = gameObject.GetComponent<Rigidbody2D>();
         enemigoAnimator = gameObject.GetComponent<Animator>();
@@ -65,7 +45,7 @@ public class trepaCielosCorrupto : enemigo
 
     public virtual void FixedUpdate()
     {
-        if (getPuedoMoverme())
+        if (PuedoMoverme)
         {
             gestionDistancias();
             enemigoRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -78,27 +58,47 @@ public class trepaCielosCorrupto : enemigo
 
     public virtual void gestionDistancias()
     {
-        if (Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) <= radioPersecucion
-            && Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) >= radioAtaque)
+        if (objetivoPerseguir != null) 
         {
-            if (getEstadoEnemigo() == estadoGenerico.caminando 
-                || getEstadoEnemigo() == estadoGenerico.durmiendo 
-                || getEstadoEnemigo() == estadoGenerico.ninguno)
+            if (Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) <= radioPersecucion
+                && Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) >= radioAtaque)
             {
-                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, objetivoPerseguir.position, getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                Vector3 refAnimacion = objetivoPerseguir.position - vectorTemporal;
-                Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
-                enemigoRigidBody.MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                setEstadoEnemigo(estadoGenerico.caminando);
-                enemigoAnimator.SetBool("Despertar", true);
+                if (EstadoEnemigo != null) 
+                {
+                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
+                        || EstadoEnemigo.Estado == estadoGenerico.durmiendo
+                        || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                    {
+                        Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position,
+                            objetivoPerseguir.position,
+                            VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        Vector3 refAnimacion = objetivoPerseguir.position - vectorTemporal;
+                        cambiaAnimaciones(refAnimacion);
+                        if (enemigoRigidBody != null) 
+                        {
+                            enemigoRigidBody.MovePosition(transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        }
+                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                        if (enemigoAnimator != null) 
+                        {
+                            enemigoAnimator.SetBool("Despertar", true);
+                        }
+                    }
+                }
             }
-        }
-        else
-        {
-            if (Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) > radioPersecucion) 
+            else
             {
-                enemigoAnimator.SetBool("Despertar", false);
-                setEstadoEnemigo(estadoGenerico.durmiendo);
+                if (Vector3.Distance(objetivoPerseguir.position, gameObject.transform.position) > radioPersecucion)
+                {
+                    if (enemigoAnimator != null)
+                    {
+                        enemigoAnimator.SetBool("Despertar", false);
+                    }
+                    if (EstadoEnemigo != null)
+                    {
+                        EstadoEnemigo.Estado = estadoGenerico.durmiendo;
+                    }
+                }
             }
         }
     }
@@ -109,21 +109,19 @@ public class trepaCielosCorrupto : enemigo
         enemigoAnimator.SetFloat("MovimientoY", vector.y);
     }
 
-    public Vector2 cambiaAnimaciones(Vector2 vectorMovimiento) 
+    public void cambiaAnimaciones(Vector2 vectorMovimiento) 
     {
         if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
         {
             if (vectorMovimiento.x > 0)
             {
                 enviaAnimacion(Vector2.right);
-                return Vector2.right;
             }
             else 
             {
                 if (vectorMovimiento.x < 0) 
                 {
                     enviaAnimacion(Vector2.left);
-                    return Vector2.left;
                 }
             }
         }
@@ -134,18 +132,15 @@ public class trepaCielosCorrupto : enemigo
                 if (vectorMovimiento.y > 0)
                 {
                     enviaAnimacion(Vector2.up);
-                    return Vector2.up;
                 }
                 else
                 {
                     if (vectorMovimiento.y < 0)
                     {
                         enviaAnimacion(Vector2.down);
-                        return Vector2.down;
                     }
                 }
             }
         }
-        return new Vector2(0,0);
     }
 }

@@ -22,20 +22,26 @@ public class manejadorEscenas : MonoBehaviour
     [Header("Empezo nueva partida?")]
     [SerializeField] private valorBooleano empezoPartida;
 
-    [Header("")]
+    [Header("Nombre escena de laberintos")]
     [SerializeField] private valorString nombreEscenaLaberintos;
 
-    [Header("")]
+    [Header("Nombre escena de mazmorra")]
     [SerializeField] private valorString nombreEscenaMazmorra;
 
-    [Header("")]
+    [Header("Nombre escena de puzzle")]
     [SerializeField] private valorString nombreEscenaPuzzle;
 
-    [Header("")]
+    [Header("Nombre escena de jefe final")]
     [SerializeField] private valorString nombreEscenaJefeFinal;
 
-    [Header("")]
+    [Header("Nombre escena de casa 1")]
     [SerializeField] private valorString nombreEscenaCasa1;
+
+    [Header("Nombre escena de Log In")]
+    [SerializeField] private valorString nombreEscenaLogIn;
+
+    [Header("Nombre escena principal")]
+    [SerializeField] private valorString nombreEscenaPrincipal;
 
     [Header("La escena actual en ejecucion")]
     [SerializeField] valorString escenaActual;
@@ -47,6 +53,18 @@ public class manejadorEscenas : MonoBehaviour
     {
         iniciaSingleton();
         nombreEscenaActual = SceneManager.GetActiveScene().name;
+        if (nombreEscenaActual != nombreEscenaLogIn.valorStringEjecucion
+            && nombreEscenaActual != nombreEscenaPrincipal.valorStringEjecucion)
+        {
+            if (escenaActual.valorStringEjecucion != "")
+            {
+                if (escenaActual.valorStringEjecucion != nombreEscenaActual)
+                {
+                    StartCoroutine(cambiaEscena(escenaActual.valorStringEjecucion));
+                    return;
+                }
+            }
+        }
         if (contenedoresCinematicas != null )
         {
             foreach (GameObject contenedorCinematica in contenedoresCinematicas)
@@ -70,18 +88,17 @@ public class manejadorEscenas : MonoBehaviour
         }
         else
         {
-            escenaActual.valorStringEjecucion = "";
+            if (nombreEscenaActual != nombreEscenaLogIn.valorStringEjecucion
+                && nombreEscenaActual != nombreEscenaPrincipal.valorStringEjecucion)
+            {
+                escenaActual.valorStringEjecucion = "";
+            }
         }
-        if (empezoPartida.valorBooleanoEjecucion 
-            && !estadoCambioEscena.cambieEscenaEjecucion 
+        if (empezoPartida.valorBooleanoEjecucion
+            && !estadoCambioEscena.cambieEscenaEjecucion
             && escenaActual.valorStringEjecucion == nombreEscenaLaberintos.valorStringEjecucion)
         {
-            cinematicaInicial.Play();
-        }
-        if (escenaActual.valorStringEjecucion != nombreEscenaActual
-            && escenaActual.valorStringEjecucion != "")
-        {
-            StartCoroutine(cambiaEscena(escenaActual.valorStringEjecucion));
+            //cinematicaInicial.Play();
         }
     }
 

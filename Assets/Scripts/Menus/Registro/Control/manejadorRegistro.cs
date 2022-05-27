@@ -5,8 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class manejadorRegistro : formulario
+public class manejadorRegistro : manejadorFormulario, pulsoBoton
 {
+
+    private bool pulseBoton;
 
     private string msjFormulario;
 
@@ -17,6 +19,8 @@ public class manejadorRegistro : formulario
     private bool sobrenombreCorrecto;
 
     private bool passwordCorrecta;
+
+    public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
 
     void Start()
     {
@@ -30,9 +34,9 @@ public class manejadorRegistro : formulario
 
     public void botonRegistrar() 
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             string dia = "";
             string mes = "";
             string año = "";
@@ -44,7 +48,7 @@ public class manejadorRegistro : formulario
                 && ((componentesGraficosRegistro)Graficos).PasswordFiled.text.ToString() != ""
                 && ((componentesGraficosRegistro)Graficos).SobrenombreFiled.text.ToString() != "")
             {
-                if (((componentesGraficosRegistro)Graficos).MesFiled.text.ToString().Contains("0"))
+                if ( ((componentesGraficosRegistro)Graficos).MesFiled.text.ToString().Contains("0") )
                 {
                     try
                     {
@@ -299,7 +303,7 @@ public class manejadorRegistro : formulario
                     ((componentesGraficosRegistro)Graficos).PasswordFiled.text.ToString(),
                     ((componentesGraficosRegistro)Graficos).SobrenombreFiled.text.ToString(), 
                     nacimiento);
-                PulseBoton = true;
+                pulseBoton = true;
                 StartCoroutine(esperaDatosRegistro());
             }
             else 
@@ -316,21 +320,28 @@ public class manejadorRegistro : formulario
         }
     }
 
+    public void iniciaCanvasLogIn()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasLogIn"))
+        {
+            Instantiate(((componentesGraficosRegistro)Graficos).CanvasLogIn, Vector3.zero, Quaternion.identity);
+        }
+    }
+
     public void botonRegresar() 
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
-            EventoReiniciaBotones.invocaFunciones();
-            PulseBoton = true;
-            Destroy(Graficos.CanvasFormulario);
+            ManejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
+            iniciaCanvasLogIn();
+            pulseBoton = true;
+            cierraFormulario();
         }
     }
 
     public void cierraFormulario()
     {
-        EventoReiniciaBotones.invocaFunciones();
-        Destroy(Graficos.CanvasFormulario);
+        Graficos.cierraFormulario();
     }
 
     private IEnumerator esperaDatosRegistro()
@@ -344,6 +355,7 @@ public class manejadorRegistro : formulario
             yield return new WaitForSeconds(1f);
             Conexion.EstadoActualConexion = estadoConexion.ninguno;
             cierraFormulario();
+            iniciaCanvasLogIn();
         }
         else
         {
@@ -366,4 +378,8 @@ public class manejadorRegistro : formulario
         reiniciaBotones();
     }
 
+    public void reiniciaBotones()
+    {
+        pulseBoton = false;
+    }
 }

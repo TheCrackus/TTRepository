@@ -17,9 +17,6 @@ public class movimientoPlayer : MonoBehaviour
     [Header("Estadisticas Player")]
     [SerializeField] private float velocidad;
 
-    [Header("Evento para animar la pantalla al recivir golpe")]
-    [SerializeField] private evento reciveGolpePlayer;
-
     [Header("Posicion del Player en el mapa")]
     [SerializeField] private valorVectorial posicionPlayer;
 
@@ -47,24 +44,13 @@ public class movimientoPlayer : MonoBehaviour
     [Header("Objeto que representa la espada")]
     [SerializeField] private inventarioItem espada;
 
-    [Header("Manejador de la vida del Player")]
-    [SerializeField] private vidaPlayer vidaPlayer;
-
     [Header("Manejador de audio del Player arma mele")]
     [SerializeField] private audioMelee manejadorAudioMelee;
 
     [Header("Manejador de audio del Player arma distancia")]
-    [SerializeField] private audioDistancia manejadorAudioDistancia;
+    [SerializeField] private audioProyectil manejadorAudioProyectil;
 
-    public void setEstadoPlayer(estadoGenerico estado)
-    {
-        estadoPlayer.setEstadoActualObjeto(estado);
-    }
-
-    public estadoGenerico getEstadoPlayer()
-    {
-        return estadoPlayer.getEstadoActualObjeto();
-    }
+    public estadoObjeto EstadoPlayer { get => estadoPlayer; set => estadoPlayer = value; }
 
     void Start()
     {
@@ -112,21 +98,21 @@ public class movimientoPlayer : MonoBehaviour
     {
         if (Input.GetButtonDown("Atacar")
             && inventariopPlayerItems.objetoEquipado != null
-            && (estadoPlayer.getEstadoActualObjeto() == estadoGenerico.caminando 
-                || estadoPlayer.getEstadoActualObjeto() == estadoGenerico.ninguno))
+            && (estadoPlayer.Estado == estadoGenerico.caminando 
+                || estadoPlayer.Estado == estadoGenerico.ninguno))
         {
-            estadoPlayer.setEstadoActualObjeto(estadoGenerico.atacando);
+            estadoPlayer.Estado = estadoGenerico.atacando;
             StartCoroutine(Atacar());
         }
     }
 
     void FixedUpdate()
     {
-        if (estadoPlayer.getEstadoActualObjeto() != estadoGenerico.atacando
-            && estadoPlayer.getEstadoActualObjeto() != estadoGenerico.inactivo
-            && estadoPlayer.getEstadoActualObjeto() != estadoGenerico.transicionando
-            && estadoPlayer.getEstadoActualObjeto() != estadoGenerico.interactuando
-            && estadoPlayer.getEstadoActualObjeto() != estadoGenerico.estuneado)
+        if (estadoPlayer.Estado != estadoGenerico.atacando
+            && estadoPlayer.Estado != estadoGenerico.inactivo
+            && estadoPlayer.Estado != estadoGenerico.transicionando
+            && estadoPlayer.Estado != estadoGenerico.interactuando
+            && estadoPlayer.Estado != estadoGenerico.estuneado)
         {
             vectorMovimiento = Vector3.zero;
             vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
@@ -141,32 +127,32 @@ public class movimientoPlayer : MonoBehaviour
             }
             if (vectorMovimiento != Vector3.zero)
             {
-                estadoPlayer.setEstadoActualObjeto(estadoGenerico.caminando);
+                estadoPlayer.Estado = estadoGenerico.caminando;
                 ActualizarMovimiento();
             }
             else
             {
-                if (estadoPlayer.getEstadoActualObjeto() == estadoGenerico.caminando
-                    || estadoPlayer.getEstadoActualObjeto() == estadoGenerico.ninguno)
+                if (estadoPlayer.Estado == estadoGenerico.caminando
+                    || estadoPlayer.Estado == estadoGenerico.ninguno)
                 {
-                    estadoPlayer.setEstadoActualObjeto(estadoGenerico.ninguno);
+                    estadoPlayer.Estado = estadoGenerico.ninguno;
                     animatorPlayer.SetBool("Movimiento", false);
                 }
             }
         }
         else 
         {
-            if (estadoPlayer.getEstadoActualObjeto() == estadoGenerico.interactuando
-                || estadoPlayer.getEstadoActualObjeto() == estadoGenerico.estuneado
-                || estadoPlayer.getEstadoActualObjeto() == estadoGenerico.inactivo
-                || estadoPlayer.getEstadoActualObjeto() == estadoGenerico.transicionando)
+            if (estadoPlayer.Estado == estadoGenerico.interactuando
+                || estadoPlayer.Estado == estadoGenerico.estuneado
+                || estadoPlayer.Estado == estadoGenerico.inactivo
+                || estadoPlayer.Estado == estadoGenerico.transicionando)
             {
                 vectorMovimiento = Vector3.zero;
                 animatorPlayer.SetBool("Movimiento", false);
             }
             else 
             {
-                if (estadoPlayer.getEstadoActualObjeto() == estadoGenerico.estuneado) 
+                if (estadoPlayer.Estado == estadoGenerico.estuneado) 
                 {
                     animatorPlayer.SetBool("Movimiento", false);
                 }
@@ -189,7 +175,7 @@ public class movimientoPlayer : MonoBehaviour
         {
             if (inventariopPlayerItems.objetoEquipado == espada)
             {
-                if (estadoPlayer.getEstadoActualObjeto() == estadoGenerico.atacando)
+                if (estadoPlayer.Estado == estadoGenerico.atacando)
                 {
                     animatorPlayer.SetBool("Atacando", true);
                     yield return null;
@@ -198,20 +184,20 @@ public class movimientoPlayer : MonoBehaviour
                     animatorPlayer.SetBool("Atacando", false);
                     yield return new WaitForSeconds(0.6f);
 
-                    estadoPlayer.setEstadoActualObjeto(estadoGenerico.ninguno);
+                    estadoPlayer.Estado = estadoGenerico.ninguno;
                 }
             }
             else 
             {
                 if (inventariopPlayerItems.objetoEquipado == arco) 
                 { 
-                    if (estadoPlayer.getEstadoActualObjeto() == estadoGenerico.atacando)
+                    if (estadoPlayer.Estado == estadoGenerico.atacando)
                     {
-                        manejadorAudioDistancia.reproduceAudioDistancia();
+                        manejadorAudioProyectil.reproduceAudioProyectil();
                         creaFlecha();
                         yield return new WaitForSeconds(0.5f);
 
-                        estadoPlayer.setEstadoActualObjeto(estadoGenerico.ninguno);
+                        estadoPlayer.Estado = estadoGenerico.ninguno;
                     }
                 }
             }
@@ -244,7 +230,7 @@ public class movimientoPlayer : MonoBehaviour
 
     public void comienzaEmpujaPlayer(float tiempoAplicarFuerza)
     {
-        estadoPlayer.setEstadoActualObjeto(estadoGenerico.estuneado);
+        estadoPlayer.Estado = estadoGenerico.estuneado;
         StartCoroutine(empujaPlayer(tiempoAplicarFuerza));
     }
 
@@ -252,12 +238,10 @@ public class movimientoPlayer : MonoBehaviour
     {
         if (rigidBodyPlayer != null)
         {
-            reciveGolpePlayer.invocaFunciones();
-            StartCoroutine(vidaPlayer.flash());
             yield return new WaitForSeconds(tiempoAplicarFuerza);
 
             rigidBodyPlayer.velocity = Vector2.zero;
-            estadoPlayer.setEstadoActualObjeto(estadoGenerico.ninguno);
+            estadoPlayer.Estado = estadoGenerico.ninguno;
         }
     }
 
@@ -274,20 +258,20 @@ public class movimientoPlayer : MonoBehaviour
         }
         if (itemMostrar != null)
         {
-            if (estadoPlayer.getEstadoActualObjeto() != estadoGenerico.interactuando)
+            if (estadoPlayer.Estado != estadoGenerico.interactuando)
             {
                 animatorPlayer.SetBool("MostrandoObjeto", true);
-                estadoPlayer.setEstadoActualObjeto(estadoGenerico.interactuando);
+                estadoPlayer.Estado = estadoGenerico.interactuando;
                 spriteObjetoMostrar.sprite = itemMostrar.imagenItem;
                 itemMostrar.mostrarItem = false;
             }
         }
         else 
         {
-            if (estadoPlayer.getEstadoActualObjeto() == estadoGenerico.interactuando)
+            if (estadoPlayer.Estado == estadoGenerico.interactuando)
             {
                 animatorPlayer.SetBool("MostrandoObjeto", false);
-                estadoPlayer.setEstadoActualObjeto(estadoGenerico.ninguno);
+                estadoPlayer.Estado = estadoGenerico.ninguno;
                 spriteObjetoMostrar.sprite = null;
             }
         }

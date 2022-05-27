@@ -4,33 +4,33 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class manejadorVentanaEmergente : MonoBehaviour
+public class manejadorVentanaEmergente : manejadorMenu, pulsoBoton, reproduceAudio
 {
 
     private bool pulseBoton;
 
-    [Header("Componentes graficos de la ventana emergente")]
-    [SerializeField] private componentesGraficosVentanaEmergente graficosVentanaEmergente;
-
     [Header("Manejador de audio de interfaces")]
-    [SerializeField] private audioInterfaz manejadorAudioInterfaz;
+    [SerializeField] private audioInterfazGrafica manejadorAudioInterfazGrafica;
+
+    public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
+    public audioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
 
     void Start()
     {
-        manejadorAudioInterfaz.reproduceAudioAbrirVentana();
-        pulseBoton = false;
+        reproduceAudioAbreVentana();
+        reiniciaBotones();
     }
 
     public void enviaTexto(string texto) 
     {
-        graficosVentanaEmergente.TextoVentanaEmergente.text = texto;
+        ((componentesGraficosVentanaEmergente)Graficos).TextoVentanaEmergente.text = texto;
     }
 
     public void botonCierraVentanaEmergente() 
     {
         if (!pulseBoton) 
         {
-            manejadorAudioInterfaz.reproduceAudioClickCerrar();
+            reproduceAudioClickCerrar();
             pulseBoton = true;
             cierraVentanaEmergente();
         }
@@ -38,10 +38,38 @@ public class manejadorVentanaEmergente : MonoBehaviour
 
     public void cierraVentanaEmergente() 
     {
-        if (graficosVentanaEmergente.CanvasVentanaEmergente != null) 
+        if (((componentesGraficosVentanaEmergente)Graficos).ComponenteGraficoPrincipal != null) 
         {
-            Destroy(graficosVentanaEmergente.CanvasVentanaEmergente);
+            Destroy(((componentesGraficosVentanaEmergente)Graficos).ComponenteGraficoPrincipal);
         }
     }
 
+    public void reiniciaBotones()
+    {
+        pulseBoton = false;
+    }
+
+    public void reproduceAudioClickCerrar()
+    {
+        if (manejadorAudioInterfazGrafica != null)
+        {
+            manejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
+        }
+    }
+
+    public void reproduceAudioClickAbrir()
+    {
+        if (manejadorAudioInterfazGrafica != null)
+        {
+            manejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
+        }
+    }
+
+    public void reproduceAudioAbreVentana()
+    {
+        if (manejadorAudioInterfazGrafica != null)
+        {
+            manejadorAudioInterfazGrafica.reproduceAudioAbrirVentana();
+        }
+    }
 }

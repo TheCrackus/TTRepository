@@ -30,13 +30,16 @@ public class componentesGraficosRegistro : componentesGraficosFormulario
 
     [SerializeField] private InputField añoFiled;
 
+    [Header("Canvas que contiene el formulario de Log In")]
+    [SerializeField] private GameObject canvasLogIn;
+
     public InputField EmailFiled { get => emailFiled; set => emailFiled = value; }
     public InputField PasswordFiled { get => passwordFiled; set => passwordFiled = value; }
     public InputField SobrenombreFiled { get => sobrenombreFiled; set => sobrenombreFiled = value; }
     public InputField DiaFiled { get => diaFiled; set => diaFiled = value; }
     public InputField MesFiled { get => mesFiled; set => mesFiled = value; }
     public InputField AñoFiled { get => añoFiled; set => añoFiled = value; }
-
+    public GameObject CanvasLogIn { get => canvasLogIn; set => canvasLogIn = value; }
 
     public override void Update()
     {

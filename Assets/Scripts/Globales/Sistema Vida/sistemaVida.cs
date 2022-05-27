@@ -5,10 +5,10 @@ using UnityEngine;
 public class sistemaVida : MonoBehaviour
 {
     [Header("La vida que posee este objeto")]
-    [SerializeField] private valorFlotante vidaMaxima;
+    [SerializeField] private valorFlotante vidaObjeto;
 
     [Header("La vida actual del objeto")]
-    [SerializeField] private float vidaActual;
+    [SerializeField] private float vidaActualObjeto;
 
     [Header("Objeto contenedor de efecto")]
     [SerializeField] private GameObject efectoMuerte;
@@ -22,67 +22,90 @@ public class sistemaVida : MonoBehaviour
     [Header("Objeto que posee esta vida")]
     [SerializeField] private GameObject objeto;
 
-    public void setVidaMaxima(valorFlotante vidaMaxima) 
-    {
-        this.vidaMaxima = vidaMaxima;
-    }
+    [Header("Color cuando golpean este objeto")]
+    [SerializeField] private Color colorFlash;
 
-    public valorFlotante getVidaMaxima() 
-    {
-        return vidaMaxima;
-    }
+    [Header("Color normal de este objeto")]
+    [SerializeField] private Color colorNormal;
 
-    public void setVidaActual(float vidaActual) 
-    {
-        this.vidaActual = vidaActual;
-    }
+    [Header("Tiempo que dura el efecto de golpe")]
+    [SerializeField] private float tiempoFlash;
 
-    public float getVidaActual() 
-    {
-        return vidaActual;
-    }
+    [Header("Numero de veces que cambia de color este objeto")]
+    [SerializeField] private int numeroFlash;
 
-    public void setObjeto(GameObject objeto) 
-    {
-        this.objeto = objeto;
-    }
+    [Header("La colision que  activa el efecto de golpe")]
+    [SerializeField] private Collider2D colisionTrigger;
 
-    public GameObject getObjeto() 
-    {
-        return objeto;
-    }
+    [Header("El manejador de Sprites de este objeto")]
+    [SerializeField] private SpriteRenderer spriteObjeto;
+
+    [Header("Manejador de audio al recibir daño")]
+    [SerializeField] private audioReciveGolpe manejadorAudioRecibeGolpe;
+
+    [Header("Manejador de audio al morir")]
+    [SerializeField] private audioEfectoMuerte manejadorAudioEfectoMuerte;
+
+    public valorFlotante VidaObjeto { get => vidaObjeto; set => vidaObjeto = value; }
+    public float VidaActualObjeto { get => vidaActualObjeto; set => vidaActualObjeto = value; }
+    public GameObject Objeto { get => objeto; set => objeto = value; }
+    public audioReciveGolpe ManejadorAudioRecibeGolpe { get => manejadorAudioRecibeGolpe; set => manejadorAudioRecibeGolpe = value; }
 
     private void OnEnable()
     {
-        vidaActual = vidaMaxima.valorFlotanteEjecucion;
+        if (vidaObjeto != null) 
+        {
+            vidaActualObjeto = vidaObjeto.valorFlotanteEjecucion;
+        }
     }
 
     public virtual void agregaVida(float vidaExtra)
     {
-        vidaActual += vidaExtra;
-        if (vidaActual > vidaMaxima.valorFlotanteEjecucion)
+        if (vidaObjeto != null)
         {
-            vidaActual = vidaMaxima.valorFlotanteEjecucion;
+            vidaActualObjeto += vidaExtra;
+            if (vidaActualObjeto > vidaObjeto.valorFlotanteEjecucion)
+            {
+                vidaActualObjeto = vidaObjeto.valorFlotanteEjecucion;
+            }
         }
     }
 
     public virtual void vidaLlena()
     {
-        vidaActual = vidaMaxima.valorFlotanteEjecucion;
+        if (vidaObjeto != null)
+        {
+            vidaActualObjeto = vidaObjeto.valorFlotanteEjecucion;
+        }
     }
 
     public virtual void quitaVida(float vidaMenos) 
     {
-        vidaActual -= vidaMenos;
-        if (vidaActual <= 0)
+        if (manejadorAudioRecibeGolpe != null) 
         {
-            vidaActual = 0;
+            manejadorAudioRecibeGolpe.reproduceAudioRecibeGolpe();
+        }
+        StartCoroutine(flash());
+        vidaActualObjeto -= vidaMenos;
+        if (vidaActualObjeto <= 0)
+        {
+            if (manejadorAudioEfectoMuerte != null) 
+            {
+                manejadorAudioEfectoMuerte.reproduceAudioMuerte();
+            }
+            vidaActualObjeto = 0;
+            if (objeto != null) 
+            {
+                objeto.SetActive(false);
+            }
+            muerteAnimacion();
+            procesaLoot();
         }
     }
 
     public virtual void muerte() 
     {
-        vidaActual = 0;
+        vidaActualObjeto = 0;
     }
 
     public void muerteAnimacion()
@@ -104,5 +127,20 @@ public class sistemaVida : MonoBehaviour
                 Instantiate(incrementoActual.gameObject, gameObject.transform.position, Quaternion.identity);
             }
         }
+    }
+
+    public IEnumerator flash()
+    {
+        int numeroFlashTemporal = 0;
+        colisionTrigger.enabled = false;
+        while (numeroFlashTemporal < numeroFlash)
+        {
+            spriteObjeto.color = colorFlash;
+            yield return new WaitForSeconds(tiempoFlash);
+            spriteObjeto.color = colorNormal;
+            yield return new WaitForSeconds(tiempoFlash);
+            numeroFlashTemporal++;
+        }
+        colisionTrigger.enabled = true;
     }
 }

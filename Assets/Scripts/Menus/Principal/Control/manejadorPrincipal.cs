@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class manejadorPrincipal : formulario
+public class manejadorPrincipal : manejadorMenu, pulsoBoton, iniciaVentanaEmergente, reproduceAudio, conexion
 {
+
+    private GameObject nCanvasVentanaEmergente;
+
+    private GameObject ventanaEmergente;
+
+    private manejadorVentanaEmergente manejadorVentanaEmergente;
+
+    private bool pulseBoton;
 
     [Header("Nombre de la escena de LogIn")]
     [SerializeField] private valorString escenaLogIn;
@@ -21,6 +29,19 @@ public class manejadorPrincipal : formulario
     [Header("Escena de la partida en curso")]
     [SerializeField] private valorString escenaActual;
 
+    [Header("Manejador de audio de interfaces")]
+    [SerializeField] private audioInterfazGrafica manejadorAudioInterfazGrafica;
+
+    [Header("Manejador de conexiones")]
+    [SerializeField] private conexionWeb conexion;
+
+    public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
+    public GameObject NCanvasVentanaEmergente { get => nCanvasVentanaEmergente; set => nCanvasVentanaEmergente = value; }
+    public GameObject VentanaEmergente { get => ventanaEmergente; set => ventanaEmergente = value; }
+    public manejadorVentanaEmergente ManejadorVentanaEmergente { get => manejadorVentanaEmergente; set => manejadorVentanaEmergente = value; }
+    public audioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
+    public conexionWeb Conexion { get => conexion; set => conexion = value; }
+
     void Start()
     {
         reiniciaBotones();
@@ -28,6 +49,10 @@ public class manejadorPrincipal : formulario
         if (Conexion.MiUsuario.datosEjecucion.idJugador != 0)
         {
             ManejadorVentanaEmergente.enviaTexto("Bienvenido: " + Conexion.MiUsuario.datosEjecucion.sobrenombre);
+        }
+        else 
+        {
+            cierraSesion();
         }
         if (Conexion.MiUsuario.datosEjecucion.verificado != "verificado")
         {
@@ -53,11 +78,11 @@ public class manejadorPrincipal : formulario
 
     public void botonCierraSesion()
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
             cierraSesion();
-            PulseBoton = true;
+            pulseBoton = true;
         }
     }
 
@@ -69,31 +94,33 @@ public class manejadorPrincipal : formulario
 
     public void botonEliminaUsuario()
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             iniciaCanvasElimina();
-            PulseBoton = true;
+            pulseBoton = true;
+            cierraFormulario();
         }
     }
 
     public void botonModificaUsuario()
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             iniciaCanvasModifica();
-            PulseBoton = true;
+            pulseBoton = true;
+            cierraFormulario();
         }
     }
 
     public void botonNuevaPartida()
     {
-        if (!PulseBoton
+        if (!pulseBoton
             && escenaLaberintos != null
             && escenaLaberintos.valorStringEjecucion != "")
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             //--------------
             if (singletonEventosEscenas.instance != null)
             {
@@ -110,17 +137,17 @@ public class manejadorPrincipal : formulario
                 iniciaVentanaEmergente();
                 ManejadorVentanaEmergente.enviaTexto("Tu cuenta no está verificada, por favor, verifícala en tu correo electrónico proporcionado");
             }
-            PulseBoton = true;
+            pulseBoton = true;
         }
     }
 
     public void botonNivel1()
     {
-        if (!PulseBoton
+        if (!pulseBoton
             && escenaLaberintos != null
             && escenaLaberintos.valorStringEjecucion != "")
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             //--------------
             if (singletonEventosEscenas.instance != null)
             {
@@ -128,17 +155,17 @@ public class manejadorPrincipal : formulario
             }
             //--------------
             StartCoroutine(cambioEscena(escenaLaberintos.valorStringEjecucion));
-            PulseBoton = true;
+            pulseBoton = true;
         }
     }
 
     public void botonNivel2()
     {
-        if (!PulseBoton
+        if (!pulseBoton
             && escenaMazmorra != null
             && escenaMazmorra.valorStringEjecucion != "")
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             //--------------
             if (singletonEventosEscenas.instance != null)
             {
@@ -146,17 +173,17 @@ public class manejadorPrincipal : formulario
             }
             //--------------
             StartCoroutine(cambioEscena(escenaMazmorra.valorStringEjecucion));
-            PulseBoton = true;
+            pulseBoton = true;
         }
     }
 
     public void botonNivel3()
     {
-        if (!PulseBoton
+        if (!pulseBoton
             && escenaJefeFinal != null
             && escenaJefeFinal.valorStringEjecucion != "")
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             //--------------
             if (singletonEventosEscenas.instance != null)
             {
@@ -164,39 +191,83 @@ public class manejadorPrincipal : formulario
             }
             //--------------
             StartCoroutine(cambioEscena(escenaJefeFinal.valorStringEjecucion));
-            PulseBoton = true;
+            pulseBoton = true;
         }
     }
 
     public void botonContinuarPartida() 
     {
-        if (!PulseBoton
+        if (!pulseBoton
             && escenaActual!= null
             && escenaActual.valorStringEjecucion != ""
             && escenaActual.valorStringEjecucion.Length > 0)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             StartCoroutine(cambioEscena(escenaActual.valorStringEjecucion));
-            PulseBoton = true;
+            pulseBoton = true;
         }
     }
 
     public void botonCierraJuego()
     {
-        if (!PulseBoton) 
+        if (!pulseBoton) 
         {
-            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
-            PulseBoton = true;
+            ManejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
+            pulseBoton = true;
             Application.Quit();
         }
     }
 
-    private IEnumerator cambioEscena(string escenaCarga)
+    public void cierraFormulario()
     {
-        AsyncOperation accion = SceneManager.LoadSceneAsync(escenaCarga);
-        while (!accion.isDone)
+        Graficos.cierraFormulario();
+    }
+
+    public void reiniciaBotones()
+    {
+        pulseBoton = false;
+    }
+
+    public void iniciaVentanaEmergente()
+    {
+        if (nCanvasVentanaEmergente == null)
         {
-            yield return null;
+            if (!GameObject.FindGameObjectWithTag("CanvasVentanaEmergente"))
+            {
+                nCanvasVentanaEmergente = Instantiate(((componentesGraficosPrincipal)Graficos).CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
+            }
+            else
+            {
+                nCanvasVentanaEmergente = GameObject.FindGameObjectWithTag("CanvasVentanaEmergente").gameObject;
+                Destroy(nCanvasVentanaEmergente);
+                nCanvasVentanaEmergente = Instantiate(((componentesGraficosPrincipal)Graficos).CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
+            }
+            ventanaEmergente = nCanvasVentanaEmergente.gameObject.transform.Find("VentanaEmergente").gameObject;
+            manejadorVentanaEmergente = ventanaEmergente.gameObject.GetComponent<manejadorVentanaEmergente>();
+        }
+    }
+
+    public void reproduceAudioClickCerrar()
+    {
+        if (manejadorAudioInterfazGrafica != null)
+        {
+            manejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
+        }
+    }
+
+    public void reproduceAudioClickAbrir()
+    {
+        if (manejadorAudioInterfazGrafica != null)
+        {
+            manejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
+        }
+    }
+
+    public void reproduceAudioAbreVentana()
+    {
+        if (manejadorAudioInterfazGrafica != null)
+        {
+            manejadorAudioInterfazGrafica.reproduceAudioAbrirVentana();
         }
     }
 }

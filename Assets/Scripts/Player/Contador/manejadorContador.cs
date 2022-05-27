@@ -6,7 +6,6 @@ using TMPro;
 
 public class manejadorContador : MonoBehaviour
 {
-    private bool cuentaTimerRegresivo;
 
     [Header("Duracion del contador")]
     public valorFlotante tiempoContadorRegresivo;
@@ -20,19 +19,36 @@ public class manejadorContador : MonoBehaviour
     [Header("Manejador de la transicion")]
     public moverEscena transicion;
 
-    public void Update()
+    [Header("El contador regresivo esta en ejecucion?")]
+    [SerializeField] private valorBooleano cuentaTimerRegresivo;
+
+    private void Start()
     {
-        if (cuentaTimerRegresivo) 
+        if (cuentaTimerRegresivo != null) 
         {
-            if (tiempoContadorRegresivo.valorFlotanteEjecucion > 0)
+            if (cuentaTimerRegresivo.valorBooleanoEjecucion)
             {
-                tiempoContadorRegresivo.valorFlotanteEjecucion -= Time.deltaTime;
-                muestraTiempo();
+                iniciaContadorRegresivo();
             }
-            else 
+        }
+    }
+
+    void Update()
+    {
+        if (cuentaTimerRegresivo != null) 
+        {
+            if (cuentaTimerRegresivo.valorBooleanoEjecucion) 
             {
-                transicion.iniciaTransicionOut();
-                detenContadorRegresivo();
+                if (tiempoContadorRegresivo.valorFlotanteEjecucion > 0)
+                {
+                    tiempoContadorRegresivo.valorFlotanteEjecucion -= Time.deltaTime;
+                    muestraTiempo();
+                }
+                else
+                {
+                    transicion.iniciaTransicionOut();
+                    detenContadorRegresivo();
+                }
             }
         }
     }
@@ -46,19 +62,28 @@ public class manejadorContador : MonoBehaviour
 
     public void detenContadorRegresivo() 
     {
-        cuentaTimerRegresivo = false;
+        if (cuentaTimerRegresivo != null) 
+        {
+            cuentaTimerRegresivo.valorBooleanoEjecucion = false;
+        }
         objetoTextoContador.SetActive(false);
     }
 
     public void iniciaContadorRegresivo() 
     {
-        cuentaTimerRegresivo = true;
+        if (cuentaTimerRegresivo != null)
+        {
+            cuentaTimerRegresivo.valorBooleanoEjecucion = true;
+        }
         objetoTextoContador.SetActive(true);
     }
 
     public void reiniciaContadorRegresivo() 
     {
-        cuentaTimerRegresivo = false;
+        if (cuentaTimerRegresivo != null)
+        {
+            cuentaTimerRegresivo.valorBooleanoEjecucion = false;
+        }
         objetoTextoContador.SetActive(false);
         tiempoContadorRegresivo.valorFlotanteEjecucion = tiempoContadorRegresivo.valorFlotanteInicial;
     }

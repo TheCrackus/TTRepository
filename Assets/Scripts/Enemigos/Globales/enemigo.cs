@@ -4,92 +4,35 @@ using UnityEngine;
 
 public class enemigo : MonoBehaviour
 {
+
+    private float contadorEsperaMovimiento;
+
+    private bool puedoMoverme;
+
+    private Vector3 posicionOriginal;
+
     [Header("El estado en el que se encuentra el enemigo")]
     [SerializeField] private estadoObjeto estadoEnemigo;
-    [Header("Contador auxiliar para volver al movimiento")]
-    [SerializeField] private float contadorEsperaMovimiento;
-    [Header("Puedo volver al movimiento?")]
-    [SerializeField] private bool puedoMoverme;
+
     [Header("Nombre del enemigo")]
     [SerializeField] private string nombreEnemigo;
+
     [Header("Velocidad del enemigo")]
     [SerializeField] private float velocidadMovimientoEnemigo;
-    [Header("Posicion por defecto del enemigo")]
-    [SerializeField] private Vector3 posicionOriginal;
+
     [Header("Tiempo para mover despues de atacar")]
-    [SerializeField] private float tiempoEsperaMovimiento;
+    [SerializeField] private float tiempoEsperaMovimientoAtaque;
+
     [Header("GameObject para la posicion de este objeto")]
     [SerializeField] private GameObject posicionMapa;
 
-    public void setEstadoEnemigo(estadoGenerico estado)
-    {
-        this.estadoEnemigo.setEstadoActualObjeto(estado);
-    }
-
-    public estadoGenerico getEstadoEnemigo()
-    {
-        return estadoEnemigo.getEstadoActualObjeto();
-    }
-
-    public void setPuedoMoverme(bool puedoMoverme)
-    {
-        this.puedoMoverme = puedoMoverme;
-    }
-
-    public bool getPuedoMoverme()
-    {
-        return puedoMoverme;
-    }
-
-    public void setContadorEsperaMovimiento(float contadorEsperaMovimiento)
-    {
-        this.contadorEsperaMovimiento = contadorEsperaMovimiento;
-    }
-
-    public float getContadorEsperaMovimiento()
-    {
-        return contadorEsperaMovimiento;
-    }
-
-    public void setPosicionOriginal(Vector3 posicionOriginal)
-    {
-        this.posicionOriginal = posicionOriginal;
-    }
-
-    public Vector3 getPosicionOriginal()
-    {
-        return posicionOriginal;
-    }
-
-    public void setTiempoEsperaMovimiento(float tiempoEsperaMovimiento)
-    {
-        this.tiempoEsperaMovimiento = tiempoEsperaMovimiento;
-    }
-
-    public float getTiempoEsperaMovimiento()
-    {
-        return tiempoEsperaMovimiento;
-    }
-
-    public void setVelocidadMovimientoEnemigo(float velocidadMovimientoEnemigo)
-    {
-        this.velocidadMovimientoEnemigo = velocidadMovimientoEnemigo;
-    }
-
-    public float getVelocidadMovimientoEnemigo()
-    {
-        return velocidadMovimientoEnemigo;
-    }
-
-    public void setPosicionMapa(GameObject posicionMapa)
-    {
-        this.posicionMapa = posicionMapa;
-    }
-
-    public GameObject getPosicionMapa() 
-    {
-        return posicionMapa;
-    }
+    public estadoObjeto EstadoEnemigo { get => estadoEnemigo; set => estadoEnemigo = value; }
+    public float ContadorEsperaMovimiento { get => contadorEsperaMovimiento; set => contadorEsperaMovimiento = value; }
+    public bool PuedoMoverme { get => puedoMoverme; set => puedoMoverme = value; }
+    public float VelocidadMovimientoEnemigo { get => velocidadMovimientoEnemigo; set => velocidadMovimientoEnemigo = value; }
+    public Vector3 PosicionOriginal { get => posicionOriginal; set => posicionOriginal = value; }
+    public float TiempoEsperaMovimientoAtaque { get => tiempoEsperaMovimientoAtaque; set => tiempoEsperaMovimientoAtaque = value; }
+    public GameObject PosicionMapa { get => posicionMapa; set => posicionMapa = value; }
 
     public virtual void Awake()
     {
@@ -103,7 +46,7 @@ public class enemigo : MonoBehaviour
 
     public virtual void Start()
     {
-        contadorEsperaMovimiento = tiempoEsperaMovimiento;
+        contadorEsperaMovimiento = tiempoEsperaMovimientoAtaque;
         puedoMoverme = true;
     }
 
@@ -115,15 +58,15 @@ public class enemigo : MonoBehaviour
             if (contadorEsperaMovimiento <= 0)
             {
                 puedoMoverme = true;
-                contadorEsperaMovimiento = tiempoEsperaMovimiento;
-                estadoEnemigo.setEstadoActualObjeto(estadoGenerico.ninguno);
+                contadorEsperaMovimiento = tiempoEsperaMovimientoAtaque;
+                estadoEnemigo.Estado = estadoGenerico.ninguno;
             }
         }
     }
 
     public void comienzaEmpujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza) 
     {
-        estadoEnemigo.setEstadoActualObjeto(estadoGenerico.estuneado);
+        estadoEnemigo.Estado = estadoGenerico.estuneado;
         StartCoroutine(empujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
     }
 
@@ -133,7 +76,7 @@ public class enemigo : MonoBehaviour
         {
             yield return new WaitForSeconds(tiempoAplicarFuerza);
             rigidBodyAfectado.velocity = Vector2.zero;
-            estadoEnemigo.setEstadoActualObjeto(estadoGenerico.ninguno);
+            estadoEnemigo.Estado = estadoGenerico.ninguno;
         }
     }
     

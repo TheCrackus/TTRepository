@@ -3,24 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class manejadorElimina : formulario
+public class manejadorElimina : manejadorFormulario, pulsoBoton
 {
+    private bool pulseBoton;
+
+    [Header("Nombre de la escena de LogIn")]
+    [SerializeField] private valorString escenaLogIn;
+
+    public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
 
     void Start()
     {
-        ManejadorAudioInterfaz.reproduceAudioAbrirVentana();
+        ManejadorAudioInterfazGrafica.reproduceAudioAbrirVentana();
         reiniciaBotones();
+    }
+
+    public void iniciaCanvasPrincipal()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasPrincipal"))
+        {
+            Instantiate(((componentesGraficosEliminaUsuario)Graficos).CanvasMenuPrincipal, Vector3.zero, Quaternion.identity);
+        }
     }
 
     public void botonEliminaUsuario()
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             if (((componentesGraficosEliminaUsuario) Graficos).PasswordFiled.text.ToString().Equals(Conexion.MiUsuario.datosEjecucion.password)) 
             {
                 Conexion.eliminaUsuario();
-                PulseBoton = true;
+                pulseBoton = true;
                 StartCoroutine(esperaDatosEliminaUsuario());
             }
             else 
@@ -33,19 +47,24 @@ public class manejadorElimina : formulario
 
     public void botonRegresar()
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
-            EventoReiniciaBotones.invocaFunciones();
-            PulseBoton = true;
-            Destroy(Graficos.CanvasFormulario);
+            ManejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
+            iniciaCanvasPrincipal();
+            pulseBoton = true;
+            cierraFormulario();
         }
     }
 
     public void cierraSesion() 
     {
-        EventoCierraSesion.invocaFunciones();
-        Destroy(Graficos.CanvasFormulario);
+        Conexion.cierraSesion();
+        StartCoroutine(cambioEscena(escenaLogIn.valorStringEjecucion));
+    }
+
+    public void cierraFormulario()
+    {
+        Graficos.cierraFormulario();
     }
 
     private IEnumerator esperaDatosEliminaUsuario()
@@ -79,5 +98,10 @@ public class manejadorElimina : formulario
             }
         }
         reiniciaBotones();
+    }
+
+    public void reiniciaBotones()
+    {
+        pulseBoton = false;
     }
 }

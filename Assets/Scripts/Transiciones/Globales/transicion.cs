@@ -114,6 +114,8 @@ public class transicion : MonoBehaviour
             else
             {
                 nCanvas = GameObject.FindGameObjectWithTag("CanvasEscenas");
+                Destroy(nCanvas);
+                nCanvas = Instantiate(fadeInFadeOutCanvas, Vector3.zero, Quaternion.identity);
             }
             objetoPanel = nCanvas.transform.Find("Panel").gameObject;
             panelAnimator = objetoPanel.GetComponent<Animator>();

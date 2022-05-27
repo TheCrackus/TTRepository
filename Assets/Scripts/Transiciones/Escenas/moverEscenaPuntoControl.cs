@@ -17,7 +17,7 @@ public class moverEscenaPuntoControl : moverEscena
         }
         if (movP)
         {
-            movP.setEstadoPlayer(estadoGenerico.transicionando);
+            movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
         }
         if (ObjetoPanel != null
              && PanelAnimator != null

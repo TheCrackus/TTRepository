@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class manejadorLogIn : formulario
+public class manejadorLogIn : manejadorFormulario, pulsoBoton
 {
+
+    private bool pulseBoton;
 
     [Header("Nombre de la escena con el menu principal")]
     [SerializeField] private valorString escenaMenuPrincipal;
 
     [Header("Datos de la partida en curso")]
     [SerializeField] private datosJuego datos;
+
+    public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
 
     void Start()
     {
@@ -27,50 +31,46 @@ public class manejadorLogIn : formulario
     {
         if (!GameObject.FindGameObjectWithTag("CanvasRegistro"))
         {
-            Instantiate(((componentesGraficosLogIn) Graficos).CanvasRegistro, Vector3.zero, Quaternion.identity);
+            Instantiate( ((componentesGraficosLogIn)Graficos).CanvasRegistro, Vector3.zero, Quaternion.identity);
         }
-    }
-
-    public bool getPulseBoton()
-    {
-        return PulseBoton;
-    }
-
-    public void setPulseBoton(bool pulseBoton)
-    {
-        this.PulseBoton = pulseBoton;
     }
 
     public void botonIniciaSesion()
     {
-        if (!PulseBoton) 
+        if (!pulseBoton) 
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
-            Conexion.iniciaSesion(((componentesGraficosLogIn)Graficos).EmailField.text.ToString(), 
-                ((componentesGraficosLogIn)Graficos).PasswordFiled.text.ToString());
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
+            Conexion.iniciaSesion( ((componentesGraficosLogIn) Graficos).EmailField.text.ToString(), 
+                ((componentesGraficosLogIn)Graficos).PasswordFiled.text.ToString() );
             StartCoroutine(esperaDatosInicioSesion());
-            PulseBoton = true;
+            pulseBoton = true;
         }
     }
 
-    public void botonRegistra() 
+    public void botonRegistro() 
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             iniciaCanvasRegistro();
-            PulseBoton = true;
+            pulseBoton = true;
+            cierraFormulario();
         }
     }
 
     public void botonCierraJuego()
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
-            PulseBoton = true;
+            ManejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
+            pulseBoton = true;
             Application.Quit();
         }
+    }
+
+    public void cierraFormulario()
+    {
+        Graficos.cierraFormulario();
     }
 
     private IEnumerator esperaDatosInicioSesion()
@@ -98,7 +98,15 @@ public class manejadorLogIn : formulario
             {
                 if (Conexion.EstadoActualConexion == estadoConexion.falleIniciarSesionDatos)
                 {
-                    ManejadorVentanaEmergente.enviaTexto("El usuario no existe...");
+                    if (Conexion.RespuestaServidor == "NO VERIFICADO")
+                    {
+                        ManejadorVentanaEmergente.enviaTexto("Tu usuario no está verificado, por favor, " +
+                            "verifica tu cuenta ingresando al correo electrónico registrado...");
+                    }
+                    else 
+                    {
+                        ManejadorVentanaEmergente.enviaTexto("El usuario no existe...");
+                    }
                     yield return new WaitForSeconds(1f);
                     Conexion.EstadoActualConexion = estadoConexion.ninguno;
                 }
@@ -107,12 +115,8 @@ public class manejadorLogIn : formulario
         reiniciaBotones();
     }
 
-    private IEnumerator cambioEscena(string escenaCarga) 
+    public void reiniciaBotones()
     {
-        AsyncOperation accion = SceneManager.LoadSceneAsync(escenaCarga);
-        while (!accion.isDone)
-        {
-            yield return null;
-        }
+        pulseBoton = false;
     }
 }

@@ -71,7 +71,7 @@ public class moverCuarto : transicion
             ManejadorAudioTransicion.reproduceAudioTransicion();
         }
         movimientoPlayer movP = player.GetComponent<movimientoPlayer>();
-        movP.setEstadoPlayer(estadoGenerico.transicionando);
+        movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
 
         if (ObjetoPanel != null) 
         {
@@ -106,55 +106,86 @@ public class moverCuarto : transicion
         {
             ContadorRegresivoInicia.invocaFunciones();
         }
-        player.GetComponent<movimientoPlayer>().setEstadoPlayer(estadoGenerico.ninguno); ;
+        movP.EstadoPlayer.Estado = estadoGenerico.ninguno;
         if (DebeMostrarTexto)
         {
-            ObjetoTextoEscena.SetActive(true);
-            TextoEscena.text = NombreMostrar;
-            TextoEscenaAnimator.Play("Mostrar Texto");
-            yield return new WaitForSeconds(MostrarTextoClip.length);
+            if (ObjetoTextoEscena != null)
+            {
+                ObjetoTextoEscena.SetActive(true);
+            }
+            if (TextoEscena != null) 
+            {
+                TextoEscena.text = NombreMostrar;
+            }
+            if (TextoEscenaAnimator != null) 
+            {
+                TextoEscenaAnimator.Play("Mostrar Texto");
+            }
+            if (MostrarTextoClip != null) 
+            {
+                yield return new WaitForSeconds(MostrarTextoClip.length);
+            }
+            
 
-            TextoEscenaAnimator.Play("Ocultar Texto");
-            yield return new WaitForSeconds(OcultarTextoClip.length);
-            ObjetoTextoEscena.SetActive(false);
+            if (TextoEscenaAnimator != null)
+            {
+                TextoEscenaAnimator.Play("Ocultar Texto");
+            }
+            if (OcultarTextoClip != null) 
+            {
+                yield return new WaitForSeconds(OcultarTextoClip.length);
+            }
+
+            if (ObjetoTextoEscena != null)
+            {
+                ObjetoTextoEscena.SetActive(false);
+            }
+
         }
         Destroy(NCanvas);
     }
 
     public void estableceDireccionPlayer(GameObject player)
     {
-        Animator playerAnimator = player.GetComponent<Animator>();
-        if (NuevaDireccionPlayer.x == 0)
+        Animator playerAnimator = null;
+        if (player != null) 
         {
-            if (NuevaDireccionPlayer.y > 0)
+            playerAnimator = player.GetComponent<Animator>();
+        }
+        if (NuevaDireccionPlayer != null) 
+        {
+            if (NuevaDireccionPlayer.x == 0)
             {
-                playerAnimator.SetFloat("MovimientoX", 0f);
-                playerAnimator.SetFloat("MovimientoY", 1f);
-            }
-            else
-            {
-                if (NuevaDireccionPlayer.y < 0)
+                if (NuevaDireccionPlayer.y > 0)
                 {
                     playerAnimator.SetFloat("MovimientoX", 0f);
-                    playerAnimator.SetFloat("MovimientoY", -1f);
-                }
-            }
-        }
-        else
-        {
-            if (NuevaDireccionPlayer.y == 0)
-            {
-                if (NuevaDireccionPlayer.x > 0)
-                {
-                    playerAnimator.SetFloat("MovimientoX", 1f);
-                    playerAnimator.SetFloat("MovimientoY", 0f);
+                    playerAnimator.SetFloat("MovimientoY", 1f);
                 }
                 else
                 {
-                    if (NuevaDireccionPlayer.x < 0)
+                    if (NuevaDireccionPlayer.y < 0)
                     {
-                        playerAnimator.SetFloat("MovimientoX", -1f);
+                        playerAnimator.SetFloat("MovimientoX", 0f);
+                        playerAnimator.SetFloat("MovimientoY", -1f);
+                    }
+                }
+            }
+            else
+            {
+                if (NuevaDireccionPlayer.y == 0)
+                {
+                    if (NuevaDireccionPlayer.x > 0)
+                    {
+                        playerAnimator.SetFloat("MovimientoX", 1f);
                         playerAnimator.SetFloat("MovimientoY", 0f);
+                    }
+                    else
+                    {
+                        if (NuevaDireccionPlayer.x < 0)
+                        {
+                            playerAnimator.SetFloat("MovimientoX", -1f);
+                            playerAnimator.SetFloat("MovimientoY", 0f);
+                        }
                     }
                 }
             }

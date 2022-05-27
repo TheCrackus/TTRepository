@@ -25,17 +25,17 @@ public class componentesGraficosLogIn : componentesGraficosFormulario
 
     [SerializeField] private Button botonCierraJuego;
 
-    [Header("Canvas que contiene el formulario de registro")]
-    [SerializeField] private GameObject canvasRegistro;
-
     [Header("Componentes graficos que contienen la informacion del formulario LogIn")]
     [SerializeField] private InputField emailField;
 
     [SerializeField] private InputField passwordFiled;
 
-    public GameObject CanvasRegistro { get => canvasRegistro; set => canvasRegistro = value; }
+    [Header("Canvas que contiene el formulario de registro")]
+    [SerializeField] private GameObject canvasRegistro;
+
     public InputField EmailField { get => emailField; set => emailField = value; }
     public InputField PasswordFiled { get => passwordFiled; set => passwordFiled = value; }
+    public GameObject CanvasRegistro { get => canvasRegistro; set => canvasRegistro = value; }
 
     public override void Update()
     {

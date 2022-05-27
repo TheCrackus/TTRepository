@@ -19,7 +19,11 @@ public class componentesGraficosEliminaUsuario : componentesGraficosFormulario
     [Header("Componentes graficos que contienen la informacion del formulario")]
     [SerializeField] private InputField passwordFiled;
 
+    [Header("Canvas que contiene el menu principal")]
+    [SerializeField] private GameObject canvasMenuPrincipal;
+
     public InputField PasswordFiled { get => passwordFiled; set => passwordFiled = value; }
+    public GameObject CanvasMenuPrincipal { get => canvasMenuPrincipal; set => canvasMenuPrincipal = value; }
 
     public override void Update()
     {

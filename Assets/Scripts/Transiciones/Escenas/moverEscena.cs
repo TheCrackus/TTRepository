@@ -131,7 +131,7 @@ public class moverEscena : transicion
         }
         if (movP != null)
         {
-            movP.setEstadoPlayer(estadoGenerico.transicionando);
+            movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
         }
         if (estadoCambioEscena != null)
         {
@@ -153,7 +153,7 @@ public class moverEscena : transicion
             ObjetoPanel.SetActive(false);
             if (movP)
             {
-                movP.setEstadoPlayer(estadoGenerico.ninguno);
+                movP.EstadoPlayer.Estado = estadoGenerico.ninguno;
             }
             if (estadoCambioEscena != null)
             {
@@ -193,7 +193,7 @@ public class moverEscena : transicion
         }
         if (movP)
         {
-            movP.setEstadoPlayer(estadoGenerico.transicionando);
+            movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
         }
         if (ObjetoPanel != null
              && PanelAnimator != null

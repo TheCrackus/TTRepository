@@ -9,48 +9,76 @@ public class trepaCielosCorruptoArea : trepaCielosCorrupto
 
     public override void gestionDistancias()
     {
-        if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioPersecucion
-            && Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) >= radioAtaque
-            && perimetro.bounds.Contains(getObjetivoPerseguir().transform.position))
+        if (ObjetivoPerseguir != null) 
         {
-            if (getEstadoEnemigo() == estadoGenerico.caminando
-               || getEstadoEnemigo() == estadoGenerico.durmiendo
-               || getEstadoEnemigo() == estadoGenerico.ninguno)
+            if (Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) <= RadioPersecucion
+                && Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) >= RadioAtaque
+                && perimetro.bounds.Contains(ObjetivoPerseguir.transform.position))
             {
-                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, 
-                    getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                Vector3 refAnimacion = getObjetivoPerseguir().position - vectorTemporal;
-                Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
-                getEnemigoRigidBody().MovePosition(gameObject.transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                setEstadoEnemigo(estadoGenerico.caminando);
-                getEnemigoAnimator().SetBool("Despertar", true);
-            }
-        }
-        else
-        {
-            if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) > radioPersecucion
-                || !perimetro.bounds.Contains(getObjetivoPerseguir().transform.position))
-            {
-                if (Vector3.Distance(getPosicionMapa().transform.position, gameObject.transform.position) > radioAtaque)
+                if (EstadoEnemigo != null)
                 {
-                    Debug.Log(Vector3.Distance(getPosicionMapa().transform.position, gameObject.transform.position));
-                    if (getEstadoEnemigo() == estadoGenerico.caminando
-                       || getEstadoEnemigo() == estadoGenerico.durmiendo
-                       || getEstadoEnemigo() == estadoGenerico.ninguno)
+                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
+                       || EstadoEnemigo.Estado == estadoGenerico.durmiendo
+                       || EstadoEnemigo.Estado == estadoGenerico.ninguno)
                     {
-                        Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getPosicionMapa().transform.position,
-                        getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                        Vector3 refAnimacion = getPosicionMapa().transform.position - vectorTemporal;
-                        Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
-                        getEnemigoRigidBody().MovePosition(gameObject.transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                        setEstadoEnemigo(estadoGenerico.caminando);
-                        getEnemigoAnimator().SetBool("Despertar", true);
+                        Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position,
+                            ObjetivoPerseguir.position,
+                            VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        Vector3 refAnimacion = ObjetivoPerseguir.position - vectorTemporal;
+                        cambiaAnimaciones(refAnimacion);
+                        if (EnemigoRigidBody != null)
+                        {
+                            EnemigoRigidBody.MovePosition(gameObject.transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        }
+                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                        if (EnemigoAnimator != null)
+                        {
+                            EnemigoAnimator.SetBool("Despertar", true);
+                        }
                     }
                 }
-                else 
+            }
+            else
+            {
+                if (Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) > RadioPersecucion
+                    || !perimetro.bounds.Contains(ObjetivoPerseguir.transform.position))
                 {
-                    getEnemigoAnimator().SetBool("Despertar", false);
-                    setEstadoEnemigo(estadoGenerico.durmiendo);
+                    if (Vector3.Distance(PosicionMapa.transform.position, gameObject.transform.position) > RadioAtaque)
+                    {
+                        if (EstadoEnemigo != null)
+                        {
+                            if (EstadoEnemigo.Estado == estadoGenerico.caminando
+                               || EstadoEnemigo.Estado == estadoGenerico.durmiendo
+                               || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                            {
+                                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position,
+                                    PosicionMapa.transform.position,
+                                VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                                Vector3 refAnimacion = PosicionMapa.transform.position - vectorTemporal;
+                                cambiaAnimaciones(refAnimacion);
+                                if (EnemigoRigidBody != null)
+                                {
+                                    EnemigoRigidBody.MovePosition(gameObject.transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                                }
+                                EstadoEnemigo.Estado = estadoGenerico.caminando;
+                                if (EnemigoAnimator != null)
+                                {
+                                    EnemigoAnimator.SetBool("Despertar", true);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (EnemigoAnimator != null)
+                        {
+                            EnemigoAnimator.SetBool("Despertar", false);
+                        }
+                        if (EstadoEnemigo != null)
+                        {
+                            EstadoEnemigo.Estado = estadoGenerico.durmiendo;
+                        }
+                    }
                 }
             }
         }

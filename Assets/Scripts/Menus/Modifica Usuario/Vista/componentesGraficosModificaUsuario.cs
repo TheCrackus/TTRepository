@@ -31,6 +31,9 @@ public class componentesGraficosModificaUsuario : componentesGraficosFormulario
 
     [SerializeField] private InputField añoFiled;
 
+    [Header("Canvas que contiene el menu principal")]
+    [SerializeField] private GameObject canvasMenuPrincipal;
+
     public InputField EmailFiled { get => emailFiled; set => emailFiled = value; }
     public InputField PasswordFiled { get => passwordFiled; set => passwordFiled = value; }
     public InputField PasswordFieldConf { get => passwordFieldConf; set => passwordFieldConf = value; }
@@ -38,6 +41,7 @@ public class componentesGraficosModificaUsuario : componentesGraficosFormulario
     public InputField DiaFiled { get => diaFiled; set => diaFiled = value; }
     public InputField MesFiled { get => mesFiled; set => mesFiled = value; }
     public InputField AñoFiled { get => añoFiled; set => añoFiled = value; }
+    public GameObject CanvasMenuPrincipal { get => canvasMenuPrincipal; set => canvasMenuPrincipal = value; }
 
     public override void Update()
     {

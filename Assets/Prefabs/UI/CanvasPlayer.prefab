@@ -1202,7 +1202,7 @@ MonoBehaviour:
   corazonLleno: {fileID: -4430392651179603617, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
   corazonMitad: {fileID: -3276687688264177478, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
   corazonVacio: {fileID: -9053378900703536071, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
-  corazonesMaximos: {fileID: 11400000, guid: 6ea0953e838e11049865526c4e5295c5, type: 2}
+  contenedorCorazonesMaximos: {fileID: 11400000, guid: 6ea0953e838e11049865526c4e5295c5, type: 2}
   vidaActualPlayer: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
 --- !u!1 &7069483466297343947
 GameObject:
@@ -1347,6 +1347,7 @@ MonoBehaviour:
   objetoTextoContador: {fileID: 452290654}
   textoContador: {fileID: 3684299622989514216}
   transicion: {fileID: 3426469087832018134}
+  cuentaTimerRegresivo: {fileID: 11400000, guid: d14a2a0f90837f04caa3fb1e02bfc554, type: 2}
 --- !u!114 &3426469087832018134
 MonoBehaviour:
   m_ObjectHideFlags: 0

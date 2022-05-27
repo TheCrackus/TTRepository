@@ -13,7 +13,7 @@ public class espacioInventario : MonoBehaviour
     [Header("El objeto(ScriptableObject) que contiene el item")]
     public inventarioItem item;
     [Header("El manejador de la interfaz grafica del inventario")]
-    public manejadorBotonesInventario manejadorInventario;
+    public manejadorInventario manejadorInventario;
     [Header("Contenedor de un audio a reporducir")]
     [SerializeField] private GameObject audioEmergente;
     [Header("Audio al abrir una interfaz o presionar un boton")]
@@ -32,7 +32,7 @@ public class espacioInventario : MonoBehaviour
         }
     }
 
-    public void setUp(inventarioItem nuevoItem, manejadorBotonesInventario nuevoManejadorInventario) 
+    public void setUp(inventarioItem nuevoItem, manejadorInventario nuevoManejadorInventario) 
     {
         item = nuevoItem;
         manejadorInventario = nuevoManejadorInventario;

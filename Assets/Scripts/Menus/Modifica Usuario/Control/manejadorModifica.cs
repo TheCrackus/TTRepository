@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class manejadorModifica : formulario
+public class manejadorModifica : manejadorFormulario, pulsoBoton
 {
+    private bool pulseBoton;
+
     private string msjFormulario;
 
     private bool fechaCorrecta;
@@ -16,9 +18,14 @@ public class manejadorModifica : formulario
 
     private bool passwordCorrecta;
 
+    [Header("Nombre de la escena de LogIn")]
+    [SerializeField] private valorString escenaLogIn;
+
+    public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
+
     void Start()
     {
-        ManejadorAudioInterfaz.reproduceAudioAbrirVentana();
+        ManejadorAudioInterfazGrafica.reproduceAudioAbrirVentana();
         msjFormulario = "Favor de verificar la siguiente información:\n\n";
         fechaCorrecta = true;
         emailCorrecto = true;
@@ -27,11 +34,19 @@ public class manejadorModifica : formulario
         reiniciaBotones();
     }
 
+    public void iniciaCanvasPrincipal()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasPrincipal"))
+        {
+            Instantiate(((componentesGraficosModificaUsuario)Graficos).CanvasMenuPrincipal, Vector3.zero, Quaternion.identity);
+        }
+    }
+
     public void botonModifica() 
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickAbrir();
+            ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             string dia = "";
             string mes = "";
             string año = "";
@@ -304,7 +319,7 @@ public class manejadorModifica : formulario
                     ((componentesGraficosModificaUsuario)Graficos).PasswordFiled.text.ToString(),
                     ((componentesGraficosModificaUsuario)Graficos).SobrenombreFiled.text.ToString(), 
                     nacimiento);
-                PulseBoton = true;
+                pulseBoton = true;
                 StartCoroutine(esperaDatosModificar());
             }
             else
@@ -323,19 +338,25 @@ public class manejadorModifica : formulario
 
     public void botonRegresar()
     {
-        if (!PulseBoton)
+        if (!pulseBoton)
         {
-            ManejadorAudioInterfaz.reproduceAudioClickCerrar();
-            EventoReiniciaBotones.invocaFunciones();
-            PulseBoton = true;
-            Destroy(Graficos.CanvasFormulario);
+            ManejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
+            iniciaCanvasPrincipal();
+            pulseBoton = true;
+            Graficos.cierraFormulario();
         }
     }
 
     public void cierraSesion()
     {
-        EventoCierraSesion.invocaFunciones();
-        Destroy(Graficos.CanvasFormulario);
+        Conexion.cierraSesion();
+        StartCoroutine(cambioEscena(escenaLogIn.valorStringEjecucion));
+    }
+
+    public void cierraFormulario()
+    {
+        iniciaCanvasPrincipal();
+        Graficos.cierraFormulario();
     }
 
     private IEnumerator esperaDatosModificar()
@@ -369,5 +390,10 @@ public class manejadorModifica : formulario
             }
         }
         reiniciaBotones();
+    }
+
+    public void reiniciaBotones()
+    {
+        pulseBoton = false;
     }
 }

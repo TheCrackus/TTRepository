@@ -36,6 +36,7 @@ public class conexionWeb : MonoBehaviour
     [Header("Contenedor del usuario")]
     [SerializeField] private usuario miUsuario;
 
+    public string RespuestaServidor { get => respuestaServidor; set => respuestaServidor = value; }
     public usuario MiUsuario { get => miUsuario; set => miUsuario = value; }
     public estadoConexion EstadoActualConexion { get => estadoActualConexion; set => estadoActualConexion = value; }
 
@@ -64,7 +65,7 @@ public class conexionWeb : MonoBehaviour
         {
             respuestaServidor = web.downloadHandler.text;
             Debug.Log(respuestaServidor);
-            if (respuestaServidor != "ERROR")
+            if (respuestaServidor != "ERROR" && respuestaServidor != "NO VERIFICADO")
             {
                 string[] datos = web.downloadHandler.text.Split('>');
                 miUsuario.datosEjecucion = JsonUtility.FromJson<usuario.datosUsuario>(datos[1]);

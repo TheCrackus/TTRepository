@@ -6,40 +6,47 @@ using UnityEngine.UI;
 public class manejadorCorazones : MonoBehaviour
 {
     [Header("Numero de imagenes maximas")]
-    public Image[] imagenesCorazones;
+    [SerializeField] private Image[] imagenesCorazones;
+
     [Header("Sprites para la cantidad de vida")]
-    public Sprite corazonLleno;
-    public Sprite corazonMitad;
-    public Sprite corazonVacio;
+    [SerializeField] private Sprite corazonLleno;
+
+    [SerializeField] private Sprite corazonMitad;
+
+    [SerializeField] private Sprite corazonVacio;
+
     [Header("Numero de corazones que posee el jugador")]
-    public valorFlotante corazonesMaximos;
+    [SerializeField] private valorFlotante contenedorCorazonesMaximos;
+
     [Header("La vida actual del jugador")]
-    public valorFlotante vidaActualPlayer;
+    [SerializeField] private valorFlotante vidaActualPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        iniciaCorazones();
         actualizaCorazones();
     }
 
     public void iniciaCorazones() 
     {
-        if (corazonesMaximos.valorFlotanteEjecucion >= imagenesCorazones.Length)
+        if (contenedorCorazonesMaximos != null) 
         {
-            corazonesMaximos.valorFlotanteEjecucion = imagenesCorazones.Length;
-        }
-        else 
-        {
-            if (corazonesMaximos.valorFlotanteEjecucion <= 1)
+            if (contenedorCorazonesMaximos.valorFlotanteEjecucion >= imagenesCorazones.Length)
             {
-                corazonesMaximos.valorFlotanteEjecucion = 1;
+                contenedorCorazonesMaximos.valorFlotanteEjecucion = imagenesCorazones.Length;
             }
-        }
-        for (int i = 0; i < corazonesMaximos.valorFlotanteEjecucion; i++) 
-        {
-            imagenesCorazones[i].gameObject.SetActive(true);
-            imagenesCorazones[i].sprite = corazonLleno;
+            else
+            {
+                if (contenedorCorazonesMaximos.valorFlotanteEjecucion <= 1)
+                {
+                    contenedorCorazonesMaximos.valorFlotanteEjecucion = 1;
+                }
+            }
+            for (int i = 0; i < contenedorCorazonesMaximos.valorFlotanteEjecucion; i++)
+            {
+                imagenesCorazones[i].gameObject.SetActive(true);
+                imagenesCorazones[i].sprite = corazonLleno;
+            }
         }
     }
 
@@ -47,7 +54,7 @@ public class manejadorCorazones : MonoBehaviour
     {
         iniciaCorazones();
         float vidaTemporal = vidaActualPlayer.valorFlotanteEjecucion / 2;
-        for (int i = 0; i < corazonesMaximos.valorFlotanteEjecucion; i++)
+        for (int i = 0; i < contenedorCorazonesMaximos.valorFlotanteEjecucion; i++)
         {
             if (i <= (vidaTemporal-1))
             {

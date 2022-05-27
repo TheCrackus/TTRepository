@@ -4,22 +4,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class componentesGraficosFormulario : MonoBehaviour
+public abstract class componentesGraficosFormulario : componentesGraficos, ventanaEmergente, ordenInputs
 {
 
     private EventSystem sistema;
 
-    [Header("Primer objeto grafico en seleccionarse")]
+    [Header("El primer componente grafico del formulario")]
     [SerializeField] private Selectable primerInput;
 
-    [Header("Objeto que contiene todos los componentes graficos de este formulario")]
-    [SerializeField] private GameObject canvasFormulario;
-
-    [Header("Grafico de la ventana emergente que muestra informacion")]
+    [Header("Canvas que contiene una ventana emergente")]
     [SerializeField] private GameObject canvasVentanaEmergente;
 
     public EventSystem Sistema { get => sistema; set => sistema = value; }
-    public GameObject CanvasFormulario { get => canvasFormulario; set => canvasFormulario = value; }
+    public Selectable PrimerInput { get => primerInput; set => primerInput = value; }
     public GameObject CanvasVentanaEmergente { get => canvasVentanaEmergente; set => canvasVentanaEmergente = value; }
 
     public virtual void Start()
@@ -27,6 +24,7 @@ public class componentesGraficosFormulario : MonoBehaviour
         sistema = EventSystem.current;
         primerInput.Select();
     }
+
 
     public virtual void Update()
     {

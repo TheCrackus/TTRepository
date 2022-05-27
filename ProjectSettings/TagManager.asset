@@ -30,6 +30,8 @@ TagManager:
   - CanvasModificar
   - SetUp
   - Singleton
+  - CanvasLogIn
+  - CanvasPrincipal
   layers:
   - Default
   - TransparentFX

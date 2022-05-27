@@ -6,57 +6,87 @@ public class enemigoMele : trepaCielosCorrupto
 {
     private AnimationClip atacandoClip;
 
-    public override void Start()
+    [Header("Manejador de audio del Player arma mele")]
+    [SerializeField] private audioMelee manejadorAudioMelee;
+    public override void OnEnable()
     {
-        setObjetivoPerseguir(GameObject.FindWithTag("Player").transform);
-        setEnemigoRigidBody(gameObject.GetComponent<Rigidbody2D>());
-        setEnemigoAnimator(gameObject.GetComponent<Animator>());
-        setEstadoEnemigo(estadoGenerico.ninguno);
-        setContadorEsperaMovimiento(getTiempoEsperaMovimiento());
-        setPuedoMoverme(true);
-        foreach (AnimationClip clip in getEnemigoAnimator().runtimeAnimatorController.animationClips)
+        if (PosicionMapa != null
+            && ObjetivoPerseguir != null
+            && EnemigoRigidBody != null
+            && EnemigoAnimator != null
+            && EstadoEnemigo != null)
         {
-            if (clip.name == "Atacando Arriba")
-            {
-                atacandoClip = clip;
-            }
+            PosicionMapa.transform.position = PosicionOriginal;
+            ObjetivoPerseguir = GameObject.FindWithTag("Player").transform;
+            EnemigoRigidBody = gameObject.GetComponent<Rigidbody2D>();
+            EnemigoAnimator = gameObject.GetComponent<Animator>();
+            EstadoEnemigo.Estado = estadoGenerico.ninguno;
         }
     }
 
-    public override void OnEnable()
+    public override void Start()
     {
-        getPosicionMapa().transform.position = getPosicionOriginal();
-        setObjetivoPerseguir(GameObject.FindWithTag("Player").transform);
-        setEnemigoRigidBody(gameObject.GetComponent<Rigidbody2D>());
-        setEnemigoAnimator(gameObject.GetComponent<Animator>());
-        setEstadoEnemigo(estadoGenerico.ninguno);
+        if (ObjetivoPerseguir != null
+            && EnemigoRigidBody != null
+            && EnemigoAnimator != null
+            && EstadoEnemigo != null) 
+        {
+            ObjetivoPerseguir = GameObject.FindWithTag("Player").transform;
+            EnemigoRigidBody = gameObject.GetComponent<Rigidbody2D>();
+            EnemigoAnimator = gameObject.GetComponent<Animator>();
+            EstadoEnemigo.Estado = estadoGenerico.ninguno;
+            ContadorEsperaMovimiento = TiempoEsperaMovimientoAtaque;
+            PuedoMoverme = true;
+            foreach (AnimationClip clip in EnemigoAnimator.runtimeAnimatorController.animationClips)
+            {
+                if (clip.name == "Atacando Arriba")
+                {
+                    atacandoClip = clip;
+                }
+            }
+        }
     }
 
     public override void gestionDistancias()
     {
-        if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioPersecucion
-            && Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) >= radioAtaque)
+        if (ObjetivoPerseguir != null) 
         {
-            if (getEstadoEnemigo() == estadoGenerico.caminando
-                || getEstadoEnemigo() == estadoGenerico.ninguno)
+            if (Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) <= RadioPersecucion
+            && Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) >= RadioAtaque)
             {
-                Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, getObjetivoPerseguir().position, getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                Vector3 refAnimacion = getObjetivoPerseguir().position - vectorTemporal;
-                Vector3 vectorMovimiento = cambiaAnimaciones(refAnimacion);
-                getEnemigoRigidBody().MovePosition(transform.position + vectorMovimiento * getVelocidadMovimientoEnemigo() * Time.fixedDeltaTime);
-                setEstadoEnemigo(estadoGenerico.caminando);
-            }
-        }
-        else
-        {
-            if (Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioPersecucion
-            && Vector3.Distance(getObjetivoPerseguir().position, gameObject.transform.position) <= radioAtaque)
-            {
-                if (getEstadoEnemigo() == estadoGenerico.caminando
-                    || getEstadoEnemigo() == estadoGenerico.ninguno)
+                if (EstadoEnemigo != null) 
                 {
-                    setEstadoEnemigo(estadoGenerico.atacando);
-                    StartCoroutine(ataca());
+                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
+                        || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                    {
+                        Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position,
+                            ObjetivoPerseguir.position,
+                            VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        Vector3 refAnimacion = ObjetivoPerseguir.position - vectorTemporal;
+                        cambiaAnimaciones(refAnimacion);
+                        if (EnemigoRigidBody != null) 
+                        {
+                            EnemigoRigidBody.MovePosition(transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
+                        }
+                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                    }
+                }
+            }
+            else
+            {
+                if (Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) <= RadioPersecucion
+                        && Vector3.Distance(ObjetivoPerseguir.position, gameObject.transform.position) <= RadioAtaque)
+                {
+                    if (EstadoEnemigo != null)
+                    {
+                        if (EstadoEnemigo.Estado == estadoGenerico.caminando
+                             || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                        {
+                            manejadorAudioMelee.reproduceAudioMelee();
+                            EstadoEnemigo.Estado = estadoGenerico.atacando;
+                            StartCoroutine(ataca());
+                        }
+                    }
                 }
             }
         }
@@ -64,12 +94,24 @@ public class enemigoMele : trepaCielosCorrupto
 
     private IEnumerator ataca() 
     {
-        getEnemigoAnimator().SetBool("Atacar", true);
-        yield return new WaitForSeconds(atacandoClip.length);
-        getEnemigoAnimator().SetBool("Atacar", false);
-        if (getEstadoEnemigo() == estadoGenerico.atacando)
+        if (EnemigoAnimator != null) 
         {
-            setEstadoEnemigo(estadoGenerico.ninguno);
+            EnemigoAnimator.SetBool("Atacar", true);
+        }
+        if (atacandoClip != null)
+        {
+            yield return new WaitForSeconds(atacandoClip.length);
+        }
+        if (EnemigoAnimator != null)
+        {
+            EnemigoAnimator.SetBool("Atacar", false);
+        }
+        if (EstadoEnemigo != null) 
+        {
+            if (EstadoEnemigo.Estado == estadoGenerico.atacando)
+            {
+                EstadoEnemigo.Estado = estadoGenerico.ninguno;
+            }
         }
     }
 }

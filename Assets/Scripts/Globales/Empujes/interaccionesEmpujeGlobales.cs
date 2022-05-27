@@ -32,7 +32,7 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                 {
                     if (gameObject.CompareTag("Enemigo"))
                     {
-                        gameObject.GetComponentInParent<enemigo>().setPuedoMoverme(false);
+                        gameObject.GetComponentInParent<enemigo>().PuedoMoverme = false;
                         colisionDetectada.gameObject.GetComponentInParent<movimientoPlayer>().comienzaEmpujaPlayer(tiempoAplicarFuerza);
                     }
                     else
@@ -45,7 +45,7 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                         {
                             if (gameObject.CompareTag("ArmaObjetoEnemigo"))
                             {
-                                gameObject.GetComponentInParent<enemigo>().setPuedoMoverme(false);
+                                gameObject.GetComponentInParent<enemigo>().PuedoMoverme = false;
                                 colisionDetectada.gameObject.GetComponentInParent<movimientoPlayer>().comienzaEmpujaPlayer(tiempoAplicarFuerza);
                             }
                             else
