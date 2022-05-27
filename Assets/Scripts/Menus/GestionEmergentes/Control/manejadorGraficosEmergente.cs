@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class manejadorLogInEmergente : manejadorMenu
+public class manejadorGraficosEmergente : manejadorMenu
 {
 
     void Start()
@@ -12,7 +12,8 @@ public class manejadorLogInEmergente : manejadorMenu
 
     public void iniciaCanvas()
     {
-        if (!GameObject.FindGameObjectWithTag("CanvasLogIn"))
+        if (!GameObject.FindGameObjectWithTag("CanvasLogIn")
+            || !GameObject.FindGameObjectWithTag("CanvasPrincipal"))
         {
             Instantiate(((componentesGraficosEmergentes)Graficos).Canvas, Vector3.zero, Quaternion.identity);
         }

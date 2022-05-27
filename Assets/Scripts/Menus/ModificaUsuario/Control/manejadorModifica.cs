@@ -343,7 +343,7 @@ public class manejadorModifica : manejadorFormulario, pulsoBoton
             ManejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
             iniciaCanvasPrincipal();
             pulseBoton = true;
-            Graficos.cierraFormulario();
+            cierraFormulario();
         }
     }
 
@@ -355,8 +355,7 @@ public class manejadorModifica : manejadorFormulario, pulsoBoton
 
     public void cierraFormulario()
     {
-        iniciaCanvasPrincipal();
-        Graficos.cierraFormulario();
+        cierraGrafico();
     }
 
     private IEnumerator esperaDatosModificar()

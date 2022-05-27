@@ -8,16 +8,22 @@ public class espacioInventario : MonoBehaviour
 {
     [Header("El texto que describe la cantidad que posee el Player de este item")]
     [SerializeField] private TextMeshProUGUI textoCantidadItem;
+
     [Header("La imagen que contendra el sprite del item")]
     [SerializeField] private Image imagenItem;
-    [Header("El objeto(ScriptableObject) que contiene el item")]
+
+    [Header("El objeto que contiene el item")]
     public inventarioItem item;
+
     [Header("El manejador de la interfaz grafica del inventario")]
     public manejadorInventario manejadorInventario;
+
     [Header("Contenedor de un audio a reporducir")]
     [SerializeField] private GameObject audioEmergente;
+
     [Header("Audio al abrir una interfaz o presionar un boton")]
     [SerializeField] private AudioSource audioClickAbrir;
+
     [Header("Velocidad de reproduccion del Audio y agudez")]
     [SerializeField] private float velocidadAudioClickAbrir;
 
@@ -40,13 +46,12 @@ public class espacioInventario : MonoBehaviour
         {
             imagenItem.sprite = item.imagenItem;
             textoCantidadItem.text = "" + item.cantidadItem;
-
         }
     }
 
     public void botonItem() 
     {
-        if (item) 
+        if (item != null) 
         {
             reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
             manejadorInventario.activaBotonEnviaTexto(item.descripcionItem, item.esUsable, item);

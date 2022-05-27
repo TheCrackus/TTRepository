@@ -12,11 +12,6 @@ public abstract class componentesGraficos : MonoBehaviour
 
     public GameObject ComponenteGraficoPrincipal { get => componenteGraficoPrincipal; set => componenteGraficoPrincipal = value; }
 
-    public void cierraFormulario()
-    {
-        Destroy(ComponenteGraficoPrincipal);
-    }
-
 }
 
 interface ventanaEmergente 

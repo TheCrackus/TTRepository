@@ -9,4 +9,5 @@ public class componentesGraficosEmergentes : componentesGraficos
     [SerializeField] private GameObject canvas;
 
     public GameObject Canvas { get => canvas; set => canvas = value; }
+
 }

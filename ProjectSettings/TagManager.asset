@@ -32,6 +32,9 @@ TagManager:
   - Singleton
   - CanvasLogIn
   - CanvasPrincipal
+  - CanvasPausa
+  - CanvasInventario
+  - CanvasConfiguraciones
   layers:
   - Default
   - TransparentFX

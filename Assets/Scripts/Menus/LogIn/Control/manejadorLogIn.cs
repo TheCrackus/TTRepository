@@ -70,7 +70,7 @@ public class manejadorLogIn : manejadorFormulario, pulsoBoton
 
     public void cierraFormulario()
     {
-        Graficos.cierraFormulario();
+        cierraGrafico();
     }
 
     private IEnumerator esperaDatosInicioSesion()

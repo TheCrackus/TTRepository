@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class manejadorInventario : manejadorMenu, reproduceAudio
+public class manejadorInventario : manejadorMenu, reproduceAudio, ejecutaPausa
 {
+
+    private bool pausa;
 
     private inventarioItem itemActual;
 
@@ -18,14 +20,27 @@ public class manejadorInventario : manejadorMenu, reproduceAudio
     [Header("Componentes graficos del menu de inventario")]
     [SerializeField] private componentesGraficosInventario graficosInventario;
 
+    public bool Pausa { get => pausa; set => pausa = value; }
     public audioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
 
     void OnEnable()
     {
+        reproduceAudioAbreVentana();
+        pausaJuego();
         limpiaListaInventario();
         limpiaEspaciosInventario();
         creaEspaciosInventario();
         activaBotonEnviaTexto("", false, null);
+    }
+
+    void OnDisable()
+    {
+        if (!gameObject.scene.isLoaded) 
+        {
+            return;
+        } 
+        reproduceAudioClickCerrar();
+        continuaJuego();
     }
 
     public void activaBotonEnviaTexto(string descripcion, bool activaBoton, inventarioItem nuevoItem) 
@@ -112,6 +127,16 @@ public class manejadorInventario : manejadorMenu, reproduceAudio
         }
     }
 
+    public void pausaJuego()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void continuaJuego()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void reproduceAudioClickCerrar()
     {
         if (manejadorAudioInterfazGrafica != null)
@@ -134,6 +159,6 @@ public class manejadorInventario : manejadorMenu, reproduceAudio
         {
             manejadorAudioInterfazGrafica.reproduceAudioAbrirVentana();
         }
-    }
+    }   
 
 }

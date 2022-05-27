@@ -220,7 +220,7 @@ public class manejadorPrincipal : manejadorMenu, pulsoBoton, iniciaVentanaEmerge
 
     public void cierraFormulario()
     {
-        Graficos.cierraFormulario();
+        cierraGrafico();
     }
 
     public void reiniciaBotones()

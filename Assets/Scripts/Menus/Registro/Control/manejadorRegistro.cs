@@ -341,7 +341,7 @@ public class manejadorRegistro : manejadorFormulario, pulsoBoton
 
     public void cierraFormulario()
     {
-        Graficos.cierraFormulario();
+        cierraGrafico();
     }
 
     private IEnumerator esperaDatosRegistro()

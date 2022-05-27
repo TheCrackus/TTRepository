@@ -64,7 +64,7 @@ public class manejadorElimina : manejadorFormulario, pulsoBoton
 
     public void cierraFormulario()
     {
-        Graficos.cierraFormulario();
+        cierraGrafico();
     }
 
     private IEnumerator esperaDatosEliminaUsuario()

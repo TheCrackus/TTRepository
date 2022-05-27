@@ -11,6 +11,13 @@ public class manejadorMenu : MonoBehaviour
 
     public componentesGraficos Graficos { get => graficos; set => graficos = value; }
 
+    public void cierraGrafico()
+    {
+        if (Graficos.ComponenteGraficoPrincipal != null)
+        {
+            Destroy(Graficos.ComponenteGraficoPrincipal);
+        }
+    }
     public IEnumerator cambioEscena(string escenaCarga)
     {
         AsyncOperation accion = SceneManager.LoadSceneAsync(escenaCarga);
@@ -25,13 +32,17 @@ public class manejadorMenu : MonoBehaviour
 interface ejecutaPausa
 {
     public bool Pausa { get; set; }
+
+    public void pausaJuego();
+
+    public void continuaJuego();
 }
 
 interface pulsoBoton 
 {
     public bool PulseBoton { get; set; }
 
-    void reiniciaBotones();
+    public void reiniciaBotones();
 }
 
 interface iniciaVentanaEmergente 

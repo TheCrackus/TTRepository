@@ -750,8 +750,8 @@ GameObject:
   - component: {fileID: 885107831930130277}
   - component: {fileID: 3473483132427829768}
   - component: {fileID: 2563485430172188262}
-  - component: {fileID: 691230292071827351}
   - component: {fileID: 29152335830411066}
+  - component: {fileID: 691230292071827351}
   - component: {fileID: 4039686458519808449}
   m_Layer: 5
   m_Name: PanelInventario
@@ -820,6 +820,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
+--- !u!114 &29152335830411066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209135119608604660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d457194692962d42babe24fdabf367f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componenteGraficoPrincipal: {fileID: 7602141823773430981}
+  espacioInventarioVacio: {fileID: 5692845797186555747, guid: 741c3045eb50c5c45bd9f93ac813e9d7, type: 3}
+  contenedorInventario: {fileID: 8794415841288673965}
+  textoDescripcionItem: {fileID: 7883475527257155383}
+  botonUsarItem: {fileID: 911617627685417061}
 --- !u!114 &691230292071827351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,23 +853,6 @@ MonoBehaviour:
   manejadorAudioInterfazGrafica: {fileID: 4039686458519808449}
   inventarioPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
   graficosInventario: {fileID: 29152335830411066}
---- !u!114 &29152335830411066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5209135119608604660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d457194692962d42babe24fdabf367f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasPrincipal: {fileID: 7602141823773430981}
-  espacioInventarioVacio: {fileID: 5692845797186555747, guid: 741c3045eb50c5c45bd9f93ac813e9d7, type: 3}
-  contenedorInventario: {fileID: 8794415841288673965}
-  textoDescripcionItem: {fileID: 7883475527257155383}
-  botonUsarItem: {fileID: 911617627685417061}
 --- !u!114 &4039686458519808449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,9 +1201,10 @@ GameObject:
   - component: {fileID: 7602141823773431097}
   - component: {fileID: 7602141823773430982}
   - component: {fileID: 7602141823773430983}
+  - component: {fileID: 7716266941958460712}
   m_Layer: 5
-  m_Name: CanvasInventario
-  m_TagString: Untagged
+  m_Name: CanvasMenuInventario
+  m_TagString: CanvasInventario
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1275,6 +1276,23 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &7716266941958460712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7602141823773430981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &8512264776562242592
 GameObject:
   m_ObjectHideFlags: 0
