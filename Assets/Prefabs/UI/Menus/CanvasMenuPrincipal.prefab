@@ -1258,8 +1258,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonCierraSesion
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: cerrarSesionBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2099,8 +2099,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonEliminaUsuario
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: eliminarUsuarioBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2232,8 +2232,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonModificaUsuario
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: modificarUsuarioBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3543,8 +3543,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonCierraJuego
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: cerrarJuegoBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3566,6 +3566,7 @@ GameObject:
   - component: {fileID: 2082318602204894553}
   - component: {fileID: 2082318602204894554}
   - component: {fileID: 2082318602204894555}
+  - component: {fileID: 3757407123158876257}
   - component: {fileID: 2082318602204894557}
   - component: {fileID: 2082318602204894556}
   - component: {fileID: 2082318602204894535}
@@ -3650,7 +3651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estadoActualConexion: 0
   miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
---- !u!114 &2082318602204894557
+--- !u!114 &3757407123158876257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3659,11 +3660,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2082318602204894558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a545bb01e330b0e45a001eb599151f16, type: 3}
+  m_Script: {fileID: 11500000, guid: b923283e3da42d5428db1b7040b97eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componenteGraficoPrincipal: {fileID: 2082318602090759213}
-  primerInput: {fileID: 2082318601493383906}
+  primerComponenteGrafico: {fileID: 2082318600819120547}
   enterInputContinuarPartida: {fileID: 2082318600819120547}
   enterInputNuevaPartida: {fileID: 2082318601493383906}
   enterInputNivel1: {fileID: 2082318601170126046}
@@ -3684,8 +3684,21 @@ MonoBehaviour:
   botonEliminarUsuario: {fileID: 2082318601364075422}
   botonCerrarSesion: {fileID: 2082318600953048738}
   botonCierraJuego: {fileID: 2082318602190079075}
-  canvasElimina: {fileID: 3228596876640309175, guid: 0bc2ab5b35489144fade238252cff510, type: 3}
-  canvasModifica: {fileID: 5740944827401726407, guid: 38914394830159f49a3a1eaef5cc5218, type: 3}
+--- !u!114 &2082318602204894557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082318602204894558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a545bb01e330b0e45a001eb599151f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componenteGraficoPrincipal: {fileID: 2082318602090759213}
+  canvasEliminacionUsuario: {fileID: 3228596876640309175, guid: 0bc2ab5b35489144fade238252cff510, type: 3}
+  canvasModificacionUsuario: {fileID: 5740944827401726407, guid: 38914394830159f49a3a1eaef5cc5218, type: 3}
   canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
 --- !u!114 &2082318602204894556
 MonoBehaviour:
@@ -3699,12 +3712,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e4959488dd3f4a438add38eef25d5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graficos: {fileID: 2082318602204894557}
-  escenaLogIn: {fileID: 11400000, guid: 66ba4d7d24af7c94dae2ba0b3768b45c, type: 2}
-  escenaLaberintos: {fileID: 11400000, guid: 84687b5074e6e694da6e1cdae161ebba, type: 2}
-  escenaMazmorra: {fileID: 11400000, guid: b0af4cadb963a174da75694466327f52, type: 2}
-  escenaJefeFinal: {fileID: 11400000, guid: 034cd9a1768459b4d9ff539c5c06ae3f, type: 2}
-  escenaActual: {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
+  componenteGrafico: {fileID: 2082318602204894557}
+  nombreEscenaLogIn: {fileID: 11400000, guid: 66ba4d7d24af7c94dae2ba0b3768b45c, type: 2}
+  nombreEscenaLaberintos: {fileID: 11400000, guid: 84687b5074e6e694da6e1cdae161ebba, type: 2}
+  nombreEscenaMazmorra: {fileID: 11400000, guid: b0af4cadb963a174da75694466327f52, type: 2}
+  nombreEscenaJefeFinal: {fileID: 11400000, guid: 034cd9a1768459b4d9ff539c5c06ae3f, type: 2}
+  nombreEscenaActual: {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
   manejadorAudioInterfazGrafica: {fileID: 2082318602204894535}
   conexion: {fileID: 2082318602204894555}
 --- !u!114 &2082318602204894535
@@ -3744,7 +3757,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
         m_TargetAssemblyTypeName: manejadorPrincipal, Assembly-CSharp
-        m_MethodName: cierraSesion
+        m_MethodName: cerrarSesion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

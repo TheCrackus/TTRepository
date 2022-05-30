@@ -628,8 +628,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 687640642096443227}
-        m_TargetAssemblyTypeName: manejadorVentanaEmergente, Assembly-CSharp
-        m_MethodName: botonCierraVentanaEmergente
+        m_TargetAssemblyTypeName: ManejadorVentanaEmergente, Assembly-CSharp
+        m_MethodName: cerrarVentanaEmergenteBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd0b02cfa7fd41646b1b1d7cb0c2b261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graficos: {fileID: 5863978328221736179}
+  componenteGrafico: {fileID: 5863978328221736179}
   manejadorAudioInterfazGrafica: {fileID: 3289827140797487345}
 --- !u!114 &3289827140797487345
 MonoBehaviour:

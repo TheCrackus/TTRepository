@@ -4,52 +4,39 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class manejadorVentanaEmergente : manejadorMenu, pulsoBoton, reproduceAudio
+public class ManejadorVentanaEmergente : ManejadorMenuGenerico, IReproductorAudio
 {
-
-    private bool pulseBoton;
 
     [Header("Manejador de audio de interfaces")]
     [SerializeField] private audioInterfazGrafica manejadorAudioInterfazGrafica;
 
-    public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
     public audioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
 
     void Start()
     {
-        reproduceAudioAbreVentana();
-        reiniciaBotones();
+        reproducirAudioAbreVentana();
     }
 
-    public void enviaTexto(string texto) 
+    public void enviarTextoVentanaEmergente(string texto) 
     {
-        ((componentesGraficosVentanaEmergente)Graficos).TextoVentanaEmergente.text = texto;
+        ((ComponenteGraficoVentanaEmergente)ComponenteGrafico).TextoVentanaEmergente.text = texto;
     }
 
-    public void botonCierraVentanaEmergente() 
+    public void cerrarVentanaEmergenteBoton() 
     {
-        if (!pulseBoton) 
+        reproducirAudioClickCerrar();
+        cerrarVentanaEmergente();
+    }
+
+    public void cerrarVentanaEmergente() 
+    {
+        if (((ComponenteGraficoVentanaEmergente)ComponenteGrafico).ComponenteGraficoPrincipal != null) 
         {
-            reproduceAudioClickCerrar();
-            pulseBoton = true;
-            cierraVentanaEmergente();
+            Destroy(((ComponenteGraficoVentanaEmergente)ComponenteGrafico).ComponenteGraficoPrincipal);
         }
     }
 
-    public void cierraVentanaEmergente() 
-    {
-        if (((componentesGraficosVentanaEmergente)Graficos).ComponenteGraficoPrincipal != null) 
-        {
-            Destroy(((componentesGraficosVentanaEmergente)Graficos).ComponenteGraficoPrincipal);
-        }
-    }
-
-    public void reiniciaBotones()
-    {
-        pulseBoton = false;
-    }
-
-    public void reproduceAudioClickCerrar()
+    public void reproducirAudioClickCerrar()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
@@ -57,7 +44,7 @@ public class manejadorVentanaEmergente : manejadorMenu, pulsoBoton, reproduceAud
         }
     }
 
-    public void reproduceAudioClickAbrir()
+    public void reproducirAudioClickAbrir()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
@@ -65,7 +52,7 @@ public class manejadorVentanaEmergente : manejadorMenu, pulsoBoton, reproduceAud
         }
     }
 
-    public void reproduceAudioAbreVentana()
+    public void reproducirAudioAbreVentana()
     {
         if (manejadorAudioInterfazGrafica != null)
         {

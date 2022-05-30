@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class manejadorFormulario : manejadorMenu, iniciaVentanaEmergente, reproduceAudio, conexion
+public class ManejadorFormulario : ManejadorMenuGenerico, ICanvasVentanaEmergente, IReproductorAudio, IConexion, IBotonPulso
 {
 
-    private GameObject nCanvasVentanaEmergente;
+    private ComponenteGraficoFormulario graficosFormulario;
+
+    private bool pulseBoton;
+
+    public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
+
+    private GameObject nuevoCanvasVentanaEmergente;
 
     private GameObject ventanaEmergente;
 
-    private manejadorVentanaEmergente manejadorVentanaEmergente;
+    private ManejadorVentanaEmergente manejadorVentanaEmergente;
 
     [Header("Manejador de audio de interfaces")]
     [SerializeField] private audioInterfazGrafica manejadorAudioInterfazGrafica;
@@ -18,33 +24,33 @@ public class manejadorFormulario : manejadorMenu, iniciaVentanaEmergente, reprod
     [Header("Manejador de conexiones")]
     [SerializeField] private conexionWeb conexion;
 
-    public GameObject NCanvasVentanaEmergente { get => nCanvasVentanaEmergente; set => nCanvasVentanaEmergente = value; }
+    public GameObject NuevoCanvasVentanaEmergente { get => nuevoCanvasVentanaEmergente; set => nuevoCanvasVentanaEmergente = value; }
     public GameObject VentanaEmergente { get => ventanaEmergente; set => ventanaEmergente = value; }
-    public manejadorVentanaEmergente ManejadorVentanaEmergente { get => manejadorVentanaEmergente; set => manejadorVentanaEmergente = value; }
+    public ManejadorVentanaEmergente ManejadorVentanaEmergente { get => manejadorVentanaEmergente; set => manejadorVentanaEmergente = value; }
     public audioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
     public conexionWeb Conexion { get => conexion; set => conexion = value; }
 
-
-    public void iniciaVentanaEmergente()
+    public void iniciarVentanaEmergente()
     {
-        if (nCanvasVentanaEmergente == null) 
+        graficosFormulario = (ComponenteGraficoFormulario)ComponenteGrafico;
+        if (nuevoCanvasVentanaEmergente == null) 
         {
             if (!GameObject.FindGameObjectWithTag("CanvasVentanaEmergente"))
             {
-                nCanvasVentanaEmergente = Instantiate(((componentesGraficosFormulario)Graficos).CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
+                nuevoCanvasVentanaEmergente = Instantiate(graficosFormulario.CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
             }
             else
             {
-                nCanvasVentanaEmergente = GameObject.FindGameObjectWithTag("CanvasVentanaEmergente").gameObject;
-                Destroy(nCanvasVentanaEmergente);
-                nCanvasVentanaEmergente = Instantiate(((componentesGraficosFormulario)Graficos).CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
+                nuevoCanvasVentanaEmergente = GameObject.FindGameObjectWithTag("CanvasVentanaEmergente").gameObject;
+                Destroy(nuevoCanvasVentanaEmergente);
+                nuevoCanvasVentanaEmergente = Instantiate(graficosFormulario.CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
             }
-            ventanaEmergente = nCanvasVentanaEmergente.gameObject.transform.Find("VentanaEmergente").gameObject;
-            manejadorVentanaEmergente = ventanaEmergente.gameObject.GetComponent<manejadorVentanaEmergente>();
+            ventanaEmergente = nuevoCanvasVentanaEmergente.gameObject.transform.Find("VentanaEmergente").gameObject;
+            manejadorVentanaEmergente = ventanaEmergente.gameObject.GetComponent<ManejadorVentanaEmergente>();
         }
     }
 
-    public void reproduceAudioClickCerrar()
+    public void reproducirAudioClickCerrar()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
@@ -52,7 +58,7 @@ public class manejadorFormulario : manejadorMenu, iniciaVentanaEmergente, reprod
         }
     }
 
-    public void reproduceAudioClickAbrir()
+    public void reproducirAudioClickAbrir()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
@@ -60,12 +66,22 @@ public class manejadorFormulario : manejadorMenu, iniciaVentanaEmergente, reprod
         }
     }
 
-    public void reproduceAudioAbreVentana()
+    public void reproducirAudioAbreVentana()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
             manejadorAudioInterfazGrafica.reproduceAudioAbrirVentana();
         }
+    }
+
+    public void reiniciarBotones()
+    {
+        pulseBoton = false;
+    }
+
+    public void bloquearBotones() 
+    {
+        pulseBoton = true;
     }
 
 }

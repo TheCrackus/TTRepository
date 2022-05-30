@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class manejadorMixer : manejadorConfiguracion
+public class manejadorMixer : MonoBehaviour
 {
 
     [Header("Mixer a controlar")]

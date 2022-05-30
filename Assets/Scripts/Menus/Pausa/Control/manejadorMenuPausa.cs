@@ -3,112 +3,111 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class manejadorMenuPausa : manejadorMenu, reproduceAudio, ejecutaPausa, pulsoBoton
+public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudio, IPausa, IBotonPulso, ICanvasMenuInventario, ICanvasMenuConfiguraciones
 {
 
-    private bool pausa;
+    private ComponenteGraficoMenuPausa graficos;
+
+    private bool condicionPausa;
 
     private bool pulseBoton;
 
     [Header("Nombre de la escena con el menu principal")]
-    [SerializeField] private valorString escenaMenuPrincipal;
+    [SerializeField] private valorString nombreEscenaMenuPrincipal;
 
     [Header("Objeto que contiene la informacion del juego en ejecucion")]
     [SerializeField] private cambioEscena estadoCambioEscena;
 
-    [Header("Componentes graficos del menu de pausa")]
-    [SerializeField] private componentesGraficosMenusPausa graficosPausa;
-
     [Header("Manejador de audio de interfaces")]
     [SerializeField] private audioInterfazGrafica manejadorAudioInterfazGrafica;
 
-    public bool Pausa { get => pausa; set => pausa = value; }
+    public bool CondicionPausa { get => condicionPausa; set => condicionPausa = value; }
     public audioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
     public bool PulseBoton { get => pulseBoton; set => pulseBoton= value; }
 
-    void OnEnable()
+    private void OnEnable()
     {
-        reproduceAudioAbreVentana();
-        reiniciaBotones();
-        pausaJuego();
+        graficos = (ComponenteGraficoMenuPausa)ComponenteGrafico;
+        reproducirAudioAbreVentana();
+        reiniciarBotones();
+        pausarJuego();
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         if (!gameObject.scene.isLoaded)
         {
             return;
         }
-        reproduceAudioClickCerrar();
-        continuaJuego();
+        reproducirAudioClickCerrar();
+        continuarJuego();
     }
 
-    public void iniciaMenuConfiguraciones()
-    {
-
-    }
-
-    public void botonRegresar() 
+    public void regresarBoton() 
     {
         if (!pulseBoton) 
         {
-
-            pulseBoton = true;
+            cerrarGrafico();
+            bloquearBotones();
         }
     }
 
-    public void botonInventario()
+    public void abrirInventarioBoton()
     {
         if (!pulseBoton)
         {
-
-            pulseBoton = true;
+            iniciarCanvasMenuInventario();
+            bloquearBotones();
+            cerrarGrafico();
         }
     }
 
-    public void botonConfiguraciones()
+    public void abrirConfiguracionesBoton()
     {
         if (!pulseBoton)
         {
-
-            pulseBoton = true;
+            iniciarCanvasMenuConfiguraciones();
+            bloquearBotones();
+            cerrarGrafico();
         }
     }
 
-    public void botonMenuPrincipal()
+    public void salirMenuPrincipalBoton()
     {
         if (!pulseBoton)
         {
-
-            pulseBoton = true;
+            StartCoroutine(cambiarEscena(nombreEscenaMenuPrincipal.valorStringEjecucion));
+            bloquearBotones();
         }
     }
 
-    public void botonReiniciaGuardado()
+    public void reiniciarGuardadoBoton()
     {
         if (!pulseBoton)
         {
-
-            pulseBoton = true;
+            //--------------
+            if (singletonEventosEscenas.instance != null)
+            {
+                singletonEventosEscenas.instance.reiniciaScriptable();
+            }
+            //--------------
+            //Reiniciar los datos
+            StartCoroutine(cambiarEscena(nombreEscenaMenuPrincipal.valorStringEjecucion));
+            bloquearBotones();
         }
     }
 
-    public void cierraMenu() 
-    {
-        cierraGrafico();
-    }
-
-    public void pausaJuego()
+    public void pausarJuego()
     {
         Time.timeScale = 0f;
     }
 
-    public void continuaJuego()
+    public void continuarJuego()
     {
         Time.timeScale = 1f;
     }
 
-    public void reproduceAudioClickCerrar()
+    public void reproducirAudioClickCerrar()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
@@ -116,7 +115,7 @@ public class manejadorMenuPausa : manejadorMenu, reproduceAudio, ejecutaPausa, p
         }
     }
 
-    public void reproduceAudioClickAbrir()
+    public void reproducirAudioClickAbrir()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
@@ -124,7 +123,7 @@ public class manejadorMenuPausa : manejadorMenu, reproduceAudio, ejecutaPausa, p
         }
     }
 
-    public void reproduceAudioAbreVentana()
+    public void reproducirAudioAbreVentana()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
@@ -132,8 +131,29 @@ public class manejadorMenuPausa : manejadorMenu, reproduceAudio, ejecutaPausa, p
         }
     }
 
-    public void reiniciaBotones()
+    public void reiniciarBotones()
     {
         pulseBoton = false;
+    }
+
+    public void bloquearBotones()
+    {
+        pulseBoton = true;
+    }
+
+    public void iniciarCanvasMenuInventario()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasInventario"))
+        {
+            Instantiate(graficos.CanvasMenuInventario, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    public void iniciarCanvasMenuConfiguraciones()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasConfiguraciones"))
+        {
+            Instantiate(graficos.CanvasMenuConfiguraciones, Vector3.zero, Quaternion.identity);
+        }
     }
 }

@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class manejadorResolucion : manejadorConfiguracion
+public class ManejadorResolucion : ManejadorMenuGenerico
 {
+
+    private ComponenteGraficoMenuConfiguracion graficos;
 
     private Resolution[] resoluciones;
 
     void Start()
     {
+        graficos = (ComponenteGraficoMenuConfiguracion) ComponenteGrafico;
         cargaResoluciones();
     }
 
@@ -20,10 +23,10 @@ public class manejadorResolucion : manejadorConfiguracion
 
     public void cargaResoluciones() 
     {
-        if (GraficosConfiguracion != null)
+        if (graficos != null)
         {
             resoluciones = Screen.resolutions;
-            GraficosConfiguracion.DropdownResoluciones.ClearOptions();
+            graficos.DropdownResoluciones.ClearOptions();
             List<string> opciones = new List<string>();
             Resolution resolucionActual = Screen.currentResolution;
             string textoResolucionActual = resolucionActual.width + " x " + resolucionActual.height;
@@ -39,9 +42,9 @@ public class manejadorResolucion : manejadorConfiguracion
                 }
                 index++;
             }
-            GraficosConfiguracion.DropdownResoluciones.AddOptions(opciones);
-            GraficosConfiguracion.DropdownResoluciones.value = indexResolucionActual;
-            GraficosConfiguracion.DropdownResoluciones.RefreshShownValue();
+            graficos.DropdownResoluciones.AddOptions(opciones);
+            graficos.DropdownResoluciones.value = indexResolucionActual;
+            graficos.DropdownResoluciones.RefreshShownValue();
         }
     }
 

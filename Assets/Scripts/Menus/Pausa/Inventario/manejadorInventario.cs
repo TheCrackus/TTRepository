@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class manejadorInventario : manejadorMenu, reproduceAudio, ejecutaPausa
+public class manejadorInventario : ManejadorMenuGenerico, IReproductorAudio, IPausa
 {
 
     private bool pausa;
@@ -18,15 +18,15 @@ public class manejadorInventario : manejadorMenu, reproduceAudio, ejecutaPausa
     [SerializeField] private listaInventario inventarioPlayerItems;
 
     [Header("Componentes graficos del menu de inventario")]
-    [SerializeField] private componentesGraficosInventario graficosInventario;
+    [SerializeField] private ComponenteGraficoMenuInventario graficosInventario;
 
-    public bool Pausa { get => pausa; set => pausa = value; }
+    public bool CondicionPausa { get => pausa; set => pausa = value; }
     public audioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
 
     void OnEnable()
     {
-        reproduceAudioAbreVentana();
-        pausaJuego();
+        reproducirAudioAbreVentana();
+        pausarJuego();
         limpiaListaInventario();
         limpiaEspaciosInventario();
         creaEspaciosInventario();
@@ -39,8 +39,8 @@ public class manejadorInventario : manejadorMenu, reproduceAudio, ejecutaPausa
         {
             return;
         } 
-        reproduceAudioClickCerrar();
-        continuaJuego();
+        reproducirAudioClickCerrar();
+        continuarJuego();
     }
 
     public void activaBotonEnviaTexto(string descripcion, bool activaBoton, inventarioItem nuevoItem) 
@@ -115,7 +115,7 @@ public class manejadorInventario : manejadorMenu, reproduceAudio, ejecutaPausa
     {
         if (itemActual != null) 
         {
-            reproduceAudioClickAbrir();
+            reproducirAudioClickAbrir();
             itemActual.invocaEventoUsaItem();
             limpiaListaInventario();
             limpiaEspaciosInventario();
@@ -127,17 +127,17 @@ public class manejadorInventario : manejadorMenu, reproduceAudio, ejecutaPausa
         }
     }
 
-    public void pausaJuego()
+    public void pausarJuego()
     {
         Time.timeScale = 0f;
     }
 
-    public void continuaJuego()
+    public void continuarJuego()
     {
         Time.timeScale = 1f;
     }
 
-    public void reproduceAudioClickCerrar()
+    public void reproducirAudioClickCerrar()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
@@ -145,7 +145,7 @@ public class manejadorInventario : manejadorMenu, reproduceAudio, ejecutaPausa
         }
     }
 
-    public void reproduceAudioClickAbrir()
+    public void reproducirAudioClickAbrir()
     {
         if (manejadorAudioInterfazGrafica != null)
         {
@@ -153,7 +153,7 @@ public class manejadorInventario : manejadorMenu, reproduceAudio, ejecutaPausa
         }
     }
 
-    public void reproduceAudioAbreVentana()
+    public void reproducirAudioAbreVentana()
     {
         if (manejadorAudioInterfazGrafica != null)
         {

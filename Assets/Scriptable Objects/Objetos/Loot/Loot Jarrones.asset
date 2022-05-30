@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loots:
   - miLoot: {fileID: 3257087047012492968, guid: 451b2a65408bc5d4aa69c85f9ab5ceef, type: 3}
-    posibilidadLoot: 5
+    posibilidadLoot: 10
   - miLoot: {fileID: 7008915914828331860, guid: dddfa4984ebff1947b18e2bbf6b33d9c, type: 3}
-    posibilidadLoot: 5
+    posibilidadLoot: 10

@@ -332,8 +332,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4548470605335791268}
-        m_TargetAssemblyTypeName: manejadorMenuPausa, Assembly-CSharp
-        m_MethodName: botonInventario
+        m_TargetAssemblyTypeName: ManejadorMenuPausa, Assembly-CSharp
+        m_MethodName: abrirInventarioBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -599,8 +599,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4548470605335791268}
-        m_TargetAssemblyTypeName: manejadorMenuPausa, Assembly-CSharp
-        m_MethodName: botonReiniciaGuardado
+        m_TargetAssemblyTypeName: ManejadorMenuPausa, Assembly-CSharp
+        m_MethodName: reiniciarGuardadoBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -702,8 +702,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componenteGraficoPrincipal: {fileID: 2062672266295799390}
-  panelInventario: {fileID: 7602141823773430981, guid: 6b1797738c2ff4f4eaefd820d08181e8, type: 3}
-  panelConfiguraciones: {fileID: 9036130228940578043, guid: 0bf79030be02c3d49af76a7826fdf89d, type: 3}
+  canvasMenuInventario: {fileID: 7602141823773430981, guid: 6b1797738c2ff4f4eaefd820d08181e8, type: 3}
+  canvasMenuConfiguraciones: {fileID: 9036130228940578043, guid: 0bf79030be02c3d49af76a7826fdf89d, type: 3}
 --- !u!114 &4548470605335791268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,10 +716,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0299a6964a03deb44b8ed05c699a97e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graficos: {fileID: 3348172747296606579}
-  escenaMenuPrincipal: {fileID: 11400000, guid: 2d3d75730c114a24cb4758708fecd842, type: 2}
+  componenteGrafico: {fileID: 3348172747296606579}
+  nombreEscenaMenuPrincipal: {fileID: 11400000, guid: 2d3d75730c114a24cb4758708fecd842, type: 2}
   estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
-  graficosPausa: {fileID: 3348172747296606579}
   manejadorAudioInterfazGrafica: {fileID: 812930815915171813}
 --- !u!114 &812930815915171813
 MonoBehaviour:
@@ -996,8 +995,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4548470605335791268}
-        m_TargetAssemblyTypeName: manejadorMenuPausa, Assembly-CSharp
-        m_MethodName: botonMenuPrincipal
+        m_TargetAssemblyTypeName: ManejadorMenuPausa, Assembly-CSharp
+        m_MethodName: salirMenuPrincipalBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1485,8 +1484,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4548470605335791268}
-        m_TargetAssemblyTypeName: manejadorMenuPausa, Assembly-CSharp
-        m_MethodName: botonConfiguraciones
+        m_TargetAssemblyTypeName: ManejadorMenuPausa, Assembly-CSharp
+        m_MethodName: abrirConfiguracionesBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2441,8 +2440,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4548470605335791268}
-        m_TargetAssemblyTypeName: manejadorMenuPausa, Assembly-CSharp
-        m_MethodName: botonRegresar
+        m_TargetAssemblyTypeName: ManejadorMenuPausa, Assembly-CSharp
+        m_MethodName: regresarBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
