@@ -83,7 +83,7 @@ public class arrastraSueltaPiezas : MonoBehaviour
             { 
                 foreach (evento eventoLoop in eventosPuzzle) 
                 {
-                    singletonEventosEscenas.instance.agregaEvento(eventoLoop);
+                    SingletonEventosEscenas.instance.agregarEvento(eventoLoop);
                 }
                 manejadorMoverEscena.iniciaTransicionOut();
             }

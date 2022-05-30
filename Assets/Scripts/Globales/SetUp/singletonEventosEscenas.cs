@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class singletonEventosEscenas : MonoBehaviour
+public class SingletonEventosEscenas : MonoBehaviour
 {
 
-    public static singletonEventosEscenas instance;
+    public static SingletonEventosEscenas instance;
 
     [Header("Eventos que se ejecutaran al cambiar de escena")]
     [SerializeField] private List<evento> eventos = new List<evento>();
@@ -13,19 +13,19 @@ public class singletonEventosEscenas : MonoBehaviour
     [Header("Los datos guardados localmente del juego")]
     [SerializeField] private datosJuego datos;
 
-    void Awake()
+    private void Awake()
     {
         instance = this;
         
         DontDestroyOnLoad(gameObject);
     }
 
-    public void agregaEvento(evento evento) 
+    public void agregarEvento(evento evento) 
     {
         eventos.Add(evento);
     }
 
-    public void eliminaEventos() 
+    public void eliminarEventos() 
     {
         if (eventos != null
             && eventos.Count > 0)
@@ -34,7 +34,7 @@ public class singletonEventosEscenas : MonoBehaviour
         }
     }
 
-    public void ejecutaEventos() 
+    public void ejecutarEventos() 
     {
         if (eventos != null
                 && eventos.Count > 0)
@@ -46,7 +46,7 @@ public class singletonEventosEscenas : MonoBehaviour
         }
     }
 
-    public void reiniciaScriptable() 
+    public void reiniciarScriptable() 
     {
         datos.reiniciaScriptable();
     }

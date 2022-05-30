@@ -51,5 +51,5 @@ interface IGraficoCanvasMenuInventario
 
 interface IGraficoCanvasMenuConfiguraciones 
 {
-    public GameObject CanvasMenuInventario { get; set; }
+    public GameObject CanvasMenuConfiguraciones { get; set; }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
-public class manejadorEscenas : MonoBehaviour
+public class ManejadorEscenas : MonoBehaviour
 {
     private string nombreEscenaActual;
 
@@ -49,9 +49,9 @@ public class manejadorEscenas : MonoBehaviour
     [Header("Objeto Singleton")]
     [SerializeField] private GameObject singleton;
 
-    void Awake()
+    private void Awake()
     {
-        iniciaSingleton();
+        iniciarSingleton();
         nombreEscenaActual = SceneManager.GetActiveScene().name;
         if (nombreEscenaActual != nombreEscenaLogIn.valorStringEjecucion
             && nombreEscenaActual != nombreEscenaPrincipal.valorStringEjecucion)
@@ -60,7 +60,7 @@ public class manejadorEscenas : MonoBehaviour
             {
                 if (escenaActual.valorStringEjecucion != nombreEscenaActual)
                 {
-                    StartCoroutine(cambiaEscena(escenaActual.valorStringEjecucion));
+                    StartCoroutine(cambiarEscena(escenaActual.valorStringEjecucion));
                     return;
                 }
             }
@@ -98,11 +98,11 @@ public class manejadorEscenas : MonoBehaviour
             && !estadoCambioEscena.cambieEscenaEjecucion
             && escenaActual.valorStringEjecucion == nombreEscenaLaberintos.valorStringEjecucion)
         {
-            //cinematicaInicial.Play();
+            cinematicaInicial.Play();
         }
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         if (!estadoCambioEscena.cambieEscenaEjecucion 
             && empezoPartida.valorBooleanoEjecucion
@@ -142,16 +142,16 @@ public class manejadorEscenas : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
-        if (singletonEventosEscenas.instance != null) 
+        if (SingletonEventosEscenas.instance != null) 
         {
-            singletonEventosEscenas.instance.ejecutaEventos();
-            singletonEventosEscenas.instance.eliminaEventos();
+            SingletonEventosEscenas.instance.ejecutarEventos();
+            SingletonEventosEscenas.instance.eliminarEventos();
         }
     }
 
-    public void iniciaSingleton() 
+    public void iniciarSingleton() 
     {
         if (!GameObject.FindGameObjectWithTag("Singleton")) 
         {
@@ -159,7 +159,7 @@ public class manejadorEscenas : MonoBehaviour
         }
     }
 
-    private IEnumerator cambiaEscena(string escena) 
+    private IEnumerator cambiarEscena(string escena) 
     {
         AsyncOperation accion = SceneManager.LoadSceneAsync(escena);
         while (!accion.isDone)

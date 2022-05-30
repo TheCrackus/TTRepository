@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanvasVentanaEmergente, IReproductorAudio, IConexion, ICanvasFormularioModificarUsuario, ICanvasFormularioEliminarUsuario
+public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanvasVentanaEmergente, IReproductorAudio, IConexion, ICanvasFormularioModificarUsuario, ICanvasFormularioEliminarUsuario, ICanvasMenuConfiguraciones
 {
 
     ComponenteGraficoMenuPrincipal graficos;
@@ -59,22 +59,6 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
         }
     }
 
-    public void iniciarCanvasFormularioEliminarUsuario()
-    {
-        if (!GameObject.FindGameObjectWithTag("CanvasEliminar"))
-        {
-            Instantiate(graficos.CanvasFormularioEliminacionUsuario, Vector3.zero, Quaternion.identity);
-        }
-    }
-
-    public void iniciarCanvasFormularioModificarUsuario()
-    {
-        if (!GameObject.FindGameObjectWithTag("CanvasModificar"))
-        {
-            Instantiate(graficos.CanvasFormularioModificacionUsuario, Vector3.zero, Quaternion.identity);
-        }
-    }
-
     public void cerrarSesion()
     {
         Conexion.cierraSesion();
@@ -87,29 +71,29 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
         {
             ManejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
             cerrarSesion();
-            pulseBoton = true;
+            bloquearBotones();
         }
     }
 
-    public void eliminarUsuarioBoton()
+    public void iniciarFormularioEliminaUsuarioBoton()
     {
         if (!pulseBoton)
         {
             ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             iniciarCanvasFormularioEliminarUsuario();
-            pulseBoton = true;
-            cerrarFormulario();
+            bloquearBotones();
+            cerrarGrafico();
         }
     }
 
-    public void modificarUsuarioBoton()
+    public void iniciarFormularioModificaUsuarioBoton()
     {
         if (!pulseBoton)
         {
             ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             iniciarCanvasFormularioModificarUsuario();
-            pulseBoton = true;
-            cerrarFormulario();
+            bloquearBotones();
+            cerrarGrafico();
         }
     }
 
@@ -121,9 +105,9 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
         {
             ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             //--------------
-            if (singletonEventosEscenas.instance != null)
+            if (SingletonEventosEscenas.instance != null)
             {
-                singletonEventosEscenas.instance.reiniciaScriptable();
+                SingletonEventosEscenas.instance.reiniciarScriptable();
             }
             //--------------
             //Reiniciar los datos
@@ -136,7 +120,7 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
                 iniciarVentanaEmergente();
                 ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Tu cuenta no está verificada, por favor, verifícala en tu correo electrónico proporcionado");
             }
-            pulseBoton = true;
+            bloquearBotones();
         }
     }
 
@@ -148,14 +132,14 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
         {
             ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             //--------------
-            if (singletonEventosEscenas.instance != null)
+            if (SingletonEventosEscenas.instance != null)
             {
-                singletonEventosEscenas.instance.reiniciaScriptable();
+                SingletonEventosEscenas.instance.reiniciarScriptable();
             }
             //--------------
             //Reiniciar los datos
             StartCoroutine(cambiarEscena(nombreEscenaLaberintos.valorStringEjecucion));
-            pulseBoton = true;
+            bloquearBotones();
         }
     }
 
@@ -167,14 +151,14 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
         {
             ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             //--------------
-            if (singletonEventosEscenas.instance != null)
+            if (SingletonEventosEscenas.instance != null)
             {
-                singletonEventosEscenas.instance.reiniciaScriptable();
+                SingletonEventosEscenas.instance.reiniciarScriptable();
             }
             //--------------
             //Reiniciar los datos
             StartCoroutine(cambiarEscena(nombreEscenaMazmorra.valorStringEjecucion));
-            pulseBoton = true;
+            bloquearBotones();
         }
     }
 
@@ -186,14 +170,14 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
         {
             ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             //--------------
-            if (singletonEventosEscenas.instance != null)
+            if (SingletonEventosEscenas.instance != null)
             {
-                singletonEventosEscenas.instance.reiniciaScriptable();
+                SingletonEventosEscenas.instance.reiniciarScriptable();
             }
             //--------------
             //Reiniciar los datos
             StartCoroutine(cambiarEscena(nombreEscenaJefeFinal.valorStringEjecucion));
-            pulseBoton = true;
+            bloquearBotones();
         }
     }
 
@@ -206,7 +190,17 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
         {
             ManejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
             StartCoroutine(cambiarEscena(nombreEscenaActual.valorStringEjecucion));
-            pulseBoton = true;
+            bloquearBotones();
+        }
+    }
+
+    public void iniciarMenuConfiguracionesBoton() 
+    {
+        if (!PulseBoton) 
+        {
+            iniciarCanvasMenuConfiguraciones();
+            bloquearBotones();
+            cerrarGrafico();
         }
     }
 
@@ -215,14 +209,9 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
         if (!pulseBoton) 
         {
             ManejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
-            pulseBoton = true;
+            bloquearBotones();
             Application.Quit();
         }
-    }
-
-    public void cerrarFormulario()
-    {
-        cerrarGrafico();
     }
 
     public void reiniciarBotones()
@@ -276,4 +265,29 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, ICanva
             manejadorAudioInterfazGrafica.reproduceAudioAbrirVentana();
         }
     }
+
+    public void iniciarCanvasFormularioEliminarUsuario()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasEliminar"))
+        {
+            Instantiate(graficos.CanvasFormularioEliminacionUsuario, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    public void iniciarCanvasFormularioModificarUsuario()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasModificar"))
+        {
+            Instantiate(graficos.CanvasFormularioModificacionUsuario, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    public void iniciarCanvasMenuConfiguraciones()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasConfiguraciones"))
+        {
+            Instantiate(graficos.CanvasMenuConfiguraciones, Vector3.zero, Quaternion.identity);
+        }
+    }
+
 }

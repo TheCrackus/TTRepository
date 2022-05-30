@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ComponenteGraficoMenuPrincipal : ComponenteGraficoGenerico, IGraficoVentanaEmergente, IGraficoCanvasFormularioEliminacionUsuario, IGraficoCanvasFormularioModificacionUsuario
+public class ComponenteGraficoMenuPrincipal : ComponenteGraficoGenerico, IGraficoVentanaEmergente, IGraficoCanvasFormularioEliminacionUsuario, IGraficoCanvasFormularioModificacionUsuario, IGraficoCanvasMenuConfiguraciones
 {
+
+    [Header("Canvas que contiene el menu de configuraciones")]
+    [SerializeField] private GameObject canvasMenuConfiguraciones;
 
     [Header("Canvas que contiene el formulario de eliminacion")]
     [SerializeField] private GameObject canvasEliminacionUsuario;
@@ -19,5 +22,5 @@ public class ComponenteGraficoMenuPrincipal : ComponenteGraficoGenerico, IGrafic
     public GameObject CanvasFormularioEliminacionUsuario { get => canvasEliminacionUsuario; set => canvasEliminacionUsuario = value; }
     public GameObject CanvasFormularioModificacionUsuario { get => canvasModificacionUsuario; set => canvasModificacionUsuario = value; }
     public GameObject CanvasVentanaEmergente { get => canvasVentanaEmergente; set => canvasVentanaEmergente = value; }
-
+    public GameObject CanvasMenuConfiguraciones { get => canvasMenuConfiguraciones; set => canvasMenuConfiguraciones = value; }
 }

@@ -86,9 +86,9 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudio, IPau
         if (!pulseBoton)
         {
             //--------------
-            if (singletonEventosEscenas.instance != null)
+            if (SingletonEventosEscenas.instance != null)
             {
-                singletonEventosEscenas.instance.reiniciaScriptable();
+                SingletonEventosEscenas.instance.reiniciarScriptable();
             }
             //--------------
             //Reiniciar los datos

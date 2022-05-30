@@ -511,10 +511,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -260}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318600679683912
 CanvasRenderer:
@@ -599,8 +599,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonNivel2
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: iniciarNivel2Boton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -644,10 +644,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -50}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318600819120545
 CanvasRenderer:
@@ -732,8 +732,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonContinuarPartida
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: continuarPartidaBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -911,10 +911,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -330}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318600877981491
 CanvasRenderer:
@@ -999,8 +999,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonNivel3
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: iniciarNivel3Boton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1170,10 +1170,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -610}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318600953048736
 CanvasRenderer:
@@ -1478,10 +1478,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -190}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318601170126044
 CanvasRenderer:
@@ -1566,8 +1566,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonNivel1
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: iniciarNivel1Boton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2011,10 +2011,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -540}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318601364075420
 CanvasRenderer:
@@ -2144,10 +2144,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -470}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318601409581858
 CanvasRenderer:
@@ -2411,10 +2411,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -120}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318601493383904
 CanvasRenderer:
@@ -2499,8 +2499,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2082318602204894556}
-        m_TargetAssemblyTypeName: manejadorBotonesPrincipal, Assembly-CSharp
-        m_MethodName: botonNuevaPartida
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: iniciarNuevaPartidaBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2917,10 +2917,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -400}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318601747247314
 CanvasRenderer:
@@ -3004,13 +3004,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2082318602204894558}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2082318602204894556}
+        m_TargetAssemblyTypeName: ManejadorMenuPrincipal, Assembly-CSharp
+        m_MethodName: iniciarMenuConfiguracionesBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3455,10 +3455,10 @@ RectTransform:
   m_Father: {fileID: 2082318600982452327}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99994, y: -680}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082318602190079073
 CanvasRenderer:
@@ -3697,6 +3697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componenteGraficoPrincipal: {fileID: 2082318602090759213}
+  canvasMenuConfiguraciones: {fileID: 9036130228940578043, guid: 0bf79030be02c3d49af76a7826fdf89d, type: 3}
   canvasEliminacionUsuario: {fileID: 3228596876640309175, guid: 0bc2ab5b35489144fade238252cff510, type: 3}
   canvasModificacionUsuario: {fileID: 5740944827401726407, guid: 38914394830159f49a3a1eaef5cc5218, type: 3}
   canvasVentanaEmergente: {fileID: 5143541750078539621, guid: a8aee13ae4623fc4a8ac08e0b003a0de, type: 3}
