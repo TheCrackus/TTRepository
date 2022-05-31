@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 7677009096521104965}
   - component: {fileID: 6878951000891081256}
   - component: {fileID: 5799077720624876056}
+  - component: {fileID: 4641389249621774531}
   m_Layer: 0
   m_Name: TrepaCielosCorruptoTorreta
   m_TagString: Enemigo
@@ -624,7 +625,22 @@ MonoBehaviour:
   radioAtaque: 0.1
   proyectilPiedra: {fileID: 8853671634870005005, guid: 33623850b879320419cf749702cdeb92, type: 3}
   tiempoDisparo: 2
-  manejadorAudioProyectil: {fileID: 0}
+  manejadorAudioProyectil: {fileID: 4641389249621774531}
+--- !u!114 &4641389249621774531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799077720624876057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2d735e18521ce4386a945b5a2a00e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEmergente: {fileID: 8294331738959889105, guid: 162517f723d4cb44ba5a147c368cf316, type: 3}
+  audioArrojaProyectil: {fileID: 2742528038852603605}
+  velocidadAudioArrojaProyectil: 2
 --- !u!1 &8237503817980823013
 GameObject:
   m_ObjectHideFlags: 0

@@ -5161,7 +5161,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 676352301, guid: 9fc369bf9a61b594ebed26979ba4c246, type: 3}
       propertyPath: dialogo
-      value: "Despu\xE9s de 5 minutos de estar en el bosque profundo regresaras aqu\xED. "
+      value: "Despu\xE9s de 6 minutos de estar en el bosque profundo regresaras aqu\xED. "
       objectReference: {fileID: 0}
     - target: {fileID: 676352301, guid: 9fc369bf9a61b594ebed26979ba4c246, type: 3}
       propertyPath: textoDialogos
