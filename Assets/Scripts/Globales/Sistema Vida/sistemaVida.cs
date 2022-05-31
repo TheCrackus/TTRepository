@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sistemaVida : MonoBehaviour
+public class SistemaVida : MonoBehaviour
 {
     [Header("La vida que posee este objeto")]
     [SerializeField] private valorFlotante vidaObjeto;
@@ -50,6 +50,7 @@ public class sistemaVida : MonoBehaviour
     public float VidaActualObjeto { get => vidaActualObjeto; set => vidaActualObjeto = value; }
     public GameObject Objeto { get => objeto; set => objeto = value; }
     public audioReciveGolpe ManejadorAudioRecibeGolpe { get => manejadorAudioRecibeGolpe; set => manejadorAudioRecibeGolpe = value; }
+    public audioEfectoMuerte ManejadorAudioEfectoMuerte { get => manejadorAudioEfectoMuerte; set => manejadorAudioEfectoMuerte = value; }
 
     private void OnEnable()
     {
@@ -59,7 +60,7 @@ public class sistemaVida : MonoBehaviour
         }
     }
 
-    public virtual void agregaVida(float vidaExtra)
+    public virtual void agregarVida(float vidaExtra)
     {
         if (vidaObjeto != null)
         {
@@ -71,7 +72,7 @@ public class sistemaVida : MonoBehaviour
         }
     }
 
-    public virtual void vidaLlena()
+    public virtual void llenarVida()
     {
         if (vidaObjeto != null)
         {
@@ -79,13 +80,13 @@ public class sistemaVida : MonoBehaviour
         }
     }
 
-    public virtual void quitaVida(float vidaMenos) 
+    public virtual void quitarVida(float vidaMenos) 
     {
         if (manejadorAudioRecibeGolpe != null) 
         {
             manejadorAudioRecibeGolpe.reproduceAudioRecibeGolpe();
         }
-        StartCoroutine(flash());
+        StartCoroutine(realizarFlash());
         vidaActualObjeto -= vidaMenos;
         if (vidaActualObjeto <= 0)
         {
@@ -98,17 +99,17 @@ public class sistemaVida : MonoBehaviour
             {
                 objeto.SetActive(false);
             }
-            muerteAnimacion();
-            procesaLoot();
+            animarMuerte();
+            procesarLoot();
         }
     }
 
-    public virtual void muerte() 
+    public virtual void quitarVidaCompleta() 
     {
         vidaActualObjeto = 0;
     }
 
-    public void muerteAnimacion()
+    public void animarMuerte()
     {
         if (efectoMuerte != null)
         {
@@ -117,7 +118,7 @@ public class sistemaVida : MonoBehaviour
         }
     }
 
-    public void procesaLoot()
+    public void procesarLoot()
     {
         if (miLoot != null)
         {
@@ -129,7 +130,7 @@ public class sistemaVida : MonoBehaviour
         }
     }
 
-    public IEnumerator flash()
+    public IEnumerator realizarFlash()
     {
         int numeroFlashTemporal = 0;
         colisionTrigger.enabled = false;

@@ -11,7 +11,7 @@ public class arrastraSueltaPiezas : MonoBehaviour
     private int piezaSeleccionadaOrderLayer;
 
     [Header("Manejador de la transicion")]
-    [SerializeField] private moverEscena manejadorMoverEscena;
+    [SerializeField] private MoverEscena manejadorMoverEscena;
 
     [Header("Las piezas del puzzle")]
     [SerializeField] private manejadorPiezas[] piezas;
@@ -85,7 +85,7 @@ public class arrastraSueltaPiezas : MonoBehaviour
                 {
                     SingletonEventosEscenas.instance.agregarEvento(eventoLoop);
                 }
-                manejadorMoverEscena.iniciaTransicionOut();
+                manejadorMoverEscena.iniciarTransicionOut();
             }
         }
     }

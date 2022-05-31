@@ -17,7 +17,7 @@ public enum tipoTransicion
     escena
 }
 
-public class transicion : MonoBehaviour
+public class Transicion : MonoBehaviour
 {
 
     private GameObject objetoPanel;
@@ -65,7 +65,7 @@ public class transicion : MonoBehaviour
     [SerializeField] private evento contadorRegresivoReinicia;
 
     [Header("Manejador de audio de la transicion")]
-    [SerializeField] private audioTransicion manejadorAudioTransicion;
+    [SerializeField] private AudioTransicion manejadorAudioTransicion;
 
     [Header("Tipo de interaccion con el contador")]
     [SerializeField] accionContador enumAccionContador;
@@ -99,24 +99,15 @@ public class transicion : MonoBehaviour
     public evento ContadorRegresivoInicia { get => contadorRegresivoInicia; set => contadorRegresivoInicia = value; }
     public evento ContadorRegresivoDeten { get => contadorRegresivoDeten; set => contadorRegresivoDeten = value; }
     public evento ContadorRegresivoReinicia { get => contadorRegresivoReinicia; set => contadorRegresivoReinicia = value; }
-    public audioTransicion ManejadorAudioTransicion { get => manejadorAudioTransicion; set => manejadorAudioTransicion = value; }
+    public AudioTransicion ManejadorAudioTransicion { get => manejadorAudioTransicion; set => manejadorAudioTransicion = value; }
     public valorString EscenaActual { get => escenaActual; set => escenaActual = value; }
     public valorString[] Escenas { get => escenas; set => escenas = value; }
 
-    public void iniciaCanvas()
+    public void iniciarCanvas()
     {
         if (fadeInFadeOutCanvas != null)
         {
-            if (!GameObject.FindGameObjectWithTag("CanvasEscenas"))
-            {
-                nCanvas = Instantiate(fadeInFadeOutCanvas, Vector3.zero, Quaternion.identity);
-            }
-            else
-            {
-                nCanvas = GameObject.FindGameObjectWithTag("CanvasEscenas");
-                Destroy(nCanvas);
-                nCanvas = Instantiate(fadeInFadeOutCanvas, Vector3.zero, Quaternion.identity);
-            }
+            nCanvas = Instantiate(fadeInFadeOutCanvas, Vector3.zero, Quaternion.identity);
             objetoPanel = nCanvas.transform.Find("Panel").gameObject;
             panelAnimator = objetoPanel.GetComponent<Animator>();
             objetoTextoEscena = nCanvas.transform.Find("TextoEscenas").gameObject;
@@ -152,4 +143,5 @@ public class transicion : MonoBehaviour
             }
         }
     }
+
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioDialogos : sistemaAudio
+public class AudioDialogos : SistemaAudio
 {
 
     [Header("Audio al abrir el dialogo")]
@@ -14,14 +14,14 @@ public class audioDialogos : sistemaAudio
     [Header("Velocidad de reproduccion del Audio y agudez")]
     [SerializeField] private float velocidadAudioCerrarDialogo;
 
-    public void reproduceAudioAbreDialogo() 
+    public void reproducirAudioAbreDialogo() 
     {
-        reproduceAudio(audioAbrirDialogo, velocidadAudioAbrirDialogo);
+        reproducirAudio(audioAbrirDialogo, velocidadAudioAbrirDialogo);
     }
 
-    public void reproduceAudioCierraDialogo() 
+    public void reproducirAudioCierraDialogo() 
     {
-        reproduceAudio(audioCerrarDialogo, velocidadAudioCerrarDialogo);
+        reproducirAudio(audioCerrarDialogo, velocidadAudioCerrarDialogo);
     }
 
 }

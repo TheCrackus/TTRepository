@@ -15,7 +15,7 @@ public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
     [SerializeField] private float tiempoDisparo;
 
     [Header("Manejador de audio del proyectil")]
-    [SerializeField] private audioProyectil manejadorAudioProyectil;
+    [SerializeField] private AudioProyectil manejadorAudioProyectil;
 
     public override void Start()
     {
@@ -64,7 +64,7 @@ public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
                     {
                         if (puedoDisparar)
                         {
-                            manejadorAudioProyectil.reproduceAudioProyectil();
+                            manejadorAudioProyectil.reproducirAudioProyectil();
                             Vector3 vectorTemporal = ObjetivoPerseguir.transform.position - gameObject.transform.position;
                             GameObject proyectilActual = Instantiate(proyectilPiedra, gameObject.transform.position, Quaternion.identity);
                             proyectilActual.GetComponent<proyectilPiedra>().arroja(vectorTemporal.normalized);

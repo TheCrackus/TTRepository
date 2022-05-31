@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioActivacion : sistemaAudio
+public class audioActivacion : SistemaAudio
 {
 
     [Header("Audio al pulsar interruptor")]
@@ -12,7 +12,7 @@ public class audioActivacion : sistemaAudio
 
     public void reproduceAudioActivacion() 
     {
-        reproduceAudio(audioActiva, velocidadAudioActiva);
+        reproducirAudio(audioActiva, velocidadAudioActiva);
     }
 
 }

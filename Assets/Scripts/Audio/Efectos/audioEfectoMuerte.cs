@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioEfectoMuerte : sistemaAudio
+public class audioEfectoMuerte : SistemaAudio
 {
 
     [Header("Audio de efecto de muerte")]
@@ -13,7 +13,7 @@ public class audioEfectoMuerte : sistemaAudio
 
     public void reproduceAudioMuerte() 
     {
-        reproduceAudio(audioMuerte, velocidadAudioEfectoMuerte);
+        reproducirAudio(audioMuerte, velocidadAudioEfectoMuerte);
     }
 
 }

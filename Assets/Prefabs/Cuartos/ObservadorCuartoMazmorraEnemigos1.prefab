@@ -101,6 +101,7 @@ MonoBehaviour:
   enemigos: []
   rompibles: []
   camaraVirtual: {fileID: 2469876133533012254}
+  miniMapa: {fileID: 2469876133732236673}
   puertas: []
 --- !u!114 &2469876132350199947
 MonoBehaviour:

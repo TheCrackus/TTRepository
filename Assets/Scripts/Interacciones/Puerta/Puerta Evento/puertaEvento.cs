@@ -15,7 +15,7 @@ public class puertaEvento : puerta
     [SerializeField] private inventarioItem[] piezas;
 
     [Header("Objeto para la transicion al evento")]
-    [SerializeField] private moverEscena manejadorMoverEscena;
+    [SerializeField] private MoverEscena manejadorMoverEscena;
 
     void Update()
     {
@@ -25,7 +25,7 @@ public class puertaEvento : puerta
             {
                 if (InventarioPlayerItems && piezas != null && piezas.Length > 0)
                 {
-                    iniciaCanvas();
+                    iniciarCanvas();
                     foreach (inventarioItem itemLoop in piezas)
                     {
                         if (InventarioPlayerItems.verififcaItem(itemLoop))
@@ -50,13 +50,13 @@ public class puertaEvento : puerta
         {
             if (ContenedorTextoDialogos.activeInHierarchy)
             {
-                ManejadorAudioDialogos.reproduceAudioCierraDialogo();
+                ManejadorAudioDialogos.reproducirAudioCierraDialogo();
                 ContenedorTextoDialogos.SetActive(false);
-                manejadorMoverEscena.iniciaTransicionOut();
+                manejadorMoverEscena.iniciarTransicionOut();
             }
             else
             {
-                ManejadorAudioDialogos.reproduceAudioAbreDialogo();
+                ManejadorAudioDialogos.reproducirAudioAbreDialogo();
                 ContenedorTextoDialogos.SetActive(true);
                 TextoDialogos.text = dialogo;
             }
@@ -65,12 +65,12 @@ public class puertaEvento : puerta
         {
             if (ContenedorTextoDialogos.activeInHierarchy)
             {
-                ManejadorAudioDialogos.reproduceAudioCierraDialogo();
+                ManejadorAudioDialogos.reproducirAudioCierraDialogo();
                 ContenedorTextoDialogos.SetActive(false);
             }
             else
             {
-                ManejadorAudioDialogos.reproduceAudioAbreDialogo();
+                ManejadorAudioDialogos.reproducirAudioAbreDialogo();
                 ContenedorTextoDialogos.SetActive(true);
                 TextoDialogos.text = dialogo;
             }
@@ -88,7 +88,7 @@ public class puertaEvento : puerta
             {
                 if (ContenedorTextoDialogos.activeInHierarchy)
                 {
-                    ManejadorAudioDialogos.reproduceAudioCierraDialogo();
+                    ManejadorAudioDialogos.reproducirAudioCierraDialogo();
                     ContenedorTextoDialogos.SetActive(false);
                     TextoDialogos.text = "";
                     Destroy(NCanvas);

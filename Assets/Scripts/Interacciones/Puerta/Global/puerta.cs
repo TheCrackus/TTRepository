@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class puerta : interactuador
+public class puerta : Interactuador
 {
 
     private SpriteRenderer puertaSpriteRenderer;
@@ -19,14 +19,14 @@ public class puerta : interactuador
     [SerializeField] private audioPuerta manejadorAudioPuerta;
 
     [Header("Manejador de audio de los dialogos")]
-    [SerializeField] private audioDialogos manejadorAudioDialogos;
+    [SerializeField] private AudioDialogos manejadorAudioDialogos;
 
     public listaInventario InventarioPlayerItems { get => inventarioPlayerItems; set => inventarioPlayerItems = value; }
     public SpriteRenderer PuertaSpriteRenderer { get => puertaSpriteRenderer; set => puertaSpriteRenderer = value; }
     public BoxCollider2D[] PuertaColliders { get => puertaColliders; set => puertaColliders = value; }
     public valorBooleano EstaAbierta { get => estaAbierta; set => estaAbierta = value; }
     public audioPuerta ManejadorAudioPuerta { get => manejadorAudioPuerta; set => manejadorAudioPuerta = value; }
-    public audioDialogos ManejadorAudioDialogos { get => manejadorAudioDialogos; set => manejadorAudioDialogos = value; }
+    public AudioDialogos ManejadorAudioDialogos { get => manejadorAudioDialogos; set => manejadorAudioDialogos = value; }
 
     public virtual void Awake() 
     {

@@ -5,12 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class moverCuarto : transicion
+public class MoverCuarto : Transicion
 {
+
     [Header("Vector suma a la posicion del player")]
     public Vector3 cambioSumaPoscicionPlayer;
-    [Header("Vector suma a la posicion de la camara (maxima y minima)")]
-    public Vector3 cambioSumaPosicionCamara;
+
     [Header("Lugar destino de la transicion")]
     public GameObject moverCuartoRef;
 
@@ -27,7 +27,7 @@ public class moverCuarto : transicion
                 }
                 EscenaActual.valorStringEjecucion = SceneManager.GetActiveScene().name;
                 manejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<manejadorContador>();
-                moverEscena moverE = manejadorC.GetComponent<moverEscena>();
+                MoverEscena moverE = manejadorC.GetComponent<MoverEscena>();
                 foreach (valorString nombre in Escenas) 
                 {
                     if (nombre.valorStringEjecucion == EscenaActual.valorStringEjecucion) 
@@ -59,93 +59,80 @@ public class moverCuarto : transicion
                     }
                 }
             }
-            iniciaCanvas();
-            StartCoroutine(cambioCuarto(colisionDetectada.gameObject));
+            iniciarCanvas();
+            StartCoroutine(cambiarCuarto(colisionDetectada.gameObject));
         }
     }
 
-    public IEnumerator cambioCuarto(GameObject player)
+    public IEnumerator cambiarCuarto(GameObject player)
     {
-        if (ManejadorAudioTransicion != null)
-        {
-            ManejadorAudioTransicion.reproduceAudioTransicion();
-        }
-        movimientoPlayer movP = player.GetComponent<movimientoPlayer>();
-        movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
 
-        if (ObjetoPanel != null) 
+        MovimientoPlayer movP = null;
+
+        if (ManejadorAudioTransicion != null
+            && player != null
+            && ObjetoPanel != null
+            && PanelAnimator != null)
         {
+            ManejadorAudioTransicion.reproducirAudioTransicion();
+            movP = player.GetComponent<MovimientoPlayer>();
+            movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
             ObjetoPanel.SetActive(true);
-        }
-
-        if (PanelAnimator != null) 
-        {
             PanelAnimator.Play("FadeOut");
+            yield return new WaitForSeconds(FadeOutClip.length);
         }
-        yield return new WaitForSeconds(FadeOutClip.length);
 
-        estableceDireccionPlayer(player);
-        player.transform.position = moverCuartoRef.transform.position + cambioSumaPoscicionPlayer;
-        PosicionPlayer.valorVectorialEjecucion = player.transform.position;
-
-        if (ManejadorAudioTransicion != null)
+        if (player != null
+            && ManejadorAudioTransicion != null
+            && PanelAnimator != null) 
         {
-            ManejadorAudioTransicion.reproduceAudioTransicion();
-        }
-        if (PanelAnimator != null)
-        {
+            establecerDireccionPlayer(player);
+            player.transform.position = moverCuartoRef.transform.position + cambioSumaPoscicionPlayer;
+            PosicionPlayer.valorVectorialEjecucion = player.transform.position;
+            ManejadorAudioTransicion.reproducirAudioTransicion();
             PanelAnimator.Play("FadeIn");
+            yield return new WaitForSeconds(FadeInClip.length);
         }
-        yield return new WaitForSeconds(FadeInClip.length);
 
-        if (ObjetoPanel != null)
+        if (ObjetoPanel != null
+            && movP != null)
         {
             ObjetoPanel.SetActive(false);
-        }
-        if (EnumAccionContador == accionContador.deten)
-        {
-            ContadorRegresivoInicia.invocaFunciones();
-        }
-        movP.EstadoPlayer.Estado = estadoGenerico.ninguno;
-        if (DebeMostrarTexto)
-        {
-            if (ObjetoTextoEscena != null)
+            if (EnumAccionContador == accionContador.deten)
             {
-                ObjetoTextoEscena.SetActive(true);
+                ContadorRegresivoInicia.invocaFunciones();
             }
-            if (TextoEscena != null) 
+            if (DebeMostrarTexto)
             {
-                TextoEscena.text = NombreMostrar;
-            }
-            if (TextoEscenaAnimator != null) 
-            {
-                TextoEscenaAnimator.Play("Mostrar Texto");
-            }
-            if (MostrarTextoClip != null) 
-            {
-                yield return new WaitForSeconds(MostrarTextoClip.length);
-            }
-            
+                if (ObjetoTextoEscena != null
+                    && TextoEscena != null
+                    && TextoEscenaAnimator != null
+                    && MostrarTextoClip != null)
+                {
+                    ObjetoTextoEscena.SetActive(true);
+                    TextoEscena.text = NombreMostrar;
+                    TextoEscenaAnimator.Play("Mostrar Texto");
+                    yield return new WaitForSeconds(MostrarTextoClip.length);
+                }
 
-            if (TextoEscenaAnimator != null)
-            {
-                TextoEscenaAnimator.Play("Ocultar Texto");
-            }
-            if (OcultarTextoClip != null) 
-            {
-                yield return new WaitForSeconds(OcultarTextoClip.length);
-            }
+                if (TextoEscenaAnimator != null
+                    && OcultarTextoClip != null)
+                {
+                    TextoEscenaAnimator.Play("Ocultar Texto");
+                    yield return new WaitForSeconds(OcultarTextoClip.length);
+                }
 
-            if (ObjetoTextoEscena != null)
-            {
-                ObjetoTextoEscena.SetActive(false);
+                if (ObjetoTextoEscena != null)
+                {
+                    ObjetoTextoEscena.SetActive(false);
+                }
             }
-
+            Destroy(NCanvas);
+            movP.EstadoPlayer.Estado = estadoGenerico.ninguno;
         }
-        Destroy(NCanvas);
     }
 
-    public void estableceDireccionPlayer(GameObject player)
+    public void establecerDireccionPlayer(GameObject player)
     {
         Animator playerAnimator = null;
         if (player != null) 

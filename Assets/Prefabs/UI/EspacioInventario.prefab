@@ -467,7 +467,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5569014368155720175}
         m_TargetAssemblyTypeName: espacioInventario, Assembly-CSharp
-        m_MethodName: botonItem
+        m_MethodName: usarItemBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

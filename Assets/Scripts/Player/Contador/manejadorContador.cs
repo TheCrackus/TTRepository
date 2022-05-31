@@ -17,7 +17,7 @@ public class manejadorContador : MonoBehaviour
     public TextMeshProUGUI textoContador;
 
     [Header("Manejador de la transicion")]
-    public moverEscena transicion;
+    public MoverEscena transicion;
 
     [Header("El contador regresivo esta en ejecucion?")]
     [SerializeField] private valorBooleano cuentaTimerRegresivo;
@@ -46,7 +46,7 @@ public class manejadorContador : MonoBehaviour
                 }
                 else
                 {
-                    transicion.iniciaTransicionOut();
+                    transicion.iniciarTransicionOut();
                     detenContadorRegresivo();
                 }
             }

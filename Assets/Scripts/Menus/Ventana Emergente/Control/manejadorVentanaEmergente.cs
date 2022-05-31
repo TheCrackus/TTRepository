@@ -4,13 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ManejadorVentanaEmergente : ManejadorMenuGenerico, IReproductorAudio
+public class ManejadorVentanaEmergente : ManejadorMenuGenerico, IReproductorAudioInterfazGrafica
 {
 
     [Header("Manejador de audio de interfaces")]
-    [SerializeField] private audioInterfazGrafica manejadorAudioInterfazGrafica;
+    [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;
 
-    public audioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
+    public AudioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class ManejadorVentanaEmergente : ManejadorMenuGenerico, IReproductorAudi
     {
         if (manejadorAudioInterfazGrafica != null)
         {
-            manejadorAudioInterfazGrafica.reproduceAudioClickCerrar();
+            manejadorAudioInterfazGrafica.reproducirAudioClickCerrar();
         }
     }
 
@@ -48,7 +48,7 @@ public class ManejadorVentanaEmergente : ManejadorMenuGenerico, IReproductorAudi
     {
         if (manejadorAudioInterfazGrafica != null)
         {
-            manejadorAudioInterfazGrafica.reproduceAudioClickAbrir();
+            manejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
         }
     }
 
@@ -56,7 +56,7 @@ public class ManejadorVentanaEmergente : ManejadorMenuGenerico, IReproductorAudi
     {
         if (manejadorAudioInterfazGrafica != null)
         {
-            manejadorAudioInterfazGrafica.reproduceAudioAbrirVentana();
+            manejadorAudioInterfazGrafica.reproducirAudioAbrirVentana();
         }
     }
 }

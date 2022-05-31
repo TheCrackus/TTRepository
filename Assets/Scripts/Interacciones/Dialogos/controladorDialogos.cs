@@ -4,34 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class controladorDialogos : interactuador
+public class ControladorDialogos : Interactuador
 {
 
     [Header("Texto a mostrar")]
     [SerializeField] private string dialogo;
 
     [Header("Manejador de audio para dialogos")]
-    [SerializeField] private audioDialogos manejadorAudioDialogos;
+    [SerializeField] private AudioDialogos manejadorAudioDialogos;
 
     public virtual void Update()
     {
         if (Input.GetButtonDown("Interactuar") && PlayerEnRango) 
         {
-            iniciaCanvas();
+            iniciarCanvas();
             if (ContenedorTextoDialogos != null
                 && TextoDialogos != null) 
             {
                 if (ContenedorTextoDialogos.activeInHierarchy)
                 {
                     ContenedorTextoDialogos.SetActive(false);
-                    manejadorAudioDialogos.reproduceAudioCierraDialogo();
+                    manejadorAudioDialogos.reproducirAudioCierraDialogo();
                     Destroy(NCanvas);
                 }
                 else
                 {
                     ContenedorTextoDialogos.SetActive(true);
                     TextoDialogos.text = dialogo;
-                    manejadorAudioDialogos.reproduceAudioAbreDialogo();
+                    manejadorAudioDialogos.reproducirAudioAbreDialogo();
                 }
             }
         }

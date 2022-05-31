@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioPieza : sistemaAudio
+public class audioPieza : SistemaAudio
 {
 
     [Header("Audio al soltar una pieza del puzzle")]
@@ -13,7 +13,7 @@ public class audioPieza : sistemaAudio
 
     public void reproduceAciertaPieza()
     {
-        reproduceAudio(audioAciertaPieza, velocidadAudioAciertaPieza);
+        reproducirAudio(audioAciertaPieza, velocidadAudioAciertaPieza);
     }
 
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioPuerta : sistemaAudio
+public class audioPuerta : SistemaAudio
 {
     [Header("Audio al abrir puerta")]
     [SerializeField] private AudioSource audioAbrirPuerta;
@@ -24,17 +24,17 @@ public class audioPuerta : sistemaAudio
 
     public void reproduceAudioAbrirPuerta() 
     {
-        reproduceAudio(audioAbrirPuerta, velocidadAudioAbrirPuerta);
+        reproducirAudio(audioAbrirPuerta, velocidadAudioAbrirPuerta);
     }
 
     public void reproduceAudioCerrarPuerta()
     {
-        reproduceAudio(audioCerrarPuerta, velocidadAudioCerrarPuerta);
+        reproducirAudio(audioCerrarPuerta, velocidadAudioCerrarPuerta);
     }
 
     public void reproduceAudioRomperPuerta()
     {
-        reproduceAudio(audioRomperPuerta, velocidadAudioRomperPuerta);
+        reproducirAudio(audioRomperPuerta, velocidadAudioRomperPuerta);
     }
 
 }

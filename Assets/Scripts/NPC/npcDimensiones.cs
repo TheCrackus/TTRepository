@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class npcDimensiones : controladorDialogos
+public class npcDimensiones : ControladorDialogos
 {
 
     private Vector3 vectorDireccion;

@@ -7,7 +7,7 @@ public class enemigoMele : trepaCielosCorrupto
     private AnimationClip atacandoClip;
 
     [Header("Manejador de audio del Player arma mele")]
-    [SerializeField] private audioMelee manejadorAudioMelee;
+    [SerializeField] private AudioMelee manejadorAudioMelee;
     public override void OnEnable()
     {
         if (PosicionMapa != null
@@ -82,7 +82,7 @@ public class enemigoMele : trepaCielosCorrupto
                         if (EstadoEnemigo.Estado == estadoGenerico.caminando
                              || EstadoEnemigo.Estado == estadoGenerico.ninguno)
                         {
-                            manejadorAudioMelee.reproduceAudioMelee();
+                            manejadorAudioMelee.reproducirAudioMelee();
                             EstadoEnemigo.Estado = estadoGenerico.atacando;
                             StartCoroutine(ataca());
                         }

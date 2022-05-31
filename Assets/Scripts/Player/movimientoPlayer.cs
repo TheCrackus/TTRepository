@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movimientoPlayer : MonoBehaviour
+public class MovimientoPlayer : MonoBehaviour
 {
 
     private Rigidbody2D rigidBodyPlayer;
@@ -45,14 +45,14 @@ public class movimientoPlayer : MonoBehaviour
     [SerializeField] private inventarioItem espada;
 
     [Header("Manejador de audio del Player arma mele")]
-    [SerializeField] private audioMelee manejadorAudioMelee;
+    [SerializeField] private AudioMelee manejadorAudioMelee;
 
     [Header("Manejador de audio del Player arma distancia")]
-    [SerializeField] private audioProyectil manejadorAudioProyectil;
+    [SerializeField] private AudioProyectil manejadorAudioProyectil;
 
     public estadoObjeto EstadoPlayer { get => estadoPlayer; set => estadoPlayer = value; }
 
-    void Start()
+    private void Start()
     {
         rigidBodyPlayer = gameObject.GetComponent<Rigidbody2D>();
         animatorPlayer = gameObject.GetComponent<Animator>();
@@ -94,7 +94,7 @@ public class movimientoPlayer : MonoBehaviour
         gameObject.transform.position = posicionPlayer.valorVectorialEjecucion;
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Atacar")
             && inventariopPlayerItems.objetoEquipado != null
@@ -106,7 +106,7 @@ public class movimientoPlayer : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (estadoPlayer.Estado != estadoGenerico.atacando
             && estadoPlayer.Estado != estadoGenerico.inactivo
@@ -180,7 +180,7 @@ public class movimientoPlayer : MonoBehaviour
                     animatorPlayer.SetBool("Atacando", true);
                     yield return null;
 
-                    manejadorAudioMelee.reproduceAudioMelee();
+                    manejadorAudioMelee.reproducirAudioMelee();
                     animatorPlayer.SetBool("Atacando", false);
                     yield return new WaitForSeconds(0.6f);
 
@@ -193,8 +193,8 @@ public class movimientoPlayer : MonoBehaviour
                 { 
                     if (estadoPlayer.Estado == estadoGenerico.atacando)
                     {
-                        manejadorAudioProyectil.reproduceAudioProyectil();
-                        creaFlecha();
+                        manejadorAudioProyectil.reproducirAudioProyectil();
+                        crearFlecha();
                         yield return new WaitForSeconds(0.5f);
 
                         estadoPlayer.Estado = estadoGenerico.ninguno;
@@ -206,13 +206,13 @@ public class movimientoPlayer : MonoBehaviour
         
     }
 
-    private void creaFlecha() 
+    private void crearFlecha() 
     {
         if (magiaPlayer.valorFlotanteEjecucion > 0) 
         {
             Vector2 vectorTemporal = new Vector2(animatorPlayer.GetFloat("MovimientoX"), animatorPlayer.GetFloat("MovimientoY"));
             flecha flecha = Instantiate(proyectil, gameObject.transform.position, Quaternion.identity).GetComponent<flecha>();
-            flecha.dispara(vectorTemporal, eligeDireccionFlecha());
+            flecha.dispara(vectorTemporal, elegirDireccionFlecha());
             magiaPlayer.valorFlotanteEjecucion -= flecha.costoMagia;
             if (magiaPlayer.valorFlotanteEjecucion <= 0) 
             {
@@ -222,19 +222,19 @@ public class movimientoPlayer : MonoBehaviour
         }
     }
 
-    private Vector3 eligeDireccionFlecha() 
+    private Vector3 elegirDireccionFlecha() 
     {
         float direccionZ = Mathf.Atan2(animatorPlayer.GetFloat("MovimientoY"), animatorPlayer.GetFloat("MovimientoX")) * Mathf.Rad2Deg;
         return new Vector3(0,0, direccionZ);
     }
 
-    public void comienzaEmpujaPlayer(float tiempoAplicarFuerza)
+    public void comenzarEmpujaPlayer(float tiempoAplicarFuerza)
     {
         estadoPlayer.Estado = estadoGenerico.estuneado;
-        StartCoroutine(empujaPlayer(tiempoAplicarFuerza));
+        StartCoroutine(empujarPlayer(tiempoAplicarFuerza));
     }
 
-    private IEnumerator empujaPlayer(float tiempoAplicarFuerza)
+    private IEnumerator empujarPlayer(float tiempoAplicarFuerza)
     {
         if (rigidBodyPlayer != null)
         {
@@ -245,7 +245,7 @@ public class movimientoPlayer : MonoBehaviour
         }
     }
 
-    public void muestrObjeto() 
+    public void mostrarObjeto() 
     {
         inventarioItem itemMostrar = null;
         foreach (inventarioItem itemLoop in inventariopPlayerItems.inventario) 

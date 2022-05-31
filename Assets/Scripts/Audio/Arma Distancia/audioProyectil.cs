@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioProyectil : sistemaAudio
+public class AudioProyectil : SistemaAudio
 {
 
     [Header("Audio arroja proyectil")]
@@ -11,9 +11,9 @@ public class audioProyectil : sistemaAudio
     [Header("Velocidad de reproduccion del Audio y agudez")]
     [SerializeField] private float velocidadAudioArrojaProyectil;
 
-    public void reproduceAudioProyectil()
+    public void reproducirAudioProyectil()
     {
-        reproduceAudio(audioArrojaProyectil, velocidadAudioArrojaProyectil);
+        reproducirAudio(audioArrojaProyectil, velocidadAudioArrojaProyectil);
     }
 
 }

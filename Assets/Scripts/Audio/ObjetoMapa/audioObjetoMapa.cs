@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioObjetoMapa : sistemaAudio
+public class audioObjetoMapa : SistemaAudio
 {
 
     [Header("Audio al recojer item")]
@@ -15,7 +15,7 @@ public class audioObjetoMapa : sistemaAudio
         if (colisionDetectada.gameObject.CompareTag("Player")
             && colisionDetectada.isTrigger)
         {
-            reproduceAudio(audioRecojer, velocidadAudioRecojer);
+            reproducirAudio(audioRecojer, velocidadAudioRecojer);
         }
     }
 

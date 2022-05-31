@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class espacioInventario : MonoBehaviour
+public class EspacioInventario : MonoBehaviour
 {
     [Header("El texto que describe la cantidad que posee el Player de este item")]
     [SerializeField] private TextMeshProUGUI textoCantidadItem;
@@ -16,7 +16,7 @@ public class espacioInventario : MonoBehaviour
     public inventarioItem item;
 
     [Header("El manejador de la interfaz grafica del inventario")]
-    public manejadorInventario manejadorInventario;
+    public ManejadorInventario manejadorInventario;
 
     [Header("Contenedor de un audio a reporducir")]
     [SerializeField] private GameObject audioEmergente;
@@ -27,7 +27,7 @@ public class espacioInventario : MonoBehaviour
     [Header("Velocidad de reproduccion del Audio y agudez")]
     [SerializeField] private float velocidadAudioClickAbrir;
 
-    public void reproduceAudio(AudioSource audio, float velocidad)
+    public void reproducirAudio(AudioSource audio, float velocidad)
     {
         if (audio)
         {
@@ -38,7 +38,7 @@ public class espacioInventario : MonoBehaviour
         }
     }
 
-    public void setUp(inventarioItem nuevoItem, manejadorInventario nuevoManejadorInventario) 
+    public void iniciarEspacioInventario(inventarioItem nuevoItem, ManejadorInventario nuevoManejadorInventario) 
     {
         item = nuevoItem;
         manejadorInventario = nuevoManejadorInventario;
@@ -49,12 +49,12 @@ public class espacioInventario : MonoBehaviour
         }
     }
 
-    public void botonItem() 
+    public void usarItemBoton() 
     {
         if (item != null) 
         {
-            reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
-            manejadorInventario.activaBotonEnviaTexto(item.descripcionItem, item.esUsable, item);
+            reproducirAudio(audioClickAbrir, velocidadAudioClickAbrir);
+            manejadorInventario.activarBotonEnviaTexto(item.descripcionItem, item.esUsable, item);
         }
     }
 }

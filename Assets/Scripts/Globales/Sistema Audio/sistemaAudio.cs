@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sistemaAudio : MonoBehaviour
+public class SistemaAudio : MonoBehaviour
 {
 
     [Header("Objeto que produce un audio generico")]
     [SerializeField] private GameObject audioEmergente;
 
-    public void reproduceAudio(AudioSource audio, float velocidad)
+    public void reproducirAudio(AudioSource audio, float velocidad)
     {
         if (audio != null
             && (velocidad > 0 && velocidad <= 3))

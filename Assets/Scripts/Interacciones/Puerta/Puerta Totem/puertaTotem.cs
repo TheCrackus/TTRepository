@@ -13,19 +13,19 @@ public class puertaTotem : puerta
         if (Input.GetButtonDown("Interactuar")
             && PlayerEnRango)
         {
-            iniciaCanvas();
+            iniciarCanvas();
             if (ContenedorTextoDialogos != null
                 && TextoDialogos != null)
             {
                 if (ContenedorTextoDialogos.activeInHierarchy)
                 {
-                    ManejadorAudioDialogos.reproduceAudioCierraDialogo();
+                    ManejadorAudioDialogos.reproducirAudioCierraDialogo();
                     ContenedorTextoDialogos.SetActive(false);
                     Destroy(NCanvas);
                 }
                 else
                 {
-                    ManejadorAudioDialogos.reproduceAudioAbreDialogo();
+                    ManejadorAudioDialogos.reproducirAudioAbreDialogo();
                     ContenedorTextoDialogos.SetActive(true);
                     TextoDialogos.text = dialogo;
                 }
@@ -90,7 +90,7 @@ public class puertaTotem : puerta
             {
                 if (ContenedorTextoDialogos.activeInHierarchy)
                 {
-                    ManejadorAudioDialogos.reproduceAudioCierraDialogo();
+                    ManejadorAudioDialogos.reproducirAudioCierraDialogo();
                     ContenedorTextoDialogos.SetActive(false);
                     TextoDialogos.text = "";
                     Destroy(NCanvas);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class interactuador : MonoBehaviour
+public class Interactuador : MonoBehaviour
 {
 
     private GameObject nCanvas;
@@ -27,21 +27,20 @@ public class interactuador : MonoBehaviour
     public bool PlayerEnRango { get => playerEnRango; set => playerEnRango = value; }
     public GameObject NCanvas { get => nCanvas; set => nCanvas = value; }
 
-    public void iniciaCanvas()
+    public void iniciarCanvas()
     {
         if (fadeInFadeOutCanvas != null)
         {
             if (!GameObject.FindGameObjectWithTag("CanvasEscenas"))
             {
-                NCanvas = Instantiate(fadeInFadeOutCanvas, Vector3.zero, Quaternion.identity);
+                nCanvas = Instantiate(fadeInFadeOutCanvas, Vector3.zero, Quaternion.identity);
             }
-            else
+            else 
             {
-                NCanvas = GameObject.FindGameObjectWithTag("CanvasEscenas");
+                nCanvas = GameObject.FindGameObjectWithTag("CanvasEscenas");
             }
-
-            ContenedorTextoDialogos = NCanvas.transform.Find("ContenedorTextoDialogos").gameObject;
-            TextoDialogos = ContenedorTextoDialogos.transform.Find("TextoDialogos").gameObject.GetComponent<TextMeshProUGUI>();
+            contenedorTextoDialogos = nCanvas.transform.Find("ContenedorTextoDialogos").gameObject;
+            textoDialogos = contenedorTextoDialogos.transform.Find("TextoDialogos").gameObject.GetComponent<TextMeshProUGUI>();
         }
     }
 
@@ -50,8 +49,8 @@ public class interactuador : MonoBehaviour
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            SimboloActivoDesactivo.invocaFunciones();
-            PlayerEnRango = true;
+            simboloActivoDesactivo.invocaFunciones();
+            playerEnRango = true;
         }
     }
 
@@ -60,8 +59,8 @@ public class interactuador : MonoBehaviour
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            SimboloActivoDesactivo.invocaFunciones();
-            PlayerEnRango = false;
+            simboloActivoDesactivo.invocaFunciones();
+            playerEnRango = false;
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioProyectilRomper : sistemaAudio
+public class audioProyectilRomper : SistemaAudio
 {
 
     [Header("Audio arroja proyectil")]
@@ -13,7 +13,7 @@ public class audioProyectilRomper : sistemaAudio
 
     public void reproduceAudioProyectilRomper()
     {
-        reproduceAudio(audioRomper, velocidadAudioRomper);
+        reproducirAudio(audioRomper, velocidadAudioRomper);
     }
 
 }

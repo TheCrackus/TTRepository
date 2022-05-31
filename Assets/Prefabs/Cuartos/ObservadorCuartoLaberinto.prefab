@@ -354,3 +354,4 @@ MonoBehaviour:
   enemigos: []
   rompibles: []
   camaraVirtual: {fileID: 4869295553680921600}
+  miniMapa: {fileID: 7119811559691170882}

@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class moverEscenaPuntoControl : moverEscena
+public class MoverEscenaPuntoControl : MoverEscena
 {
 
     [Header("Los datos de la partida en curso")]
     [SerializeField] private datosJuego datos;
 
-    public override IEnumerator cambioEscenaOut(movimientoPlayer movP)
+    public override IEnumerator cambiarEscenaOut(MovimientoPlayer movP)
     {
         if (ManejadorAudioTransicion != null)
         {
-            ManejadorAudioTransicion.reproduceAudioTransicion();
+            ManejadorAudioTransicion.reproducirAudioTransicion();
         }
         if (movP)
         {
@@ -28,7 +28,7 @@ public class moverEscenaPuntoControl : moverEscena
             yield return new WaitForSeconds(FadeOutClip.length);
         }
 
-        //datos.cargaObjetosScriptable();
+        //Cargar ultimos datos guardados
 
         foreach (valorString nombre in Escenas)
         {

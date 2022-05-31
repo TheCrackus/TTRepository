@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioReciveGolpe : sistemaAudio
+public class audioReciveGolpe : SistemaAudio
 {
 
     [Header("Audio al recibir daño")]
@@ -13,7 +13,7 @@ public class audioReciveGolpe : sistemaAudio
 
     public void reproduceAudioRecibeGolpe() 
     {
-        reproduceAudio(audioGolpe, velocidadAudioGolpe);
+        reproducirAudio(audioGolpe, velocidadAudioGolpe);
     }
 
 }

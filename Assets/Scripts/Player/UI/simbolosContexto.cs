@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class simbolosContexto : MonoBehaviour
+public class SimbolosContexto : MonoBehaviour
 {
     [Header("Objeto que mostrara una imagen")]
     public GameObject simboloContexto;
     private  bool simboloEstado = false;
 
-    public void cambiaEstadoSimbolo() 
+    public void cambiarEstadoSimbolo() 
     {
         simboloEstado = !simboloEstado;
         if (simboloEstado)

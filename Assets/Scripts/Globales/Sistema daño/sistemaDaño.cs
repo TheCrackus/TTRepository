@@ -15,10 +15,10 @@ public class sistemaDaño : MonoBehaviour
         if (colisionDetectada.gameObject.CompareTag(colisionDetectadaTag)
             && colisionDetectada.isTrigger) 
         {
-            sistemaVida sistemaVidaTemporal = colisionDetectada.GetComponent<sistemaVida>();
+            SistemaVida sistemaVidaTemporal = colisionDetectada.GetComponent<SistemaVida>();
             if (sistemaVidaTemporal != null) 
             {
-                sistemaVidaTemporal.quitaVida(daño);
+                sistemaVidaTemporal.quitarVida(daño);
             }
         }
     }

@@ -100,8 +100,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1398895126709478749}
-        m_TargetAssemblyTypeName: movimientoPlayer, Assembly-CSharp
-        m_MethodName: muestrObjeto
+        m_TargetAssemblyTypeName: MovimientoPlayer, Assembly-CSharp
+        m_MethodName: mostrarObjeto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -563,8 +563,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1759186388}
-        m_TargetAssemblyTypeName: simbolosContexto, Assembly-CSharp
-        m_MethodName: cambiaEstadoSimbolo
+        m_TargetAssemblyTypeName: SimbolosContexto, Assembly-CSharp
+        m_MethodName: cambiarEstadoSimbolo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

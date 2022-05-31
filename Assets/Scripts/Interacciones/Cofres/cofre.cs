@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class cofre : interactuador
+public class cofre : Interactuador
 {
 
     private Animator cofreAnimator;
@@ -28,10 +28,10 @@ public class cofre : interactuador
     [SerializeField] private inventarioItem itemAgrgarInventario;
 
     [Header("Manejador de audio dialogos")]
-    [SerializeField] private audioDialogos manejadorAudioDialogos;
+    [SerializeField] private AudioDialogos manejadorAudioDialogos;
 
     [Header("Manejador de audio secretos")]
-    [SerializeField] private audioSecretos manejadorAudioSecretos;
+    [SerializeField] private AudioSecretos manejadorAudioSecretos;
 
     void Start()
     {
@@ -62,9 +62,9 @@ public class cofre : interactuador
 
     public void abreCofre() 
     {
-        iniciaCanvas();
-        manejadorAudioSecretos.reproduceAudioSecreto();
-        manejadorAudioDialogos.reproduceAudioAbreDialogo();
+        iniciarCanvas();
+        manejadorAudioSecretos.reproducirAudioSecreto();
+        manejadorAudioDialogos.reproducirAudioAbreDialogo();
         itemAgrgarInventario.mostrarItem = false;
         if (TextoDialogos != null
             && ContenedorTextoDialogos != null) 
@@ -101,7 +101,7 @@ public class cofre : interactuador
             {
                 ContenedorTextoDialogos.SetActive(false);
                 TextoDialogos.text = "";
-                manejadorAudioDialogos.reproduceAudioCierraDialogo();
+                manejadorAudioDialogos.reproducirAudioCierraDialogo();
                 Destroy(NCanvas);
             }
             muestraObjeto.invocaFunciones();
@@ -117,14 +117,14 @@ public class cofre : interactuador
                 {
                     ContenedorTextoDialogos.SetActive(false);
                     TextoDialogos.text = "";
-                    manejadorAudioDialogos.reproduceAudioCierraDialogo();
+                    manejadorAudioDialogos.reproducirAudioCierraDialogo();
                     Destroy(NCanvas);
                 }
                 else
                 {
                     ContenedorTextoDialogos.SetActive(true);
                     TextoDialogos.text = "Un cofre vacío...";
-                    manejadorAudioDialogos.reproduceAudioAbreDialogo();
+                    manejadorAudioDialogos.reproducirAudioAbreDialogo();
                 }
             }
         }

@@ -254,8 +254,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 691230292071827351}
-        m_TargetAssemblyTypeName: manejadorInventario, Assembly-CSharp
-        m_MethodName: botonUsa
+        m_TargetAssemblyTypeName: ManejadorInventario, Assembly-CSharp
+        m_MethodName: usarBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -849,10 +849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21c33485c31ec74598d2e965ae533af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graficos: {fileID: 29152335830411066}
+  componenteGrafico: {fileID: 29152335830411066}
   manejadorAudioInterfazGrafica: {fileID: 4039686458519808449}
   inventarioPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
-  graficosInventario: {fileID: 29152335830411066}
 --- !u!114 &4039686458519808449
 MonoBehaviour:
   m_ObjectHideFlags: 0

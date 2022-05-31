@@ -2,50 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class jarro : MonoBehaviour
+public class Jarro : MonoBehaviour
 {
 
     private Animator jarroAnimator;
 
-    private AnimationClip romperJarroClip;
+    private AnimationClip clipRomperJarro;
 
     [Header("Objetos que dejara al morir")]
-    [SerializeField] private tablaLoot miLoot;
+    [SerializeField] private tablaLoot loot;
 
     [Header("Manejador de audio rompibles")]
     [SerializeField] private audioRompible manejadorAudioRompible;
 
-    void Start()
+    private void Start()
     {
         jarroAnimator = GetComponent<Animator>();
         foreach (AnimationClip clip in jarroAnimator.runtimeAnimatorController.animationClips)
         {
             if (clip.name == "Romper Jarro")
             {
-                romperJarroClip = clip;
+                clipRomperJarro = clip;
             }
         }
     }
 
     public void romperJarro() 
     {
-        manejadorAudioRompible.reproduceAudioRomperObjeto();
+        manejadorAudioRompible.reproducirAudioRomperObjeto();
         jarroAnimator.SetBool("Romper", true);
-        StartCoroutine(inhabilita(romperJarroClip.length));
+        StartCoroutine(inhabilitar(clipRomperJarro.length));
     }
 
-    private IEnumerator inhabilita(float tiempo) 
+    private IEnumerator inhabilitar(float tiempo) 
     {
         yield return new WaitForSeconds(tiempo);
         gameObject.SetActive(false);
-        procesaLoot();
+        procesarLoot();
     }
 
-    public void procesaLoot()
+    public void procesarLoot()
     {
-        if (miLoot != null)
+        if (loot != null)
         {
-            incrementoEstadisticas incrementoActual = miLoot.lootIncrementoEstadisticas();
+            incrementoEstadisticas incrementoActual = loot.lootIncrementoEstadisticas();
             if (incrementoActual != null)
             {
                 Instantiate(incrementoActual.gameObject, gameObject.transform.position, Quaternion.identity);

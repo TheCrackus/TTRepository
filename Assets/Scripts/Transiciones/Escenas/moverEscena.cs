@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class moverEscena : transicion
+public class MoverEscena : Transicion
 {
 
     [Header("Nombre del objeto que termina una transicion en otra escena")]
@@ -31,27 +31,27 @@ public class moverEscena : transicion
 
     public virtual void Awake()
     {
-        iniciaTransicionIn();
+        iniciarTransicionIn();
     }
 
-    public void iniciaTransicionIn()
+    public void iniciarTransicionIn()
     {
         if (estadoCambioEscena != null && nombreTransicionActual != null) 
         {
             if (estadoCambioEscena.cambieEscenaEjecucion && estadoCambioEscena.nombreTansicionDestinoEjecucion == nombreTransicionActual.valorStringEjecucion)
             {
-                iniciaCanvas();
-                movimientoPlayer movP = null;
+                iniciarCanvas();
+                MovimientoPlayer movP = null;
                 if (GameObject.FindGameObjectWithTag("Player"))
                 {
-                    movP = GameObject.FindGameObjectWithTag("Player").GetComponent<movimientoPlayer>();
+                    movP = GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>();
                 }
-                StartCoroutine(cambioEscenaIn(movP));
+                StartCoroutine(cambiarEscenaIn(movP));
             }
         }
     }
 
-    public void iniciaTransicionOut() 
+    public void iniciarTransicionOut() 
     {
         if (EnumAccionContador == accionContador.inicia)
         {
@@ -69,7 +69,7 @@ public class moverEscena : transicion
             }
             EscenaActual.valorStringEjecucion = SceneManager.GetActiveScene().name;
             manejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<manejadorContador>();
-            moverEscena moverE = manejadorC.GetComponent<moverEscena>();
+            MoverEscena moverE = manejadorC.GetComponent<MoverEscena>();
             foreach (valorString nombre in Escenas)
             {
                 if (nombre.valorStringEjecucion == EscenaActual.valorStringEjecucion)
@@ -105,13 +105,13 @@ public class moverEscena : transicion
                 }
             }
         }
-        iniciaCanvas();
-        movimientoPlayer movP = null;
+        iniciarCanvas();
+        MovimientoPlayer movP = null;
         if (GameObject.FindGameObjectWithTag("Player"))
         {
-            movP = GameObject.FindGameObjectWithTag("Player").GetComponent<movimientoPlayer>();
+            movP = GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>();
         }
-        StartCoroutine(cambioEscenaOut(movP));
+        StartCoroutine(cambiarEscenaOut(movP));
     }
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
@@ -119,22 +119,21 @@ public class moverEscena : transicion
         if (colisionDetectada.gameObject.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            iniciaTransicionOut();
+            iniciarTransicionOut();
         }
     }
 
-    public virtual IEnumerator cambioEscenaIn(movimientoPlayer movP)
+    public virtual IEnumerator cambiarEscenaIn(MovimientoPlayer movP)
     {
-        if (ManejadorAudioTransicion != null) 
+        if (ManejadorAudioTransicion != null
+            && movP != null
+            && estadoCambioEscena != null
+            && ObjetoPanel != null
+            && PanelAnimator != null
+            && FadeInClip != null) 
         {
-            ManejadorAudioTransicion.reproduceAudioTransicion();
-        }
-        if (movP != null)
-        {
+            ManejadorAudioTransicion.reproducirAudioTransicion();
             movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
-        }
-        if (estadoCambioEscena != null)
-        {
             if (estadoCambioEscena.pausoContadorEjecucion)
             {
                 if (ContadorRegresivoInicia != null)
@@ -143,86 +142,86 @@ public class moverEscena : transicion
                 }
                 estadoCambioEscena.pausoContadorEjecucion = false;
             }
-        }
-        if (ObjetoPanel != null && PanelAnimator != null && FadeInClip != null)
-        {
             ObjetoPanel.SetActive(true);
             PanelAnimator.Play("FadeIn");
             yield return new WaitForSeconds(FadeInClip.length);
-
-            ObjetoPanel.SetActive(false);
-            if (movP)
-            {
-                movP.EstadoPlayer.Estado = estadoGenerico.ninguno;
-            }
-            if (estadoCambioEscena != null)
-            {
-                if (estadoCambioEscena.muestraTextoEjecucion)
-                {
-                    if (ObjetoTextoEscena != null && TextoEscena != null && TextoEscenaAnimator != null)
-                    {
-                        ObjetoTextoEscena.SetActive(true);
-                        TextoEscena.text = estadoCambioEscena.nombreTextoCuartoEjecucion;
-                        TextoEscenaAnimator.Play("Mostrar Texto");
-                        estadoCambioEscena.nombreTextoCuartoEjecucion = "";
-                        estadoCambioEscena.muestraTextoEjecucion = false;
-                        yield return new WaitForSeconds(MostrarTextoClip.length);
-
-                        TextoEscenaAnimator.Play("Ocultar Texto");
-                        yield return new WaitForSeconds(OcultarTextoClip.length);
-                        ObjetoTextoEscena.SetActive(false);
-                    }
-                }
-                if (estadoCambioEscena != null) 
-                {
-                    if (estadoCambioEscena.cambieEscenaEjecucion)
-                    {
-                        estadoCambioEscena.cambieEscenaEjecucion = false;
-                    }
-                }
-            }
         }
-        Destroy(NCanvas);
+
+        if (ObjetoPanel != null
+            && movP != null
+            && estadoCambioEscena != null) 
+        {
+            ObjetoPanel.SetActive(false);
+            if (estadoCambioEscena.cambieEscenaEjecucion)
+            {
+                estadoCambioEscena.cambieEscenaEjecucion = false;
+            }
+            if (estadoCambioEscena.muestraTextoEjecucion)
+            {
+                if (ObjetoTextoEscena != null 
+                    && TextoEscena != null 
+                    && TextoEscenaAnimator != null)
+                {
+                    ObjetoTextoEscena.SetActive(true);
+                    TextoEscena.text = estadoCambioEscena.nombreTextoCuartoEjecucion;
+                    TextoEscenaAnimator.Play("Mostrar Texto");
+                    estadoCambioEscena.nombreTextoCuartoEjecucion = "";
+                    estadoCambioEscena.muestraTextoEjecucion = false;
+                    yield return new WaitForSeconds(MostrarTextoClip.length);
+                }
+
+                if (TextoEscenaAnimator != null
+                    && OcultarTextoClip != null)
+                {
+                    TextoEscenaAnimator.Play("Ocultar Texto");
+                    yield return new WaitForSeconds(OcultarTextoClip.length);
+
+                }
+
+                if (ObjetoTextoEscena != null)
+                {
+                    ObjetoTextoEscena.SetActive(false);
+                }
+            }
+            Destroy(NCanvas);
+            movP.EstadoPlayer.Estado = estadoGenerico.ninguno;
+        }
     }
 
-    public virtual IEnumerator cambioEscenaOut(movimientoPlayer movP)
+    public virtual IEnumerator cambiarEscenaOut(MovimientoPlayer movP)
     {
-        if (ManejadorAudioTransicion != null)
+        if (ManejadorAudioTransicion != null
+            && movP != null
+            && ObjetoPanel != null
+            && PanelAnimator != null
+            && FadeOutClip != null)
         {
-            ManejadorAudioTransicion.reproduceAudioTransicion();
-        }
-        if (movP)
-        {
+            ManejadorAudioTransicion.reproducirAudioTransicion();
             movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
-        }
-        if (ObjetoPanel != null
-             && PanelAnimator != null
-             && FadeOutClip != null)
-        {
             ObjetoPanel.SetActive(true);
             PanelAnimator.Play("FadeOut");
-            yield return new WaitForSeconds(FadeOutClip.length);
+            yield return new WaitForSeconds(FadeOutClip.length);   
+        }
 
-            if (PosicionPlayer != null)
+        if (PosicionPlayer != null 
+            && estadoCambioEscena != null 
+            && EscenaActual != null
+            && escenaCarga != null)
+        {
+            PosicionPlayer.valorVectorialEjecucion = nuevaPosicionPlayer;
+            estadoCambioEscena.cambieEscenaEjecucion = true;
+            estadoCambioEscena.nombreTextoCuartoEjecucion = NombreMostrar;
+            estadoCambioEscena.muestraTextoEjecucion = DebeMostrarTexto;
+            estadoCambioEscena.direccionPlayerEjecucion = NuevaDireccionPlayer;
+            estadoCambioEscena.nombreTansicionDestinoEjecucion = nombreTransicionDestino.valorStringEjecucion;
+            EscenaActual.valorStringEjecucion = escenaCarga.valorStringEjecucion;
+            AsyncOperation accion = SceneManager.LoadSceneAsync(escenaCarga.valorStringEjecucion);
+            while (!accion.isDone)
             {
-                PosicionPlayer.valorVectorialEjecucion = nuevaPosicionPlayer;
-                if (EstadoCambioEscena != null)
-                {
-                    estadoCambioEscena.cambieEscenaEjecucion = true;
-                    estadoCambioEscena.nombreTextoCuartoEjecucion = NombreMostrar;
-                    estadoCambioEscena.muestraTextoEjecucion = DebeMostrarTexto;
-                    estadoCambioEscena.direccionPlayerEjecucion = NuevaDireccionPlayer;
-                    estadoCambioEscena.nombreTansicionDestinoEjecucion = nombreTransicionDestino.valorStringEjecucion;
-                    EscenaActual.valorStringEjecucion = escenaCarga.valorStringEjecucion;
-                }
+                yield return null;
             }
         }
-
-        AsyncOperation accion = SceneManager.LoadSceneAsync(escenaCarga.valorStringEjecucion);
-        while (!accion.isDone)
-        {
-            yield return null;
-        }
+        
     }
 
 }

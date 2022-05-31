@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioInterfazGrafica : sistemaAudio
+public class AudioInterfazGrafica : SistemaAudio
 {
 
     [Header("Audio al abrir una interfaz o presionar un boton")]
@@ -23,19 +23,19 @@ public class audioInterfazGrafica : sistemaAudio
     [Header("Velocidad de reproduccion del Audio y agudez")]
     [SerializeField] private float velocidadAudioAbrirVentana;
 
-    public void reproduceAudioClickCerrar() 
+    public void reproducirAudioClickCerrar() 
     {
-        reproduceAudio(audioClickCerrar, velocidadAudioClickCerrar);
+        reproducirAudio(audioClickCerrar, velocidadAudioClickCerrar);
     }
 
-    public void reproduceAudioClickAbrir()
+    public void reproducirAudioClickAbrir()
     {
-        reproduceAudio(audioClickAbrir, velocidadAudioClickAbrir);
+        reproducirAudio(audioClickAbrir, velocidadAudioClickAbrir);
     }
 
-    public void reproduceAudioAbrirVentana() 
+    public void reproducirAudioAbrirVentana() 
     {
-        reproduceAudio(audioAbrirVentana, velocidadAudioAbrirVentana);
+        reproducirAudio(audioAbrirVentana, velocidadAudioAbrirVentana);
     }
 
 }

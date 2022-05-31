@@ -40,14 +40,15 @@ public class observadorCuartoMazmorraEnemigos : observadorCuartoMazmorra
         {
             foreach (enemigo enemigo in Enemigos)
             {
-                cambiaActivacion(enemigo, true);
+                cambiarActivacion(enemigo, true);
             }
-            foreach (jarro rompible in Rompibles)
+            foreach (Jarro rompible in Rompibles)
             {
-                cambiaActivacion(rompible, true);
+                cambiarActivacion(rompible, true);
             }
             cierraPuertas();
             CamaraVirtual.SetActive(true);
+            MiniMapa.SetActive(true);
         }
     }
 
@@ -57,13 +58,14 @@ public class observadorCuartoMazmorraEnemigos : observadorCuartoMazmorra
         {
             foreach (enemigo enemigo in Enemigos)
             {
-                cambiaActivacion(enemigo, false);
+                cambiarActivacion(enemigo, false);
             }
-            foreach (jarro rompible in Rompibles)
+            foreach (Jarro rompible in Rompibles)
             {
-                cambiaActivacion(rompible, false);
+                cambiarActivacion(rompible, false);
             }
             CamaraVirtual.SetActive(false);
+            MiniMapa.SetActive(false);
         }
     }
 }

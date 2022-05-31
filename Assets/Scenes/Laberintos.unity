@@ -7933,6 +7933,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 13999326, guid: ba9146c0f87a8474b80a090827c99d41, type: 3}
+      propertyPath: eventoUnity.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: llenarVida
+      objectReference: {fileID: 0}
+    - target: {fileID: 13999326, guid: ba9146c0f87a8474b80a090827c99d41, type: 3}
+      propertyPath: eventoUnity.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SistemaVida, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1398895126709478738, guid: ba9146c0f87a8474b80a090827c99d41, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7981,8 +7989,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5552180694732426552, guid: ba9146c0f87a8474b80a090827c99d41, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba9146c0f87a8474b80a090827c99d41, type: 3}
 --- !u!1 &1398895127527455416 stripped
 GameObject:
