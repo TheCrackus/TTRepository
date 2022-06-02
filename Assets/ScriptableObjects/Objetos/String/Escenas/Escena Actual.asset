@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Escena Actual
   m_EditorClassIdentifier: 
   valorStringInicial: 
-  valorStringEjecucion: Laberintos
+  valorStringEjecucion: 
