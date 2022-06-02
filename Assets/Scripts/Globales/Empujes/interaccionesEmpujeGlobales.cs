@@ -26,13 +26,13 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                 rigidBodyAfectado.DOMove(rigidBodyAfectado.transform.position + diferencia, tiempoAplicarFuerza);
                 if (gameObject.CompareTag("ArmaObjetoPlayer"))
                 {
-                    colisionDetectada.gameObject.GetComponentInParent<enemigo>().comienzaEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza);
+                    colisionDetectada.gameObject.GetComponentInParent<Enemigo>().iniciarEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza);
                 }
                 else
                 {
                     if (gameObject.CompareTag("Enemigo"))
                     {
-                        gameObject.GetComponentInParent<enemigo>().PuedoMoverme = false;
+                        gameObject.GetComponentInParent<Enemigo>().PuedoMoverme = false;
                         colisionDetectada.gameObject.GetComponentInParent<MovimientoPlayer>().comenzarEmpujaPlayer(tiempoAplicarFuerza);
                     }
                     else
@@ -45,14 +45,14 @@ public class interaccionesEmpujeGlobales : MonoBehaviour
                         {
                             if (gameObject.CompareTag("ArmaObjetoEnemigo"))
                             {
-                                gameObject.GetComponentInParent<enemigo>().PuedoMoverme = false;
+                                gameObject.GetComponentInParent<Enemigo>().PuedoMoverme = false;
                                 colisionDetectada.gameObject.GetComponentInParent<MovimientoPlayer>().comenzarEmpujaPlayer(tiempoAplicarFuerza);
                             }
                             else
                             {
                                 if (gameObject.CompareTag("ProyectilPlayer"))
                                 {
-                                    colisionDetectada.gameObject.GetComponentInParent<enemigo>().comienzaEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza);
+                                    colisionDetectada.gameObject.GetComponentInParent<Enemigo>().iniciarEmpujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza);
                                 }
                             }
                         }

@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componenteGraficoPrincipal: {fileID: 1515346644702529653}
-  canvas: {fileID: 2062672266295799390, guid: d3cdd8eb48599d24fb96c978bcba91a5, type: 3}
+  canvasEmergente: {fileID: 2062672266295799390, guid: d3cdd8eb48599d24fb96c978bcba91a5, type: 3}
 --- !u!114 &7017579386042636783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componenteGrafico: {fileID: 1515346644702529659}
+  tagComponenteGrafico: CanvasPausa
 --- !u!1 &1515346645247858176
 GameObject:
   m_ObjectHideFlags: 0

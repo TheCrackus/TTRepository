@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trepaCielosCorruptoMovible : trepaCielosCorrupto
+public class TrepaCielosCorruptoMovible : TrepaCielosCorrupto
 {
     private bool direccionAdelante = true;
 
@@ -18,7 +18,7 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
     [Header("Distancia para cambiar de objetivo")]
     [SerializeField] private float distanciaAlPunto;
 
-    public override void gestionDistancias()
+    public override void gestionarDistancias()
     {
         if (ObjetivoPerseguir != null) 
         {
@@ -27,18 +27,18 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
             {
                 if (EstadoEnemigo != null) 
                 {
-                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
-                        || EstadoEnemigo.Estado == estadoGenerico.durmiendo
-                        || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                    if (EstadoEnemigo.Estado == EstadoGenerico.caminando
+                        || EstadoEnemigo.Estado == EstadoGenerico.durmiendo
+                        || EstadoEnemigo.Estado == EstadoGenerico.ninguno)
                     {
                         Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, ObjetivoPerseguir.position, VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         Vector3 refAnimacion = ObjetivoPerseguir.position - vectorTemporal;
-                        cambiaAnimaciones(refAnimacion);
+                        cambiarAnimaciones(refAnimacion);
                         if (EnemigoRigidBody != null)
                         {
                             EnemigoRigidBody.MovePosition(transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         }  
-                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                        EstadoEnemigo.Estado = EstadoGenerico.caminando;
                     }
                 }
             }
@@ -50,26 +50,26 @@ public class trepaCielosCorruptoMovible : trepaCielosCorrupto
                     {
                         Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position, camino[puntoActual].position, VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         Vector3 refAnimacion = camino[puntoActual].position - vectorTemporal;
-                        cambiaAnimaciones(refAnimacion);
+                        cambiarAnimaciones(refAnimacion);
                         if (EnemigoRigidBody != null)
                         {
                             EnemigoRigidBody.MovePosition(transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         }
                         if (EstadoEnemigo != null) 
                         {
-                            EstadoEnemigo.Estado = estadoGenerico.caminando;
+                            EstadoEnemigo.Estado = EstadoGenerico.caminando;
                         }
                     }
                     else
                     {
-                        cambiaPuntoMeta();
+                        cambiarPuntoMeta();
                     }
                 }
             }
         }
     }
 
-    private void cambiaPuntoMeta() 
+    private void cambiarPuntoMeta() 
     {
         if (direccionAdelante)
         {

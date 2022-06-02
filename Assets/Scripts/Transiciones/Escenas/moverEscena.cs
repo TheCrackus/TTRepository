@@ -34,7 +34,7 @@ public class MoverEscena : Transicion
         iniciarTransicionIn();
     }
 
-    public void iniciarTransicionIn()
+    public virtual void iniciarTransicionIn()
     {
         if (estadoCambioEscena != null && nombreTransicionActual != null) 
         {
@@ -51,7 +51,7 @@ public class MoverEscena : Transicion
         }
     }
 
-    public void iniciarTransicionOut() 
+    public virtual void iniciarTransicionOut() 
     {
         if (EnumAccionContador == accionContador.inicia)
         {
@@ -114,7 +114,7 @@ public class MoverEscena : Transicion
         StartCoroutine(cambiarEscenaOut(movP));
     }
 
-    private void OnTriggerEnter2D(Collider2D colisionDetectada)
+    public virtual void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
         if (colisionDetectada.gameObject.CompareTag("Player")
             && !colisionDetectada.isTrigger)
@@ -133,7 +133,7 @@ public class MoverEscena : Transicion
             && FadeInClip != null) 
         {
             ManejadorAudioTransicion.reproducirAudioTransicion();
-            movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
+            movP.EstadoPlayer.Estado = EstadoGenerico.transicionando;
             if (estadoCambioEscena.pausoContadorEjecucion)
             {
                 if (ContadorRegresivoInicia != null)
@@ -184,7 +184,7 @@ public class MoverEscena : Transicion
                 }
             }
             Destroy(NCanvas);
-            movP.EstadoPlayer.Estado = estadoGenerico.ninguno;
+            movP.EstadoPlayer.Estado = EstadoGenerico.ninguno;
         }
     }
 
@@ -197,7 +197,7 @@ public class MoverEscena : Transicion
             && FadeOutClip != null)
         {
             ManejadorAudioTransicion.reproducirAudioTransicion();
-            movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
+            movP.EstadoPlayer.Estado = EstadoGenerico.transicionando;
             ObjetoPanel.SetActive(true);
             PanelAnimator.Play("FadeOut");
             yield return new WaitForSeconds(FadeOutClip.length);   

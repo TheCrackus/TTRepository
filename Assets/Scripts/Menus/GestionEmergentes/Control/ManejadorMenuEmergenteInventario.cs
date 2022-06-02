@@ -7,20 +7,22 @@ public class ManejadorMenuEmergenteInventario : ManejadorMenuEmergente
 
     private ComponenteGraficoEmergente graficos;
 
-    private void Start()
+    public override void Awake()
     {
-        graficos = (ComponenteGraficoEmergente) ComponenteGrafico;
+        graficos = (ComponenteGraficoEmergente)ComponenteGrafico;
+        TagComponenteGrafico = graficos.CanvasEmergente.tag;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetButtonDown("Inventario"))
+        if (Input.GetButtonDown("Inventario")
+            && !GameObject.FindGameObjectWithTag("CanvasPrueba"))
         {
             iniciarDestruirCanvas();
         }
         else 
         {
-            if (Input.GetButtonDown("Pausa") && GameObject.FindGameObjectWithTag("CanvasInventario"))
+            if (Input.GetButtonDown("Pausa") && GameObject.FindGameObjectWithTag(TagComponenteGrafico))
             {
                 iniciarDestruirCanvas();
             }
@@ -29,13 +31,13 @@ public class ManejadorMenuEmergenteInventario : ManejadorMenuEmergente
 
     public override void iniciarDestruirCanvas()
     {
-        if (!GameObject.FindGameObjectWithTag("CanvasInventario"))
+        if (!GameObject.FindGameObjectWithTag(TagComponenteGrafico))
         {
-            Instantiate(graficos.Canvas, Vector3.zero, Quaternion.identity);
+            Instantiate(graficos.CanvasEmergente, Vector3.zero, Quaternion.identity);
         }
         else
         {
-            Destroy(GameObject.FindGameObjectWithTag("CanvasInventario"));
+            Destroy(GameObject.FindGameObjectWithTag(TagComponenteGrafico));
         }
     }
 

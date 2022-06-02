@@ -59,7 +59,12 @@ interface IGraficoCanvasFormularioEnlaceProfesor
     public GameObject CanvasFormularioEnlaceProfesor { get; set; }
 }
 
-interface IGraficoCanvasFormularioRecuperacion
+interface IGraficoCanvasFormularioRecuperacionContraseña
 {
-    public GameObject CanvasFormularioRecuperacion { get; set; }
+    public GameObject CanvasFormularioRecuperacionContraseña { get; set; }
+}
+
+interface IGraficoCanvasFormularioEnvioPrueba
+{
+    public GameObject CanvasFormularioEnvioPrueba { get; set; }
 }

@@ -52,11 +52,15 @@ public class SistemaVida : MonoBehaviour
     public audioReciveGolpe ManejadorAudioRecibeGolpe { get => manejadorAudioRecibeGolpe; set => manejadorAudioRecibeGolpe = value; }
     public audioEfectoMuerte ManejadorAudioEfectoMuerte { get => manejadorAudioEfectoMuerte; set => manejadorAudioEfectoMuerte = value; }
 
-    private void OnEnable()
+    public virtual void OnEnable()
     {
-        if (vidaObjeto != null) 
+        if (vidaObjeto != null
+            && spriteObjeto != null
+            && colisionTrigger != null) 
         {
             vidaActualObjeto = vidaObjeto.valorFlotanteEjecucion;
+            spriteObjeto.color = colorNormal;
+            colisionTrigger.enabled = true;
         }
     }
 

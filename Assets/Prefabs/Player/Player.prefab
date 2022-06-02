@@ -1461,7 +1461,7 @@ MonoBehaviour:
   contadorRegresivoDeten: {fileID: 11400000, guid: 52e43ba2e78e79649bbd417d363b932c, type: 2}
   contadorRegresivoReinicia: {fileID: 11400000, guid: f6cdd663aa8c6094b83aabade28e9e6a, type: 2}
   manejadorAudioTransicion: {fileID: 2963479657177266617}
-  enumAccionContador: 1
+  enumAccionContador: 2
   enumTipoTransicion: 1
   escenaActual: {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
   escenas:

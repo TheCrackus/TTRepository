@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IReproductorAudioInterfazGrafica, IConexion, ICanvasFormularioModificarUsuario, ICanvasFormularioEliminarUsuario, ICanvasMenuConfiguraciones
+public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IReproductorAudioInterfazGrafica, IConexion, ICanvasFormularioModificarUsuario, ICanvasFormularioEliminarUsuario, ICanvasMenuConfiguraciones, ICanvasFormularioEnvioPrueba
 {
 
     ComponenteGraficoMenuPrincipal graficos;
@@ -94,6 +94,17 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
         {
             ManejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
             iniciarCanvasFormularioModificarUsuario();
+            bloquearBotones();
+            cerrarGrafico();
+        }
+    }
+
+    public void iniciarFormularioEnvioPruebaBoton()
+    {
+        if (!pulseBoton)
+        {
+            ManejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
+            iniciarCanvasFormularioEnvioPrueba();
             bloquearBotones();
             cerrarGrafico();
         }
@@ -264,6 +275,14 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
         if (!GameObject.FindGameObjectWithTag("CanvasConfiguraciones"))
         {
             Instantiate(graficos.CanvasMenuConfiguraciones, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    public void iniciarCanvasFormularioEnvioPrueba()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasPrueba"))
+        {
+            Instantiate(graficos.CanvasFormularioEnvioPrueba, Vector3.zero, Quaternion.identity);
         }
     }
 

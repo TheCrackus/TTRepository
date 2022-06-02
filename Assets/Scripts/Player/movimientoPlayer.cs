@@ -12,7 +12,7 @@ public class MovimientoPlayer : MonoBehaviour
     private Animator animatorPlayer;
 
     [Header("Estado actual del Player")]
-    [SerializeField] private estadoObjeto estadoPlayer;
+    [SerializeField] private EstadoObjeto estadoPlayer;
 
     [Header("Estadisticas Player")]
     [SerializeField] private float velocidad;
@@ -50,7 +50,7 @@ public class MovimientoPlayer : MonoBehaviour
     [Header("Manejador de audio del Player arma distancia")]
     [SerializeField] private AudioProyectil manejadorAudioProyectil;
 
-    public estadoObjeto EstadoPlayer { get => estadoPlayer; set => estadoPlayer = value; }
+    public EstadoObjeto EstadoPlayer { get => estadoPlayer; set => estadoPlayer = value; }
 
     private void Start()
     {
@@ -98,21 +98,21 @@ public class MovimientoPlayer : MonoBehaviour
     {
         if (Input.GetButtonDown("Atacar")
             && inventariopPlayerItems.objetoEquipado != null
-            && (estadoPlayer.Estado == estadoGenerico.caminando 
-                || estadoPlayer.Estado == estadoGenerico.ninguno))
+            && (estadoPlayer.Estado == EstadoGenerico.caminando 
+                || estadoPlayer.Estado == EstadoGenerico.ninguno))
         {
-            estadoPlayer.Estado = estadoGenerico.atacando;
+            estadoPlayer.Estado = EstadoGenerico.atacando;
             StartCoroutine(Atacar());
         }
     }
 
     private void FixedUpdate()
     {
-        if (estadoPlayer.Estado != estadoGenerico.atacando
-            && estadoPlayer.Estado != estadoGenerico.inactivo
-            && estadoPlayer.Estado != estadoGenerico.transicionando
-            && estadoPlayer.Estado != estadoGenerico.interactuando
-            && estadoPlayer.Estado != estadoGenerico.estuneado)
+        if (estadoPlayer.Estado != EstadoGenerico.atacando
+            && estadoPlayer.Estado != EstadoGenerico.inactivo
+            && estadoPlayer.Estado != EstadoGenerico.transicionando
+            && estadoPlayer.Estado != EstadoGenerico.interactuando
+            && estadoPlayer.Estado != EstadoGenerico.estuneado)
         {
             vectorMovimiento = Vector3.zero;
             vectorMovimiento.x = Input.GetAxisRaw("Horizontal");
@@ -127,32 +127,32 @@ public class MovimientoPlayer : MonoBehaviour
             }
             if (vectorMovimiento != Vector3.zero)
             {
-                estadoPlayer.Estado = estadoGenerico.caminando;
+                estadoPlayer.Estado = EstadoGenerico.caminando;
                 ActualizarMovimiento();
             }
             else
             {
-                if (estadoPlayer.Estado == estadoGenerico.caminando
-                    || estadoPlayer.Estado == estadoGenerico.ninguno)
+                if (estadoPlayer.Estado == EstadoGenerico.caminando
+                    || estadoPlayer.Estado == EstadoGenerico.ninguno)
                 {
-                    estadoPlayer.Estado = estadoGenerico.ninguno;
+                    estadoPlayer.Estado = EstadoGenerico.ninguno;
                     animatorPlayer.SetBool("Movimiento", false);
                 }
             }
         }
         else 
         {
-            if (estadoPlayer.Estado == estadoGenerico.interactuando
-                || estadoPlayer.Estado == estadoGenerico.estuneado
-                || estadoPlayer.Estado == estadoGenerico.inactivo
-                || estadoPlayer.Estado == estadoGenerico.transicionando)
+            if (estadoPlayer.Estado == EstadoGenerico.interactuando
+                || estadoPlayer.Estado == EstadoGenerico.estuneado
+                || estadoPlayer.Estado == EstadoGenerico.inactivo
+                || estadoPlayer.Estado == EstadoGenerico.transicionando)
             {
                 vectorMovimiento = Vector3.zero;
                 animatorPlayer.SetBool("Movimiento", false);
             }
             else 
             {
-                if (estadoPlayer.Estado == estadoGenerico.estuneado) 
+                if (estadoPlayer.Estado == EstadoGenerico.estuneado) 
                 {
                     animatorPlayer.SetBool("Movimiento", false);
                 }
@@ -175,7 +175,7 @@ public class MovimientoPlayer : MonoBehaviour
         {
             if (inventariopPlayerItems.objetoEquipado == espada)
             {
-                if (estadoPlayer.Estado == estadoGenerico.atacando)
+                if (estadoPlayer.Estado == EstadoGenerico.atacando)
                 {
                     animatorPlayer.SetBool("Atacando", true);
                     yield return null;
@@ -184,20 +184,20 @@ public class MovimientoPlayer : MonoBehaviour
                     animatorPlayer.SetBool("Atacando", false);
                     yield return new WaitForSeconds(0.6f);
 
-                    estadoPlayer.Estado = estadoGenerico.ninguno;
+                    estadoPlayer.Estado = EstadoGenerico.ninguno;
                 }
             }
             else 
             {
                 if (inventariopPlayerItems.objetoEquipado == arco) 
                 { 
-                    if (estadoPlayer.Estado == estadoGenerico.atacando)
+                    if (estadoPlayer.Estado == EstadoGenerico.atacando)
                     {
                         manejadorAudioProyectil.reproducirAudioProyectil();
                         crearFlecha();
                         yield return new WaitForSeconds(0.5f);
 
-                        estadoPlayer.Estado = estadoGenerico.ninguno;
+                        estadoPlayer.Estado = EstadoGenerico.ninguno;
                     }
                 }
             }
@@ -230,7 +230,7 @@ public class MovimientoPlayer : MonoBehaviour
 
     public void comenzarEmpujaPlayer(float tiempoAplicarFuerza)
     {
-        estadoPlayer.Estado = estadoGenerico.estuneado;
+        estadoPlayer.Estado = EstadoGenerico.estuneado;
         StartCoroutine(empujarPlayer(tiempoAplicarFuerza));
     }
 
@@ -241,7 +241,7 @@ public class MovimientoPlayer : MonoBehaviour
             yield return new WaitForSeconds(tiempoAplicarFuerza);
 
             rigidBodyPlayer.velocity = Vector2.zero;
-            estadoPlayer.Estado = estadoGenerico.ninguno;
+            estadoPlayer.Estado = EstadoGenerico.ninguno;
         }
     }
 
@@ -258,20 +258,20 @@ public class MovimientoPlayer : MonoBehaviour
         }
         if (itemMostrar != null)
         {
-            if (estadoPlayer.Estado != estadoGenerico.interactuando)
+            if (estadoPlayer.Estado != EstadoGenerico.interactuando)
             {
                 animatorPlayer.SetBool("MostrandoObjeto", true);
-                estadoPlayer.Estado = estadoGenerico.interactuando;
+                estadoPlayer.Estado = EstadoGenerico.interactuando;
                 spriteObjetoMostrar.sprite = itemMostrar.imagenItem;
                 itemMostrar.mostrarItem = false;
             }
         }
         else 
         {
-            if (estadoPlayer.Estado == estadoGenerico.interactuando)
+            if (estadoPlayer.Estado == EstadoGenerico.interactuando)
             {
                 animatorPlayer.SetBool("MostrandoObjeto", false);
-                estadoPlayer.Estado = estadoGenerico.ninguno;
+                estadoPlayer.Estado = EstadoGenerico.ninguno;
                 spriteObjetoMostrar.sprite = null;
             }
         }

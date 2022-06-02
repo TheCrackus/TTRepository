@@ -76,7 +76,7 @@ public class MoverCuarto : Transicion
         {
             ManejadorAudioTransicion.reproducirAudioTransicion();
             movP = player.GetComponent<MovimientoPlayer>();
-            movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
+            movP.EstadoPlayer.Estado = EstadoGenerico.transicionando;
             ObjetoPanel.SetActive(true);
             PanelAnimator.Play("FadeOut");
             yield return new WaitForSeconds(FadeOutClip.length);
@@ -128,7 +128,7 @@ public class MoverCuarto : Transicion
                 }
             }
             Destroy(NCanvas);
-            movP.EstadoPlayer.Estado = estadoGenerico.ninguno;
+            movP.EstadoPlayer.Estado = EstadoGenerico.ninguno;
         }
     }
 

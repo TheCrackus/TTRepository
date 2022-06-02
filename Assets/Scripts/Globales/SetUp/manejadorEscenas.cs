@@ -144,7 +144,7 @@ public class ManejadorEscenas : MonoBehaviour
 
     private void Start()
     {
-        if (SingletonEventosEscenas.instance != null) 
+        if (SingletonEventosEscenas.instance != null)
         {
             SingletonEventosEscenas.instance.ejecutarEventos();
             SingletonEventosEscenas.instance.eliminarEventos();

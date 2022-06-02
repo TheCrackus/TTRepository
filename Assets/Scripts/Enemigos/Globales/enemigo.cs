@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemigo : MonoBehaviour
+public class Enemigo : MonoBehaviour
 {
 
     private float contadorEsperaMovimiento;
@@ -12,7 +12,7 @@ public class enemigo : MonoBehaviour
     private Vector3 posicionOriginal;
 
     [Header("El estado en el que se encuentra el enemigo")]
-    [SerializeField] private estadoObjeto estadoEnemigo;
+    [SerializeField] private EstadoObjeto estadoEnemigo;
 
     [Header("Nombre del enemigo")]
     [SerializeField] private string nombreEnemigo;
@@ -26,7 +26,7 @@ public class enemigo : MonoBehaviour
     [Header("GameObject para la posicion de este objeto")]
     [SerializeField] private GameObject posicionMapa;
 
-    public estadoObjeto EstadoEnemigo { get => estadoEnemigo; set => estadoEnemigo = value; }
+    public EstadoObjeto EstadoEnemigo { get => estadoEnemigo; set => estadoEnemigo = value; }
     public float ContadorEsperaMovimiento { get => contadorEsperaMovimiento; set => contadorEsperaMovimiento = value; }
     public bool PuedoMoverme { get => puedoMoverme; set => puedoMoverme = value; }
     public float VelocidadMovimientoEnemigo { get => velocidadMovimientoEnemigo; set => velocidadMovimientoEnemigo = value; }
@@ -52,31 +52,36 @@ public class enemigo : MonoBehaviour
 
     public virtual void Update()
     {
-        if (!puedoMoverme)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado == EstadoGenerico.transicionando) 
+        {
+            puedoMoverme = false;
+        }
+        if (!puedoMoverme
+            && (GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado != EstadoGenerico.transicionando))
         {
             contadorEsperaMovimiento -= Time.deltaTime;
             if (contadorEsperaMovimiento <= 0)
             {
                 puedoMoverme = true;
                 contadorEsperaMovimiento = tiempoEsperaMovimientoAtaque;
-                estadoEnemigo.Estado = estadoGenerico.ninguno;
+                estadoEnemigo.Estado = EstadoGenerico.ninguno;
             }
         }
     }
 
-    public void comienzaEmpujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza) 
+    public void iniciarEmpujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza) 
     {
-        estadoEnemigo.Estado = estadoGenerico.estuneado;
-        StartCoroutine(empujaEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
+        estadoEnemigo.Estado = EstadoGenerico.estuneado;
+        StartCoroutine(empujarEnemigo(rigidBodyAfectado, tiempoAplicarFuerza));
     }
 
-    private IEnumerator empujaEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
+    private IEnumerator empujarEnemigo(Rigidbody2D rigidBodyAfectado, float tiempoAplicarFuerza)
     {
         if (rigidBodyAfectado != null)
         {
             yield return new WaitForSeconds(tiempoAplicarFuerza);
             rigidBodyAfectado.velocity = Vector2.zero;
-            estadoEnemigo.Estado = estadoGenerico.ninguno;
+            estadoEnemigo.Estado = EstadoGenerico.ninguno;
         }
     }
     

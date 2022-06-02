@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
+public class trepaCielosCorruptoTorreta : TrepaCielosCorrupto
 {
     private float tiempoDisparoSegundos;
 
@@ -45,11 +45,11 @@ public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
         }
         if (PuedoMoverme)
         {
-            gestionDistancias();
+            gestionarDistancias();
         }
     }
 
-    public override void gestionDistancias()
+    public override void gestionarDistancias()
     {
         if (ObjetivoPerseguir != null) 
         {
@@ -58,9 +58,9 @@ public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
             {
                 if (EstadoEnemigo != null) 
                 {
-                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
-                        || EstadoEnemigo.Estado == estadoGenerico.durmiendo
-                        || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                    if (EstadoEnemigo.Estado == EstadoGenerico.caminando
+                        || EstadoEnemigo.Estado == EstadoGenerico.durmiendo
+                        || EstadoEnemigo.Estado == EstadoGenerico.ninguno)
                     {
                         if (puedoDisparar)
                         {
@@ -70,7 +70,7 @@ public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
                             proyectilActual.GetComponent<proyectilPiedra>().arroja(vectorTemporal.normalized);
                             puedoDisparar = false;
                         }
-                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                        EstadoEnemigo.Estado = EstadoGenerico.caminando;
                         if (EnemigoAnimator != null) 
                         {
                             EnemigoAnimator.SetBool("Despertar", true);
@@ -88,7 +88,7 @@ public class trepaCielosCorruptoTorreta : trepaCielosCorrupto
                     }
                     if (EstadoEnemigo != null)
                     {
-                        EstadoEnemigo.Estado = estadoGenerico.durmiendo;
+                        EstadoEnemigo.Estado = EstadoGenerico.durmiendo;
                     }
                 }
             }

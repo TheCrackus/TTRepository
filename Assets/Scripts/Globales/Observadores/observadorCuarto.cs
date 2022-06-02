@@ -6,7 +6,7 @@ public class ObservadorCuarto : MonoBehaviour
 {
 
     [Header("Enemigos que se encuentran en esta sala")]
-    [SerializeField] private enemigo[] enemigos;
+    [SerializeField] private Enemigo[] enemigos;
 
     [Header("Objetos rompibles que se encuentran en esta sala")]
     [SerializeField] private Jarro[] rompibles;
@@ -17,14 +17,14 @@ public class ObservadorCuarto : MonoBehaviour
     [Header("Mini mapa de esta sala")]
     [SerializeField] private GameObject miniMapa;
 
-    public enemigo[] Enemigos { get => enemigos; set => enemigos = value; }
+    public Enemigo[] Enemigos { get => enemigos; set => enemigos = value; }
     public Jarro[] Rompibles { get => rompibles; set => rompibles = value; }
     public GameObject CamaraVirtual { get => camaraVirtual; set => camaraVirtual = value; }
     public GameObject MiniMapa { get => miniMapa; set => miniMapa = value; }
 
     private void Start()
     {
-        foreach (enemigo enemigo in enemigos)
+        foreach (Enemigo enemigo in enemigos)
         {
             cambiarActivacion(enemigo, false);
         }
@@ -55,7 +55,7 @@ public class ObservadorCuarto : MonoBehaviour
     {
         if (colisionDetectada.CompareTag("Player") && !colisionDetectada.isTrigger) 
         {
-            foreach (enemigo enemigo in enemigos) 
+            foreach (Enemigo enemigo in enemigos) 
             {
                 cambiarActivacion(enemigo, true);
             }
@@ -72,7 +72,7 @@ public class ObservadorCuarto : MonoBehaviour
     {
         if (colisionDetectada.CompareTag("Player") && !colisionDetectada.isTrigger)
         {
-            foreach (enemigo enemigo in enemigos)
+            foreach (Enemigo enemigo in enemigos)
             {
                 cambiarActivacion(enemigo, false);
             }

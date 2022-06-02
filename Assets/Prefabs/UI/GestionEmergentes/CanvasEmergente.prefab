@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8765060171162725336}
   - component: {fileID: 8765060171162725339}
   - component: {fileID: 8765060171162725332}
-  - component: {fileID: 8765060171162725335}
+  - component: {fileID: 3882421927413397333}
   m_Layer: 5
   m_Name: CanvasEmergente
   m_TagString: Untagged
@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componenteGraficoPrincipal: {fileID: 8765060171162725338}
-  canvas: {fileID: 0}
---- !u!114 &8765060171162725335
+  canvasEmergente: {fileID: 0}
+--- !u!114 &3882421927413397333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

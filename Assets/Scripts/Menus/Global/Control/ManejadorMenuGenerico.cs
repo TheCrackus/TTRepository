@@ -112,7 +112,12 @@ interface ICanvasFormularioEnlaceProfesor
     public void iniciarCanvasFormularioEnlaceProfesor();
 }
 
-interface ICanvasFormularioRecuperacion
+interface ICanvasFormularioRecuperacionContraseña
 {
-    public void iniciarCanvasFormularioRecuperacion();
+    public void iniciarCanvasFormularioRecuperacionContraseña();
+}
+
+interface ICanvasFormularioEnvioPrueba
+{
+    public void iniciarCanvasFormularioEnvioPrueba();
 }

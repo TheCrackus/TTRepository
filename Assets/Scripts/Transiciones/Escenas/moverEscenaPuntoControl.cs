@@ -7,28 +7,27 @@ public class MoverEscenaPuntoControl : MoverEscena
 {
 
     [Header("Los datos de la partida en curso")]
-    [SerializeField] private datosJuego datos;
+    [SerializeField] private DatosJuego datos;
 
     public override IEnumerator cambiarEscenaOut(MovimientoPlayer movP)
     {
-        if (ManejadorAudioTransicion != null)
+        if (ManejadorAudioTransicion != null
+            && movP != null
+            && ObjetoPanel != null
+            && PanelAnimator != null
+            && FadeOutClip != null)
         {
             ManejadorAudioTransicion.reproducirAudioTransicion();
-        }
-        if (movP)
-        {
-            movP.EstadoPlayer.Estado = estadoGenerico.transicionando;
-        }
-        if (ObjetoPanel != null
-             && PanelAnimator != null
-             && FadeOutClip != null)
-        {
+            movP.EstadoPlayer.Estado = EstadoGenerico.transicionando;
             ObjetoPanel.SetActive(true);
             PanelAnimator.Play("FadeOut");
             yield return new WaitForSeconds(FadeOutClip.length);
         }
 
-        //Cargar ultimos datos guardados
+        if (EstadoCambioEscena != null)
+        {
+            EstadoCambioEscena.cambieEscenaEjecucion = true;
+        }
 
         foreach (valorString nombre in Escenas)
         {

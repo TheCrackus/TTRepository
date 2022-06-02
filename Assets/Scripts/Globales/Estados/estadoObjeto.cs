@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum estadoGenerico
+public enum EstadoGenerico
 {
     caminando,
     atacando,
@@ -15,10 +15,10 @@ public enum estadoGenerico
     durmiendo
 }
 
-public class estadoObjeto : MonoBehaviour
+public class EstadoObjeto : MonoBehaviour
 {
-    [SerializeField] private estadoGenerico estado;
+    [SerializeField] private EstadoGenerico estado;
 
-    public estadoGenerico Estado { get => estado; set => estado = value; }
+    public EstadoGenerico Estado { get => estado; set => estado = value; }
 
 }

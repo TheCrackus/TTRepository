@@ -36,6 +36,8 @@ TagManager:
   - CanvasInventario
   - CanvasConfiguraciones
   - CanvasEnlaceProfesor
+  - CanvasRecuperacion
+  - CanvasPrueba
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ public class observadorCuartoMazmorraEnemigos : observadorCuartoMazmorra
 
     public void verificaEnemigosActivos() 
     {
-        foreach (enemigo enemigo in Enemigos) 
+        foreach (Enemigo enemigo in Enemigos) 
         {
             if (enemigo.gameObject.activeInHierarchy) 
             {
@@ -38,7 +38,7 @@ public class observadorCuartoMazmorraEnemigos : observadorCuartoMazmorra
     {
         if (colisionDetectada.CompareTag("Player") && !colisionDetectada.isTrigger)
         {
-            foreach (enemigo enemigo in Enemigos)
+            foreach (Enemigo enemigo in Enemigos)
             {
                 cambiarActivacion(enemigo, true);
             }
@@ -56,7 +56,7 @@ public class observadorCuartoMazmorraEnemigos : observadorCuartoMazmorra
     {
         if (colisionDetectada.CompareTag("Player") && !colisionDetectada.isTrigger)
         {
-            foreach (enemigo enemigo in Enemigos)
+            foreach (Enemigo enemigo in Enemigos)
             {
                 cambiarActivacion(enemigo, false);
             }

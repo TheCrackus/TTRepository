@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemigoMele : trepaCielosCorrupto
+public class enemigoMele : TrepaCielosCorrupto
 {
     private AnimationClip atacandoClip;
 
@@ -20,7 +20,7 @@ public class enemigoMele : trepaCielosCorrupto
             ObjetivoPerseguir = GameObject.FindWithTag("Player").transform;
             EnemigoRigidBody = gameObject.GetComponent<Rigidbody2D>();
             EnemigoAnimator = gameObject.GetComponent<Animator>();
-            EstadoEnemigo.Estado = estadoGenerico.ninguno;
+            EstadoEnemigo.Estado = EstadoGenerico.ninguno;
         }
     }
 
@@ -34,7 +34,7 @@ public class enemigoMele : trepaCielosCorrupto
             ObjetivoPerseguir = GameObject.FindWithTag("Player").transform;
             EnemigoRigidBody = gameObject.GetComponent<Rigidbody2D>();
             EnemigoAnimator = gameObject.GetComponent<Animator>();
-            EstadoEnemigo.Estado = estadoGenerico.ninguno;
+            EstadoEnemigo.Estado = EstadoGenerico.ninguno;
             ContadorEsperaMovimiento = TiempoEsperaMovimientoAtaque;
             PuedoMoverme = true;
             foreach (AnimationClip clip in EnemigoAnimator.runtimeAnimatorController.animationClips)
@@ -47,7 +47,7 @@ public class enemigoMele : trepaCielosCorrupto
         }
     }
 
-    public override void gestionDistancias()
+    public override void gestionarDistancias()
     {
         if (ObjetivoPerseguir != null) 
         {
@@ -56,19 +56,19 @@ public class enemigoMele : trepaCielosCorrupto
             {
                 if (EstadoEnemigo != null) 
                 {
-                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
-                        || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                    if (EstadoEnemigo.Estado == EstadoGenerico.caminando
+                        || EstadoEnemigo.Estado == EstadoGenerico.ninguno)
                     {
                         Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position,
                             ObjetivoPerseguir.position,
                             VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         Vector3 refAnimacion = ObjetivoPerseguir.position - vectorTemporal;
-                        cambiaAnimaciones(refAnimacion);
+                        cambiarAnimaciones(refAnimacion);
                         if (EnemigoRigidBody != null) 
                         {
                             EnemigoRigidBody.MovePosition(transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         }
-                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                        EstadoEnemigo.Estado = EstadoGenerico.caminando;
                     }
                 }
             }
@@ -79,11 +79,11 @@ public class enemigoMele : trepaCielosCorrupto
                 {
                     if (EstadoEnemigo != null)
                     {
-                        if (EstadoEnemigo.Estado == estadoGenerico.caminando
-                             || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                        if (EstadoEnemigo.Estado == EstadoGenerico.caminando
+                             || EstadoEnemigo.Estado == EstadoGenerico.ninguno)
                         {
                             manejadorAudioMelee.reproducirAudioMelee();
-                            EstadoEnemigo.Estado = estadoGenerico.atacando;
+                            EstadoEnemigo.Estado = EstadoGenerico.atacando;
                             StartCoroutine(ataca());
                         }
                     }
@@ -108,9 +108,9 @@ public class enemigoMele : trepaCielosCorrupto
         }
         if (EstadoEnemigo != null) 
         {
-            if (EstadoEnemigo.Estado == estadoGenerico.atacando)
+            if (EstadoEnemigo.Estado == EstadoGenerico.atacando)
             {
-                EstadoEnemigo.Estado = estadoGenerico.ninguno;
+                EstadoEnemigo.Estado = EstadoGenerico.ninguno;
             }
         }
     }

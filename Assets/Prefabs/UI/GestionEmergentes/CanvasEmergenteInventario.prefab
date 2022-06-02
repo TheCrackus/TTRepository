@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componenteGraficoPrincipal: {fileID: 6566305881397542348}
-  canvas: {fileID: 7602141823773430981, guid: 6b1797738c2ff4f4eaefd820d08181e8, type: 3}
+  canvasEmergente: {fileID: 7602141823773430981, guid: 6b1797738c2ff4f4eaefd820d08181e8, type: 3}
 --- !u!114 &779015056763922302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,3 +204,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componenteGrafico: {fileID: 6566305881397542338}
+  tagComponenteGrafico: CanvasInventario

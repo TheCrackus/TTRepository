@@ -253,8 +253,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 691230292071827351}
-        m_TargetAssemblyTypeName: ManejadorInventario, Assembly-CSharp
+      - m_Target: {fileID: 5164035958514730303}
+        m_TargetAssemblyTypeName: ManejadorMenuInventario, Assembly-CSharp
         m_MethodName: usarBoton
         m_Mode: 1
         m_Arguments:
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 3473483132427829768}
   - component: {fileID: 2563485430172188262}
   - component: {fileID: 29152335830411066}
-  - component: {fileID: 691230292071827351}
+  - component: {fileID: 5164035958514730303}
   - component: {fileID: 4039686458519808449}
   m_Layer: 5
   m_Name: PanelInventario
@@ -837,7 +837,7 @@ MonoBehaviour:
   contenedorInventario: {fileID: 8794415841288673965}
   textoDescripcionItem: {fileID: 7883475527257155383}
   botonUsarItem: {fileID: 911617627685417061}
---- !u!114 &691230292071827351
+--- !u!114 &5164035958514730303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -846,7 +846,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5209135119608604660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d21c33485c31ec74598d2e965ae533af, type: 3}
+  m_Script: {fileID: 11500000, guid: d677f5ce129ae884bae5ca076e562560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componenteGrafico: {fileID: 29152335830411066}
@@ -1250,7 +1250,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &7602141823773430983
 MonoBehaviour:

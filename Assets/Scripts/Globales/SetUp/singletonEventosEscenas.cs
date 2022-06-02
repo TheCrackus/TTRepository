@@ -11,7 +11,7 @@ public class SingletonEventosEscenas : MonoBehaviour
     [SerializeField] private List<evento> eventos = new List<evento>();
 
     [Header("Los datos guardados localmente del juego")]
-    [SerializeField] private datosJuego datos;
+    [SerializeField] private DatosJuego datos;
 
     private void Awake()
     {
@@ -48,7 +48,7 @@ public class SingletonEventosEscenas : MonoBehaviour
 
     public void reiniciarScriptable() 
     {
-        datos.reiniciaScriptable();
+        datos.reiniciarScriptable();
     }
 
 }

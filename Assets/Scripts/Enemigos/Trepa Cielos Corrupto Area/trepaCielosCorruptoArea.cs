@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trepaCielosCorruptoArea : trepaCielosCorrupto
+public class TrepaCielosCorruptoArea : TrepaCielosCorrupto
 {
     [Header("Limite de persecucion")]
     [SerializeField] private Collider2D perimetro;
 
-    public override void gestionDistancias()
+    public override void gestionarDistancias()
     {
         if (ObjetivoPerseguir != null) 
         {
@@ -17,20 +17,20 @@ public class trepaCielosCorruptoArea : trepaCielosCorrupto
             {
                 if (EstadoEnemigo != null)
                 {
-                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
-                       || EstadoEnemigo.Estado == estadoGenerico.durmiendo
-                       || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                    if (EstadoEnemigo.Estado == EstadoGenerico.caminando
+                       || EstadoEnemigo.Estado == EstadoGenerico.durmiendo
+                       || EstadoEnemigo.Estado == EstadoGenerico.ninguno)
                     {
                         Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position,
                             ObjetivoPerseguir.position,
                             VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         Vector3 refAnimacion = ObjetivoPerseguir.position - vectorTemporal;
-                        cambiaAnimaciones(refAnimacion);
+                        cambiarAnimaciones(refAnimacion);
                         if (EnemigoRigidBody != null)
                         {
                             EnemigoRigidBody.MovePosition(gameObject.transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         }
-                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                        EstadoEnemigo.Estado = EstadoGenerico.caminando;
                         if (EnemigoAnimator != null)
                         {
                             EnemigoAnimator.SetBool("Despertar", true);
@@ -47,20 +47,20 @@ public class trepaCielosCorruptoArea : trepaCielosCorrupto
                     {
                         if (EstadoEnemigo != null)
                         {
-                            if (EstadoEnemigo.Estado == estadoGenerico.caminando
-                               || EstadoEnemigo.Estado == estadoGenerico.durmiendo
-                               || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                            if (EstadoEnemigo.Estado == EstadoGenerico.caminando
+                               || EstadoEnemigo.Estado == EstadoGenerico.durmiendo
+                               || EstadoEnemigo.Estado == EstadoGenerico.ninguno)
                             {
                                 Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position,
                                     PosicionMapa.transform.position,
                                 VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                                 Vector3 refAnimacion = PosicionMapa.transform.position - vectorTemporal;
-                                cambiaAnimaciones(refAnimacion);
+                                cambiarAnimaciones(refAnimacion);
                                 if (EnemigoRigidBody != null)
                                 {
                                     EnemigoRigidBody.MovePosition(gameObject.transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                                 }
-                                EstadoEnemigo.Estado = estadoGenerico.caminando;
+                                EstadoEnemigo.Estado = EstadoGenerico.caminando;
                                 if (EnemigoAnimator != null)
                                 {
                                     EnemigoAnimator.SetBool("Despertar", true);
@@ -76,7 +76,7 @@ public class trepaCielosCorruptoArea : trepaCielosCorrupto
                         }
                         if (EstadoEnemigo != null)
                         {
-                            EstadoEnemigo.Estado = estadoGenerico.durmiendo;
+                            EstadoEnemigo.Estado = EstadoGenerico.durmiendo;
                         }
                     }
                 }

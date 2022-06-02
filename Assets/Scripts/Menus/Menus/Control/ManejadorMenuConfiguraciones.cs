@@ -10,7 +10,7 @@ public class ManejadorMenuConfiguraciones : ManejadorMenuGenerico, IBotonPulso, 
 
     private ComponenteGraficoMenuConfiguracion graficos;
 
-    private bool pausa;
+    private bool condicionPausa;
 
     private bool pulseBoton;
 
@@ -20,7 +20,7 @@ public class ManejadorMenuConfiguraciones : ManejadorMenuGenerico, IBotonPulso, 
     [Header("Nombre de la escena del menu principal")]
     [SerializeField] private valorString nombreEscenaPrincipal;
 
-    public bool CondicionPausa { get => pausa; set => pausa = value; }
+    public bool CondicionPausa { get => condicionPausa; set => condicionPausa = value; }
     public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
     public AudioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
 
@@ -42,7 +42,10 @@ public class ManejadorMenuConfiguraciones : ManejadorMenuGenerico, IBotonPulso, 
             return;
         }
         reproducirAudioClickCerrar();
-        continuarJuego();
+        if (nombreEscenaActual != nombreEscenaPrincipal.valorStringEjecucion)
+        {
+            continuarJuego();
+        }
     }
 
     private void Start()

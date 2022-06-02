@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trepaCielosCorrupto : enemigo
+public class TrepaCielosCorrupto : Enemigo
 {
 
     private Rigidbody2D enemigoRigidBody;
@@ -26,7 +26,7 @@ public class trepaCielosCorrupto : enemigo
     public override void OnEnable()
     {
         base.OnEnable();
-        EstadoEnemigo.Estado = estadoGenerico.durmiendo;
+        EstadoEnemigo.Estado = EstadoGenerico.durmiendo;
         objetivoPerseguir = GameObject.FindWithTag("Player").transform;
         enemigoRigidBody = GetComponent<Rigidbody2D>();
         enemigoAnimator = GetComponent<Animator>();
@@ -36,7 +36,7 @@ public class trepaCielosCorrupto : enemigo
     public override void Start()
     {
         base.Start();
-        EstadoEnemigo.Estado = estadoGenerico.ninguno;
+        EstadoEnemigo.Estado = EstadoGenerico.ninguno;
         objetivoPerseguir = GameObject.FindWithTag("Player").transform;
         enemigoRigidBody = gameObject.GetComponent<Rigidbody2D>();
         enemigoAnimator = gameObject.GetComponent<Animator>();
@@ -47,7 +47,7 @@ public class trepaCielosCorrupto : enemigo
     {
         if (PuedoMoverme)
         {
-            gestionDistancias();
+            gestionarDistancias();
             enemigoRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         else 
@@ -56,7 +56,7 @@ public class trepaCielosCorrupto : enemigo
         }
     }
 
-    public virtual void gestionDistancias()
+    public virtual void gestionarDistancias()
     {
         if (objetivoPerseguir != null) 
         {
@@ -65,20 +65,20 @@ public class trepaCielosCorrupto : enemigo
             {
                 if (EstadoEnemigo != null) 
                 {
-                    if (EstadoEnemigo.Estado == estadoGenerico.caminando
-                        || EstadoEnemigo.Estado == estadoGenerico.durmiendo
-                        || EstadoEnemigo.Estado == estadoGenerico.ninguno)
+                    if (EstadoEnemigo.Estado == EstadoGenerico.caminando
+                        || EstadoEnemigo.Estado == EstadoGenerico.durmiendo
+                        || EstadoEnemigo.Estado == EstadoGenerico.ninguno)
                     {
                         Vector3 vectorTemporal = Vector3.MoveTowards(gameObject.transform.position,
                             objetivoPerseguir.position,
                             VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         Vector3 refAnimacion = objetivoPerseguir.position - vectorTemporal;
-                        cambiaAnimaciones(refAnimacion);
+                        cambiarAnimaciones(refAnimacion);
                         if (enemigoRigidBody != null) 
                         {
                             enemigoRigidBody.MovePosition(transform.position + refAnimacion.normalized * VelocidadMovimientoEnemigo * Time.fixedDeltaTime);
                         }
-                        EstadoEnemigo.Estado = estadoGenerico.caminando;
+                        EstadoEnemigo.Estado = EstadoGenerico.caminando;
                         if (enemigoAnimator != null) 
                         {
                             enemigoAnimator.SetBool("Despertar", true);
@@ -96,32 +96,32 @@ public class trepaCielosCorrupto : enemigo
                     }
                     if (EstadoEnemigo != null)
                     {
-                        EstadoEnemigo.Estado = estadoGenerico.durmiendo;
+                        EstadoEnemigo.Estado = EstadoGenerico.durmiendo;
                     }
                 }
             }
         }
     }
 
-    private void enviaAnimacion(Vector2 vector) 
+    private void verificarAnimacion(Vector2 vector) 
     {
         enemigoAnimator.SetFloat("MoviminetoX", vector.x);
         enemigoAnimator.SetFloat("MovimientoY", vector.y);
     }
 
-    public void cambiaAnimaciones(Vector2 vectorMovimiento) 
+    public void cambiarAnimaciones(Vector2 vectorMovimiento) 
     {
         if (Mathf.Abs(vectorMovimiento.x) > Mathf.Abs(vectorMovimiento.y))
         {
             if (vectorMovimiento.x > 0)
             {
-                enviaAnimacion(Vector2.right);
+                verificarAnimacion(Vector2.right);
             }
             else 
             {
                 if (vectorMovimiento.x < 0) 
                 {
-                    enviaAnimacion(Vector2.left);
+                    verificarAnimacion(Vector2.left);
                 }
             }
         }
@@ -131,13 +131,13 @@ public class trepaCielosCorrupto : enemigo
             {
                 if (vectorMovimiento.y > 0)
                 {
-                    enviaAnimacion(Vector2.up);
+                    verificarAnimacion(Vector2.up);
                 }
                 else
                 {
                     if (vectorMovimiento.y < 0)
                     {
-                        enviaAnimacion(Vector2.down);
+                        verificarAnimacion(Vector2.down);
                     }
                 }
             }

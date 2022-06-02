@@ -1,17 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class ManejadorFormularioLogIn : ManejadorFormulario, ICanvasFormularioRegistro, ICanvasFormularioEnlaceProfesor
+public class ManejadorFormularioLogIn : ManejadorFormulario, ICanvasFormularioRegistro, ICanvasFormularioEnlaceProfesor, ICanvasFormularioRecuperacionContraseña
 {
 
-    private ComponenteGraficoLogIn graficos;
+    private ComponenteGraficoFormularioLogIn graficos;
 
     [Header("Nombre de la escena con el menu principal")]
     [SerializeField] private valorString escenaMenuPrincipal;
 
     void Start()
     {
-        graficos = (ComponenteGraficoLogIn)ComponenteGrafico;
+        graficos = (ComponenteGraficoFormularioLogIn)ComponenteGrafico;
         reiniciarBotones();
         if (Conexion.MiUsuario.datosEjecucion.idJugador != 0)
         {
@@ -52,6 +52,17 @@ public class ManejadorFormularioLogIn : ManejadorFormulario, ICanvasFormularioRe
         }
     }
 
+    public void recuperarContraseñaBoton() 
+    {
+        if (!PulseBoton) 
+        {
+            ManejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
+            iniciarCanvasFormularioRecuperacionContraseña();
+            bloquearBotones();
+            cerrarGrafico();
+        }
+    }
+
     public void comprobarEstadoEnlaceProfesor(string dato) 
     {
         if (dato == "False")
@@ -81,7 +92,7 @@ public class ManejadorFormularioLogIn : ManejadorFormulario, ICanvasFormularioRe
         {
             if (Conexion.EstadoActualConexion == estadoConexion.falleIniciarSesionConexion)
             {
-                ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Fallo de conexión...");
+                ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Fallo de conexión, comprueba el estado de tu red de internet.");
                 yield return new WaitForSeconds(1f);
                 Conexion.EstadoActualConexion = estadoConexion.ninguno;
             }
@@ -92,11 +103,11 @@ public class ManejadorFormularioLogIn : ManejadorFormulario, ICanvasFormularioRe
                     if (Conexion.RespuestaServidor == "NO VERIFICADO")
                     {
                         ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Tu usuario no está verificado, por favor, " +
-                            "verifica tu cuenta ingresando al correo electrónico registrado...");
+                            "verifica tu cuenta ingresando al correo electrónico registrado.");
                     }
                     else 
                     {
-                        ManejadorVentanaEmergente.enviarTextoVentanaEmergente("El usuario no existe...");
+                        ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Los datos ingresados no pertenecen a ninguna cuenta registrada en el sistema.");
                     }
                     yield return new WaitForSeconds(1f);
                     Conexion.EstadoActualConexion = estadoConexion.ninguno;
@@ -119,6 +130,14 @@ public class ManejadorFormularioLogIn : ManejadorFormulario, ICanvasFormularioRe
         if (!GameObject.FindGameObjectWithTag("CanvasEnlaceProfesor"))
         {
             Instantiate(graficos.CanvasFormularioEnlaceProfesor, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    public void iniciarCanvasFormularioRecuperacionContraseña()
+    {
+        if (!GameObject.FindGameObjectWithTag("CanvasRecuperacion"))
+        {
+            Instantiate(graficos.CanvasFormularioRecuperacionContraseña, Vector3.zero, Quaternion.identity);
         }
     }
 }
