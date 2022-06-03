@@ -16,7 +16,7 @@ public class ManejadorPiezas : MonoBehaviour
     [SerializeField] private Evento verificaPiezas;
 
     [Header("Manejador de audio de las piezas")]
-    [SerializeField] private audioPieza manejadorAudioPieza;
+    [SerializeField] private AudioPieza manejadorAudioPieza;
 
     public bool EstoyPosicionCorrecta { get => estoyPosicionCorrecta; set => estoyPosicionCorrecta = value; }
     public bool EstoySeleccionada { get => estoySeleccionada; set => estoySeleccionada = value; }

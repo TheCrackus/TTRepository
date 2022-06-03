@@ -17,7 +17,7 @@ public class Interruptor : MonoBehaviour
     [SerializeField] private puertaInterruptor puertaAbrir;
 
     [Header("Manejador audio de activacion")]
-    [SerializeField] private audioActivacion manejadorAudioActivacion;
+    [SerializeField] private AudioActivacion manejadorAudioActivacion;
 
     void Awake()
     {

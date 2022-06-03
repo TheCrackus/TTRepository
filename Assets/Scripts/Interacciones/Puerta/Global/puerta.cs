@@ -16,7 +16,7 @@ public class puerta : Interactuador
     [SerializeField] private ListaInventario inventarioPlayerItems;
 
     [Header("Manejador de audio de la puesta")]
-    [SerializeField] private audioPuerta manejadorAudioPuerta;
+    [SerializeField] private AudioPuerta manejadorAudioPuerta;
 
     [Header("Manejador de audio de los dialogos")]
     [SerializeField] private AudioDialogos manejadorAudioDialogos;
@@ -25,7 +25,7 @@ public class puerta : Interactuador
     public SpriteRenderer PuertaSpriteRenderer { get => puertaSpriteRenderer; set => puertaSpriteRenderer = value; }
     public BoxCollider2D[] PuertaColliders { get => puertaColliders; set => puertaColliders = value; }
     public ValorBooleano EstaAbierta { get => estaAbierta; set => estaAbierta = value; }
-    public audioPuerta ManejadorAudioPuerta { get => manejadorAudioPuerta; set => manejadorAudioPuerta = value; }
+    public AudioPuerta ManejadorAudioPuerta { get => manejadorAudioPuerta; set => manejadorAudioPuerta = value; }
     public AudioDialogos ManejadorAudioDialogos { get => manejadorAudioDialogos; set => manejadorAudioDialogos = value; }
 
     public virtual void Awake() 

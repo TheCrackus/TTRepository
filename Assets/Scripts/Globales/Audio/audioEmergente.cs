@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioEmergente : MonoBehaviour
+public class AudioEmergente : MonoBehaviour
 {
     [Header("Audio generico")]
     [SerializeField] private AudioSource audioReproducir;
 
-    public void reproduceAudioClick()
+    public void reproducirAudio()
     {
         if (audioReproducir)
         {
-            StartCoroutine(reproduce());
+            StartCoroutine(reproducir());
         }
     }
 
-    private IEnumerator reproduce() 
+    private IEnumerator reproducir() 
     {
         audioReproducir.Play();
         yield return new WaitForSeconds(audioReproducir.clip.length);

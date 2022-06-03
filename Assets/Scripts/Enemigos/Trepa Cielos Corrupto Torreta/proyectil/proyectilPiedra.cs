@@ -6,7 +6,7 @@ public class ProyectilPiedra : Proyectil
 {
 
     [Header("Manejador de audio al impactar")]
-    [SerializeField] private audioProyectilRomper manejadorAudioProyectilRomper;
+    [SerializeField] private AudioProyectilRomper manejadorAudioProyectilRomper;
 
     private void OnTriggerEnter2D(Collider2D colisionDetectada)
     {

@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class interaccionesEmpujeGlobales : MonoBehaviour
+public class InteraccionesEmpujeGlobales : MonoBehaviour
 {
 
     [Header("Fuerza de empuje al objetivo")]
     [SerializeField] private float fuerza;
+
     [Header("Tiempo en el que la fuerza sera aplicada")]
     [SerializeField] private float tiempoAplicarFuerza;
+
     [Header("El objetivo para aplicar un empuje")]
     [SerializeField] private string colisionDetectadaTag;
 

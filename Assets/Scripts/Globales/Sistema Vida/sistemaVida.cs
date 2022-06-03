@@ -41,16 +41,16 @@ public class SistemaVida : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteObjeto;
 
     [Header("Manejador de audio al recibir daño")]
-    [SerializeField] private audioReciveGolpe manejadorAudioRecibeGolpe;
+    [SerializeField] private AudioReciveGolpe manejadorAudioRecibeGolpe;
 
     [Header("Manejador de audio al morir")]
-    [SerializeField] private audioEfectoMuerte manejadorAudioEfectoMuerte;
+    [SerializeField] private AudioEfectoMuerte manejadorAudioEfectoMuerte;
 
     public ValorFlotante VidaObjeto { get => vidaObjeto; set => vidaObjeto = value; }
     public float VidaActualObjeto { get => vidaActualObjeto; set => vidaActualObjeto = value; }
     public GameObject Objeto { get => objeto; set => objeto = value; }
-    public audioReciveGolpe ManejadorAudioRecibeGolpe { get => manejadorAudioRecibeGolpe; set => manejadorAudioRecibeGolpe = value; }
-    public audioEfectoMuerte ManejadorAudioEfectoMuerte { get => manejadorAudioEfectoMuerte; set => manejadorAudioEfectoMuerte = value; }
+    public AudioReciveGolpe ManejadorAudioRecibeGolpe { get => manejadorAudioRecibeGolpe; set => manejadorAudioRecibeGolpe = value; }
+    public AudioEfectoMuerte ManejadorAudioEfectoMuerte { get => manejadorAudioEfectoMuerte; set => manejadorAudioEfectoMuerte = value; }
 
     public virtual void OnEnable()
     {

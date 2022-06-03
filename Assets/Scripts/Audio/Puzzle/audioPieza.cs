@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioPieza : SistemaAudio
+public class AudioPieza : SistemaAudio
 {
 
     [Header("Audio al soltar una pieza del puzzle")]

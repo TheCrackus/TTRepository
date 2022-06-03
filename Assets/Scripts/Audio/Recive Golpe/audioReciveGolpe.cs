@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioReciveGolpe : SistemaAudio
+public class AudioReciveGolpe : SistemaAudio
 {
 
     [Header("Audio al recibir daño")]

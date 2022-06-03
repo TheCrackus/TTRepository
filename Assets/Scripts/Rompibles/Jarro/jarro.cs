@@ -13,7 +13,7 @@ public class Jarro : MonoBehaviour
     [SerializeField] private TablaLoot loot;
 
     [Header("Manejador de audio rompibles")]
-    [SerializeField] private audioRompible manejadorAudioRompible;
+    [SerializeField] private AudioRompible manejadorAudioRompible;
 
     private void Start()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioProyectilRomper : SistemaAudio
+public class AudioProyectilRomper : SistemaAudio
 {
 
     [Header("Audio arroja proyectil")]

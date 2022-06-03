@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioEfectoMuerte : SistemaAudio
+public class AudioEfectoMuerte : SistemaAudio
 {
 
     [Header("Audio de efecto de muerte")]

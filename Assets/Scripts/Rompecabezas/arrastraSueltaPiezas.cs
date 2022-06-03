@@ -20,7 +20,7 @@ public class ArrastraSueltaPiezas : MonoBehaviour
     [SerializeField] private List<Evento> eventosPuzzle = new List<Evento>();
 
     [Header("Manejador de audio del puzle")]
-    [SerializeField] private audioPuzzle manejadorAudioPuzzle;
+    [SerializeField] private AudioPuzzle manejadorAudioPuzzle;
 
     private void Start()
     {

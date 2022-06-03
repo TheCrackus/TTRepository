@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioRompible : SistemaAudio
+public class AudioRompible : SistemaAudio
 {
 
     [Header("Audio cuando se rompe el objeto")]

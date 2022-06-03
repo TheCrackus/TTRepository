@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemigoMele : TrepaCielosCorrupto
+public class EnemigoMele : TrepaCielosCorrupto
 {
     private AnimationClip atacandoClip;
 

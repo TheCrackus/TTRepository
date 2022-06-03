@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioPuerta : SistemaAudio
+public class AudioPuerta : SistemaAudio
 {
     [Header("Audio al abrir puerta")]
     [SerializeField] private AudioSource audioAbrirPuerta;

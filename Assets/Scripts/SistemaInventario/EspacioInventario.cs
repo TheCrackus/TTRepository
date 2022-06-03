@@ -31,10 +31,10 @@ public class EspacioInventario : MonoBehaviour
     {
         if (audio)
         {
-            audioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<audioEmergente>();
+            AudioEmergente audioEmergenteTemp = Instantiate(audioEmergente, gameObject.transform.position, Quaternion.identity).GetComponent<AudioEmergente>();
             audioEmergenteTemp.GetComponent<AudioSource>().clip = audio.clip;
             audioEmergenteTemp.GetComponent<AudioSource>().pitch = velocidad;
-            audioEmergenteTemp.reproduceAudioClick();
+            audioEmergenteTemp.reproducirAudio();
         }
     }
 
