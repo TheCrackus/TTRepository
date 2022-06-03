@@ -12,7 +12,7 @@ public class puertaEvento : puerta
     [SerializeField] private string dialogoNegativo;
 
     [Header("Items que representan las piezas del puzzle")]
-    [SerializeField] private inventarioItem[] piezas;
+    [SerializeField] private InventarioItem[] piezas;
 
     [Header("Objeto para la transicion al evento")]
     [SerializeField] private MoverEscena manejadorMoverEscena;
@@ -26,9 +26,9 @@ public class puertaEvento : puerta
                 if (InventarioPlayerItems && piezas != null && piezas.Length > 0)
                 {
                     iniciarCanvas();
-                    foreach (inventarioItem itemLoop in piezas)
+                    foreach (InventarioItem itemLoop in piezas)
                     {
-                        if (InventarioPlayerItems.verififcaItem(itemLoop))
+                        if (InventarioPlayerItems.verififcarItem(itemLoop))
                         {
                             continue;
                         }

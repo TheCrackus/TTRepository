@@ -10,10 +10,10 @@ public class puerta : Interactuador
     private BoxCollider2D[] puertaColliders;
 
     [Header("Estoy abierta?")]
-    [SerializeField] valorBooleano estaAbierta;
+    [SerializeField] ValorBooleano estaAbierta;
 
     [Header("El inventario general del Player")]
-    [SerializeField] private listaInventario inventarioPlayerItems;
+    [SerializeField] private ListaInventario inventarioPlayerItems;
 
     [Header("Manejador de audio de la puesta")]
     [SerializeField] private audioPuerta manejadorAudioPuerta;
@@ -21,10 +21,10 @@ public class puerta : Interactuador
     [Header("Manejador de audio de los dialogos")]
     [SerializeField] private AudioDialogos manejadorAudioDialogos;
 
-    public listaInventario InventarioPlayerItems { get => inventarioPlayerItems; set => inventarioPlayerItems = value; }
+    public ListaInventario InventarioPlayerItems { get => inventarioPlayerItems; set => inventarioPlayerItems = value; }
     public SpriteRenderer PuertaSpriteRenderer { get => puertaSpriteRenderer; set => puertaSpriteRenderer = value; }
     public BoxCollider2D[] PuertaColliders { get => puertaColliders; set => puertaColliders = value; }
-    public valorBooleano EstaAbierta { get => estaAbierta; set => estaAbierta = value; }
+    public ValorBooleano EstaAbierta { get => estaAbierta; set => estaAbierta = value; }
     public audioPuerta ManejadorAudioPuerta { get => manejadorAudioPuerta; set => manejadorAudioPuerta = value; }
     public AudioDialogos ManejadorAudioDialogos { get => manejadorAudioDialogos; set => manejadorAudioDialogos = value; }
 

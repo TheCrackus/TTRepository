@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventariopPlayerItems: {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
   itemAgrgarInventario: {fileID: 11400000, guid: 3332e602f647c0a4eaf07c254cb5d507, type: 2}
+  manejadorAudioObjetoMapa: {fileID: 2570509700863537616}
 --- !u!114 &2570509700863537616
 MonoBehaviour:
   m_ObjectHideFlags: 0

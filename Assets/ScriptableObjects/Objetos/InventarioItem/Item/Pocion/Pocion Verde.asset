@@ -23,8 +23,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000}
-        m_TargetAssemblyTypeName: inventarioItem, Assembly-CSharp
-        m_MethodName: disminuyeCantidadItem
+        m_TargetAssemblyTypeName: InventarioItem, Assembly-CSharp
+        m_MethodName: disminuirCantidadItem
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35,8 +35,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6157673446696219211, guid: 3f45e1e28f615bc4baf7519e72fa7666, type: 3}
-        m_TargetAssemblyTypeName: interaccionMagia, Assembly-CSharp
-        m_MethodName: Usa
+        m_TargetAssemblyTypeName: InteraccionMagia, Assembly-CSharp
+        m_MethodName: usar
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

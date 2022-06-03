@@ -9,24 +9,24 @@ public class MoverEscena : Transicion
 {
 
     [Header("Nombre del objeto que termina una transicion en otra escena")]
-    [SerializeField] private valorString nombreTransicionDestino;
+    [SerializeField] private ValorString nombreTransicionDestino;
 
     [Header("Nombre del objeto que comienza una transicion")]
-    [SerializeField] private valorString nombreTransicionActual;
+    [SerializeField] private ValorString nombreTransicionActual;
 
     [Header("Estado actual de la escena")]
-    [SerializeField] private cambioEscena estadoCambioEscena;
+    [SerializeField] private CambioEscena estadoCambioEscena;
 
     [Header("Escena destino")]
-    [SerializeField] private valorString escenaCarga;
+    [SerializeField] private ValorString escenaCarga;
 
     [Header("Nueva posicion Player")]
     [SerializeField] private Vector3 nuevaPosicionPlayer;
 
-    public valorString NombreTransicionDestino { get => nombreTransicionDestino; set => nombreTransicionDestino = value; }
-    public valorString NombreTransicionActual { get => nombreTransicionActual; set => nombreTransicionActual = value; }
-    public cambioEscena EstadoCambioEscena { get => estadoCambioEscena; set => estadoCambioEscena = value; }
-    public valorString EscenaCarga { get => escenaCarga; set => escenaCarga = value; }
+    public ValorString NombreTransicionDestino { get => nombreTransicionDestino; set => nombreTransicionDestino = value; }
+    public ValorString NombreTransicionActual { get => nombreTransicionActual; set => nombreTransicionActual = value; }
+    public CambioEscena EstadoCambioEscena { get => estadoCambioEscena; set => estadoCambioEscena = value; }
+    public ValorString EscenaCarga { get => escenaCarga; set => escenaCarga = value; }
     public Vector3 NuevaPosicionPlayer { get => nuevaPosicionPlayer; set => nuevaPosicionPlayer = value; }
 
     public virtual void Awake()
@@ -57,20 +57,20 @@ public class MoverEscena : Transicion
         {
             if (ContadorRegresivoInicia != null)
             {
-                ContadorRegresivoInicia.invocaFunciones();
+                ContadorRegresivoInicia.invocarFunciones();
             }
             if (ContadorRegresivoDeten != null)
             {
-                ContadorRegresivoDeten.invocaFunciones();
+                ContadorRegresivoDeten.invocarFunciones();
             }
             if (estadoCambioEscena != null)
             {
                 estadoCambioEscena.pausoContadorEjecucion = true;
             }
             EscenaActual.valorStringEjecucion = SceneManager.GetActiveScene().name;
-            manejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<manejadorContador>();
+            ManejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<ManejadorContador>();
             MoverEscena moverE = manejadorC.GetComponent<MoverEscena>();
-            foreach (valorString nombre in Escenas)
+            foreach (ValorString nombre in Escenas)
             {
                 if (nombre.valorStringEjecucion == EscenaActual.valorStringEjecucion)
                 {
@@ -87,7 +87,7 @@ public class MoverEscena : Transicion
             {
                 if (ContadorRegresivoDeten != null)
                 {
-                    ContadorRegresivoDeten.invocaFunciones();
+                    ContadorRegresivoDeten.invocarFunciones();
                 }
                 if (estadoCambioEscena != null)
                 {
@@ -100,7 +100,7 @@ public class MoverEscena : Transicion
                 {
                     if (ContadorRegresivoReinicia != null)
                     {
-                        ContadorRegresivoReinicia.invocaFunciones();
+                        ContadorRegresivoReinicia.invocarFunciones();
                     }
                 }
             }
@@ -138,7 +138,7 @@ public class MoverEscena : Transicion
             {
                 if (ContadorRegresivoInicia != null)
                 {
-                    ContadorRegresivoInicia.invocaFunciones();
+                    ContadorRegresivoInicia.invocarFunciones();
                 }
                 estadoCambioEscena.pausoContadorEjecucion = false;
             }

@@ -331,8 +331,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1788287427}
   - component: {fileID: 1788287428}
+  - component: {fileID: 142310559881329051}
   - component: {fileID: 8090430838630391743}
-  - component: {fileID: 1162589193620620343}
   m_Layer: 5
   m_Name: BarraMagia
   m_TagString: Untagged
@@ -413,6 +413,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &142310559881329051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788287426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6f077aa2579fc4684acfe32bb0d1d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componenteGraficoPrincipal: {fileID: 1788287426}
+  barraMagica: {fileID: 1788287428}
 --- !u!114 &8090430838630391743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,37 +439,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6e71505b691bc45aff3f865757b441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barraMagica: {fileID: 1788287428}
+  componenteGrafico: {fileID: 142310559881329051}
   magiaPlayer: {fileID: 11400000, guid: 63f122bcfafa86641a2fe8205c8309df, type: 2}
   magiaPlayerMaxima: {fileID: 11400000, guid: 9f208d0e2a3b02f439f3f2e2d51ee238, type: 2}
---- !u!114 &1162589193620620343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788287426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6df20e97a9e711f498f733c5bba0e40c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  evento: {fileID: 11400000, guid: b06e932502f2e19428ce95955cf150d7, type: 2}
-  eventoUnity:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8090430838630391743}
-        m_TargetAssemblyTypeName: manejadorBarraMagica, Assembly-CSharp
-        m_MethodName: actualizaMagia
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &2016617358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,6 +1109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7069483465467818642}
   - component: {fileID: 7069483465467818653}
+  - component: {fileID: 4129671077068996902}
   - component: {fileID: 7069483465467818652}
   m_Layer: 5
   m_Name: ContenedorCorazon
@@ -1181,6 +1168,28 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &4129671077068996902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7069483465467818643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d662ae29322d841991f56296ad4c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componenteGraficoPrincipal: {fileID: 7069483465467818643}
+  imagenesCorazones:
+  - {fileID: 8465310479936733705}
+  - {fileID: 8465310480238267998}
+  - {fileID: 8465310480517732402}
+  - {fileID: 8465310479900353919}
+  - {fileID: 8465310478795053311}
+  corazonLleno: {fileID: -4430392651179603617, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
+  corazonMitad: {fileID: -3276687688264177478, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
+  corazonVacio: {fileID: -9053378900703536071, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
 --- !u!114 &7069483465467818652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1193,15 +1202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676d68cd2e6d5e94f8146b719b7ffc2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagenesCorazones:
-  - {fileID: 8465310479936733705}
-  - {fileID: 8465310480238267998}
-  - {fileID: 8465310480517732402}
-  - {fileID: 8465310479900353919}
-  - {fileID: 8465310478795053311}
-  corazonLleno: {fileID: -4430392651179603617, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
-  corazonMitad: {fileID: -3276687688264177478, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
-  corazonVacio: {fileID: -9053378900703536071, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
+  componenteGrafico: {fileID: 4129671077068996902}
   contenedorCorazonesMaximos: {fileID: 11400000, guid: 6ea0953e838e11049865526c4e5295c5, type: 2}
   vidaActualPlayer: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
 --- !u!1 &7069483466297343947
@@ -1216,6 +1217,7 @@ GameObject:
   - component: {fileID: 7069483466297343959}
   - component: {fileID: 7069483466297343956}
   - component: {fileID: 2256596301218717566}
+  - component: {fileID: 8518370860201993978}
   - component: {fileID: 7069483466297343957}
   - component: {fileID: 3426469087832018134}
   - component: {fileID: 1813335038093871309}
@@ -1264,8 +1266,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7069483466297343957}
-        m_TargetAssemblyTypeName: manejadorContador, Assembly-CSharp
-        m_MethodName: detenContadorRegresivo
+        m_TargetAssemblyTypeName: ManejadorContador, Assembly-CSharp
+        m_MethodName: detenerContadorRegresivo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1292,8 +1294,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7069483466297343957}
-        m_TargetAssemblyTypeName: manejadorContador, Assembly-CSharp
-        m_MethodName: iniciaContadorRegresivo
+        m_TargetAssemblyTypeName: ManejadorContador, Assembly-CSharp
+        m_MethodName: iniciarContadorRegresivo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1320,8 +1322,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7069483466297343957}
-        m_TargetAssemblyTypeName: manejadorContador, Assembly-CSharp
-        m_MethodName: reiniciaContadorRegresivo
+        m_TargetAssemblyTypeName: ManejadorContador, Assembly-CSharp
+        m_MethodName: reiniciarContadorRegresivo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1331,6 +1333,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8518370860201993978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7069483466297343947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b70b28742285ee45a7e21137214c127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componenteGraficoPrincipal: {fileID: 7069483466297343947}
+  objetoTextoContador: {fileID: 452290654}
+  textoContador: {fileID: 3684299622989514216}
 --- !u!114 &7069483466297343957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,9 +1360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91d2e1442b2b0c4c9fd00416c1fd472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componenteGrafico: {fileID: 8518370860201993978}
   tiempoContadorRegresivo: {fileID: 11400000, guid: a890ff1de22c78e4bbdbc7a399e8f30c, type: 2}
-  objetoTextoContador: {fileID: 452290654}
-  textoContador: {fileID: 3684299622989514216}
   transicion: {fileID: 3426469087832018134}
   cuentaTimerRegresivo: {fileID: 11400000, guid: d14a2a0f90837f04caa3fb1e02bfc554, type: 2}
 --- !u!114 &3426469087832018134
@@ -1410,6 +1426,7 @@ GameObject:
   - component: {fileID: 7069483466614864210}
   - component: {fileID: 7069483466614864220}
   - component: {fileID: 7069483466614864223}
+  - component: {fileID: 2133989020268615584}
   m_Layer: 5
   m_Name: ContenedorEstadisticasPlayer
   m_TagString: Untagged
@@ -1463,8 +1480,36 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7069483465467818652}
-        m_TargetAssemblyTypeName: manejadorCorazones, Assembly-CSharp
-        m_MethodName: actualizaCorazones
+        m_TargetAssemblyTypeName: ManejadorCorazones, Assembly-CSharp
+        m_MethodName: actualizarCorazones
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2133989020268615584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7069483466614864211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df20e97a9e711f498f733c5bba0e40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evento: {fileID: 11400000, guid: b06e932502f2e19428ce95955cf150d7, type: 2}
+  eventoUnity:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8090430838630391743}
+        m_TargetAssemblyTypeName: ManejadorBarraMagica, Assembly-CSharp
+        m_MethodName: actualizarMagia
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

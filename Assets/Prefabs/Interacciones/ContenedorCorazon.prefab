@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventoIncrementoEstadistica: {fileID: 11400000, guid: ea1b00a7cd78273419b168b303342e10, type: 2}
+  manejadorAudioObjetoMapa: {fileID: 8798019430503091586}
   corazonesMaximos: {fileID: 11400000, guid: 6ea0953e838e11049865526c4e5295c5, type: 2}
   vidaActualPlayer: {fileID: 11400000, guid: d7eebcf89935be14390122861195d6e9, type: 2}
   contenedorCorazonObtenido: {fileID: 0}

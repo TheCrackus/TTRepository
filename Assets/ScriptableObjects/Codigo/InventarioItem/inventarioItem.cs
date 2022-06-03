@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
 [CreateAssetMenu(fileName = "Nuevo Item", menuName = "Inventario/Item")]
-public class inventarioItem : ScriptableObject
+public class InventarioItem : ScriptableObject
 {
     [Header("El nombre del objeto en el inventario")]
     public string nombreItem;
@@ -24,12 +22,12 @@ public class inventarioItem : ScriptableObject
     [Header("Evento que permite utilizar un item")]
     public UnityEvent eventoUsaItem;
 
-    public void invocaEventoUsaItem() 
+    public void invocarEventoUsaItem() 
     {
         eventoUsaItem.Invoke();
     }
 
-    public void disminuyeCantidadItem(int decremento) 
+    public void disminuirCantidadItem(int decremento) 
     {
         cantidadItem -= decremento;
         if (cantidadItem <= 0)
@@ -38,7 +36,7 @@ public class inventarioItem : ScriptableObject
         }
     }
 
-    public void reiniciaValores()
+    public void reiniciarValores()
     {
         cantidadItem = 0;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class vidaTrepaCielos : SistemaVida
 {
     [Header("Evento para cuartos con enemigos (abre puerta)")]
-    [SerializeField] private evento estadoEnemigosCuarto;
+    [SerializeField] private Evento estadoEnemigosCuarto;
 
     public override void quitarVida(float vidaMenos)
     {
@@ -14,7 +14,7 @@ public class vidaTrepaCielos : SistemaVida
         {
             if (estadoEnemigosCuarto)
             {
-                estadoEnemigosCuarto.invocaFunciones();
+                estadoEnemigosCuarto.invocarFunciones();
             }
         }
     }

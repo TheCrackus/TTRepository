@@ -11,40 +11,40 @@ public class ManejadorEscenas : MonoBehaviour
     private PlayableDirector cinematicaInicial;
 
     [Header("Posicion del Player en el mapa")]
-    [SerializeField] private valorVectorial posicionPlayer;
+    [SerializeField] private ValorVectorial posicionPlayer;
 
     [Header("Objeto que contiene la informacion del juego en ejecucion")]
-    [SerializeField] private cambioEscena estadoCambioEscena;
+    [SerializeField] private CambioEscena estadoCambioEscena;
 
     [Header("Objeto que contiene las cinematicas")]
     [SerializeField] private GameObject[] contenedoresCinematicas;
 
     [Header("Empezo nueva partida?")]
-    [SerializeField] private valorBooleano empezoPartida;
+    [SerializeField] private ValorBooleano empezoPartida;
 
     [Header("Nombre escena de laberintos")]
-    [SerializeField] private valorString nombreEscenaLaberintos;
+    [SerializeField] private ValorString nombreEscenaLaberintos;
 
     [Header("Nombre escena de mazmorra")]
-    [SerializeField] private valorString nombreEscenaMazmorra;
+    [SerializeField] private ValorString nombreEscenaMazmorra;
 
     [Header("Nombre escena de puzzle")]
-    [SerializeField] private valorString nombreEscenaPuzzle;
+    [SerializeField] private ValorString nombreEscenaPuzzle;
 
     [Header("Nombre escena de jefe final")]
-    [SerializeField] private valorString nombreEscenaJefeFinal;
+    [SerializeField] private ValorString nombreEscenaJefeFinal;
 
     [Header("Nombre escena de casa 1")]
-    [SerializeField] private valorString nombreEscenaCasa1;
+    [SerializeField] private ValorString nombreEscenaCasa1;
 
     [Header("Nombre escena de Log In")]
-    [SerializeField] private valorString nombreEscenaLogIn;
+    [SerializeField] private ValorString nombreEscenaLogIn;
 
     [Header("Nombre escena principal")]
-    [SerializeField] private valorString nombreEscenaPrincipal;
+    [SerializeField] private ValorString nombreEscenaPrincipal;
 
     [Header("La escena actual en ejecucion")]
-    [SerializeField] valorString escenaActual;
+    [SerializeField] ValorString escenaActual;
 
     [Header("Objeto Singleton")]
     [SerializeField] private GameObject singleton;

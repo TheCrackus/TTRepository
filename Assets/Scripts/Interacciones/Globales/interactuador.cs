@@ -13,7 +13,7 @@ public class Interactuador : MonoBehaviour
     private TextMeshProUGUI textoDialogos;
 
     [Header("Evento que activa un simbolo")]
-    [SerializeField] private evento simboloActivoDesactivo;
+    [SerializeField] private Evento simboloActivoDesactivo;
 
     [Header("Interactua?")]
     [SerializeField] private bool playerEnRango;
@@ -23,7 +23,7 @@ public class Interactuador : MonoBehaviour
 
     public GameObject ContenedorTextoDialogos { get => contenedorTextoDialogos; set => contenedorTextoDialogos = value; }
     public TextMeshProUGUI TextoDialogos { get => textoDialogos; set => textoDialogos = value; }
-    public evento SimboloActivoDesactivo { get => simboloActivoDesactivo; set => simboloActivoDesactivo = value; }
+    public Evento SimboloActivoDesactivo { get => simboloActivoDesactivo; set => simboloActivoDesactivo = value; }
     public bool PlayerEnRango { get => playerEnRango; set => playerEnRango = value; }
     public GameObject NCanvas { get => nCanvas; set => nCanvas = value; }
 
@@ -49,7 +49,7 @@ public class Interactuador : MonoBehaviour
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            simboloActivoDesactivo.invocaFunciones();
+            simboloActivoDesactivo.invocarFunciones();
             playerEnRango = true;
         }
     }
@@ -59,7 +59,7 @@ public class Interactuador : MonoBehaviour
         if (colisionDetectada.CompareTag("Player")
             && !colisionDetectada.isTrigger)
         {
-            simboloActivoDesactivo.invocaFunciones();
+            simboloActivoDesactivo.invocarFunciones();
             playerEnRango = false;
         }
     }

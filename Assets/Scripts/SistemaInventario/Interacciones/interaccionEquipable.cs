@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class interaccionEquipable : MonoBehaviour
+public class InteraccionEquipable : MonoBehaviour
 {
 
     [Header("El inventario general del Player")]
-    [SerializeField] private listaInventario inventariopPlayerItems;
+    [SerializeField] private ListaInventario inventariopPlayerItems;
     [Header("Objeto que se equipara")]
-    [SerializeField] private inventarioItem objetoEquipar;
+    [SerializeField] private InventarioItem objetoEquipar;
 
-    public void equipa() 
+    public void equipar() 
     {
         if (inventariopPlayerItems && objetoEquipar) 
         {

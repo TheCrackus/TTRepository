@@ -1,24 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class loot 
+public class Loot
 {
-    public incrementoEstadisticas miLoot;
+    public IncrementoEstadisticas miLoot;
     public int posibilidadLoot;
 }
 
 [CreateAssetMenu]
-public class tablaLoot : ScriptableObject
+public class TablaLoot : ScriptableObject
 {
-    public loot[] loots;
+    public Loot[] loots;
 
-    public incrementoEstadisticas lootIncrementoEstadisticas() 
+    public IncrementoEstadisticas lootIncrementoEstadisticas() 
     {
         int probabilidadAcumulada = 0;
         int probabilidadActual = Random.Range(0, 100);
-        foreach (loot loot in loots) 
+        foreach (Loot loot in loots) 
         {
             probabilidadAcumulada += loot.posibilidadLoot;
             if (probabilidadActual <= probabilidadAcumulada) 

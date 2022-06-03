@@ -5,7 +5,7 @@ using UnityEngine;
 public class SistemaVida : MonoBehaviour
 {
     [Header("La vida que posee este objeto")]
-    [SerializeField] private valorFlotante vidaObjeto;
+    [SerializeField] private ValorFlotante vidaObjeto;
 
     [Header("La vida actual del objeto")]
     [SerializeField] private float vidaActualObjeto;
@@ -17,7 +17,7 @@ public class SistemaVida : MonoBehaviour
     [SerializeField] private AnimationClip muerteClip;
 
     [Header("Objetos que dejara al morir")]
-    [SerializeField] private tablaLoot miLoot;
+    [SerializeField] private TablaLoot miLoot;
 
     [Header("Objeto que posee esta vida")]
     [SerializeField] private GameObject objeto;
@@ -46,7 +46,7 @@ public class SistemaVida : MonoBehaviour
     [Header("Manejador de audio al morir")]
     [SerializeField] private audioEfectoMuerte manejadorAudioEfectoMuerte;
 
-    public valorFlotante VidaObjeto { get => vidaObjeto; set => vidaObjeto = value; }
+    public ValorFlotante VidaObjeto { get => vidaObjeto; set => vidaObjeto = value; }
     public float VidaActualObjeto { get => vidaActualObjeto; set => vidaActualObjeto = value; }
     public GameObject Objeto { get => objeto; set => objeto = value; }
     public audioReciveGolpe ManejadorAudioRecibeGolpe { get => manejadorAudioRecibeGolpe; set => manejadorAudioRecibeGolpe = value; }
@@ -126,7 +126,7 @@ public class SistemaVida : MonoBehaviour
     {
         if (miLoot != null)
         {
-            incrementoEstadisticas incrementoActual = miLoot.lootIncrementoEstadisticas();
+            IncrementoEstadisticas incrementoActual = miLoot.lootIncrementoEstadisticas();
             if (incrementoActual != null)
             {
                 Instantiate(incrementoActual.gameObject, gameObject.transform.position, Quaternion.identity);

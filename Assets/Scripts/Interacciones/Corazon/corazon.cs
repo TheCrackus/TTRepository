@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class corazon : incrementoEstadisticas
+public class Corazon : IncrementoEstadisticas
 {
     [Header("Vida del player")]
-    [SerializeField] private valorFlotante vidaPlayer;
+    [SerializeField] private ValorFlotante vidaPlayer;
+
     [Header("Numero de corazones del player")]
-    [SerializeField] private valorFlotante contenedorCorazones;
+    [SerializeField] private ValorFlotante contenedorCorazones;
+
     [Header("Incremento de vida para el player")]
     [SerializeField] private float incrementoValorEstadistica;
 
@@ -16,12 +18,13 @@ public class corazon : incrementoEstadisticas
         if (colisionDetectada.gameObject.CompareTag("Player") 
             && colisionDetectada.isTrigger)
         {
+            ManejadorAudioObjetoMapa.reproducirAudioRecojer();
             vidaPlayer.valorFlotanteEjecucion += incrementoValorEstadistica;
             if (vidaPlayer.valorFlotanteEjecucion > (contenedorCorazones.valorFlotanteEjecucion * 2f))
             {
                 vidaPlayer.valorFlotanteEjecucion = contenedorCorazones.valorFlotanteEjecucion * 2f;
             }
-            getEventoIncrementoEstadistica().invocaFunciones();
+            EventoIncrementoEstadistica.invocarFunciones();
             Destroy(gameObject);
         }
     }

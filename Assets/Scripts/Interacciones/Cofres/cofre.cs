@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class cofre : Interactuador
+public class Cofre : Interactuador
 {
 
     private Animator cofreAnimator;
@@ -16,16 +16,16 @@ public class cofre : Interactuador
     [SerializeField] private bool cofreVacio = false;
 
     [Header("Evento para mostrar un objeto")]
-    [SerializeField] private evento muestraObjeto;
+    [SerializeField] private Evento muestraObjeto;
 
     [Header("Fue Abrieto este cofre?")]
-    [SerializeField] private valorBooleano estadoCofre;
+    [SerializeField] private ValorBooleano estadoCofre;
 
     [Header("El inventario general del Player")]
-    [SerializeField] private listaInventario inventariopPlayerItems;
+    [SerializeField] private ListaInventario inventariopPlayerItems;
 
     [Header("El item a agregar al inventario")]
-    [SerializeField] private inventarioItem itemAgrgarInventario;
+    [SerializeField] private InventarioItem itemAgrgarInventario;
 
     [Header("Manejador de audio dialogos")]
     [SerializeField] private AudioDialogos manejadorAudioDialogos;
@@ -51,16 +51,16 @@ public class cofre : Interactuador
         {
             if (!cofreAbierto && !cofreVacio)
             {
-                abreCofre();
+                abrirCofre();
             }
             else
             {
-                cofreYaAbierto();
+                verificarCofreAbierto();
             }
         }
     }
 
-    public void abreCofre() 
+    public void abrirCofre() 
     {
         iniciarCanvas();
         manejadorAudioSecretos.reproducirAudioSecreto();
@@ -86,14 +86,14 @@ public class cofre : Interactuador
             }
         }
         itemAgrgarInventario.mostrarItem = true;
-        muestraObjeto.invocaFunciones();
-        SimboloActivoDesactivo.invocaFunciones();
+        muestraObjeto.invocarFunciones();
+        SimboloActivoDesactivo.invocarFunciones();
         cofreAbierto = true;
         estadoCofre.valorBooleanoEjecucion = true;
         cofreAnimator.SetBool("Abrir", true);
     }
 
-    public void cofreYaAbierto() {
+    public void verificarCofreAbierto() {
         if (!cofreVacio)
         {
             if (ContenedorTextoDialogos != null
@@ -104,8 +104,8 @@ public class cofre : Interactuador
                 manejadorAudioDialogos.reproducirAudioCierraDialogo();
                 Destroy(NCanvas);
             }
-            muestraObjeto.invocaFunciones();
-            SimboloActivoDesactivo.invocaFunciones();
+            muestraObjeto.invocarFunciones();
+            SimboloActivoDesactivo.invocarFunciones();
             cofreVacio = true;
         }
         else 

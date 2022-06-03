@@ -18,7 +18,7 @@ public class ManejadorMenuConfiguraciones : ManejadorMenuGenerico, IBotonPulso, 
     [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;
 
     [Header("Nombre de la escena del menu principal")]
-    [SerializeField] private valorString nombreEscenaPrincipal;
+    [SerializeField] private ValorString nombreEscenaPrincipal;
 
     public bool CondicionPausa { get => condicionPausa; set => condicionPausa = value; }
     public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }

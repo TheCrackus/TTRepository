@@ -11,13 +11,13 @@ public class ManejadorMenuInventario : ManejadorMenuGenerico, IReproductorAudioI
 
     private bool pausa;
 
-    private inventarioItem itemActual;
+    private InventarioItem itemActual;
 
     [Header("Manejador de audio de interfaces")]
     [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;
 
     [Header("El inventario que contiene los items del Player")]
-    [SerializeField] private listaInventario inventarioPlayerItems;
+    [SerializeField] private ListaInventario inventarioPlayerItems;
 
     public bool CondicionPausa { get => pausa; set => pausa = value; }
     public AudioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
@@ -48,7 +48,7 @@ public class ManejadorMenuInventario : ManejadorMenuGenerico, IReproductorAudioI
         activarBotonEnviaTexto("", false, null);
     }
 
-    public void activarBotonEnviaTexto(string descripcion, bool activaBoton, inventarioItem nuevoItem) 
+    public void activarBotonEnviaTexto(string descripcion, bool activaBoton, InventarioItem nuevoItem) 
     {
         itemActual = nuevoItem;
         if (graficos != null
@@ -66,7 +66,7 @@ public class ManejadorMenuInventario : ManejadorMenuGenerico, IReproductorAudioI
             && inventarioPlayerItems.inventario != null
             && inventarioPlayerItems.inventario.Count > 0) 
         {
-            foreach (inventarioItem item in inventarioPlayerItems.inventario) 
+            foreach (InventarioItem item in inventarioPlayerItems.inventario) 
             {
                 if (graficos != null
                     && graficos.EspacioInventarioVacio != null
@@ -103,7 +103,7 @@ public class ManejadorMenuInventario : ManejadorMenuGenerico, IReproductorAudioI
             && inventarioPlayerItems.inventario != null
             && inventarioPlayerItems.inventario.Count > 0)
         {
-            foreach (inventarioItem item in inventarioPlayerItems.inventario.ToArray())
+            foreach (InventarioItem item in inventarioPlayerItems.inventario.ToArray())
             {
                 if (item != null)
                 {
@@ -121,7 +121,7 @@ public class ManejadorMenuInventario : ManejadorMenuGenerico, IReproductorAudioI
         if (itemActual != null) 
         {
             reproducirAudioClickAbrir();
-            itemActual.invocaEventoUsaItem();
+            itemActual.invocarEventoUsaItem();
             limpiarListaInventario();
             limpiarEspaciosInventario();
             crearEspaciosInventario();

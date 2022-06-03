@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class interruptor : MonoBehaviour
+public class Interruptor : MonoBehaviour
 {
 
     private SpriteRenderer interruptorSpriteRenderer;
 
     [Header("Esta activo el interruptor?")]
-    [SerializeField] private valorBooleano estadoInterruptor;
+    [SerializeField] private ValorBooleano estadoInterruptor;
 
     [Header("Sprite para el interruptor pulsado")]
     [SerializeField] private Sprite spriteInterruptorActivo;
@@ -28,11 +28,11 @@ public class interruptor : MonoBehaviour
     {
         if (estadoInterruptor.valorBooleanoEjecucion) 
         {
-            activaInterruptor();
+            activarInterruptor();
         }
     }
 
-    public void activaInterruptor() 
+    public void activarInterruptor() 
     {
         if (!estadoInterruptor.valorBooleanoEjecucion) 
         {
@@ -47,7 +47,7 @@ public class interruptor : MonoBehaviour
     {
         if (colisionDetectada.gameObject.CompareTag("Player")) 
         {
-            activaInterruptor();
+            activarInterruptor();
         }
     }
 }

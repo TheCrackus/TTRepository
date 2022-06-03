@@ -17,19 +17,19 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
     private bool pulseBoton;
 
     [Header("Nombre de la escena de LogIn")]
-    [SerializeField] private valorString nombreEscenaLogIn;
+    [SerializeField] private ValorString nombreEscenaLogIn;
 
     [Header("Nombre de la escena de Laberintos")]
-    [SerializeField] private valorString nombreEscenaLaberintos;
+    [SerializeField] private ValorString nombreEscenaLaberintos;
 
     [Header("Nombre de la escena de Mazmorra")]
-    [SerializeField] private valorString nombreEscenaMazmorra;
+    [SerializeField] private ValorString nombreEscenaMazmorra;
 
     [Header("Nombre de la escena de Laberintos")]
-    [SerializeField] private valorString nombreEscenaJefeFinal;
+    [SerializeField] private ValorString nombreEscenaJefeFinal;
 
     [Header("Escena de la partida en curso")]
-    [SerializeField] private valorString nombreEscenaActual;
+    [SerializeField] private ValorString nombreEscenaActual;
 
     [Header("Manejador de audio de interfaces")]
     [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;
@@ -48,11 +48,11 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
     {
         graficos = (ComponenteGraficoMenuPrincipal)ComponenteGrafico;
         reiniciarBotones();
-        if (Conexion.MiUsuario.datosEjecucion.idJugador != 0)
+        if (Conexion.MiUsuario.DatosEjecucion.idJugador != 0)
         {
             if (graficos.TextoNombreJugador != null) 
             {
-                graficos.TextoNombreJugador.text = Conexion.MiUsuario.datosEjecucion.sobrenombre;
+                graficos.TextoNombreJugador.text = Conexion.MiUsuario.DatosEjecucion.sobrenombre;
             }
         }
         else 

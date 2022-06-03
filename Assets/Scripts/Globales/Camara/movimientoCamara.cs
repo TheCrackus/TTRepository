@@ -8,9 +8,9 @@ public class movimientoCamara : MonoBehaviour
     private Animator camaraAnimator;
     [SerializeField] private Transform objetivoSeguir;
     [SerializeField] private float suavizado;
-    [SerializeField] private valorVectorial posicionCamaraMaxima;
-    [SerializeField] private valorVectorial posicionCamaraMinima;
-    [SerializeField] private valorVectorial posicionCamara;
+    [SerializeField] private ValorVectorial posicionCamaraMaxima;
+    [SerializeField] private ValorVectorial posicionCamaraMinima;
+    [SerializeField] private ValorVectorial posicionCamara;
 
     void Start()
     {

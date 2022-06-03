@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class objeto : ScriptableObject
+public class Objeto : ScriptableObject
 {
 
     public Sprite spriteObjeto;

@@ -44,7 +44,7 @@ public class Transicion : MonoBehaviour
     [SerializeField] private GameObject fadeInFadeOutCanvas;
 
     [Header("Posicion del Player")]
-    [SerializeField] private valorVectorial posicionPlayer;
+    [SerializeField] private ValorVectorial posicionPlayer;
 
     [Header("Direccion a la que apuntara el Player")]
     [SerializeField] private Vector2 nuevaDireccionPlayer;
@@ -56,13 +56,13 @@ public class Transicion : MonoBehaviour
     [SerializeField] private string nombreMostrar;
 
     [Header("Evento que comienza un contador")]
-    [SerializeField] private evento contadorRegresivoInicia;
+    [SerializeField] private Evento contadorRegresivoInicia;
 
     [Header("Evento que termina un contador")]
-    [SerializeField] private evento contadorRegresivoDeten;
+    [SerializeField] private Evento contadorRegresivoDeten;
 
     [Header("Evento que reinicia un contador")]
-    [SerializeField] private evento contadorRegresivoReinicia;
+    [SerializeField] private Evento contadorRegresivoReinicia;
 
     [Header("Manejador de audio de la transicion")]
     [SerializeField] private AudioTransicion manejadorAudioTransicion;
@@ -74,10 +74,10 @@ public class Transicion : MonoBehaviour
     [SerializeField] tipoTransicion enumTipoTransicion;
 
     [Header("La escena actual en ejecucion")]
-    [SerializeField] valorString escenaActual;
+    [SerializeField] ValorString escenaActual;
 
     [Header("Nombre de las escenas del videojuego")]
-    [SerializeField] valorString[] escenas;
+    [SerializeField] ValorString[] escenas;
 
     public accionContador EnumAccionContador { get => enumAccionContador; set => enumAccionContador = value; }
     public tipoTransicion EnumTipoTransicion { get => enumTipoTransicion; set => enumTipoTransicion = value; }
@@ -92,16 +92,16 @@ public class Transicion : MonoBehaviour
     public AnimationClip OcultarTextoClip { get => ocultarTextoClip; set => ocultarTextoClip = value; }
     public GameObject NCanvas { get => nCanvas; set => nCanvas = value; }
     public GameObject FadeInFadeOutCanvas { get => fadeInFadeOutCanvas; set => fadeInFadeOutCanvas = value; }
-    public valorVectorial PosicionPlayer { get => posicionPlayer; set => posicionPlayer = value; }
+    public ValorVectorial PosicionPlayer { get => posicionPlayer; set => posicionPlayer = value; }
     public Vector2 NuevaDireccionPlayer { get => nuevaDireccionPlayer; set => nuevaDireccionPlayer = value; }
     public bool DebeMostrarTexto { get => debeMostrarTexto; set => debeMostrarTexto = value; }
     public string NombreMostrar { get => nombreMostrar; set => nombreMostrar = value; }
-    public evento ContadorRegresivoInicia { get => contadorRegresivoInicia; set => contadorRegresivoInicia = value; }
-    public evento ContadorRegresivoDeten { get => contadorRegresivoDeten; set => contadorRegresivoDeten = value; }
-    public evento ContadorRegresivoReinicia { get => contadorRegresivoReinicia; set => contadorRegresivoReinicia = value; }
+    public Evento ContadorRegresivoInicia { get => contadorRegresivoInicia; set => contadorRegresivoInicia = value; }
+    public Evento ContadorRegresivoDeten { get => contadorRegresivoDeten; set => contadorRegresivoDeten = value; }
+    public Evento ContadorRegresivoReinicia { get => contadorRegresivoReinicia; set => contadorRegresivoReinicia = value; }
     public AudioTransicion ManejadorAudioTransicion { get => manejadorAudioTransicion; set => manejadorAudioTransicion = value; }
-    public valorString EscenaActual { get => escenaActual; set => escenaActual = value; }
-    public valorString[] Escenas { get => escenas; set => escenas = value; }
+    public ValorString EscenaActual { get => escenaActual; set => escenaActual = value; }
+    public ValorString[] Escenas { get => escenas; set => escenas = value; }
 
     public void iniciarCanvas()
     {

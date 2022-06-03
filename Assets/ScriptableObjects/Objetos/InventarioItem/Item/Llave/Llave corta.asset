@@ -16,15 +16,15 @@ MonoBehaviour:
   descripcionItem: "\xA1Una llave corta! \xBFD\xF3nde hay una puerta cerrada?"
   imagenItem: {fileID: 21300000, guid: 4b1a8b593599bbe4fbc113370a3efd74, type: 3}
   cantidadItem: 0
-  esUsabe: 0
+  esUsable: 0
   esUnico: 0
   mostrarItem: 0
   eventoUsaItem:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000}
-        m_TargetAssemblyTypeName: inventarioItem, Assembly-CSharp
-        m_MethodName: disminuyeCantidadItem
+        m_TargetAssemblyTypeName: InventarioItem, Assembly-CSharp
+        m_MethodName: disminuirCantidadItem
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

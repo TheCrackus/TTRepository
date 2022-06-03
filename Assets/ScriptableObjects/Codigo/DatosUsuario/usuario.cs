@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu]
 [System.Serializable]
-public class usuario : ScriptableObject
+public class Usuario : ScriptableObject
 {
     [System.Serializable]
     public struct logro
@@ -14,7 +14,7 @@ public class usuario : ScriptableObject
     }
 
     [System.Serializable]
-    public struct datosUsuario
+    public struct DatosUsuario
     {
         public int idJugador;
         public string sobrenombre;
@@ -29,12 +29,14 @@ public class usuario : ScriptableObject
     }
 
     [Header("Datos usuario iniciales")]
-    public datosUsuario datosIniciales;
+    private DatosUsuario datosIniciales;
     [Header("Datos usuario en ejecucion del juego")]
-    public datosUsuario datosEjecucion;
+    private DatosUsuario datosEjecucion;
 
+    public DatosUsuario DatosIniciales { get => datosIniciales; set => datosIniciales = value; }
+    public DatosUsuario DatosEjecucion { get => datosEjecucion; set => datosEjecucion = value; }
 
-    public void reiniciaValores()
+    public void reiniciarValores()
     {
         datosEjecucion = datosIniciales;
     }

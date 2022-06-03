@@ -13,10 +13,10 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudioInterf
     private bool pulseBoton;
 
     [Header("Nombre de la escena con el menu principal")]
-    [SerializeField] private valorString nombreEscenaMenuPrincipal;
+    [SerializeField] private ValorString nombreEscenaMenuPrincipal;
 
     [Header("Objeto que contiene la informacion del juego en ejecucion")]
-    [SerializeField] private cambioEscena estadoCambioEscena;
+    [SerializeField] private CambioEscena estadoCambioEscena;
 
     [Header("Manejador de audio de interfaces")]
     [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;

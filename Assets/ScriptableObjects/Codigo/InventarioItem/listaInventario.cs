@@ -1,27 +1,26 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 [CreateAssetMenu(fileName = "Nuevo Inventario", menuName = "Inventario/listaItem")]
-public class listaInventario : ScriptableObject
+public class ListaInventario : ScriptableObject
 {
 
     [Header("La lista de objetos tipo item")]
-    public List<inventarioItem> inventario = new List<inventarioItem>();
+    public List<InventarioItem> inventario = new List<InventarioItem>();
     [Header("Objeto equipado por el player para atacar")]
-    public inventarioItem objetoEquipado;
+    public InventarioItem objetoEquipado;
 
-    public void reiniciaValores() 
+    public void reiniciarValores() 
     {
         inventario.Clear();
         objetoEquipado = null;
     }
 
-    public bool verififcaItem(inventarioItem item) 
+    public bool verififcarItem(InventarioItem item) 
     {
         bool verificacion = false;
-        foreach (inventarioItem itemLoop in inventario) 
+        foreach (InventarioItem itemLoop in inventario) 
         {
             if (itemLoop == item && itemLoop.cantidadItem > 0)
             {

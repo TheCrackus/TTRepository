@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class contenedorCorazon : incrementoEstadisticas
+public class ContenedorCorazon : IncrementoEstadisticas
 {
 
     [Header("Numero de corazones que posee el jugador")]
-    [SerializeField] private valorFlotante corazonesMaximos;
+    [SerializeField] private ValorFlotante corazonesMaximos;
+
     [Header("La vida actual del jugador")]
-    [SerializeField] private valorFlotante vidaActualPlayer;
+    [SerializeField] private ValorFlotante vidaActualPlayer;
+
     [Header("Estoy obtenido?")]
-    [SerializeField] private valorBooleano contenedorCorazonObtenido;
+    [SerializeField] private ValorBooleano contenedorCorazonObtenido;
 
     void Start()
     {
@@ -28,13 +30,14 @@ public class contenedorCorazon : incrementoEstadisticas
         if (colisionDetectada.gameObject.CompareTag("Player")
             && colisionDetectada.isTrigger) 
         {
+            ManejadorAudioObjetoMapa.reproducirAudioRecojer();
             if (contenedorCorazonObtenido) 
             {
                 contenedorCorazonObtenido.valorBooleanoEjecucion = true;
             }
             corazonesMaximos.valorFlotanteEjecucion += 1;
             vidaActualPlayer.valorFlotanteEjecucion = corazonesMaximos.valorFlotanteEjecucion * 2;
-            getEventoIncrementoEstadistica().invocaFunciones();
+            EventoIncrementoEstadistica.invocarFunciones();
             Destroy(gameObject);
         }
     }

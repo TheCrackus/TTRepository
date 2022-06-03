@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class VidaPlayer : SistemaVida
 {
     [Header("Evento que actualiza la vida en pantalla")]
-    [SerializeField] private evento eventoVidaPlayer;
+    [SerializeField] private Evento eventoVidaPlayer;
 
     [Header("Manejador para las escenas")]
     [SerializeField] private MoverEscenaPuntoControl manejadorEscenaPuntoControl;
@@ -34,7 +34,7 @@ public class VidaPlayer : SistemaVida
         {
             VidaObjeto.valorFlotanteEjecucion = VidaActualObjeto;
         }
-        eventoVidaPlayer.invocaFunciones();
+        eventoVidaPlayer.invocarFunciones();
         if (VidaActualObjeto <= 0)
         {
             manejadorEscenaPuntoControl.iniciarTransicionOut();

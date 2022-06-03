@@ -8,7 +8,7 @@ public class SingletonEventosEscenas : MonoBehaviour
     public static SingletonEventosEscenas instance;
 
     [Header("Eventos que se ejecutaran al cambiar de escena")]
-    [SerializeField] private List<evento> eventos = new List<evento>();
+    [SerializeField] private List<Evento> eventos = new List<Evento>();
 
     [Header("Los datos guardados localmente del juego")]
     [SerializeField] private DatosJuego datos;
@@ -20,7 +20,7 @@ public class SingletonEventosEscenas : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void agregarEvento(evento evento) 
+    public void agregarEvento(Evento evento) 
     {
         eventos.Add(evento);
     }
@@ -39,9 +39,9 @@ public class SingletonEventosEscenas : MonoBehaviour
         if (eventos != null
                 && eventos.Count > 0)
         {
-            foreach (evento eventoLoop in eventos)
+            foreach (Evento eventoLoop in eventos)
             {
-                eventoLoop.invocaFunciones();
+                eventoLoop.invocarFunciones();
             }
         }
     }

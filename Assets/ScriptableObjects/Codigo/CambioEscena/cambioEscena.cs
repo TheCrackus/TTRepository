@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu]
 [System.Serializable]
-public class cambioEscena : ScriptableObject
+public class CambioEscena : ScriptableObject
 {
 
     public string nombreTextoCuartoInicial;
@@ -31,7 +31,7 @@ public class cambioEscena : ScriptableObject
 
     public string nombreTansicionDestinoEjecucion;
 
-    public void reiniciaValores()
+    public void reiniciarValores()
     {
         nombreTextoCuartoEjecucion = nombreTextoCuartoInicial;
         cambieEscenaEjecucion= cambieEscenaInicial;

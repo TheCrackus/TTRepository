@@ -5,7 +5,7 @@ using UnityEngine;
 public class puertaLlave : puerta
 {
     [Header("Item que representa la llave corta")]
-    [SerializeField] private inventarioItem llaveCorta;
+    [SerializeField] private InventarioItem llaveCorta;
 
     [Header("Texto a mostrar")]
     [SerializeField] private string dialogo;
@@ -18,9 +18,9 @@ public class puertaLlave : puerta
             {
                 if (InventarioPlayerItems && llaveCorta)
                 {
-                    if (InventarioPlayerItems.verififcaItem(llaveCorta))
+                    if (InventarioPlayerItems.verififcarItem(llaveCorta))
                     {
-                        llaveCorta.invocaEventoUsaItem();
+                        llaveCorta.invocarEventoUsaItem();
                         abrir();
                     }
                     else 

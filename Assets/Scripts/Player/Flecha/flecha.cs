@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class flecha : proyectil
+public class Flecha : Proyectil
 {
     [Header("Cantidad de magia que decrementa al jugador")]
     public float costoMagia;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class manejadorPiezas : MonoBehaviour
+public class ManejadorPiezas : MonoBehaviour
 {
 
     private bool estoyPosicionCorrecta;
@@ -13,7 +13,7 @@ public class manejadorPiezas : MonoBehaviour
     private Vector3 posicionContenedorPiezas;
 
     [Header("Evento que verifica la posicion de las piezas")]
-    [SerializeField] private evento verificaPiezas;
+    [SerializeField] private Evento verificaPiezas;
 
     [Header("Manejador de audio de las piezas")]
     [SerializeField] private audioPieza manejadorAudioPieza;
@@ -21,7 +21,7 @@ public class manejadorPiezas : MonoBehaviour
     public bool EstoyPosicionCorrecta { get => estoyPosicionCorrecta; set => estoyPosicionCorrecta = value; }
     public bool EstoySeleccionada { get => estoySeleccionada; set => estoySeleccionada = value; }
 
-    void Start()
+    private void Start()
     {
         EstoyPosicionCorrecta = false;
         posicionContenedorPiezas = gameObject.transform.position;
@@ -40,7 +40,7 @@ public class manejadorPiezas : MonoBehaviour
                     gameObject.transform.position = posicionContenedorPiezas;
                     EstoyPosicionCorrecta = true;
                     gameObject.GetComponent<SortingGroup>().sortingOrder = 0;
-                    verificaPiezas.invocaFunciones();
+                    verificaPiezas.invocarFunciones();
                 }
             }
         }

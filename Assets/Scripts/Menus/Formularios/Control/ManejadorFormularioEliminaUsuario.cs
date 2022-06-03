@@ -9,7 +9,7 @@ public class ManejadorFormularioEliminaUsuario : ManejadorFormulario, ICanvasMen
     private ComponenteGraficoFormularioEliminaUsuario graficos;
 
     [Header("Nombre de la escena de LogIn")]
-    [SerializeField] private valorString escenaLogIn;
+    [SerializeField] private ValorString escenaLogIn;
 
 
     void Start()
@@ -24,7 +24,7 @@ public class ManejadorFormularioEliminaUsuario : ManejadorFormulario, ICanvasMen
         if (!PulseBoton)
         {
             ManejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
-            if (graficos.PasswordFiled.text.ToString() == Conexion.MiUsuario.datosEjecucion.password)
+            if (graficos.PasswordFiled.text.ToString() == Conexion.MiUsuario.DatosEjecucion.password)
             {
                 Conexion.eliminarUsuario();
                 bloquearBotones();

@@ -23,8 +23,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3504872397455239610, guid: c2943f5d949e41f4e8c59384070e4deb, type: 3}
-        m_TargetAssemblyTypeName: interaccionEquipable, Assembly-CSharp
-        m_MethodName: equipa
+        m_TargetAssemblyTypeName: InteraccionEquipable, Assembly-CSharp
+        m_MethodName: equipar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

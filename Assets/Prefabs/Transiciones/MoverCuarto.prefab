@@ -1,5 +1,87 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1627966439891831922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6085969667771373733}
+  - component: {fileID: 3097063910407377670}
+  m_Layer: 3
+  m_Name: MiniMapa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6085969667771373733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627966439891831922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97123490582020484}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3097063910407377670
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627966439891831922}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: eb6589e0cf6674847873e27128264207, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &4420008845017785321
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +114,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2381769079894461440}
+  - {fileID: 6085969667771373733}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,9 +180,6 @@ MonoBehaviour:
   fadeInFadeOutCanvas: {fileID: 8745939805210079820, guid: 60dc23bc450bfb446ba135d3ae12a426, type: 3}
   posicionPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   nuevaDireccionPlayer: {x: 0, y: 0}
-  posicionCamaraMaxima: {fileID: 11400000, guid: 84a706b1a4866e2489ca60493dd176c9, type: 2}
-  posicionCamaraMinima: {fileID: 11400000, guid: ee43b5ebcf573744894a71b2b04063ad, type: 2}
-  posicionCamara: {fileID: 11400000, guid: b7e938756b42de74eb849309e4d4008f, type: 2}
   debeMostrarTexto: 0
   nombreMostrar: 
   contadorRegresivoInicia: {fileID: 11400000, guid: 44f42969ead8f514eb7f17ce8ef15b71, type: 2}
@@ -117,7 +197,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2d3d75730c114a24cb4758708fecd842, type: 2}
   - {fileID: 11400000, guid: 034cd9a1768459b4d9ff539c5c06ae3f, type: 2}
   cambioSumaPoscicionPlayer: {x: 0, y: 0, z: 0}
-  cambioSumaPosicionCamara: {x: 0, y: 0, z: 0}
   moverCuartoRef: {fileID: 0}
 --- !u!114 &4994636355638618748
 MonoBehaviour:

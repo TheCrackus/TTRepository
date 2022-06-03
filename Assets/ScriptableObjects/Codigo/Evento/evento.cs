@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class evento : ScriptableObject
+public class Evento : ScriptableObject
 {
 
-    public List<escuchaEvento> eventos = new List<escuchaEvento>();
+    public List<EscuchaEvento> eventos = new List<EscuchaEvento>();
 
-    public void invocaFunciones() 
+    public void invocarFunciones() 
     {
-        foreach (escuchaEvento evento in eventos)
+        foreach (EscuchaEvento evento in eventos)
         {
-            evento.invocaEvento();
+            evento.invocarEvento();
         }
     }
 
-    public void registraEvento(escuchaEvento evento) 
+    public void registrarEvento(EscuchaEvento evento) 
     {
         eventos.Add(evento);
     }
 
-    public void eliminaEvento(escuchaEvento evento) 
+    public void eliminarEvento(EscuchaEvento evento) 
     {
         eventos.Remove(evento);
     }

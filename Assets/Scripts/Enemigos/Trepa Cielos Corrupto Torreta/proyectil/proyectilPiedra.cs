@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class proyectilPiedra : proyectil
+public class ProyectilPiedra : Proyectil
 {
 
     [Header("Manejador de audio al impactar")]

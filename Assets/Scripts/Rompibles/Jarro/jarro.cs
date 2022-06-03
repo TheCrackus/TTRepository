@@ -10,7 +10,7 @@ public class Jarro : MonoBehaviour
     private AnimationClip clipRomperJarro;
 
     [Header("Objetos que dejara al morir")]
-    [SerializeField] private tablaLoot loot;
+    [SerializeField] private TablaLoot loot;
 
     [Header("Manejador de audio rompibles")]
     [SerializeField] private audioRompible manejadorAudioRompible;
@@ -45,7 +45,7 @@ public class Jarro : MonoBehaviour
     {
         if (loot != null)
         {
-            incrementoEstadisticas incrementoActual = loot.lootIncrementoEstadisticas();
+            IncrementoEstadisticas incrementoActual = loot.lootIncrementoEstadisticas();
             if (incrementoActual != null)
             {
                 Instantiate(incrementoActual.gameObject, gameObject.transform.position, Quaternion.identity);

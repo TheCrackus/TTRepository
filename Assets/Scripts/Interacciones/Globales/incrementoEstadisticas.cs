@@ -2,20 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class incrementoEstadisticas : MonoBehaviour
+public class IncrementoEstadisticas : MonoBehaviour
 {
 
     [Header("Evento que incrementa una estadistica del player")]
-    [SerializeField] private evento eventoIncrementoEstadistica;
+    [SerializeField] private Evento eventoIncrementoEstadistica;
 
-    public void setEventoIncrementoEstadistica(evento eventoIncrementoEstadistica) 
-    {
-        this.eventoIncrementoEstadistica = eventoIncrementoEstadistica;
-    }
+    [Header("Manejador de audio del objeto")]
+    [SerializeField] private AudioObjetoMapa manejadorAudioObjetoMapa;
 
-    public evento getEventoIncrementoEstadistica() 
-    {
-        return eventoIncrementoEstadistica;
-    }
-
+    public Evento EventoIncrementoEstadistica { get => eventoIncrementoEstadistica; set => eventoIncrementoEstadistica = value; }
+    public AudioObjetoMapa ManejadorAudioObjetoMapa { get => manejadorAudioObjetoMapa; set => manejadorAudioObjetoMapa = value; }
 }

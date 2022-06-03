@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class proyectil : MonoBehaviour
+public class Proyectil : MonoBehaviour
 {
 
     private float contadorVidaProyectil;
@@ -27,12 +27,12 @@ public class proyectil : MonoBehaviour
         }
     }
 
-    public virtual void arroja(Vector2 direccionInicial) 
+    public virtual void arrojar(Vector2 direccionInicial) 
     {
         proyectilRigidBody.velocity = direccionInicial * velocidadMovimiento;
     }
 
-    public virtual void dispara(Vector2 direccionInicial, Vector3 rotacion)
+    public virtual void disparar(Vector2 direccionInicial, Vector3 rotacion)
     {
         proyectilRigidBody.velocity = direccionInicial * velocidadMovimiento;
         gameObject.transform.rotation = Quaternion.Euler(rotacion);

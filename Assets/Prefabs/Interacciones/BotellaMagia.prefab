@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventoIncrementoEstadistica: {fileID: 11400000, guid: b06e932502f2e19428ce95955cf150d7, type: 2}
+  manejadorAudioObjetoMapa: {fileID: 8148152627936889519}
   magiaPlayer: {fileID: 11400000, guid: 63f122bcfafa86641a2fe8205c8309df, type: 2}
   magiaMaximaPlayer: {fileID: 11400000, guid: 9f208d0e2a3b02f439f3f2e2d51ee238, type: 2}
   magiaAumento: 2

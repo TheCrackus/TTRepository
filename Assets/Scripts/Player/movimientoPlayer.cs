@@ -18,31 +18,31 @@ public class MovimientoPlayer : MonoBehaviour
     [SerializeField] private float velocidad;
 
     [Header("Posicion del Player en el mapa")]
-    [SerializeField] private valorVectorial posicionPlayer;
+    [SerializeField] private ValorVectorial posicionPlayer;
 
     [Header("Manejador de Sprite del objeto emergente a mostrar")]
     [SerializeField] private SpriteRenderer spriteObjetoMostrar;
 
     [Header("El inventario general del Player")]
-    [SerializeField] private listaInventario inventariopPlayerItems;
+    [SerializeField] private ListaInventario inventariopPlayerItems;
 
     [Header("Estado general de la escena")]
-    [SerializeField] private cambioEscena estadoCambioEscenas;
+    [SerializeField] private CambioEscena estadoCambioEscenas;
 
     [Header("Proyectil que dispara el arma actual a distancia")]
     [SerializeField] private GameObject proyectil;
 
     [Header("Evento que decrementa la magia")]
-    [SerializeField] private evento decrementaMagia;
+    [SerializeField] private Evento decrementaMagia;
 
     [Header("La cantidad de magia que tiene el Player")]
-    [SerializeField] private valorFlotante magiaPlayer;
+    [SerializeField] private ValorFlotante magiaPlayer;
 
     [Header("Objeto que representa el arco")]
-    [SerializeField] private inventarioItem arco;
+    [SerializeField] private InventarioItem arco;
 
     [Header("Objeto que representa la espada")]
-    [SerializeField] private inventarioItem espada;
+    [SerializeField] private InventarioItem espada;
 
     [Header("Manejador de audio del Player arma mele")]
     [SerializeField] private AudioMelee manejadorAudioMelee;
@@ -211,14 +211,14 @@ public class MovimientoPlayer : MonoBehaviour
         if (magiaPlayer.valorFlotanteEjecucion > 0) 
         {
             Vector2 vectorTemporal = new Vector2(animatorPlayer.GetFloat("MovimientoX"), animatorPlayer.GetFloat("MovimientoY"));
-            flecha flecha = Instantiate(proyectil, gameObject.transform.position, Quaternion.identity).GetComponent<flecha>();
-            flecha.dispara(vectorTemporal, elegirDireccionFlecha());
+            Flecha flecha = Instantiate(proyectil, gameObject.transform.position, Quaternion.identity).GetComponent<Flecha>();
+            flecha.disparar(vectorTemporal, elegirDireccionFlecha());
             magiaPlayer.valorFlotanteEjecucion -= flecha.costoMagia;
             if (magiaPlayer.valorFlotanteEjecucion <= 0) 
             {
                 magiaPlayer.valorFlotanteEjecucion = 0;
             }
-            decrementaMagia.invocaFunciones();
+            decrementaMagia.invocarFunciones();
         }
     }
 
@@ -247,8 +247,8 @@ public class MovimientoPlayer : MonoBehaviour
 
     public void mostrarObjeto() 
     {
-        inventarioItem itemMostrar = null;
-        foreach (inventarioItem itemLoop in inventariopPlayerItems.inventario) 
+        InventarioItem itemMostrar = null;
+        foreach (InventarioItem itemLoop in inventariopPlayerItems.inventario) 
         {
             if (itemLoop.mostrarItem) 
             {

@@ -6,9 +6,11 @@ using TMPro;
 public class manejadorTextoMonedas : MonoBehaviour
 {
     [Header("El inventario general del Player")]
-    [SerializeField] private listaInventario inventariopPlayerItems;
+    [SerializeField] private ListaInventario inventariopPlayerItems;
+
     [Header("El item que representa las monedas")]
-    [SerializeField] private inventarioItem moneda;
+    [SerializeField] private InventarioItem moneda;
+
     [Header("Texto para mostrar el numero de monedas")]
     public TextMeshProUGUI textoNumeroMonedas;
 
@@ -19,7 +21,7 @@ public class manejadorTextoMonedas : MonoBehaviour
 
     public void actualizaNumeroMonedas() 
     {
-        if (inventariopPlayerItems.verififcaItem(moneda))
+        if (inventariopPlayerItems.verififcarItem(moneda))
         {
             textoNumeroMonedas.text = moneda.cantidadItem.ToString("0000");
         }

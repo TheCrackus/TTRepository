@@ -13,10 +13,10 @@ public class ManejadorFormularioCuestionario : ManejadorFormulario, ICanvasMenuP
     private bool condicionPausa;
 
     [Header("Nombre de la escena del menu principal")]
-    [SerializeField] private valorString nombreEscenaPrincipal;
+    [SerializeField] private ValorString nombreEscenaPrincipal;
 
     [Header("Evento a ejecutar cuando este en el juego")]
-    [SerializeField] private evento eventoFinalCuestionario;
+    [SerializeField] private Evento eventoFinalCuestionario;
 
     public bool CondicionPausa { get => condicionPausa; set => condicionPausa = value; }
 
@@ -77,7 +77,7 @@ public class ManejadorFormularioCuestionario : ManejadorFormulario, ICanvasMenuP
         if (nombreEscenaActual != nombreEscenaPrincipal.valorStringEjecucion)
         {
             reproducirAudioClickCerrar();
-            eventoFinalCuestionario.invocaFunciones();
+            eventoFinalCuestionario.invocarFunciones();
             cerrarGrafico();
         }
         else

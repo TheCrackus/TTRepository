@@ -29,7 +29,7 @@ public class MoverEscenaPuntoControl : MoverEscena
             EstadoCambioEscena.cambieEscenaEjecucion = true;
         }
 
-        foreach (valorString nombre in Escenas)
+        foreach (ValorString nombre in Escenas)
         {
             if (nombre.valorStringEjecucion == EscenaActual.valorStringEjecucion)
             {

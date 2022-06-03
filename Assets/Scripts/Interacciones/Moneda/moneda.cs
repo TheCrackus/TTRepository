@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moneda : itemFisico
+public class Moneda : ItemFisico
 {
 
     [Header("Evento que incrementa una estadistica en la interfaz")]
-    [SerializeField] private evento eventoIncrementoInterfaz;
+    [SerializeField] private Evento eventoIncrementoInterfaz;
 
     public override void OnTriggerEnter2D(Collider2D colisionDetectada)
     {
@@ -16,7 +16,7 @@ public class moneda : itemFisico
         {
             if (eventoIncrementoInterfaz)
             {
-                eventoIncrementoInterfaz.invocaFunciones();
+                eventoIncrementoInterfaz.invocarFunciones();
             }
         }
     }

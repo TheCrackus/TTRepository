@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class npcDimensiones : ControladorDialogos
+public class NpcDimensiones : ControladorDialogos
 {
 
     private Vector3 vectorDireccion;
@@ -46,7 +46,7 @@ public class npcDimensiones : ControladorDialogos
         contadorMovimiento = Random.Range(tiempoMovimientoMinimo, tiempoMovimientoMaximo);
         contadorEspera = Random.Range(tiempoEsperaMinimo, tiempoEsperaMaximo);
         enMovimiento = true;
-        cambiaDireccion();
+        cambiarDireccion();
     }
 
     public override void Update()
@@ -62,7 +62,7 @@ public class npcDimensiones : ControladorDialogos
             }
             if (!PlayerEnRango)
             {
-                mueve();
+                mover();
             }
         }
         else 
@@ -70,14 +70,14 @@ public class npcDimensiones : ControladorDialogos
             contadorEspera -= Time.deltaTime;
             if (contadorEspera <= 0)
             {
-                nuevaDireccion();
+                elegirNuevaDireccion();
                 contadorEspera = Random.Range(tiempoEsperaMinimo, tiempoEsperaMaximo);
                 enMovimiento = true;
             }
         }        
     }
 
-    private void mueve() 
+    private void mover() 
     {
         Vector3 vectorTemporal = npcTransform.position + vectorDireccion * velocidad * Time.fixedDeltaTime;
         if (colisionLimite.bounds.Contains(vectorTemporal)) 
@@ -86,11 +86,11 @@ public class npcDimensiones : ControladorDialogos
         }
         else
         {
-            cambiaDireccion();    
+            cambiarDireccion();    
         }
     }
 
-    private void cambiaDireccion()
+    private void cambiarDireccion()
     {
         int direccion = Random.Range(0, 4);
         switch (direccion) 
@@ -121,18 +121,18 @@ public class npcDimensiones : ControladorDialogos
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        nuevaDireccion();
+        elegirNuevaDireccion();
     }
 
-    private void nuevaDireccion() 
+    private void elegirNuevaDireccion() 
     {
         Vector3 vectorTemporal = vectorDireccion;
-        cambiaDireccion();
+        cambiarDireccion();
         int ciclo = 0;
         while (vectorTemporal == vectorDireccion && ciclo < 100)
         {
             ciclo++;
-            cambiaDireccion();
+            cambiarDireccion();
         }
     }
 

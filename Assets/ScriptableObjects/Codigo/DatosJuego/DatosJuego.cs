@@ -10,44 +10,44 @@ public class DatosJuego : ScriptableObject
 
     [Header("Objetos que no deben ser reiniciados al cambiar la escena")]
     public List<ScriptableObject> objetosPersistentesGeneral = new List<ScriptableObject>();
-    public List<valorVectorial> vectores = new List<valorVectorial>();
-    public List<valorFlotante> flotantes = new List<valorFlotante>();
-    public List<valorBooleano> booleanos = new List<valorBooleano>();
-    public usuario miUsuario;
-    public List<cambioEscena> escenas = new List<cambioEscena>();
-    public List<listaInventario> listaInventarios = new List<listaInventario>();
-    public List<inventarioItem> items = new List<inventarioItem>();
-    public List<valorString> strings = new List<valorString>();
+    public List<ValorVectorial> vectores = new List<ValorVectorial>();
+    public List<ValorFlotante> flotantes = new List<ValorFlotante>();
+    public List<ValorBooleano> booleanos = new List<ValorBooleano>();
+    public Usuario miUsuario;
+    public List<CambioEscena> escenas = new List<CambioEscena>();
+    public List<ListaInventario> listaInventarios = new List<ListaInventario>();
+    public List<InventarioItem> items = new List<InventarioItem>();
+    public List<ValorString> strings = new List<ValorString>();
 
     public void reiniciarScriptable()
     {
-        foreach (valorVectorial vector in vectores)
+        foreach (ValorVectorial vector in vectores)
         {
-            vector.reiniciaValores();
+            vector.reiniciarValores();
         }
-        foreach (valorFlotante flotante in flotantes)
+        foreach (ValorFlotante flotante in flotantes)
         {
-            flotante.reiniciaValores();
+            flotante.reiniciarValores();
         }
-        foreach (valorBooleano booleano in booleanos)
+        foreach (ValorBooleano booleano in booleanos)
         {
-            booleano.reiniciaValores();
+            booleano.reiniciarValores();
         }
-        foreach (cambioEscena escena in escenas)
+        foreach (CambioEscena escena in escenas)
         {
-            escena.reiniciaValores();
+            escena.reiniciarValores();
         }
-        foreach (inventarioItem item in items)
+        foreach (InventarioItem item in items)
         {
-            item.reiniciaValores();
+            item.reiniciarValores();
         }
-        foreach (listaInventario listaInventario in listaInventarios) 
+        foreach (ListaInventario listaInventario in listaInventarios) 
         {
-            listaInventario.reiniciaValores();
+            listaInventario.reiniciarValores();
         }
-        foreach (valorString lstring in strings) 
+        foreach (ValorString lstring in strings) 
         {
-            lstring.reiniciaValores();
+            lstring.reiniciarValores();
         }
     }
 

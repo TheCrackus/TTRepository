@@ -13,7 +13,7 @@ public class EspacioInventario : MonoBehaviour
     [SerializeField] private Image imagenItem;
 
     [Header("El objeto que contiene el item")]
-    public inventarioItem item;
+    public InventarioItem item;
 
     [Header("El manejador de la interfaz grafica del inventario")]
     public ManejadorMenuInventario manejadorInventario;
@@ -38,7 +38,7 @@ public class EspacioInventario : MonoBehaviour
         }
     }
 
-    public void iniciarEspacioInventario(inventarioItem nuevoItem, ManejadorMenuInventario nuevoManejadorInventario) 
+    public void iniciarEspacioInventario(InventarioItem nuevoItem, ManejadorMenuInventario nuevoManejadorInventario) 
     {
         item = nuevoItem;
         manejadorInventario = nuevoManejadorInventario;

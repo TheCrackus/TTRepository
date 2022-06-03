@@ -4,13 +4,13 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Nuevo Booleano", menuName = "Valores/Booleano")]
 [System.Serializable]
-public class valorBooleano : ScriptableObject
+public class ValorBooleano : ScriptableObject
 {
     public bool valorBooleanoInicial;
 
     public bool valorBooleanoEjecucion;
 
-    public void reiniciaValores()
+    public void reiniciarValores()
     {
         valorBooleanoEjecucion = valorBooleanoInicial;
     }

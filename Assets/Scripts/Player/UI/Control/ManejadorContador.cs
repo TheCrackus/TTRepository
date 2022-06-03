@@ -1,39 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class manejadorContador : MonoBehaviour
+public class ManejadorContador : ManejadorMenuGenerico
 {
 
+    private ComponenteGraficoContador graficos;
+
     [Header("Duracion del contador")]
-    public valorFlotante tiempoContadorRegresivo;
-
-    [Header("Contenedor del texto donde se mostrara el contador")]
-    public GameObject objetoTextoContador;
-
-    [Header("Texto donde se mostrara el contador")]
-    public TextMeshProUGUI textoContador;
+    [SerializeField] private ValorFlotante tiempoContadorRegresivo;
 
     [Header("Manejador de la transicion")]
-    public MoverEscena transicion;
+    [SerializeField] private MoverEscena transicion;
 
     [Header("El contador regresivo esta en ejecucion?")]
-    [SerializeField] private valorBooleano cuentaTimerRegresivo;
+    [SerializeField] private ValorBooleano cuentaTimerRegresivo;
 
     private void Start()
     {
+        graficos = (ComponenteGraficoContador) ComponenteGrafico;
         if (cuentaTimerRegresivo != null) 
         {
             if (cuentaTimerRegresivo.valorBooleanoEjecucion)
             {
-                iniciaContadorRegresivo();
+                iniciarContadorRegresivo();
             }
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (cuentaTimerRegresivo != null) 
         {
@@ -42,49 +37,49 @@ public class manejadorContador : MonoBehaviour
                 if (tiempoContadorRegresivo.valorFlotanteEjecucion > 0)
                 {
                     tiempoContadorRegresivo.valorFlotanteEjecucion -= Time.deltaTime;
-                    muestraTiempo();
+                    mostrarTiempo();
                 }
                 else
                 {
                     transicion.iniciarTransicionOut();
-                    detenContadorRegresivo();
+                    detenerContadorRegresivo();
                 }
             }
         }
     }
 
-    public void muestraTiempo()
+    public void mostrarTiempo()
     {
         int minutos = Mathf.FloorToInt(tiempoContadorRegresivo.valorFlotanteEjecucion / 60f);
         int segundos = Mathf.FloorToInt(tiempoContadorRegresivo.valorFlotanteEjecucion - minutos * 60f);
-        textoContador.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+        graficos.TextoContador.text = string.Format("{0:00}:{1:00}", minutos, segundos);
     }
 
-    public void detenContadorRegresivo() 
+    public void detenerContadorRegresivo() 
     {
         if (cuentaTimerRegresivo != null) 
         {
             cuentaTimerRegresivo.valorBooleanoEjecucion = false;
         }
-        objetoTextoContador.SetActive(false);
+        graficos.ObjetoTextoContador.SetActive(false);
     }
 
-    public void iniciaContadorRegresivo() 
+    public void iniciarContadorRegresivo() 
     {
         if (cuentaTimerRegresivo != null)
         {
             cuentaTimerRegresivo.valorBooleanoEjecucion = true;
         }
-        objetoTextoContador.SetActive(true);
+        graficos.ObjetoTextoContador.SetActive(true);
     }
 
-    public void reiniciaContadorRegresivo() 
+    public void reiniciarContadorRegresivo() 
     {
         if (cuentaTimerRegresivo != null)
         {
             cuentaTimerRegresivo.valorBooleanoEjecucion = false;
         }
-        objetoTextoContador.SetActive(false);
+        graficos.ObjetoTextoContador.SetActive(false);
         tiempoContadorRegresivo.valorFlotanteEjecucion = tiempoContadorRegresivo.valorFlotanteInicial;
     }
 }

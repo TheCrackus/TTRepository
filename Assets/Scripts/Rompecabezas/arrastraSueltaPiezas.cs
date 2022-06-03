@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class arrastraSueltaPiezas : MonoBehaviour
+public class ArrastraSueltaPiezas : MonoBehaviour
 {
 
     private GameObject piezaSeleccionada;
@@ -14,20 +14,20 @@ public class arrastraSueltaPiezas : MonoBehaviour
     [SerializeField] private MoverEscena manejadorMoverEscena;
 
     [Header("Las piezas del puzzle")]
-    [SerializeField] private manejadorPiezas[] piezas;
+    [SerializeField] private ManejadorPiezas[] piezas;
 
     [Header("Eventos que se ejecutaran en otra escena")]
-    [SerializeField] private List<evento> eventosPuzzle = new List<evento>();
+    [SerializeField] private List<Evento> eventosPuzzle = new List<Evento>();
 
     [Header("Manejador de audio del puzle")]
     [SerializeField] private audioPuzzle manejadorAudioPuzzle;
 
-    void Start()
+    private void Start()
     {
         piezaSeleccionadaOrderLayer = 1;
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Atacar")) 
         {
@@ -36,11 +36,11 @@ public class arrastraSueltaPiezas : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Puzzle"))
                 {
-                    if (!hit.transform.GetComponent<manejadorPiezas>().EstoyPosicionCorrecta) 
+                    if (!hit.transform.GetComponent<ManejadorPiezas>().EstoyPosicionCorrecta) 
                     {
                         manejadorAudioPuzzle.reproduceTomaPieza();
                         piezaSeleccionada = hit.transform.gameObject;
-                        piezaSeleccionada.GetComponent<manejadorPiezas>().EstoyPosicionCorrecta = true;
+                        piezaSeleccionada.GetComponent<ManejadorPiezas>().EstoyPosicionCorrecta = true;
                         piezaSeleccionada.GetComponent<SortingGroup>().sortingOrder = piezaSeleccionadaOrderLayer;
                         piezaSeleccionadaOrderLayer++;
                     }
@@ -52,7 +52,7 @@ public class arrastraSueltaPiezas : MonoBehaviour
             if (piezaSeleccionada) 
             {
                 manejadorAudioPuzzle.reproduceSueltaPieza();
-                piezaSeleccionada.GetComponent<manejadorPiezas>().EstoyPosicionCorrecta = false;
+                piezaSeleccionada.GetComponent<ManejadorPiezas>().EstoyPosicionCorrecta = false;
             }
             piezaSeleccionada = null;
         }
@@ -64,11 +64,11 @@ public class arrastraSueltaPiezas : MonoBehaviour
         
     }
 
-    public void verificaPiezas() 
+    public void verificarPiezas() 
     {
         if (piezas != null && piezas.Length > 0)
         {
-            foreach (manejadorPiezas pieza in piezas)
+            foreach (ManejadorPiezas pieza in piezas)
             {
                 if (pieza.EstoyPosicionCorrecta)
                 {
@@ -81,7 +81,7 @@ public class arrastraSueltaPiezas : MonoBehaviour
             }
             if (GameObject.FindGameObjectWithTag("SetUp")) 
             { 
-                foreach (evento eventoLoop in eventosPuzzle) 
+                foreach (Evento eventoLoop in eventosPuzzle) 
                 {
                     SingletonEventosEscenas.instance.agregarEvento(eventoLoop);
                 }

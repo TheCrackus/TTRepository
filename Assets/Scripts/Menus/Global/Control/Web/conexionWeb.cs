@@ -47,10 +47,10 @@ public class conexionWeb : MonoBehaviour
     [SerializeField] private estadoConexion estadoActualConexion;
 
     [Header("Contenedor del usuario")]
-    [SerializeField] private usuario miUsuario;
+    [SerializeField] private Usuario miUsuario;
 
     public string RespuestaServidor { get => respuestaServidor; set => respuestaServidor = value; }
-    public usuario MiUsuario { get => miUsuario; set => miUsuario = value; }
+    public Usuario MiUsuario { get => miUsuario; set => miUsuario = value; }
     public estadoConexion EstadoActualConexion { get => estadoActualConexion; set => estadoActualConexion = value; }
     public string[] DatosJson { get => datosJson; set => datosJson = value; }
 
@@ -82,8 +82,8 @@ public class conexionWeb : MonoBehaviour
             if (respuestaServidor != "ERROR" && respuestaServidor != "NO VERIFICADO")
             {
                 datosJson = web.downloadHandler.text.Split('>');
-                miUsuario.datosEjecucion = JsonUtility.FromJson<usuario.datosUsuario>(datosJson[1]);
-                if (miUsuario.datosEjecucion.idJugador == 0)
+                miUsuario.DatosEjecucion = JsonUtility.FromJson<Usuario.DatosUsuario>(datosJson[1]);
+                if (miUsuario.DatosEjecucion.idJugador == 0)
                 {
                     estadoActualConexion = estadoConexion.falleIniciarSesionDatos;
                 }
@@ -152,9 +152,9 @@ public class conexionWeb : MonoBehaviour
     private IEnumerator eliminar() 
     {
         WWWForm forma = new WWWForm();
-        forma.AddField("id_jugador", miUsuario.datosEjecucion.idJugador);
-        forma.AddField("email", miUsuario.datosEjecucion.mail);
-        forma.AddField("password", miUsuario.datosEjecucion.password);
+        forma.AddField("id_jugador", miUsuario.DatosEjecucion.idJugador);
+        forma.AddField("email", miUsuario.DatosEjecucion.mail);
+        forma.AddField("password", miUsuario.DatosEjecucion.password);
         UnityWebRequest web = UnityWebRequest.Post("https://tt2021-a015.herokuapp.com/EJ_JSON", forma);
         yield return web.SendWebRequest();
         if (web.result != UnityWebRequest.Result.ProtocolError)
@@ -188,7 +188,7 @@ public class conexionWeb : MonoBehaviour
     private IEnumerator modificar(string mail, string password, string sobrenombre, string nacimiento)
     {
         WWWForm forma = new WWWForm();
-        forma.AddField("id_jugador", miUsuario.datosEjecucion.idJugador);
+        forma.AddField("id_jugador", miUsuario.DatosEjecucion.idJugador);
         forma.AddField("sobrenombre", sobrenombre);
         forma.AddField("nacimiento", nacimiento);
         forma.AddField("email", mail);
@@ -226,7 +226,7 @@ public class conexionWeb : MonoBehaviour
     private IEnumerator enlazar(string password)
     {
         WWWForm forma = new WWWForm();
-        forma.AddField("idJugador", miUsuario.datosEjecucion.idJugador);
+        forma.AddField("idJugador", miUsuario.DatosEjecucion.idJugador);
         forma.AddField("gPass", password);
         UnityWebRequest web = UnityWebRequest.Post("https://tt2021-a015.herokuapp.com/enlaceProfesor", forma);
         yield return web.SendWebRequest();
@@ -295,7 +295,7 @@ public class conexionWeb : MonoBehaviour
     private IEnumerator enviar(string respuesta1, string respuesta2, string respuesta3, string respuesta4, string respuesta5, string respuesta6) 
     {
         WWWForm forma = new WWWForm();
-        forma.AddField("idJugador", miUsuario.datosEjecucion.idJugador);
+        forma.AddField("idJugador", miUsuario.DatosEjecucion.idJugador);
         forma.AddField("res1", respuesta1);
         forma.AddField("res2", respuesta2);
         forma.AddField("res3", respuesta3);
@@ -325,7 +325,7 @@ public class conexionWeb : MonoBehaviour
 
     public void cierraSesion() 
     {
-        miUsuario.reiniciaValores();
+        miUsuario.reiniciarValores();
     }
 
 }

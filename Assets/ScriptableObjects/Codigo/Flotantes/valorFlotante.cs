@@ -4,14 +4,14 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Nuevo Flotante", menuName = "Valores/Flotante")]
 [System.Serializable]
-public class valorFlotante : ScriptableObject
+public class ValorFlotante : ScriptableObject
 {
     
     public float valorFlotanteInicial;
 
     public float valorFlotanteEjecucion;
 
-    public void reiniciaValores()
+    public void reiniciarValores()
     {
         valorFlotanteEjecucion = valorFlotanteInicial;
     }

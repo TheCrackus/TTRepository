@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class itemFisico : MonoBehaviour
+public class ItemFisico : MonoBehaviour
 {
     [Header("El inventario general del Player")]
-    [SerializeField] private listaInventario inventariopPlayerItems;
-    [Header("El item a agregar al inventario")]
-    [SerializeField] private inventarioItem itemAgrgarInventario;
+    [SerializeField] private ListaInventario inventariopPlayerItems;
 
-    void agregaItemInventario() 
+    [Header("El item a agregar al inventario")]
+    [SerializeField] private InventarioItem itemAgrgarInventario;
+
+    [Header("Manejador de audio del objeto")]
+    [SerializeField] private AudioObjetoMapa manejadorAudioObjetoMapa;
+
+    public AudioObjetoMapa ManejadorAudioObjetoMapa { get => manejadorAudioObjetoMapa; set => manejadorAudioObjetoMapa = value; }
+
+    void agregarItemInventario() 
     {
         if (inventariopPlayerItems && itemAgrgarInventario) 
         {
@@ -31,7 +37,8 @@ public class itemFisico : MonoBehaviour
         if (colisionDetectada.gameObject.CompareTag("Player")
             && colisionDetectada.isTrigger) 
         {
-            agregaItemInventario();
+            manejadorAudioObjetoMapa.reproducirAudioRecojer();
+            agregarItemInventario();
             Destroy(gameObject);
         }
     }

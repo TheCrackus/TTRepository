@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class escuchaEvento : MonoBehaviour
+public class EscuchaEvento : MonoBehaviour
 {
 
-    public evento evento;
+    public Evento evento;
     public UnityEvent eventoUnity;
 
-    public void invocaEvento() 
+    public void invocarEvento() 
     {
         eventoUnity.Invoke();
     }
 
     private void OnEnable()
     {
-        evento.registraEvento(this);
+        evento.registrarEvento(this);
     }
 
     private void OnDisable()
     {
-        evento.eliminaEvento(this);
+        evento.eliminarEvento(this);
     }
 }

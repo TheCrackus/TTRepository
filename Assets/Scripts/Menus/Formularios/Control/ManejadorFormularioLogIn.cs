@@ -7,15 +7,15 @@ public class ManejadorFormularioLogIn : ManejadorFormulario, ICanvasFormularioRe
     private ComponenteGraficoFormularioLogIn graficos;
 
     [Header("Nombre de la escena con el menu principal")]
-    [SerializeField] private valorString escenaMenuPrincipal;
+    [SerializeField] private ValorString escenaMenuPrincipal;
 
     void Start()
     {
         graficos = (ComponenteGraficoFormularioLogIn)ComponenteGrafico;
         reiniciarBotones();
-        if (Conexion.MiUsuario.datosEjecucion.idJugador != 0)
+        if (Conexion.MiUsuario.DatosEjecucion.idJugador != 0)
         {
-            Conexion.iniciarSesion(Conexion.MiUsuario.datosEjecucion.mail, Conexion.MiUsuario.datosEjecucion.password);
+            Conexion.iniciarSesion(Conexion.MiUsuario.DatosEjecucion.mail, Conexion.MiUsuario.DatosEjecucion.password);
             StartCoroutine(esperarDatosInicioSesion());
         }
     }

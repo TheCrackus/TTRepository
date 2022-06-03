@@ -20,7 +20,7 @@ public class ManejadorFormularioModificaUsuario : ManejadorFormulario, ICanvasMe
     private bool passwordCorrecta;
 
     [Header("Nombre de la escena de LogIn")]
-    [SerializeField] private valorString escenaLogIn;
+    [SerializeField] private ValorString escenaLogIn;
 
     private void Start()
     {
@@ -296,7 +296,7 @@ public class ManejadorFormularioModificaUsuario : ManejadorFormulario, ICanvasMe
                             passwordCorrecta = false;
                             msjFormulario += "Tu contraseña nueva no es válida, debe tener al menos 4 caracteres.";
                         }
-                        if (!graficos.PasswordFieldConf.text.ToString().Equals(Conexion.MiUsuario.datosEjecucion.password)) 
+                        if (!graficos.PasswordFieldConf.text.ToString().Equals(Conexion.MiUsuario.DatosEjecucion.password)) 
                         {
                             passwordCorrecta = false;
                             msjFormulario += "Tu contraseña actual no es válida, ingresa la correcta.";

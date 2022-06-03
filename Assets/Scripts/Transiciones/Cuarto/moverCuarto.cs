@@ -23,12 +23,12 @@ public class MoverCuarto : Transicion
             {
                 if (ContadorRegresivoInicia != null) 
                 {
-                    ContadorRegresivoInicia.invocaFunciones();
+                    ContadorRegresivoInicia.invocarFunciones();
                 }
                 EscenaActual.valorStringEjecucion = SceneManager.GetActiveScene().name;
-                manejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<manejadorContador>();
+                ManejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<ManejadorContador>();
                 MoverEscena moverE = manejadorC.GetComponent<MoverEscena>();
-                foreach (valorString nombre in Escenas) 
+                foreach (ValorString nombre in Escenas) 
                 {
                     if (nombre.valorStringEjecucion == EscenaActual.valorStringEjecucion) 
                     {
@@ -45,7 +45,7 @@ public class MoverCuarto : Transicion
                 {
                     if (ContadorRegresivoDeten != null) 
                     {
-                        ContadorRegresivoDeten.invocaFunciones();
+                        ContadorRegresivoDeten.invocarFunciones();
                     }
                 }
                 else 
@@ -54,7 +54,7 @@ public class MoverCuarto : Transicion
                     {
                         if (ContadorRegresivoReinicia != null) 
                         {
-                            ContadorRegresivoReinicia.invocaFunciones();
+                            ContadorRegresivoReinicia.invocarFunciones();
                         }
                     }
                 }
@@ -100,7 +100,7 @@ public class MoverCuarto : Transicion
             ObjetoPanel.SetActive(false);
             if (EnumAccionContador == accionContador.deten)
             {
-                ContadorRegresivoInicia.invocaFunciones();
+                ContadorRegresivoInicia.invocarFunciones();
             }
             if (DebeMostrarTexto)
             {
