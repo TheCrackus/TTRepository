@@ -29,7 +29,7 @@ public class MoverEscena : Transicion
     public ValorString EscenaCarga { get => escenaCarga; set => escenaCarga = value; }
     public Vector3 NuevaPosicionPlayer { get => nuevaPosicionPlayer; set => nuevaPosicionPlayer = value; }
 
-    public virtual void Awake()
+    public virtual void Start()
     {
         iniciarTransicionIn();
     }

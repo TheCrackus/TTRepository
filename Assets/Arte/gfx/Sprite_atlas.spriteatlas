@@ -2823,6 +2823,7 @@ SpriteAtlas:
   - {fileID: 538826285080647454, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
   - {fileID: 1107736971085435061, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
   - {fileID: -377563455374678323, guid: 7fd9c75d5c850ba469e236186a8dc17a, type: 3}
+  - {fileID: 21300000, guid: b5c1699d2dfe7164abae271fa31a186e, type: 3}
   - {fileID: 7482667652216324306, guid: 8e38d71f9a8d7a648ab82898335354d7, type: 3}
   - {fileID: 21300000, guid: 9871f57fa70c0154d86e788f8fef1bcb, type: 3}
   - {fileID: 21300000, guid: 87e139af8c55196479e84aebf9467e58, type: 3}
@@ -5602,6 +5603,7 @@ SpriteAtlas:
   - objects_119
   - objects_109
   - objects_108
+  - CirculoTransparente
   - Square
   - paper background
   - Puzzle

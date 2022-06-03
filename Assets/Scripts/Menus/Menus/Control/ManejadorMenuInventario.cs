@@ -22,19 +22,12 @@ public class ManejadorMenuInventario : ManejadorMenuGenerico, IReproductorAudioI
     public bool CondicionPausa { get => pausa; set => pausa = value; }
     public AudioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
 
-    void OnEnable()
-    {
-        reproducirAudioAbreVentana();
-        pausarJuego();
-        
-    }
-
     void OnDisable()
     {
-        if (!gameObject.scene.isLoaded) 
+        if (!gameObject.scene.isLoaded)
         {
             return;
-        } 
+        }
         reproducirAudioClickCerrar();
         continuarJuego();
     }
@@ -42,6 +35,8 @@ public class ManejadorMenuInventario : ManejadorMenuGenerico, IReproductorAudioI
     private void Start()
     {
         graficos = (ComponenteGraficoMenuInventario) ComponenteGrafico;
+        reproducirAudioAbreVentana();
+        pausarJuego();
         limpiarListaInventario();
         limpiarEspaciosInventario();
         crearEspaciosInventario();

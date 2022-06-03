@@ -25,12 +25,6 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudioInterf
     public AudioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
     public bool PulseBoton { get => pulseBoton; set => pulseBoton= value; }
 
-    private void OnEnable()
-    {
-        reproducirAudioAbreVentana();
-        reiniciarBotones();
-        pausarJuego();
-    }
 
     private void OnDisable()
     {
@@ -45,6 +39,9 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudioInterf
     private void Start()
     {
         graficos = (ComponenteGraficoMenuPausa) ComponenteGrafico;
+        reproducirAudioAbreVentana();
+        reiniciarBotones();
+        pausarJuego();
     }
 
     public void regresarBoton() 

@@ -98,6 +98,7 @@ public class MovimientoPlayer : MonoBehaviour
     {
         if (Input.GetButtonDown("Atacar")
             && inventariopPlayerItems.objetoEquipado != null
+            && Time.timeScale != 0
             && (estadoPlayer.Estado == EstadoGenerico.caminando 
                 || estadoPlayer.Estado == EstadoGenerico.ninguno))
         {

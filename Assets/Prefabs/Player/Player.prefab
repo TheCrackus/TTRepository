@@ -503,6 +503,7 @@ MonoBehaviour:
   espada: {fileID: 11400000, guid: 0498361776c55f842b62cf651e820a20, type: 2}
   manejadorAudioMelee: {fileID: 8091535967502496593}
   manejadorAudioProyectil: {fileID: 780847299725038788}
+  fondoMazmorra: {fileID: 0}
 --- !u!114 &8091535967502496593
 MonoBehaviour:
   m_ObjectHideFlags: 0

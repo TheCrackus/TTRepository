@@ -16,7 +16,7 @@ public class ManejadorContador : ManejadorMenuGenerico
     [Header("El contador regresivo esta en ejecucion?")]
     [SerializeField] private ValorBooleano cuentaTimerRegresivo;
 
-    private void Start()
+    private void Awake()
     {
         graficos = (ComponenteGraficoContador) ComponenteGrafico;
         if (cuentaTimerRegresivo != null) 
