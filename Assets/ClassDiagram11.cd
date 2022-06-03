@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IncrementoEstadisticas">
+    <Position X="12.75" Y="16" Width="2.75" />
+    <AssociationLine Name="eventoIncrementoEstadistica" Type="Evento" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.75" Y="16.562" />
+        <Point X="11.458" Y="16.562" Type="JumpStart" />
+        <Point X="11.292" Y="16.562" Type="JumpEnd" />
+        <Point X="10.875" Y="16.562" />
+        <Point X="10.875" Y="11" />
+        <Point X="10.5" Y="11" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="manejadorAudioObjetoMapa" Type="AudioObjetoMapa" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.5" Y="16.688" />
+        <Point X="16.542" Y="16.688" Type="JumpStart" />
+        <Point X="16.708" Y="16.688" Type="JumpEnd" />
+        <Point X="16.885" Y="16.688" Type="JumpStart" />
+        <Point X="17.052" Y="16.688" Type="JumpEnd" />
+        <Point X="17.292" Y="16.688" Type="JumpStart" />
+        <Point X="17.458" Y="16.688" Type="JumpEnd" />
+        <Point X="17.854" Y="16.688" Type="JumpStart" />
+        <Point X="18.021" Y="16.688" Type="JumpEnd" />
+        <Point X="20.945" Y="16.688" />
+        <Point X="20.945" Y="14.175" />
+        <Point X="21.5" Y="14.175" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAIQAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interacciones\Globales\IncrementoEstadisticas.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="eventoIncrementoEstadistica" />
+      <Field Name="manejadorAudioObjetoMapa" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="InteraccionEquipable">
+    <Position X="13.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAABAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\SistemaInventario\Interacciones\InteraccionEquipable.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="inventariopPlayerItems" />
+      <Field Name="objetoEquipar" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="InteraccionMagia">
+    <Position X="14.75" Y="10.25" Width="1.5" />
+    <AssociationLine Name="magiaMaximaPlayer" Type="ValorFlotante" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.809" Y="11.483" />
+        <Point X="15.809" Y="13.938" />
+        <Point X="16.5" Y="13.938" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="magiaPlayer" Type="ValorFlotante" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.248" Y="11.483" />
+        <Point X="15.248" Y="14.25" />
+        <Point X="16.5" Y="14.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAACCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQA=</HashCode>
+      <FileName>Assets\Scripts\SistemaInventario\Interacciones\InteraccionMagia.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="actualizaMagiaPlayer" />
+      <Field Name="magiaMaximaPlayer" />
+      <Field Name="magiaPlayer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="InteraccionVida">
+    <Position X="12.75" Y="10.25" Width="1.5" />
+    <AssociationLine Name="vidaPlayer" Type="ValorFlotante" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.5" Y="11.483" />
+        <Point X="13.5" Y="14.875" />
+        <Point X="16.5" Y="14.875" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="contenedorCorazones" Type="ValorFlotante" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.906" Y="11.483" />
+        <Point X="13.906" Y="14.562" />
+        <Point X="16.5" Y="14.562" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAQAAAAAAABAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Scripts\SistemaInventario\Interacciones\InteraccionVida.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="actualizaVidaPlayer" />
+      <Field Name="vidaPlayer" />
+      <Field Name="contenedorCorazones" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ItemFisico">
+    <Position X="16" Y="6" Width="2" />
+    <AssociationLine Name="inventariopPlayerItems" Type="ListaInventario" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="17" Y="6" />
+        <Point X="17" Y="5.625" />
+        <Point X="10.875" Y="5.625" />
+        <Point X="10.875" Y="6" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="manejadorAudioObjetoMapa" Type="AudioObjetoMapa" FixedToPoint="true">
+      <Path>
+        <Point X="18" Y="6.938" />
+        <Point X="18.375" Y="6.938" />
+        <Point X="18.375" Y="13.25" />
+        <Point X="21.5" Y="13.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAQEAQAABAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SistemaInventario\Interacciones\ItemFisico.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="inventariopPlayerItems" />
+      <Field Name="itemAgrgarInventario" />
+      <Field Name="manejadorAudioObjetoMapa" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EspacioInventario">
+    <Position X="17.5" Y="22.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQQAAAAAAAACAQAAQABAFEAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SistemaInventario\EspacioInventario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="manejadorInventario" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BotellaMagia">
+    <Position X="9" Y="18.75" Width="2" />
+    <AssociationLine Name="magiaMaximaPlayer" Type="ValorFlotante" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.469" Y="18.75" />
+        <Point X="9.469" Y="15.188" />
+        <Point X="10.792" Y="15.188" Type="JumpStart" />
+        <Point X="10.958" Y="15.188" Type="JumpEnd" />
+        <Point X="11.292" Y="15.188" Type="JumpStart" />
+        <Point X="11.458" Y="15.188" Type="JumpEnd" />
+        <Point X="16.5" Y="15.188" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAABAAEAAA=</HashCode>
+      <FileName>Assets\Scripts\Interacciones\Botella Magia\BotellaMagia.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="magiaMaximaPlayer" />
+      <Field Name="magiaPlayer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ContenedorCorazon">
+    <Position X="12" Y="18.75" Width="2.5" />
+    <AssociationLine Name="contenedorCorazonObtenido" Type="ValorBooleano" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.062" Y="20.175" />
+        <Point X="13.062" Y="21.139" />
+        <Point X="19.688" Y="21.139" />
+        <Point X="19.688" Y="18.877" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="corazonesMaximos" Type="ValorFlotante" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.547" Y="18.75" />
+        <Point X="12.547" Y="17.755" />
+        <Point X="14.042" Y="17.755" Type="JumpStart" />
+        <Point X="14.208" Y="17.755" Type="JumpEnd" />
+        <Point X="16.625" Y="17.755" />
+        <Point X="16.625" Y="15.627" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="vidaActualPlayer" Type="ValorFlotante" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.875" Y="18.75" />
+        <Point X="12.875" Y="18.031" />
+        <Point X="14.042" Y="18.031" Type="JumpStart" />
+        <Point X="14.208" Y="18.031" Type="JumpEnd" />
+        <Point X="16.885" Y="18.031" Type="JumpStart" />
+        <Point X="17.052" Y="18.031" Type="JumpEnd" />
+        <Point X="17.292" Y="18.031" Type="JumpStart" />
+        <Point X="17.458" Y="18.031" Type="JumpEnd" />
+        <Point X="17.938" Y="18.031" />
+        <Point X="17.938" Y="15.627" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAAIAAAACAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interacciones\Contenedor Corazon\ContenedorCorazon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="contenedorCorazonObtenido" />
+      <Field Name="corazonesMaximos" />
+      <Field Name="vidaActualPlayer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Corazon">
+    <Position X="15.25" Y="18.75" Width="2.25" />
+    <AssociationLine Name="contenedorCorazones" Type="ValorFlotante" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.969" Y="18.75" />
+        <Point X="16.969" Y="16.044" />
+        <Point X="17.854" Y="16.044" Type="JumpStart" />
+        <Point X="18.021" Y="16.044" Type="JumpEnd" />
+        <Point X="18.25" Y="16.044" />
+        <Point X="18.25" Y="15.312" />
+        <Point X="18" Y="15.312" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="vidaPlayer" Type="ValorFlotante" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="17.375" Y="18.75" />
+        <Point X="17.375" Y="16.294" />
+        <Point X="17.854" Y="16.294" Type="JumpStart" />
+        <Point X="18.021" Y="16.294" Type="JumpEnd" />
+        <Point X="18.858" Y="16.294" />
+        <Point X="18.858" Y="14.875" />
+        <Point X="18" Y="14.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAABAAAAEAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interacciones\Corazon\Corazon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="contenedorCorazones" />
+      <Field Name="vidaPlayer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moneda">
+    <Position X="15.75" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interacciones\Moneda\Moneda.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ListaInventario">
+    <Position X="9.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAECAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\InventarioItem\ListaInventario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="objetoEquipado" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="inventario" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="InventarioItem">
+    <Position X="4.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKQAAAAAAAAAAAgAgAAAIAAABACECACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\InventarioItem\InventarioItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioObjetoMapa">
+    <Position X="21.5" Y="12.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIIAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\ObjetoMapa\AudioObjetoMapa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManejadorMenuInventario">
+    <Position X="21.5" Y="22.25" Width="2.5" />
+    <AssociationLine Name="manejadorAudioInterfazGrafica" Type="AudioInterfazGrafica" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="23.078" Y="22.25" />
+        <Point X="23.078" Y="20.377" />
+        <Point X="23.75" Y="20.377" />
+        <Point X="23.75" Y="15.313" />
+        <Point X="24.75" Y="15.313" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="inventarioPlayerItems" Type="ListaInventario" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="21.5" Y="25.516" />
+        <Point X="11.375" Y="25.516" />
+        <Point X="11.375" Y="7.25" />
+        <Point X="11" Y="7.25" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="itemActual" Type="InventarioItem" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="21.719" Y="22.25" />
+        <Point X="21.719" Y="21.875" />
+        <Point X="11.458" Y="21.875" Type="JumpStart" />
+        <Point X="11.292" Y="21.875" Type="JumpEnd" />
+        <Point X="5.625" Y="21.875" />
+        <Point X="5.625" Y="9.415" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAwAAABDgAAAAAQAgGAAAgAIAAAAAIAAAAKCBAGAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Menus\Control\ManejadorMenuInventario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="manejadorAudioInterfazGrafica" />
+      <Field Name="graficos" />
+      <Field Name="inventarioPlayerItems" />
+      <Field Name="itemActual" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SistemaAudio">
+    <Position X="23.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Globales\Sistema Audio\SistemaAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioInterfazGrafica">
+    <Position X="24.75" Y="12.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CCAAQAAAAAAAAAAAAAgCAABgAAAAAgAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\InterfazGrafica\AudioInterfazGrafica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ComponenteGraficoMenuInventario">
+    <Position X="25.5" Y="22.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAgAAAAAAEAAAAAAAAAAgAQAAIAQAAAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Menus\Vista\ComponenteGraficoMenuInventario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Evento">
+    <Position X="9" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Evento\Evento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="eventos" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="EscuchaEvento">
+    <Position X="6.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAIIAgAAAAAACAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Eventos\EscuchaEvento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="evento" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ValorFlotante">
+    <Position X="16.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Flotantes\ValorFlotante.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ComponenteGraficoGenerico">
+    <Position X="25.75" Y="18.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Vista\ComponenteGraficoGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManejadorMenuGenerico">
+    <Position X="20.75" Y="18.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIEAAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="componenteGrafico" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ValorBooleano">
+    <Position X="18.25" Y="17" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Booleano\ValorBooleano.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IReproductorAudioInterfazGrafica">
+    <Position X="21.75" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAgAAAAAAAgCAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IPausa">
+    <Position X="20" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAABAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

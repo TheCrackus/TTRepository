@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MovimientoPlayer">
+    <Position X="11" Y="10" Width="2.5" />
+    <AssociationLine Name="inventariopPlayerItems" Type="ListaInventario" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.5" Y="13.97" />
+        <Point X="21.062" Y="13.97" />
+        <Point X="21.062" Y="11.175" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="manejadorAudioMelee" Type="AudioMelee" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.75" Y="10" />
+        <Point X="12.75" Y="8.252" />
+        <Point X="19.281" Y="8.252" />
+        <Point X="19.281" Y="7.877" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="posicionPlayer" Type="ValorVectorial" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11" Y="14.5" />
+        <Point X="10.822" Y="14.5" />
+        <Point X="10.822" Y="15.938" />
+        <Point X="9.5" Y="15.938" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQDCAAAAiQgAAABBQAQCAIAAQAEAEJAAACiAQAEAEA=</HashCode>
+      <FileName>Assets\Scripts\Player\MovimientoPlayer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="estadoPlayer" />
+      <Field Name="inventariopPlayerItems" />
+      <Field Name="estadoCambioEscenas" />
+      <Field Name="decrementaMagia" />
+      <Field Name="arco" />
+      <Field Name="espada" />
+      <Field Name="manejadorAudioMelee" />
+      <Field Name="manejadorAudioProyectil" />
+      <Field Name="magiaPlayer" />
+      <Field Name="posicionPlayer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="InventarioItem">
+    <Position X="16.25" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAKQAAAAAAAAAAAgAgAAAIAAABACECACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\InventarioItem\InventarioItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Evento">
+    <Position X="11.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Evento\Evento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="eventos" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ListaInventario">
+    <Position X="20.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAECAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\InventarioItem\ListaInventario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="objetoEquipado" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="inventario" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AudioMelee">
+    <Position X="17.75" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\Arma Cuerpo Cuerpo\AudioMelee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioProyectil">
+    <Position X="14.25" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAggAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\Arma Distancia\AudioProyectil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SistemaAudio">
+    <Position X="16.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Globales\Sistema Audio\SistemaAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CambioEscena">
+    <Position X="17.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAICIAAAAAAAAAAAAAAAIAAACAAARAAAAABAoCAE=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\CambioEscena\CambioEscena.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscuchaEvento">
+    <Position X="14.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAIIAgAAAAAACAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Eventos\EscuchaEvento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="evento" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EstadoObjeto">
+    <Position X="8.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Globales\Estados\EstadoObjeto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="estado" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ValorFlotante">
+    <Position X="7.75" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Flotantes\ValorFlotante.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValorVectorial">
+    <Position X="7.5" Y="15" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAACAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Vectores\ValorVectorial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="EstadoGenerico">
+    <Position X="5.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAQAAAgEAiEA=</HashCode>
+      <FileName>Assets\Scripts\Globales\Estados\EstadoObjeto.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

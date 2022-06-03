@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ManejadorBarraMagica">
+    <Position X="8.25" Y="5.25" Width="2" />
+    <AssociationLine Name="graficos" Type="ComponenteGraficoBarraMagica" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.688" Y="6.867" />
+        <Point X="8.688" Y="8.608" />
+        <Point X="11.729" Y="8.608" Type="JumpStart" />
+        <Point X="11.895" Y="8.608" Type="JumpEnd" />
+        <Point X="12.573" Y="8.608" Type="JumpStart" />
+        <Point X="12.739" Y="8.608" Type="JumpEnd" />
+        <Point X="13.026" Y="8.608" Type="JumpStart" />
+        <Point X="13.193" Y="8.608" Type="JumpEnd" />
+        <Point X="15.167" Y="8.608" Type="JumpStart" />
+        <Point X="15.333" Y="8.608" Type="JumpEnd" />
+        <Point X="16.48" Y="8.608" Type="JumpStart" />
+        <Point X="16.646" Y="8.608" Type="JumpEnd" />
+        <Point X="26.5" Y="8.608" />
+        <Point X="26.5" Y="6.684" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="magiaPlayer" Type="ValorFlotante" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.25" Y="6.059" />
+        <Point X="10.625" Y="6.059" />
+        <Point X="10.625" Y="8.608" />
+        <Point X="11.5" Y="8.608" />
+        <Point X="11.5" Y="9.875" />
+        <Point X="11.729" Y="9.875" Type="JumpStart" />
+        <Point X="11.895" Y="9.875" Type="JumpEnd" />
+        <Point X="12.573" Y="9.875" Type="JumpStart" />
+        <Point X="12.739" Y="9.875" Type="JumpEnd" />
+        <Point X="13.026" Y="9.875" Type="JumpStart" />
+        <Point X="13.193" Y="9.875" Type="JumpEnd" />
+        <Point X="20.5" Y="9.875" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="magiaPlayerMaxima" Type="ValorFlotante" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.25" Y="6.494" />
+        <Point X="10.625" Y="6.494" />
+        <Point X="10.625" Y="8.608" />
+        <Point X="11.5" Y="8.608" />
+        <Point X="11.5" Y="10.438" />
+        <Point X="11.729" Y="10.438" Type="JumpStart" />
+        <Point X="11.895" Y="10.438" Type="JumpEnd" />
+        <Point X="12.573" Y="10.438" Type="JumpStart" />
+        <Point X="12.739" Y="10.438" Type="JumpEnd" />
+        <Point X="13.026" Y="10.438" Type="JumpStart" />
+        <Point X="13.193" Y="10.438" Type="JumpEnd" />
+        <Point X="20.5" Y="10.438" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAACAAAEAAAAAAAAAgAAAAAAAAAAAAAAAEEAA=</HashCode>
+      <FileName>Assets\Scripts\Player\UI\Control\ManejadorBarraMagica.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="graficos" />
+      <Field Name="magiaPlayer" />
+      <Field Name="magiaPlayerMaxima" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ManejadorContador">
+    <Position X="11.25" Y="5.25" Width="2.25" />
+    <AssociationLine Name="tiempoContadorRegresivo" Type="ValorFlotante" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.812" Y="7.444" />
+        <Point X="11.812" Y="10.875" />
+        <Point X="12.573" Y="10.875" Type="JumpStart" />
+        <Point X="12.739" Y="10.875" Type="JumpEnd" />
+        <Point X="13.026" Y="10.875" Type="JumpStart" />
+        <Point X="13.193" Y="10.875" Type="JumpEnd" />
+        <Point X="20.5" Y="10.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAACAAAIAAAAAAAAAAAAAACAgAAAIABgAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Player\UI\Control\ManejadorContador.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="graficos" />
+      <Field Name="tiempoContadorRegresivo" />
+      <Field Name="transicion" />
+      <Field Name="cuentaTimerRegresivo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ManejadorCorazones">
+    <Position X="14.75" Y="5.25" Width="2.5" />
+    <AssociationLine Name="graficos" Type="ComponenteGraficoCorazones" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.812" Y="6.867" />
+        <Point X="15.812" Y="8.213" />
+        <Point X="16.48" Y="8.213" Type="JumpStart" />
+        <Point X="16.646" Y="8.213" Type="JumpEnd" />
+        <Point X="23.5" Y="8.213" />
+        <Point X="23.5" Y="7.838" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="contenedorCorazonesMaximos" Type="ValorFlotante" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.563" Y="6.867" />
+        <Point X="16.563" Y="8.898" />
+        <Point X="31.573" Y="8.898" Type="JumpStart" />
+        <Point X="31.74" Y="8.898" Type="JumpEnd" />
+        <Point X="33.241" Y="8.898" />
+        <Point X="33.241" Y="10.312" />
+        <Point X="31.74" Y="10.312" Type="JumpStart" />
+        <Point X="31.573" Y="10.312" Type="JumpEnd" />
+        <Point X="22.5" Y="10.312" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="vidaActualPlayer" Type="ValorFlotante" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.25" Y="6.867" />
+        <Point X="15.25" Y="8.898" />
+        <Point X="22.875" Y="8.898" />
+        <Point X="22.875" Y="9.812" />
+        <Point X="22.5" Y="9.812" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAACIAAAAAAAAAAAAAAAAAAAAAAEAAAIAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Player\UI\Control\ManejadorCorazones.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="graficos" />
+      <Field Name="contenedorCorazonesMaximos" />
+      <Field Name="vidaActualPlayer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ManejadorMenuGenerico">
+    <Position X="11.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAIEAAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="componenteGrafico" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ComponenteGraficoContador">
+    <Position X="19.25" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\UI\Vista\ComponenteGraficoContador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ComponenteGraficoCorazones">
+    <Position X="22.25" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAiAAAAAgAAAAAAAAAAABAAAAAQAAAAAAAAAAABIBAA=</HashCode>
+      <FileName>Assets\Scripts\Player\UI\Vista\ComponenteGraficoCorazones.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ComponenteGraficoBarraMagica">
+    <Position X="25.25" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\UI\Vista\ComponenteGraficoBarraMagica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ComponenteGraficoGenerico">
+    <Position X="22.5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Vista\ComponenteGraficoGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValorBooleano">
+    <Position X="17.5" Y="11.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Booleano\ValorBooleano.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValorFlotante">
+    <Position X="20.5" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Flotantes\ValorFlotante.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoverEscena">
+    <Position X="9.75" Y="20.25" Width="1.5" />
+    <AssociationLine Name="nombreTransicionDestino" Type="ValorString" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="21.882" />
+        <Point X="14.917" Y="21.882" Type="JumpStart" />
+        <Point X="15.083" Y="21.882" Type="JumpEnd" />
+        <Point X="16.729" Y="21.882" Type="JumpStart" />
+        <Point X="16.895" Y="21.882" Type="JumpEnd" />
+        <Point X="17.917" Y="21.882" Type="JumpStart" />
+        <Point X="18.083" Y="21.882" Type="JumpEnd" />
+        <Point X="18.625" Y="21.882" />
+        <Point X="18.625" Y="15.062" />
+        <Point X="18.25" Y="15.062" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="nombreTransicionActual" Type="ValorString" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="22.353" />
+        <Point X="14.917" Y="22.353" Type="JumpStart" />
+        <Point X="15.083" Y="22.353" Type="JumpEnd" />
+        <Point X="16.812" Y="22.353" />
+        <Point X="16.812" Y="15.377" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="escenaCarga" Type="ValorString" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="23.293" />
+        <Point X="18" Y="23.293" />
+        <Point X="18" Y="15.377" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAFBAA0BAQEQAAAAgAAAAAggAAGA=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Escenas\MoverEscena.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="nombreTransicionDestino" />
+      <Field Name="nombreTransicionActual" />
+      <Field Name="estadoCambioEscena" />
+      <Field Name="escenaCarga" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Transicion">
+    <Position X="9.75" Y="8.75" Width="1.5" />
+    <AssociationLine Name="contadorRegresivoInicia" Type="Evento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.75" Y="10.987" />
+        <Point X="8.35" Y="10.987" />
+        <Point X="8.35" Y="25.75" />
+        <Point X="6.458" Y="25.75" Type="JumpStart" />
+        <Point X="6.292" Y="25.75" Type="JumpEnd" />
+        <Point X="6" Y="25.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="contadorRegresivoDeten" Type="Evento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.75" Y="13.28" />
+        <Point X="8.433" Y="13.28" Type="JumpStart" />
+        <Point X="8.267" Y="13.28" Type="JumpEnd" />
+        <Point X="7.637" Y="13.28" />
+        <Point X="7.637" Y="25.312" />
+        <Point X="6.458" Y="25.312" Type="JumpStart" />
+        <Point X="6.292" Y="25.312" Type="JumpEnd" />
+        <Point X="6" Y="25.312" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="contadorRegresivoReinicia" Type="Evento" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.75" Y="15.046" />
+        <Point X="8.433" Y="15.046" Type="JumpStart" />
+        <Point X="8.267" Y="15.046" Type="JumpEnd" />
+        <Point X="7.72" Y="15.046" Type="JumpStart" />
+        <Point X="7.554" Y="15.046" Type="JumpEnd" />
+        <Point X="6.375" Y="15.046" />
+        <Point X="6.375" Y="26.062" />
+        <Point X="6" Y="26.062" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEECECICQRABAhGAGSAQgQooUJEAA5AQAgEACAJJAo=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Globales\Transicion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="contadorRegresivoInicia" />
+      <Field Name="contadorRegresivoDeten" />
+      <Field Name="contadorRegresivoReinicia" />
+      <Field Name="manejadorAudioTransicion" />
+      <Field Name="enumAccionContador" />
+      <Field Name="enumTipoTransicion" />
+      <Field Name="escenaActual" />
+      <Field Name="escenas" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ValorString">
+    <Position X="16.25" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAACAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\String\ValorString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CambioEscena">
+    <Position X="14.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAICIAAAAAAAAAAAAAAAIAAACAAARAAAAABAoCAE=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\CambioEscena\CambioEscena.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoverEscenaEvento">
+    <Position X="8.5" Y="26" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Escenas\MoverEscenaEvento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="evento" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MoverEscenaPuntoControl">
+    <Position X="11.5" Y="26" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Escenas\MoverEscenaPuntoControl.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="datos" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Evento">
+    <Position X="4.5" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Evento\Evento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="eventos" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="EscuchaEvento">
+    <Position X="2" Y="25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAIIAgAAAAAACAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Eventos\EscuchaEvento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="evento" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DatosJuego">
+    <Position X="18.75" Y="24.5" Width="2.25" />
+    <AssociationLine Name="listaInventarios" Type="ListaInventario" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="20.138" Y="24.5" />
+        <Point X="20.138" Y="23.875" />
+        <Point X="20.361" Y="23.875" Type="JumpStart" />
+        <Point X="20.527" Y="23.875" Type="JumpEnd" />
+        <Point X="20.667" Y="23.875" Type="JumpStart" />
+        <Point X="20.833" Y="23.875" Type="JumpEnd" />
+        <Point X="27.062" Y="23.875" />
+        <Point X="27.062" Y="24.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAgAAQCQAgAAAiAAAIAAAAAEAgAIAAAACA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\DatosJuego\DatosJuego.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="miUsuario" />
+      <Field Name="escena" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="vectores" />
+      <Field Name="flotantes" />
+      <Field Name="booleanos" />
+      <Field Name="listaInventarios" />
+      <Field Name="items" />
+      <Field Name="strings" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="InventarioItem">
+    <Position X="23" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKQAAAAAAAAAAAgAgAAAIAAABACECACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\InventarioItem\InventarioItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ListaInventario">
+    <Position X="26.25" Y="24.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAECAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\InventarioItem\ListaInventario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="objetoEquipado" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="inventario" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Usuario">
+    <Position X="16.25" Y="27.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="Usuario.logro">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\ScriptableObjects\Codigo\DatosUsuario\Usuario.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="Usuario.DatosUsuario">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\ScriptableObjects\Codigo\DatosUsuario\Usuario.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAACCAAAAAAAAAQAAAAE=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\DatosUsuario\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValorVectorial">
+    <Position X="23.5" Y="20.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAACAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Vectores\ValorVectorial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioTransicion">
+    <Position X="30.5" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\Transicion\AudioTransicion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SistemaAudio">
+    <Position X="31" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Globales\Sistema Audio\SistemaAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="accionContador">
+    <Position X="5.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAgABAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Globales\Transicion.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="tipoTransicion">
+    <Position X="5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Globales\Transicion.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="InteraccionesEmpujeGlobales">
+    <Position X="32.5" Y="7.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAIAAAAAAGAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Globales\Empujes\InteraccionesEmpujeGlobales.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sistemaDaño">
+    <Position X="29.75" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\Globales\Sistema Daño\sistemaDaño.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SistemaVida">
+    <Position X="15.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQoCMACIAAAAAAAAACBAAAJEAAQCQEAIgAGAAICAKAA=</HashCode>
+      <FileName>Assets\Scripts\Globales\Sistema Vida\SistemaVida.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="manejadorAudioRecibeGolpe" />
+      <Field Name="manejadorAudioEfectoMuerte" />
+      <Field Name="miLoot" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="VidaTrepaCielos">
+    <Position X="16.25" Y="12.75" Width="2" />
+    <AssociationLine Name="estadoEnemigosCuarto" Type="Evento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.875" Y="13.983" />
+        <Point X="16.875" Y="14.871" />
+        <Point X="14.708" Y="14.871" Type="JumpStart" />
+        <Point X="14.542" Y="14.871" Type="JumpEnd" />
+        <Point X="8.438" Y="14.871" />
+        <Point X="8.438" Y="11.617" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\Enemigos\Globales\VidaTrepaCielos.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="estadoEnemigosCuarto" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="VidaPlayer">
+    <Position X="13.25" Y="12.75" Width="2.5" />
+    <AssociationLine Name="eventoVidaPlayer" Type="Evento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.438" Y="13.983" />
+        <Point X="13.438" Y="14.358" />
+        <Point X="8.521" Y="14.358" Type="JumpStart" />
+        <Point X="8.354" Y="14.358" Type="JumpEnd" />
+        <Point X="6.625" Y="14.358" />
+        <Point X="6.625" Y="10.188" />
+        <Point X="7" Y="10.188" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\VidaPlayer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="eventoVidaPlayer" />
+      <Field Name="manejadorEscenaPuntoControl" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AudioEfectoMuerte">
+    <Position X="19" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\Efectos\AudioEfectoMuerte.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioReciveGolpe">
+    <Position X="22.5" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABgAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\Recive Golpe\AudioReciveGolpe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SistemaAudio">
+    <Position X="20.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Globales\Sistema Audio\SistemaAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TablaLoot">
+    <Position X="12" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Loot\TablaLoot.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="loots" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Loot">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Loot\TablaLoot.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="miLoot" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IncrementoEstadisticas">
+    <Position X="9" Y="6.75" Width="2.25" />
+    <AssociationLine Name="manejadorAudioObjetoMapa" Type="AudioObjetoMapa" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.656" Y="6.75" />
+        <Point X="10.656" Y="6.375" />
+        <Point X="15.25" Y="6.375" />
+        <Point X="15.25" Y="4.25" />
+        <Point X="18.75" Y="4.25" />
+        <Point X="18.75" Y="6.957" />
+        <Point X="24.073" Y="6.957" Type="JumpStart" />
+        <Point X="24.24" Y="6.957" Type="JumpEnd" />
+        <Point X="28.026" Y="6.957" Type="JumpStart" />
+        <Point X="28.193" Y="6.957" Type="JumpEnd" />
+        <Point X="30.188" Y="6.957" />
+        <Point X="30.188" Y="6.377" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAIQAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interacciones\Globales\IncrementoEstadisticas.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="eventoIncrementoEstadistica" />
+      <Field Name="manejadorAudioObjetoMapa" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Evento">
+    <Position X="7" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Evento\Evento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="eventos" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="EscuchaEvento">
+    <Position X="11.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAIIAgAAAAAACAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\Eventos\EscuchaEvento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="evento" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MoverEscenaPuntoControl">
+    <Position X="17" Y="24" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Escenas\MoverEscenaPuntoControl.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="datos" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DatosJuego">
+    <Position X="22" Y="24.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAgAAQCQAgAAAiAAAIAAAAAEAgAIAAAACA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\DatosJuego\DatosJuego.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoverEscena">
+    <Position X="22" Y="18.75" Width="1.5" />
+    <AssociationLine Name="escenaCarga" Type="ValorString" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="23.5" Y="19.062" />
+        <Point X="28.096" Y="19.062" />
+        <Point X="28.096" Y="9.812" />
+        <Point X="27.25" Y="9.812" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="nombreTransicionActual" Type="ValorString" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="23.5" Y="18.75" />
+        <Point X="23.5" Y="18.375" />
+        <Point X="26.094" Y="18.375" />
+        <Point X="26.094" Y="10.877" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="nombreTransicionDestino" Type="ValorString" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="23.5" Y="18.804" />
+        <Point X="27.514" Y="18.804" />
+        <Point X="27.514" Y="10.25" />
+        <Point X="27.25" Y="10.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAFBAA0BAQEQAAAAgAAAAAggAAGA=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Escenas\MoverEscena.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="escenaCarga" />
+      <Field Name="estadoCambioEscena" />
+      <Field Name="nombreTransicionActual" />
+      <Field Name="nombreTransicionDestino" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Transicion">
+    <Position X="22" Y="8.75" Width="1.5" />
+    <AssociationLine Name="contadorRegresivoDeten" Type="Evento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="22" Y="16.201" />
+        <Point X="14.708" Y="16.201" Type="JumpStart" />
+        <Point X="14.542" Y="16.201" Type="JumpEnd" />
+        <Point X="5.567" Y="16.201" Type="JumpStart" />
+        <Point X="5.4" Y="16.201" Type="JumpEnd" />
+        <Point X="4.878" Y="16.201" />
+        <Point X="4.878" Y="11.25" />
+        <Point X="5.4" Y="11.25" Type="JumpStart" />
+        <Point X="5.567" Y="11.25" Type="JumpEnd" />
+        <Point X="6.07" Y="11.25" Type="JumpStart" />
+        <Point X="6.237" Y="11.25" Type="JumpEnd" />
+        <Point X="6.542" Y="11.25" Type="JumpStart" />
+        <Point X="6.708" Y="11.25" Type="JumpEnd" />
+        <Point X="7" Y="11.25" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="contadorRegresivoInicia" Type="Evento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="22" Y="15.272" />
+        <Point X="14.708" Y="15.272" Type="JumpStart" />
+        <Point X="14.542" Y="15.272" Type="JumpEnd" />
+        <Point X="6.154" Y="15.272" />
+        <Point X="6.154" Y="10.5" />
+        <Point X="6.542" Y="10.5" Type="JumpStart" />
+        <Point X="6.708" Y="10.5" Type="JumpEnd" />
+        <Point X="7" Y="10.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="contadorRegresivoReinicia" Type="Evento" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="22" Y="17.13" />
+        <Point X="14.708" Y="17.13" Type="JumpStart" />
+        <Point X="14.542" Y="17.13" Type="JumpEnd" />
+        <Point X="5.484" Y="17.13" />
+        <Point X="5.484" Y="10.875" />
+        <Point X="6.07" Y="10.875" Type="JumpStart" />
+        <Point X="6.237" Y="10.875" Type="JumpEnd" />
+        <Point X="6.542" Y="10.875" Type="JumpStart" />
+        <Point X="6.708" Y="10.875" Type="JumpEnd" />
+        <Point X="7" Y="10.875" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="manejadorAudioTransicion" Type="AudioTransicion" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="23.5" Y="8.814" />
+        <Point X="28.109" Y="8.814" />
+        <Point X="28.109" Y="6.377" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEECECICQRABAhGAGSAQgQooUJEAA5AQAgEACAJJAo=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Globales\Transicion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="contadorRegresivoDeten" />
+      <Field Name="contadorRegresivoInicia" />
+      <Field Name="contadorRegresivoReinicia" />
+      <Field Name="enumAccionContador" />
+      <Field Name="enumTipoTransicion" />
+      <Field Name="escenaActual" />
+      <Field Name="manejadorAudioTransicion" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ValorString">
+    <Position X="25.25" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAACAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\String\ValorString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CambioEscena">
+    <Position X="27" Y="19.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAICIAAAAAAAAAAAAAAAIAAACAAARAAAAABAoCAE=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\CambioEscena\CambioEscena.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioTransicion">
+    <Position X="26" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\Transicion\AudioTransicion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioObjetoMapa">
+    <Position X="29" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIIAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\ObjetoMapa\AudioObjetoMapa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="accionContador">
+    <Position X="19" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAgABAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Globales\Transicion.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="tipoTransicion">
+    <Position X="19.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Transiciones\Globales\Transicion.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

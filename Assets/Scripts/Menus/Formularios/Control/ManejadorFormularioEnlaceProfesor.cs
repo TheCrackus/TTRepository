@@ -56,30 +56,30 @@ public class ManejadorFormularioEnlaceProfesor : ManejadorFormulario, ICanvasFor
     {
         iniciarVentanaEmergente();
         ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Procesando datos...");
-        yield return new WaitWhile(() => (Conexion.EstadoActualConexion == estadoConexion.iniciandoEnlace));
-        if (Conexion.EstadoActualConexion == estadoConexion.termineEnlace)
+        yield return new WaitWhile(() => (Conexion.EstadoActualConexion == EstadoConexion.iniciandoEnlace));
+        if (Conexion.EstadoActualConexion == EstadoConexion.termineEnlace)
         {
             ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Enlace completado con éxito, por favor, inicia sesión de nuevo.");
             yield return new WaitForSeconds(1f);
-            Conexion.EstadoActualConexion = estadoConexion.ninguno;
+            Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             cerrarSesion();
             iniciarCanvasLogIn();
         }
         else
         {
-            if (Conexion.EstadoActualConexion == estadoConexion.falleEnlaceConexion)
+            if (Conexion.EstadoActualConexion == EstadoConexion.falleEnlaceConexion)
             {
                 ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Fallo de conexión, comprueba el estado de tu red a internet.");
                 yield return new WaitForSeconds(1f);
-                Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             }
             else
             {
-                if (Conexion.EstadoActualConexion == estadoConexion.falleEnlaceDatos)
+                if (Conexion.EstadoActualConexion == EstadoConexion.falleEnlaceDatos)
                 {
                     ManejadorVentanaEmergente.enviarTextoVentanaEmergente("El enlace no se completo con éxito, por favor, verifica la contraseña grupal que has ingresado.");
                     yield return new WaitForSeconds(1f);
-                    Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                    Conexion.EstadoActualConexion = EstadoConexion.ninguno;
                 }
             }
         }

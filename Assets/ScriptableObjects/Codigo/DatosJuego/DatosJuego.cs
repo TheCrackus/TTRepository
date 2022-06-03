@@ -14,7 +14,7 @@ public class DatosJuego : ScriptableObject
     public List<ValorFlotante> flotantes = new List<ValorFlotante>();
     public List<ValorBooleano> booleanos = new List<ValorBooleano>();
     public Usuario miUsuario;
-    public List<CambioEscena> escenas = new List<CambioEscena>();
+    public CambioEscena escena;
     public List<ListaInventario> listaInventarios = new List<ListaInventario>();
     public List<InventarioItem> items = new List<InventarioItem>();
     public List<ValorString> strings = new List<ValorString>();
@@ -33,10 +33,7 @@ public class DatosJuego : ScriptableObject
         {
             booleano.reiniciarValores();
         }
-        foreach (CambioEscena escena in escenas)
-        {
-            escena.reiniciarValores();
-        }
+        escena.reiniciarValores();
         foreach (InventarioItem item in items)
         {
             item.reiniciarValores();

@@ -97,8 +97,8 @@ public class ManejadorFormularioCuestionario : ManejadorFormulario, ICanvasMenuP
     {
         iniciarVentanaEmergente();
         ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Procesando datos...");
-        yield return new WaitWhile(() => (Conexion.EstadoActualConexion == estadoConexion.iniciandoEnvioPrueba));
-        if (Conexion.EstadoActualConexion == estadoConexion.termineEnvioPrueba)
+        yield return new WaitWhile(() => (Conexion.EstadoActualConexion == EstadoConexion.iniciandoEnvioPrueba));
+        if (Conexion.EstadoActualConexion == EstadoConexion.termineEnvioPrueba)
         {
             ManejadorVentanaEmergente.enviarTextoVentanaEmergente("¡La prueba se envió correctamente a tu docente a cargo, muchas gracias por tu participación!");
             if (nombreEscenaActual != nombreEscenaPrincipal.valorStringEjecucion)
@@ -110,24 +110,24 @@ public class ManejadorFormularioCuestionario : ManejadorFormulario, ICanvasMenuP
             {
                 yield return new WaitForSeconds(1f);
             }
-            Conexion.EstadoActualConexion = estadoConexion.ninguno;
+            Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             cierraCuestionario();
         }
         else
         {
-            if (Conexion.EstadoActualConexion == estadoConexion.falleEnvioPruebaConexion)
+            if (Conexion.EstadoActualConexion == EstadoConexion.falleEnvioPruebaConexion)
             {
                 ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Fallo de conexión, comprueba el estado de tu red de internet.");
                 yield return new WaitForSeconds(1f);
-                Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             }
             else
             {
-                if (Conexion.EstadoActualConexion == estadoConexion.falleEnvioPruebaeDatos)
+                if (Conexion.EstadoActualConexion == EstadoConexion.falleEnvioPruebaeDatos)
                 {
                     ManejadorVentanaEmergente.enviarTextoVentanaEmergente("La prueba no pude ser enviada, por favor, inténtelo más tarde.");
                     yield return new WaitForSeconds(1f);
-                    Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                    Conexion.EstadoActualConexion = EstadoConexion.ninguno;
                 }
             }
         }

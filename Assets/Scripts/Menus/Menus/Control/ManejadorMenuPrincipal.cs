@@ -25,7 +25,7 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
     [Header("Nombre de la escena de Mazmorra")]
     [SerializeField] private ValorString nombreEscenaMazmorra;
 
-    [Header("Nombre de la escena de Laberintos")]
+    [Header("Nombre de la escena de Jefe final")]
     [SerializeField] private ValorString nombreEscenaJefeFinal;
 
     [Header("Escena de la partida en curso")]
@@ -35,14 +35,14 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
     [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;
 
     [Header("Manejador de conexiones")]
-    [SerializeField] private conexionWeb conexion;
+    [SerializeField] private ConexionWeb conexion;
 
     public bool PulseBoton { get => pulseBoton; set => pulseBoton = value; }
     public GameObject NuevoCanvasVentanaEmergente { get => nuevoCanvasVentanaEmergente; set => nuevoCanvasVentanaEmergente = value; }
     public GameObject VentanaEmergente { get => ventanaEmergente; set => ventanaEmergente = value; }
     public ManejadorVentanaEmergente ManejadorVentanaEmergente { get => manejadorVentanaEmergente; set => manejadorVentanaEmergente = value; }
     public AudioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
-    public conexionWeb Conexion { get => conexion; set => conexion = value; }
+    public ConexionWeb Conexion { get => conexion; set => conexion = value; }
 
     private void Start()
     {

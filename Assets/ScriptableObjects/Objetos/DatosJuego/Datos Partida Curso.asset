@@ -92,8 +92,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1eda8f3a457dea24eb33ffb54ff336ce, type: 2}
   - {fileID: 11400000, guid: d14a2a0f90837f04caa3fb1e02bfc554, type: 2}
   miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
-  escenas:
-  - {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
+  escena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   listaInventarios:
   - {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
   items:

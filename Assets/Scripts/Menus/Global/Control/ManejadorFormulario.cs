@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ManejadorFormulario : ManejadorMenuGenerico, ICanvasVentanaEmergente, IReproductorAudioInterfazGrafica, IConexion, IBotonPulso
+public abstract class ManejadorFormulario : ManejadorMenuGenerico, ICanvasVentanaEmergente, IReproductorAudioInterfazGrafica, IConexion, IBotonPulso
 {
     
-    private ComponenteGraficoFormulario graficosFormulario;
+    private ComponenteGraficoFormulario graficosF;
 
     private bool pulseBoton;
 
@@ -22,28 +22,28 @@ public class ManejadorFormulario : ManejadorMenuGenerico, ICanvasVentanaEmergent
     [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;
 
     [Header("Manejador de conexiones")]
-    [SerializeField] private conexionWeb conexion;
+    [SerializeField] private ConexionWeb conexion;
 
     public GameObject NuevoCanvasVentanaEmergente { get => nuevoCanvasVentanaEmergente; set => nuevoCanvasVentanaEmergente = value; }
     public GameObject VentanaEmergente { get => ventanaEmergente; set => ventanaEmergente = value; }
     public ManejadorVentanaEmergente ManejadorVentanaEmergente { get => manejadorVentanaEmergente; set => manejadorVentanaEmergente = value; }
     public AudioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
-    public conexionWeb Conexion { get => conexion; set => conexion = value; }
+    public ConexionWeb Conexion { get => conexion; set => conexion = value; }
 
     public void iniciarVentanaEmergente()
     {
-        graficosFormulario = (ComponenteGraficoFormulario)ComponenteGrafico;
+        graficosF = (ComponenteGraficoFormulario)ComponenteGrafico;
         if (nuevoCanvasVentanaEmergente == null) 
         {
             if (!GameObject.FindGameObjectWithTag("CanvasVentanaEmergente"))
             {
-                nuevoCanvasVentanaEmergente = Instantiate(graficosFormulario.CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
+                nuevoCanvasVentanaEmergente = Instantiate(graficosF.CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
             }
             else
             {
                 nuevoCanvasVentanaEmergente = GameObject.FindGameObjectWithTag("CanvasVentanaEmergente").gameObject;
                 Destroy(nuevoCanvasVentanaEmergente);
-                nuevoCanvasVentanaEmergente = Instantiate(graficosFormulario.CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
+                nuevoCanvasVentanaEmergente = Instantiate(graficosF.CanvasVentanaEmergente, Vector3.zero, Quaternion.identity);
             }
             ventanaEmergente = nuevoCanvasVentanaEmergente.gameObject.transform.Find("VentanaEmergente").gameObject;
             manejadorVentanaEmergente = ventanaEmergente.gameObject.GetComponent<ManejadorVentanaEmergente>();

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ManejadorMenuGenerico : MonoBehaviour
+public abstract class ManejadorMenuGenerico : MonoBehaviour
 {
 
     [Header("Componentes graficos del menu")]
@@ -69,7 +69,7 @@ interface IReproductorAudioInterfazGrafica
 
 interface IConexion 
 {
-    public conexionWeb Conexion { get; set; }
+    public ConexionWeb Conexion { get; set; }
 }
 
 interface ICanvasFormularioRegistro

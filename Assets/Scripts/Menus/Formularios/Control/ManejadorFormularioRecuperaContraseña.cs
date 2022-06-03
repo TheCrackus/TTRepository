@@ -37,33 +37,33 @@ public class ManejadorFormularioRecuperaContraseña : ManejadorFormulario, ICanv
     {
         iniciarVentanaEmergente();
         ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Procesando datos...");
-        yield return new WaitWhile(() => Conexion.EstadoActualConexion == estadoConexion.iniciandoSesion);
-        if (Conexion.EstadoActualConexion == estadoConexion.termineRecuperacionContraseña)
+        yield return new WaitWhile(() => Conexion.EstadoActualConexion == EstadoConexion.iniciandoSesion);
+        if (Conexion.EstadoActualConexion == EstadoConexion.termineRecuperacionContraseña)
         {
             ManejadorVentanaEmergente.enviarTextoVentanaEmergente("¡Todo listo!, Revisa tu correo electrónico para cambiar tu contraseña.");
             yield return new WaitForSeconds(1f);
-            Conexion.EstadoActualConexion = estadoConexion.ninguno;
+            Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             iniciarCanvasLogIn();
             cerrarGrafico();
         }
         else
         {
-            if (Conexion.EstadoActualConexion == estadoConexion.falleRecuperacionContraseñaConexion)
+            if (Conexion.EstadoActualConexion == EstadoConexion.falleRecuperacionContraseñaConexion)
             {
                 ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Fallo de conexión, comprueba el estado de tu red a internet.");
                 yield return new WaitForSeconds(1f);
-                Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             }
             else
             {
-                if (Conexion.EstadoActualConexion == estadoConexion.falleRecuperacionContraseñaDatos)
+                if (Conexion.EstadoActualConexion == EstadoConexion.falleRecuperacionContraseñaDatos)
                 {
                     if (Conexion.RespuestaServidor == "Error")
                     {
                         ManejadorVentanaEmergente.enviarTextoVentanaEmergente("El correo electrónico ingresado no está registrado en el sistema.");
                     }
                     yield return new WaitForSeconds(1f);
-                    Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                    Conexion.EstadoActualConexion = EstadoConexion.ninguno;
                 }
             }
         }

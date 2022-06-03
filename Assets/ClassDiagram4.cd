@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ManejadorFormularioEnlaceProfesor">
+    <Position X="12.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAABAAAAAAAAAAgACAAAAABAAAAAAEAg=</HashCode>
+      <FileName>Assets\Scripts\Menus\Formularios\Control\ManejadorFormularioEnlaceProfesor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="graficos" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ComponenteGraficoFormularioEnlaceProfesor">
+    <Position X="16.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAATAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Formularios\Vista\ComponenteGraficoFormularioEnlaceProfesor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ManejadorFormulario">
+    <Position X="12.75" Y="11" Width="1.5" />
+    <AssociationLine Name="manejadorVentanaEmergente" Type="ManejadorVentanaEmergente" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.25" Y="12.719" />
+        <Point X="14.625" Y="12.719" />
+        <Point X="14.625" Y="13.31" />
+        <Point X="15" Y="13.31" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAQAABAggABAAIBgSCAAQAAgAAIAAAAAAAABAEAE=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorFormulario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="conexion" />
+      <Field Name="graficos" />
+      <Field Name="manejadorAudioInterfazGrafica" />
+      <Field Name="manejadorVentanaEmergente" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ComponenteGraficoFormulario">
+    <Position X="17.5" Y="12.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Vista\ComponenteGraficoFormulario.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ConexionWeb">
+    <Position X="9.5" Y="11.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABiBAACMICkBGBCggAgAAAAAAAwCAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\Web\ConexionWeb.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="estadoActualConexion" />
+      <Field Name="miUsuario" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Usuario">
+    <Position X="7.5" Y="18.5" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="Usuario.logro" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\ScriptableObjects\Codigo\DatosUsuario\Usuario.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="Usuario.DatosUsuario" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\ScriptableObjects\Codigo\DatosUsuario\Usuario.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAACCAAAAAAAAAQAAAAE=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\DatosUsuario\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ComponenteGraficoGenerico">
+    <Position X="17.25" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Vista\ComponenteGraficoGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManejadorMenuGenerico">
+    <Position X="12.75" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIEAAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="componenteGrafico" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AudioInterfazGrafica">
+    <Position X="7" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CCAAQAAAAAAAAAAAAAgCAABgAAAAAgAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\InterfazGrafica\AudioInterfazGrafica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SistemaAudio">
+    <Position X="7.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Globales\Sistema Audio\SistemaAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManejadorVentanaEmergente">
+    <Position X="15" Y="11" Width="1.5" />
+    <AssociationLine Name="graficos" Type="ComponenteGraficoVentanaEmergente" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.688" Y="13.838" />
+        <Point X="15.688" Y="14.559" />
+        <Point X="18.667" Y="14.559" Type="JumpStart" />
+        <Point X="18.833" Y="14.559" Type="JumpEnd" />
+        <Point X="21.75" Y="14.559" />
+        <Point X="21.75" Y="14.184" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAgAAAAAAAgCAAAAAAgAAAAABAQAAABAEEA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Ventana Emergente\Control\ManejadorVentanaEmergente.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="graficos" />
+      <Field Name="manejadorAudioInterfazGrafica" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ComponenteGraficoVentanaEmergente">
+    <Position X="20.25" Y="12.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Ventana Emergente\Vista\ComponenteGraficoVentanaEmergente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ICanvasFormularioLogIn">
+    <Position X="13" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IGraficoCanvasLogIn">
+    <Position X="13" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Vista\ComponenteGraficoGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IGraficoVentanaEmergente">
+    <Position X="15.25" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Vista\ComponenteGraficoGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ICanvasVentanaEmergente">
+    <Position X="15.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAACAAAAAgAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IReproductorAudioInterfazGrafica">
+    <Position X="13" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAgAAAAAAAgCAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IConexion">
+    <Position X="17.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IBotonPulso">
+    <Position X="15.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAASAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="EstadoConexion">
+    <Position X="5.25" Y="11.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAiwAAACSAEBAEICYAEABEAAQAAIwCAAEBAEEAiA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\Web\ConexionWeb.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

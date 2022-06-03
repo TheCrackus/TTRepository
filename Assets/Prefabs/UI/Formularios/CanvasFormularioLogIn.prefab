@@ -3129,7 +3129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2a439d4ca96484abf4b0f75196d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  estadoActualConexion: 0
+  estadoActualConexion: 29
   miUsuario: {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
 --- !u!114 &4781933189963838313
 MonoBehaviour:

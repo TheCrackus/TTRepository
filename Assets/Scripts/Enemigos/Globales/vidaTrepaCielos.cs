@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class vidaTrepaCielos : SistemaVida
+public class VidaTrepaCielos : SistemaVida
 {
     [Header("Evento para cuartos con enemigos (abre puerta)")]
     [SerializeField] private Evento estadoEnemigosCuarto;

@@ -45,7 +45,7 @@ public class Jarro : MonoBehaviour
     {
         if (loot != null)
         {
-            IncrementoEstadisticas incrementoActual = loot.lootIncrementoEstadisticas();
+            IncrementoEstadisticas incrementoActual = loot.generarLootIncrementoEstadisticas();
             if (incrementoActual != null)
             {
                 Instantiate(incrementoActual.gameObject, gameObject.transform.position, Quaternion.identity);

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ManejadorMenuInventario">
+    <Position X="14" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAwAAABDgAAAAAQAgGAAAgAIAAAAAIAAAAKCBAGAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Menus\Control\ManejadorMenuInventario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="graficos" />
+      <Field Name="inventarioPlayerItems" />
+      <Field Name="itemActual" />
+      <Field Name="manejadorAudioInterfazGrafica" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ComponenteGraficoMenuInventario">
+    <Position X="18.25" Y="5.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAgAAAAAAEAAAAAAAAAAgAQAAIAQAAAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Menus\Vista\ComponenteGraficoMenuInventario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ListaInventario">
+    <Position X="10.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAECAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\InventarioItem\ListaInventario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="objetoEquipado" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="inventario" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="InventarioItem">
+    <Position X="8" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKQAAAAAAAAAAAgAgAAAIAAABACECACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ScriptableObjects\Codigo\InventarioItem\InventarioItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioInterfazGrafica">
+    <Position X="5" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CCAAQAAAAAAAAAAAAAgCAABgAAAAAgAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Audio\InterfazGrafica\AudioInterfazGrafica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManejadorMenuGenerico">
+    <Position X="14.25" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAIEAAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="componenteGrafico" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ComponenteGraficoGenerico">
+    <Position X="19" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Vista\ComponenteGraficoGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IReproductorAudioInterfazGrafica">
+    <Position X="7.5" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAgAAAAAAAgCAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IPausa">
+    <Position X="10.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAABAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menus\Global\Control\ManejadorMenuGenerico.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

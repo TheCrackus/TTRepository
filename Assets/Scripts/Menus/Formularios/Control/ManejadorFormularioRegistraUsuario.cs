@@ -334,31 +334,31 @@ public class ManejadorFormularioRegistraUsuario : ManejadorFormulario, ICanvasFo
     {
         iniciarVentanaEmergente();
         ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Procesando datos...");
-        yield return new WaitWhile(() => Conexion.EstadoActualConexion == estadoConexion.iniciandoRegistro);
-        if (Conexion.EstadoActualConexion == estadoConexion.termineRegistro)
+        yield return new WaitWhile(() => Conexion.EstadoActualConexion == EstadoConexion.iniciandoRegistro);
+        if (Conexion.EstadoActualConexion == EstadoConexion.termineRegistro)
         {
             ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Registro de usuario completado con éxito, por favor, verifica tu correo electrónico a través del enlace que te hemos enviado a " 
                 + graficos.EmailFiled.text.ToString() + ".");
             yield return new WaitForSeconds(1f);
-            Conexion.EstadoActualConexion = estadoConexion.ninguno;
+            Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             cerrarGrafico();
             iniciarCanvasLogIn();
         }
         else
         {
-            if (Conexion.EstadoActualConexion == estadoConexion.falleRegistroConexion)
+            if (Conexion.EstadoActualConexion == EstadoConexion.falleRegistroConexion)
             {
                 ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Fallo de conexión, comprueba el estado de tu red a internet.");
                 yield return new WaitForSeconds(1f);
-                Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             }
             else
             {
-                if (Conexion.EstadoActualConexion == estadoConexion.falleRegistroDatos)
+                if (Conexion.EstadoActualConexion == EstadoConexion.falleRegistroDatos)
                 {
                     ManejadorVentanaEmergente.enviarTextoVentanaEmergente("El registro no pudo ser completado, por favor, verifica los datos ingresados.");
                     yield return new WaitForSeconds(1f);
-                    Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                    Conexion.EstadoActualConexion = EstadoConexion.ninguno;
                 }
             }
         }

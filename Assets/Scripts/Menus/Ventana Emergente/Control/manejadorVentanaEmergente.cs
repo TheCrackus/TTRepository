@@ -7,19 +7,22 @@ using UnityEngine.UI;
 public class ManejadorVentanaEmergente : ManejadorMenuGenerico, IReproductorAudioInterfazGrafica
 {
 
+    private ComponenteGraficoVentanaEmergente graficos;
+
     [Header("Manejador de audio de interfaces")]
     [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;
 
     public AudioInterfazGrafica ManejadorAudioInterfazGrafica { get => manejadorAudioInterfazGrafica; set => manejadorAudioInterfazGrafica = value; }
 
-    void Start()
+    private void Awake()
     {
+        graficos = (ComponenteGraficoVentanaEmergente) ComponenteGrafico;
         reproducirAudioAbreVentana();
     }
 
     public void enviarTextoVentanaEmergente(string texto) 
     {
-        ((ComponenteGraficoVentanaEmergente)ComponenteGrafico).TextoVentanaEmergente.text = texto;
+        graficos.TextoVentanaEmergente.text = texto;
     }
 
     public void cerrarVentanaEmergenteBoton() 
@@ -30,9 +33,9 @@ public class ManejadorVentanaEmergente : ManejadorMenuGenerico, IReproductorAudi
 
     public void cerrarVentanaEmergente() 
     {
-        if (((ComponenteGraficoVentanaEmergente)ComponenteGrafico).ComponenteGraficoPrincipal != null) 
+        if (graficos.ComponenteGraficoPrincipal != null) 
         {
-            Destroy(((ComponenteGraficoVentanaEmergente)ComponenteGrafico).ComponenteGraficoPrincipal);
+            Destroy(graficos.ComponenteGraficoPrincipal);
         }
     }
 

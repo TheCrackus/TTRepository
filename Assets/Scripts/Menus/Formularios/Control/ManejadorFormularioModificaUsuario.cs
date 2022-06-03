@@ -349,29 +349,29 @@ public class ManejadorFormularioModificaUsuario : ManejadorFormulario, ICanvasMe
     {
         iniciarVentanaEmergente();
         ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Procesando datos...");
-        yield return new WaitWhile(() => (Conexion.EstadoActualConexion == estadoConexion.iniciandoModificacion));
-        if (Conexion.EstadoActualConexion == estadoConexion.termineModificacion)
+        yield return new WaitWhile(() => (Conexion.EstadoActualConexion == EstadoConexion.iniciandoModificacion));
+        if (Conexion.EstadoActualConexion == EstadoConexion.termineModificacion)
         {
             ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Modificación de usuario completada con éxito, por favor, vuelve a iniciar sesión.");
             yield return new WaitForSeconds(1f);
-            Conexion.EstadoActualConexion = estadoConexion.ninguno;
+            Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             cerrarSesion();
         }
         else
         {
-            if (Conexion.EstadoActualConexion == estadoConexion.falleModificacionConexion)
+            if (Conexion.EstadoActualConexion == EstadoConexion.falleModificacionConexion)
             {
                 ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Fallo de conexión, comprueba el estado de tu red de internet.");
                 yield return new WaitForSeconds(1f);
-                Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                Conexion.EstadoActualConexion = EstadoConexion.ninguno;
             }
             else
             {
-                if (Conexion.EstadoActualConexion == estadoConexion.falleModificacionDatos)
+                if (Conexion.EstadoActualConexion == EstadoConexion.falleModificacionDatos)
                 {
                     ManejadorVentanaEmergente.enviarTextoVentanaEmergente("La modificación de usuario no se pudo completar con éxito, por favor, verifica los datos ingresados.");
                     yield return new WaitForSeconds(1f);
-                    Conexion.EstadoActualConexion = estadoConexion.ninguno;
+                    Conexion.EstadoActualConexion = EstadoConexion.ninguno;
                 }
             }
         }

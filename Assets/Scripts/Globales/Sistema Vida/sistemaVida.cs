@@ -126,7 +126,7 @@ public class SistemaVida : MonoBehaviour
     {
         if (miLoot != null)
         {
-            IncrementoEstadisticas incrementoActual = miLoot.lootIncrementoEstadisticas();
+            IncrementoEstadisticas incrementoActual = miLoot.generarLootIncrementoEstadisticas();
             if (incrementoActual != null)
             {
                 Instantiate(incrementoActual.gameObject, gameObject.transform.position, Quaternion.identity);

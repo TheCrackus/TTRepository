@@ -12,7 +12,7 @@ public class TablaLoot : ScriptableObject
 {
     public Loot[] loots;
 
-    public IncrementoEstadisticas lootIncrementoEstadisticas() 
+    public IncrementoEstadisticas generarLootIncrementoEstadisticas() 
     {
         int probabilidadAcumulada = 0;
         int probabilidadActual = Random.Range(0, 100);
