@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3580086982941801480}
-  - component: {fileID: 3580086982941801481}
+  - component: {fileID: 5706846990807265057}
   - component: {fileID: 3580086982941801487}
   - component: {fileID: 3580086982941801486}
   - component: {fileID: 3580086982941801484}
@@ -170,7 +170,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3580086982941801481
+--- !u!212 &5706846990807265057
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,7 +189,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -671,9 +671,6 @@ MonoBehaviour:
   fadeInFadeOutCanvas: {fileID: 8745939805210079820, guid: 60dc23bc450bfb446ba135d3ae12a426, type: 3}
   posicionPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   nuevaDireccionPlayer: {x: 0, y: 0}
-  posicionCamaraMaxima: {fileID: 11400000, guid: 84a706b1a4866e2489ca60493dd176c9, type: 2}
-  posicionCamaraMinima: {fileID: 11400000, guid: ee43b5ebcf573744894a71b2b04063ad, type: 2}
-  posicionCamara: {fileID: 11400000, guid: b7e938756b42de74eb849309e4d4008f, type: 2}
   debeMostrarTexto: 0
   nombreMostrar: 
   contadorRegresivoInicia: {fileID: 11400000, guid: 44f42969ead8f514eb7f17ce8ef15b71, type: 2}
@@ -692,9 +689,6 @@ MonoBehaviour:
   estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
   escenaCarga: {fileID: 0}
   nuevaPosicionPlayer: {x: 0, y: 0, z: 0}
-  nuevaPosicionCamara: {x: 0, y: 0, z: 0}
-  nuevaPosicionCamaraMaxima: {x: 0, y: 0, z: 0}
-  nuevaPosicionCamaraMinima: {x: 0, y: 0, z: 0}
 --- !u!114 &6722983431137207434
 MonoBehaviour:
   m_ObjectHideFlags: 0

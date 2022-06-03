@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 782428628100432164}
-  - component: {fileID: 782428628100432219}
+  - component: {fileID: 1976621008960715368}
   - component: {fileID: 782428628100432217}
   - component: {fileID: 782428628100432218}
   - component: {fileID: 7805580910430417572}
@@ -161,7 +161,7 @@ Transform:
   m_Father: {fileID: 782428629808839170}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &782428628100432219
+--- !u!50 &1976621008960715368
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 782428628429104404}
-  - component: {fileID: 782428628429104395}
+  - component: {fileID: 213271202613597788}
   - component: {fileID: 782428628429104393}
   - component: {fileID: 782428628429104394}
   - component: {fileID: 3171023955796453786}
@@ -278,7 +278,7 @@ Transform:
   m_Father: {fileID: 782428629808839170}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &782428628429104395
+--- !u!50 &213271202613597788
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -370,7 +370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 782428628798917720}
-  - component: {fileID: 782428628798917727}
+  - component: {fileID: 6167050019403034985}
   - component: {fileID: 782428628798917725}
   - component: {fileID: 782428628798917726}
   - component: {fileID: 1056419045504042699}
@@ -395,7 +395,7 @@ Transform:
   m_Father: {fileID: 782428629808839170}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &782428628798917727
+--- !u!50 &6167050019403034985
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -487,7 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 782428629345166896}
-  - component: {fileID: 782428629345166903}
+  - component: {fileID: 7637988640397972774}
   - component: {fileID: 782428629345166901}
   - component: {fileID: 782428629345166902}
   - component: {fileID: 6236864798838596751}
@@ -512,7 +512,7 @@ Transform:
   m_Father: {fileID: 782428629808839170}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &782428629345166903
+--- !u!50 &7637988640397972774
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

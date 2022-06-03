@@ -12,6 +12,18 @@ public class VidaPlayer : SistemaVida
     [Header("Manejador para las escenas")]
     [SerializeField] private MoverEscenaPuntoControl manejadorEscenaPuntoControl;
 
+    public override void OnEnable()
+    {
+        if (VidaObjeto != null) 
+        {
+            if (VidaObjeto.valorFlotanteEjecucion <= 0) 
+            {
+                VidaObjeto.valorFlotanteEjecucion = 2;
+            }
+        }
+        base.OnEnable();
+    }
+
     public override void quitarVida(float vidaMenos)
     {
         if (ManejadorAudioRecibeGolpe != null)

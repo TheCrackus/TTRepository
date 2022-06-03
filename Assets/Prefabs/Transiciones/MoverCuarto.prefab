@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeInFadeOutCanvas: {fileID: 8745939805210079820, guid: 60dc23bc450bfb446ba135d3ae12a426, type: 3}
   posicionPlayer: {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
-  nuevaDireccionPlayer: {x: 0, y: 0}
+  nuevaDireccionPlayer: {x: -1, y: 0}
   debeMostrarTexto: 0
   nombreMostrar: 
   contadorRegresivoInicia: {fileID: 11400000, guid: 44f42969ead8f514eb7f17ce8ef15b71, type: 2}
@@ -196,7 +196,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aeb234d6858a5a14dab7c840c91cf9fc, type: 2}
   - {fileID: 11400000, guid: 2d3d75730c114a24cb4758708fecd842, type: 2}
   - {fileID: 11400000, guid: 034cd9a1768459b4d9ff539c5c06ae3f, type: 2}
-  cambioSumaPoscicionPlayer: {x: 0, y: 0, z: 0}
+  cambioSumaPoscicionPlayer: {x: -1, y: 0, z: 0}
   moverCuartoRef: {fileID: 0}
 --- !u!114 &4994636355638618748
 MonoBehaviour:

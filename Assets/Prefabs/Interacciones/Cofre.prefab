@@ -314,7 +314,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -453,7 +453,6 @@ MonoBehaviour:
   simboloActivoDesactivo: {fileID: 11400000, guid: 5aa15c8b7adddd24ebf64699d2ca3bc2, type: 2}
   playerEnRango: 0
   fadeInFadeOutCanvas: {fileID: 8745939805210079820, guid: 60dc23bc450bfb446ba135d3ae12a426, type: 3}
-  cofreAnimator: {fileID: 0}
   cofreAbierto: 0
   cofreVacio: 0
   muestraObjeto: {fileID: 11400000, guid: 62cf7872f1d6726458ee7a1a7d288da3, type: 2}

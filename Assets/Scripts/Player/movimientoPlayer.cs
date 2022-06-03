@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovimientoPlayer : MonoBehaviour
 {
+
+    private string nombreEscenaActual;
 
     private Rigidbody2D rigidBodyPlayer;
 
@@ -50,6 +53,12 @@ public class MovimientoPlayer : MonoBehaviour
     [Header("Manejador de audio del Player arma distancia")]
     [SerializeField] private AudioProyectil manejadorAudioProyectil;
 
+    [Header("Nombre escena de mazmorra")]
+    [SerializeField] private ValorString nombreEscenaMazmorra;
+
+    [Header("Luz emitida por el player")]
+    [SerializeField] private GameObject luzPlayer;
+
     public EstadoObjeto EstadoPlayer { get => estadoPlayer; set => estadoPlayer = value; }
 
     private void Start()
@@ -92,6 +101,15 @@ public class MovimientoPlayer : MonoBehaviour
             }
         }
         gameObject.transform.position = posicionPlayer.valorVectorialEjecucion;
+        nombreEscenaActual = SceneManager.GetActiveScene().name;
+        if (nombreEscenaActual == nombreEscenaMazmorra.valorStringEjecucion)
+        {
+            luzPlayer.gameObject.SetActive(true);
+        }
+        else 
+        {
+            luzPlayer.gameObject.SetActive(false);
+        }
     }
 
     private void Update()

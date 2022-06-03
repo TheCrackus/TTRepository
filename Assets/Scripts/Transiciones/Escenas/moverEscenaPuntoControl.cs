@@ -9,6 +9,78 @@ public class MoverEscenaPuntoControl : MoverEscena
     [Header("Los datos de la partida en curso")]
     [SerializeField] private DatosJuego datos;
 
+    [Header("El contador regresivo esta en ejecucion?")]
+    [SerializeField] private ValorBooleano cuentaTimerRegresivo;
+
+    public override void iniciarTransicionOut() 
+    {
+        if (cuentaTimerRegresivo != null) 
+        {
+            if (cuentaTimerRegresivo.valorBooleanoEjecucion)
+            {
+                if (EnumAccionContador == accionContador.inicia)
+                {
+                    if (ContadorRegresivoInicia != null)
+                    {
+                        ContadorRegresivoInicia.invocarFunciones();
+                    }
+                    if (ContadorRegresivoDeten != null)
+                    {
+                        ContadorRegresivoDeten.invocarFunciones();
+                    }
+                    if (EstadoCambioEscena != null)
+                    {
+                        EstadoCambioEscena.pausoContadorEjecucion = true;
+                    }
+                    EscenaActual.valorStringEjecucion = SceneManager.GetActiveScene().name;
+                    ManejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<ManejadorContador>();
+                    MoverEscena moverE = manejadorC.GetComponent<MoverEscena>();
+                    foreach (ValorString nombre in Escenas)
+                    {
+                        if (nombre.valorStringEjecucion == EscenaActual.valorStringEjecucion)
+                        {
+                            moverE.EscenaCarga = nombre;
+                            break;
+                        }
+                    }
+                    moverE.NuevaDireccionPlayer = new Vector2(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1));
+                    moverE.NuevaPosicionPlayer = gameObject.transform.position + new Vector3(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1), 0);
+                }
+                else
+                {
+                    if (EnumAccionContador == accionContador.deten)
+                    {
+                        if (ContadorRegresivoDeten != null)
+                        {
+                            ContadorRegresivoDeten.invocarFunciones();
+                        }
+                        if (EstadoCambioEscena != null)
+                        {
+                            EstadoCambioEscena.pausoContadorEjecucion = true;
+                        }
+                    }
+                    else
+                    {
+                        if (EnumAccionContador == accionContador.reinicia)
+                        {
+                            if (ContadorRegresivoReinicia != null)
+                            {
+                                ContadorRegresivoReinicia.invocarFunciones();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        iniciarCanvas();
+        MovimientoPlayer movP = null;
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            movP = GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>();
+        }
+        StartCoroutine(cambiarEscenaOut(movP));
+    }
+
     public override IEnumerator cambiarEscenaOut(MovimientoPlayer movP)
     {
         if (ManejadorAudioTransicion != null

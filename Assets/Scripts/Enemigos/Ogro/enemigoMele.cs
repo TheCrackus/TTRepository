@@ -8,21 +8,6 @@ public class EnemigoMele : TrepaCielosCorrupto
 
     [Header("Manejador de audio del Player arma mele")]
     [SerializeField] private AudioMelee manejadorAudioMelee;
-    public override void OnEnable()
-    {
-        if (PosicionMapa != null
-            && ObjetivoPerseguir != null
-            && EnemigoRigidBody != null
-            && EnemigoAnimator != null
-            && EstadoEnemigo != null)
-        {
-            PosicionMapa.transform.position = PosicionOriginal;
-            ObjetivoPerseguir = GameObject.FindWithTag("Player").transform;
-            EnemigoRigidBody = gameObject.GetComponent<Rigidbody2D>();
-            EnemigoAnimator = gameObject.GetComponent<Animator>();
-            EstadoEnemigo.Estado = EstadoGenerico.ninguno;
-        }
-    }
 
     public override void Start()
     {
@@ -31,10 +16,6 @@ public class EnemigoMele : TrepaCielosCorrupto
             && EnemigoAnimator != null
             && EstadoEnemigo != null) 
         {
-            ObjetivoPerseguir = GameObject.FindWithTag("Player").transform;
-            EnemigoRigidBody = gameObject.GetComponent<Rigidbody2D>();
-            EnemigoAnimator = gameObject.GetComponent<Animator>();
-            EstadoEnemigo.Estado = EstadoGenerico.ninguno;
             ContadorEsperaMovimiento = TiempoEsperaMovimientoAtaque;
             PuedoMoverme = true;
             foreach (AnimationClip clip in EnemigoAnimator.runtimeAnimatorController.animationClips)
