@@ -29,7 +29,7 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
     [SerializeField] private ValorString nombreEscenaJefeFinal;
 
     [Header("Escena de la partida en curso")]
-    [SerializeField] private ValorString nombreEscenaActual;
+    [SerializeField] private ValorString nombreEscenaControl;
 
     [Header("Manejador de audio de interfaces")]
     [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;
@@ -117,13 +117,16 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
             && nombreEscenaLaberintos.valorStringEjecucion != "")
         {
             ManejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
+            //Reiniciar los datos
             //--------------
             if (SingletonEventosEscenas.instance != null)
             {
+                SingletonEventosEscenas.instance.reiniciarDatos();
                 SingletonEventosEscenas.instance.reiniciarScriptable();
+                SingletonEventosEscenas.instance.guardarDatos();
+                SingletonEventosEscenas.instance.cargarDatos();
             }
             //--------------
-            //Reiniciar los datos
 
             StartCoroutine(cambiarEscena(nombreEscenaLaberintos.valorStringEjecucion));
             bloquearBotones();
@@ -137,13 +140,16 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
             && nombreEscenaLaberintos.valorStringEjecucion != "")
         {
             ManejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
+            //Reiniciar los datos
             //--------------
             if (SingletonEventosEscenas.instance != null)
             {
+                SingletonEventosEscenas.instance.reiniciarDatos();
                 SingletonEventosEscenas.instance.reiniciarScriptable();
+                SingletonEventosEscenas.instance.guardarDatos();
+                SingletonEventosEscenas.instance.cargarDatos();
             }
             //--------------
-            //Reiniciar los datos
             StartCoroutine(cambiarEscena(nombreEscenaLaberintos.valorStringEjecucion));
             bloquearBotones();
         }
@@ -156,13 +162,16 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
             && nombreEscenaMazmorra.valorStringEjecucion != "")
         {
             ManejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
+            //Reiniciar los datos
             //--------------
             if (SingletonEventosEscenas.instance != null)
             {
+                SingletonEventosEscenas.instance.reiniciarDatos();
                 SingletonEventosEscenas.instance.reiniciarScriptable();
+                SingletonEventosEscenas.instance.guardarDatos();
+                SingletonEventosEscenas.instance.cargarDatos();
             }
             //--------------
-            //Reiniciar los datos
             StartCoroutine(cambiarEscena(nombreEscenaMazmorra.valorStringEjecucion));
             bloquearBotones();
         }
@@ -175,13 +184,16 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
             && nombreEscenaJefeFinal.valorStringEjecucion != "")
         {
             ManejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
+            //Reiniciar los datos
             //--------------
             if (SingletonEventosEscenas.instance != null)
             {
+                SingletonEventosEscenas.instance.reiniciarDatos();
                 SingletonEventosEscenas.instance.reiniciarScriptable();
+                SingletonEventosEscenas.instance.guardarDatos();
+                SingletonEventosEscenas.instance.cargarDatos();
             }
             //--------------
-            //Reiniciar los datos
             StartCoroutine(cambiarEscena(nombreEscenaJefeFinal.valorStringEjecucion));
             bloquearBotones();
         }
@@ -190,12 +202,20 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
     public void continuarPartidaBoton() 
     {
         if (!pulseBoton
-            && nombreEscenaActual!= null
-            && nombreEscenaActual.valorStringEjecucion != ""
-            && nombreEscenaActual.valorStringEjecucion.Length > 0)
+            && nombreEscenaControl!= null
+            && nombreEscenaControl.valorStringEjecucion != ""
+            && nombreEscenaControl.valorStringEjecucion.Length > 0)
         {
+            //Cargo los datos
+            //--------------
+            if (SingletonEventosEscenas.instance != null)
+            {
+                SingletonEventosEscenas.instance.reiniciarScriptable();
+                SingletonEventosEscenas.instance.cargarDatos();
+            }
+            //--------------
             ManejadorAudioInterfazGrafica.reproducirAudioClickAbrir();
-            StartCoroutine(cambiarEscena(nombreEscenaActual.valorStringEjecucion));
+            StartCoroutine(cambiarEscena(nombreEscenaControl.valorStringEjecucion));
             bloquearBotones();
         }
     }

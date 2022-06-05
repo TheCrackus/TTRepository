@@ -77,6 +77,13 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudioInterf
     {
         if (!pulseBoton)
         {
+            //Reiniciar los datos
+            //--------------
+            if (SingletonEventosEscenas.instance != null)
+            {
+                SingletonEventosEscenas.instance.guardarDatos();
+            }
+            //--------------
             StartCoroutine(cambiarEscena(nombreEscenaMenuPrincipal.valorStringEjecucion));
             bloquearBotones();
             cerrarGrafico();
@@ -87,13 +94,14 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudioInterf
     {
         if (!pulseBoton)
         {
+            //Reiniciar los datos
             //--------------
             if (SingletonEventosEscenas.instance != null)
             {
+                SingletonEventosEscenas.instance.reiniciarDatos();
                 SingletonEventosEscenas.instance.reiniciarScriptable();
             }
             //--------------
-            //Reiniciar los datos
             StartCoroutine(cambiarEscena(nombreEscenaMenuPrincipal.valorStringEjecucion));
             bloquearBotones();
             cerrarGrafico();

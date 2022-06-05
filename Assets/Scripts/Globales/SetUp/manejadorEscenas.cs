@@ -87,7 +87,7 @@ public class ManejadorEscenas : MonoBehaviour
             && !estadoCambioEscena.cambieEscenaEjecucion
             && escenaControl.valorStringEjecucion == nombreEscenaLaberintos.valorStringEjecucion)
         {
-            //cinematicaInicial.Play();
+            cinematicaInicial.Play();
         }
         if (!estadoCambioEscena.cambieEscenaEjecucion
             && empezoPartida.valorBooleanoEjecucion

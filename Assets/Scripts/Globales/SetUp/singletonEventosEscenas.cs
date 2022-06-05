@@ -51,4 +51,19 @@ public class SingletonEventosEscenas : MonoBehaviour
         datos.reiniciarScriptable();
     }
 
+    public void reiniciarDatos() 
+    {
+        datos.reiniciarDatos();
+    }
+
+    public void guardarDatos() 
+    {
+        datos.guardarDatos();
+    }
+
+    public void cargarDatos() 
+    {
+        datos.cargarDatos();
+    }
+
 }

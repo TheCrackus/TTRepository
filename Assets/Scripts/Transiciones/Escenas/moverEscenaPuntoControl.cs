@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class MoverEscenaPuntoControl : MoverEscena
 {
 
-    [Header("Los datos de la partida en curso")]
-    [SerializeField] private DatosJuego datos;
-
     public override IEnumerator cambiarEscenaOut(MovimientoPlayer movP)
     {
         if (ManejadorAudioTransicion != null

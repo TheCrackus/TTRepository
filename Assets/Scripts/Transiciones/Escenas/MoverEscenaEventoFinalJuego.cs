@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class MoverEscenaEventoFinalJuego : MoverEscenaEvento
 {
 
-    [Header("Los datos de la partida en curso")]
-    [SerializeField] private DatosJuego datos;
-
     public override IEnumerator cambiarEscenaOut(MovimientoPlayer movP)
     {
         if (ManejadorAudioTransicion != null
@@ -25,8 +22,15 @@ public class MoverEscenaEventoFinalJuego : MoverEscenaEvento
         }
 
 
-        datos.reiniciarScriptable();
-        //reiniciar datos
+        //Reiniciar los datos
+        //--------------
+        if (SingletonEventosEscenas.instance != null)
+        {
+            SingletonEventosEscenas.instance.reiniciarScriptable();
+            SingletonEventosEscenas.instance.reiniciarDatos();
+            SingletonEventosEscenas.instance.guardarDatos();
+        }
+        //--------------
 
         AsyncOperation accion = SceneManager.LoadSceneAsync(EscenaCarga.valorStringEjecucion);
         while (!accion.isDone)

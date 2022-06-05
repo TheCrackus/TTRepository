@@ -53,9 +53,9 @@ public class DatosJuego : ScriptableObject
         reiniciarScriptable();
         foreach (ScriptableObject objeto in objetosPersistentesGeneral)
         {
-            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name)))
+            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name + "-" + miUsuario.DatosEjecucion.idJugador)))
             {
-                File.Delete(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name));
+                File.Delete(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name + "-" + miUsuario.DatosEjecucion.idJugador));
             }
         }
     }
@@ -64,7 +64,7 @@ public class DatosJuego : ScriptableObject
     {
         foreach (ScriptableObject objeto in objetosPersistentesGeneral)
         {
-            FileStream archivo = File.Create(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name));
+            FileStream archivo = File.Create(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name + "-" + miUsuario.DatosEjecucion.idJugador));
             BinaryFormatter binario = new BinaryFormatter();
             var json = JsonUtility.ToJson(objeto);
             binario.Serialize(archivo, json);
@@ -76,9 +76,9 @@ public class DatosJuego : ScriptableObject
     {
         foreach (ScriptableObject objeto in objetosPersistentesGeneral)
         {
-            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name)))
+            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name + "-" + miUsuario.DatosEjecucion.idJugador)))
             {
-                FileStream archivo = File.Open(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name), FileMode.Open);
+                FileStream archivo = File.Open(Application.persistentDataPath + string.Format("/{0}.dat", objeto.name + "-" + miUsuario.DatosEjecucion.idJugador), FileMode.Open);
                 BinaryFormatter binario = new BinaryFormatter();
                 JsonUtility.FromJsonOverwrite((string)binario.Deserialize(archivo), objeto);
                 archivo.Close();
