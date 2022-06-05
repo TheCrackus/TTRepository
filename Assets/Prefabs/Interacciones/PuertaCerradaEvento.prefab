@@ -211,7 +211,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: eb6589e0cf6674847873e27128264207, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.7612884, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -679,11 +679,10 @@ MonoBehaviour:
   manejadorAudioTransicion: {fileID: 6722983431137207434}
   enumAccionContador: 3
   enumTipoTransicion: 1
-  escenaActual: {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
-  escenas:
-  - {fileID: 11400000, guid: c951c50b7d0dae94aa9ddc99c9e83af6, type: 2}
-  - {fileID: 11400000, guid: 84687b5074e6e694da6e1cdae161ebba, type: 2}
-  - {fileID: 11400000, guid: b0af4cadb963a174da75694466327f52, type: 2}
+  escenaControl: {fileID: 11400000, guid: dbef9a861cf400440a61fc062cf00220, type: 2}
+  escenaContador: {fileID: 11400000, guid: 6cb7a487756ba064f907e5d5ebee9cca, type: 2}
+  cuentaTimerRegresivo: {fileID: 11400000, guid: d14a2a0f90837f04caa3fb1e02bfc554, type: 2}
+  nuevaPosicionPlayerContador: {fileID: 11400000, guid: d7519930e031db640b2dd7859c182079, type: 2}
   nombreTransicionDestino: {fileID: 0}
   nombreTransicionActual: {fileID: 0}
   estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}

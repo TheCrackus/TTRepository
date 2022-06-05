@@ -26,6 +26,12 @@ public class trepaCielosCorruptoTorreta : TrepaCielosCorrupto
     public override void Update()
     {
         base.Update();
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado == EstadoGenerico.transicionando
+            && GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado != EstadoGenerico.interactuando)
+        {
+            puedoDisparar = false;
+            tiempoDisparoSegundos = tiempoDisparo;
+        }
         if (!puedoDisparar) 
         {
             tiempoDisparoSegundos -= Time.deltaTime;

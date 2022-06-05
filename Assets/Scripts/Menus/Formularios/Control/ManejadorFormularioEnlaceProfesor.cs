@@ -62,8 +62,8 @@ public class ManejadorFormularioEnlaceProfesor : ManejadorFormulario, ICanvasFor
             ManejadorVentanaEmergente.enviarTextoVentanaEmergente("Enlace completado con éxito, por favor, inicia sesión de nuevo.");
             yield return new WaitForSeconds(1f);
             Conexion.EstadoActualConexion = EstadoConexion.ninguno;
-            cerrarSesion();
             iniciarCanvasLogIn();
+            cerrarGrafico();
         }
         else
         {

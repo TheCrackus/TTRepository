@@ -201,7 +201,7 @@ public class MovimientoPlayer : MonoBehaviour
 
                     manejadorAudioMelee.reproducirAudioMelee();
                     animatorPlayer.SetBool("Atacando", false);
-                    yield return new WaitForSeconds(0.6f);
+                    yield return new WaitForSeconds(0.3f);
 
                     estadoPlayer.Estado = EstadoGenerico.ninguno;
                 }
@@ -249,8 +249,12 @@ public class MovimientoPlayer : MonoBehaviour
 
     public void comenzarEmpujaPlayer(float tiempoAplicarFuerza)
     {
-        estadoPlayer.Estado = EstadoGenerico.estuneado;
-        StartCoroutine(empujarPlayer(tiempoAplicarFuerza));
+        if (estadoPlayer.Estado != EstadoGenerico.interactuando
+            && estadoPlayer.Estado != EstadoGenerico.transicionando)
+        {
+            estadoPlayer.Estado = EstadoGenerico.estuneado;
+            StartCoroutine(empujarPlayer(tiempoAplicarFuerza));
+        }
     }
 
     private IEnumerator empujarPlayer(float tiempoAplicarFuerza)

@@ -975,12 +975,10 @@ MonoBehaviour:
   manejadorAudioTransicion: {fileID: 507836522}
   enumAccionContador: 3
   enumTipoTransicion: 1
-  escenaActual: {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
-  escenas:
-  - {fileID: 11400000, guid: c951c50b7d0dae94aa9ddc99c9e83af6, type: 2}
-  - {fileID: 11400000, guid: 84687b5074e6e694da6e1cdae161ebba, type: 2}
-  - {fileID: 11400000, guid: b0af4cadb963a174da75694466327f52, type: 2}
-  - {fileID: 11400000, guid: aeb234d6858a5a14dab7c840c91cf9fc, type: 2}
+  escenaControl: {fileID: 11400000, guid: dbef9a861cf400440a61fc062cf00220, type: 2}
+  escenaContador: {fileID: 11400000, guid: 6cb7a487756ba064f907e5d5ebee9cca, type: 2}
+  cuentaTimerRegresivo: {fileID: 11400000, guid: d14a2a0f90837f04caa3fb1e02bfc554, type: 2}
+  nuevaPosicionPlayerContador: {fileID: 11400000, guid: d7519930e031db640b2dd7859c182079, type: 2}
   nombreTransicionDestino: {fileID: 11400000, guid: d37fc1f486428df4fa3a26fda487c98f, type: 2}
   nombreTransicionActual: {fileID: 11400000, guid: 3c43b1038236ca740b2a902a5e5c6123, type: 2}
   estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}
@@ -1419,6 +1417,7 @@ GameObject:
   - component: {fileID: 715274956}
   - component: {fileID: 715274959}
   - component: {fileID: 715274958}
+  - component: {fileID: 715274960}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1661,6 +1660,39 @@ MonoBehaviour:
   velocidadAudioTomaPieza: 1
   audioSueltaPieza: {fileID: 197473122}
   velocidadAudioSueltaPieza: 1
+--- !u!114 &715274960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715274952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &756925912
 PrefabInstance:
   m_ObjectHideFlags: 0

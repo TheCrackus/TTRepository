@@ -1602,6 +1602,29 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 84236a18cb54b1b42baaf70d32dd8bf6, type: 3}
   - {fileID: -2413806693520163455, guid: 8aa70a28bc0f67c43b913921f8272c32, type: 3}
   - {fileID: 21300000, guid: 2e0adc28b9ccff74ebccc6094d66f7e8, type: 3}
+  - {fileID: -8054567930922495771, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: -4429696611076450226, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 188324870281028464, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: -7897260566252683308, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 985312037709380876, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 4231129474411985989, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 2516847960827131708, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 4222601482328920133, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: -7252020968319361120, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 8864612470547728332, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 3003244965220960506, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: -9152615737199558108, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 7552624352064725239, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: -7884916128330918026, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 8351325008808147520, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 5179963042747386544, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 7758671463615672611, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: -7734870818805737315, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: -2302168372583615280, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: -6848018497149279250, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 1360734825761131356, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 5056007879281517369, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
+  - {fileID: 8874070420362444032, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
   - {fileID: 21300000, guid: 8bba3bd8c8a4b4b4a978d010f3482952, type: 3}
   - {fileID: 3059174765694063163, guid: 4e07b8e86be44cd4f98890fdb5aaea4c, type: 3}
   - {fileID: -34017176892466219, guid: 4e07b8e86be44cd4f98890fdb5aaea4c, type: 3}
@@ -4382,6 +4405,29 @@ SpriteAtlas:
   - Shadow Deamon
   - Circle
   - PlayerMarker
+  - log_ranged_19
+  - log_ranged_18
+  - log_ranged_11
+  - log_ranged_10
+  - log_ranged_13
+  - log_ranged_12
+  - log_ranged_15
+  - log_ranged_14
+  - log_ranged_17
+  - log_ranged_16
+  - log_ranged_2
+  - log_ranged_3
+  - log_ranged_0
+  - log_ranged_1
+  - log_ranged_6
+  - log_ranged_7
+  - log_ranged_4
+  - log_ranged_5
+  - log_ranged_8
+  - log_ranged_9
+  - log_ranged_20
+  - log_ranged_21
+  - log_ranged_22
   - bow
   - log_8
   - log_9

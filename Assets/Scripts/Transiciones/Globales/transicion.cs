@@ -73,11 +73,17 @@ public class Transicion : MonoBehaviour
     [Header("El tipo de transicion")]
     [SerializeField] tipoTransicion enumTipoTransicion;
 
-    [Header("La escena actual en ejecucion")]
-    [SerializeField] ValorString escenaActual;
+    [Header("Escena punto de control")]
+    [SerializeField] private ValorString escenaControl;
 
-    [Header("Nombre de las escenas del videojuego")]
-    [SerializeField] ValorString[] escenas;
+    [Header("Escena contador")]
+    [SerializeField] private ValorString escenaContador;
+
+    [Header("El contador regresivo esta en ejecucion?")]
+    [SerializeField] private ValorBooleano cuentaTimerRegresivo;
+
+    [Header("Posicion a la que se movera el player al final del conteo")]
+    [SerializeField] private ValorVectorial nuevaPosicionPlayerContador;
 
     public accionContador EnumAccionContador { get => enumAccionContador; set => enumAccionContador = value; }
     public tipoTransicion EnumTipoTransicion { get => enumTipoTransicion; set => enumTipoTransicion = value; }
@@ -100,8 +106,10 @@ public class Transicion : MonoBehaviour
     public Evento ContadorRegresivoDeten { get => contadorRegresivoDeten; set => contadorRegresivoDeten = value; }
     public Evento ContadorRegresivoReinicia { get => contadorRegresivoReinicia; set => contadorRegresivoReinicia = value; }
     public AudioTransicion ManejadorAudioTransicion { get => manejadorAudioTransicion; set => manejadorAudioTransicion = value; }
-    public ValorString EscenaActual { get => escenaActual; set => escenaActual = value; }
-    public ValorString[] Escenas { get => escenas; set => escenas = value; }
+    public ValorString EscenaControl { get => escenaControl; set => escenaControl = value; }
+    public ValorString EscenaContador { get => escenaContador; set => escenaContador = value; }
+    public ValorBooleano CuentaTimerRegresivo { get => cuentaTimerRegresivo; set => cuentaTimerRegresivo = value; }
+    public ValorVectorial NuevaPosicionPlayerContador { get => nuevaPosicionPlayerContador; set => nuevaPosicionPlayerContador = value; }
 
     public void iniciarCanvas()
     {

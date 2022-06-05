@@ -52,12 +52,13 @@ public class Enemigo : MonoBehaviour
 
     public virtual void Update()
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado == EstadoGenerico.transicionando) 
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado == EstadoGenerico.transicionando
+            && GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado != EstadoGenerico.interactuando) 
         {
             puedoMoverme = false;
+            contadorEsperaMovimiento = tiempoEsperaMovimientoAtaque;
         }
-        if (!puedoMoverme
-            && (GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado != EstadoGenerico.transicionando))
+        if (!puedoMoverme)
         {
             contadorEsperaMovimiento -= Time.deltaTime;
             if (contadorEsperaMovimiento <= 0)

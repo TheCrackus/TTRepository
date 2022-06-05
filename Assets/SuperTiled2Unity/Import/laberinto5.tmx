@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="21">
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="23">
  <tileset firstgid="1" source="Overworld.tsx"/>
  <tileset firstgid="1441" source="Woodlands Tileset WIP (v2).tsx"/>
  <layer id="1" name="piso1" width="25" height="25">
@@ -335,5 +335,6 @@
   <object id="20" x="270.043" y="346.913">
    <polygon points="0,0 -3.08696,2 -14.087,2.04348 -15.1304,1.08696 -19,1 -19.7391,0.0869565 -21.0435,1.13043 -21.087,3.08696 -24.087,3.08696 -24.9565,1.91304 -25.1304,0.173913 -26.0435,0.0869565 -26.9565,1 -28.1304,1 -28.6522,0.130435 -29.9565,0.0869565 -30,-1.91304 -29.087,-2.82609 -27.9565,-4.04348 -28.087,-9.95652 -27,-13.7826 -26,-16.8696 -23.087,-19.8261 -18.9565,-20.913 -14.0435,-20.8696 -12.0435,-19.8696 -9.47826,-19.9565 -9,-20.8261 -7.13043,-20.8696 -6.6087,-20.087 -5.08696,-19.9565 -2.08696,-16.8696 -1.21739,-14.9565 -1,-10.8696 -2.04348,-9.86957 -2.08696,-8.56522 -1.08696,-7.91304 -1.04348,-5.6087 -0.0869565,-4.86957"/>
   </object>
+  <object id="21" x="397.125" y="358.875" width="2.5" height="11.375"/>
  </objectgroup>
 </map>

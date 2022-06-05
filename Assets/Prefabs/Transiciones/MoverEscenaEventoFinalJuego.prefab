@@ -104,17 +104,12 @@ MonoBehaviour:
   contadorRegresivoDeten: {fileID: 11400000, guid: 52e43ba2e78e79649bbd417d363b932c, type: 2}
   contadorRegresivoReinicia: {fileID: 11400000, guid: f6cdd663aa8c6094b83aabade28e9e6a, type: 2}
   manejadorAudioTransicion: {fileID: 6186029092557633645}
-  enumAccionContador: 1
+  enumAccionContador: 3
   enumTipoTransicion: 1
-  escenaActual: {fileID: 11400000, guid: e20308c9649f6d542a8dcec3737f0293, type: 2}
-  escenas:
-  - {fileID: 11400000, guid: c951c50b7d0dae94aa9ddc99c9e83af6, type: 2}
-  - {fileID: 11400000, guid: 034cd9a1768459b4d9ff539c5c06ae3f, type: 2}
-  - {fileID: 11400000, guid: 84687b5074e6e694da6e1cdae161ebba, type: 2}
-  - {fileID: 11400000, guid: 66ba4d7d24af7c94dae2ba0b3768b45c, type: 2}
-  - {fileID: 11400000, guid: b0af4cadb963a174da75694466327f52, type: 2}
-  - {fileID: 11400000, guid: 2d3d75730c114a24cb4758708fecd842, type: 2}
-  - {fileID: 11400000, guid: aeb234d6858a5a14dab7c840c91cf9fc, type: 2}
+  escenaControl: {fileID: 11400000, guid: dbef9a861cf400440a61fc062cf00220, type: 2}
+  escenaContador: {fileID: 11400000, guid: 6cb7a487756ba064f907e5d5ebee9cca, type: 2}
+  cuentaTimerRegresivo: {fileID: 11400000, guid: d14a2a0f90837f04caa3fb1e02bfc554, type: 2}
+  nuevaPosicionPlayerContador: {fileID: 11400000, guid: d7519930e031db640b2dd7859c182079, type: 2}
   nombreTransicionDestino: {fileID: 11400000, guid: 1ecef9ac3405dd7479e14784d8486a93, type: 2}
   nombreTransicionActual: {fileID: 11400000, guid: 9260bd7fb5ffecc46a190ac1fc8f3670, type: 2}
   estadoCambioEscena: {fileID: 11400000, guid: 98665c7b4cf0b634ea48b9e1219c2cc8, type: 2}

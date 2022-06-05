@@ -21,23 +21,23 @@ public class MoverCuarto : Transicion
         {
             if (EnumAccionContador == accionContador.inicia)
             {
-                if (ContadorRegresivoInicia != null) 
+                if (ContadorRegresivoInicia != null)
                 {
                     ContadorRegresivoInicia.invocarFunciones();
                 }
-                EscenaActual.valorStringEjecucion = SceneManager.GetActiveScene().name;
-                ManejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<ManejadorContador>();
-                MoverEscena moverE = manejadorC.GetComponent<MoverEscena>();
-                foreach (ValorString nombre in Escenas) 
+                if (ContadorRegresivoDeten != null)
                 {
-                    if (nombre.valorStringEjecucion == EscenaActual.valorStringEjecucion) 
-                    {
-                        moverE.EscenaCarga = nombre;
-                        break;
-                    }
+                    ContadorRegresivoDeten.invocarFunciones();
                 }
-                moverE.NuevaDireccionPlayer = new Vector2(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1));
-                moverE.NuevaPosicionPlayer = gameObject.transform.position + new Vector3(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1), 0);
+                if (EscenaContador != null)
+                {
+                    string nombreEscenaActual = SceneManager.GetActiveScene().name;
+                    EscenaContador.valorStringEjecucion = nombreEscenaActual;
+                }
+                if (NuevaPosicionPlayerContador != null) 
+                {
+                    NuevaPosicionPlayerContador.valorVectorialEjecucion = gameObject.transform.position - cambioSumaPoscicionPlayer;
+                }
             }
             else 
             {
@@ -98,7 +98,8 @@ public class MoverCuarto : Transicion
             && movP != null)
         {
             ObjetoPanel.SetActive(false);
-            if (EnumAccionContador == accionContador.deten)
+            if (EnumAccionContador == accionContador.inicia
+                || EnumAccionContador == accionContador.deten)
             {
                 ContadorRegresivoInicia.invocarFunciones();
             }

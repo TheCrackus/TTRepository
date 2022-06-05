@@ -67,32 +67,34 @@ public class MoverEscena : Transicion
             {
                 estadoCambioEscena.pausoContadorEjecucion = true;
             }
-            EscenaActual.valorStringEjecucion = SceneManager.GetActiveScene().name;
-            ManejadorContador manejadorC = GameObject.FindGameObjectWithTag("ManejadorContador").GetComponent<ManejadorContador>();
-            MoverEscena moverE = manejadorC.GetComponent<MoverEscena>();
-            foreach (ValorString nombre in Escenas)
+            if (EscenaContador != null) 
             {
-                if (nombre.valorStringEjecucion == EscenaActual.valorStringEjecucion)
-                {
-                    moverE.EscenaCarga = nombre;
-                    break;
-                }
+                string nombreEscenaActual = SceneManager.GetActiveScene().name;
+                EscenaContador.valorStringEjecucion = nombreEscenaActual;
             }
-            moverE.NuevaDireccionPlayer = new Vector2(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1));
-            moverE.NuevaPosicionPlayer = gameObject.transform.position + new Vector3(NuevaDireccionPlayer.x * (-1), NuevaDireccionPlayer.y * (-1), 0);
+            if (NuevaPosicionPlayerContador != null)
+            {
+                NuevaPosicionPlayerContador.valorVectorialEjecucion = nuevaPosicionPlayer;
+            }
         }
         else
         {
             if (EnumAccionContador == accionContador.deten)
             {
-                if (ContadorRegresivoDeten != null)
+                if (CuentaTimerRegresivo != null) 
                 {
-                    ContadorRegresivoDeten.invocarFunciones();
-                }
-                if (estadoCambioEscena != null)
-                {
-                    estadoCambioEscena.pausoContadorEjecucion = true;
-                }
+                    if (CuentaTimerRegresivo.valorBooleanoEjecucion)
+                    {
+                        if (ContadorRegresivoDeten != null)
+                        {
+                            ContadorRegresivoDeten.invocarFunciones();
+                        }
+                        if (estadoCambioEscena != null)
+                        {
+                            estadoCambioEscena.pausoContadorEjecucion = true;
+                        }
+                    }
+                }  
             }
             else
             {
@@ -205,7 +207,7 @@ public class MoverEscena : Transicion
 
         if (PosicionPlayer != null 
             && estadoCambioEscena != null 
-            && EscenaActual != null
+            && EscenaControl != null
             && escenaCarga != null)
         {
             PosicionPlayer.valorVectorialEjecucion = nuevaPosicionPlayer;
@@ -214,7 +216,7 @@ public class MoverEscena : Transicion
             estadoCambioEscena.muestraTextoEjecucion = DebeMostrarTexto;
             estadoCambioEscena.direccionPlayerEjecucion = NuevaDireccionPlayer;
             estadoCambioEscena.nombreTansicionDestinoEjecucion = nombreTransicionDestino.valorStringEjecucion;
-            EscenaActual.valorStringEjecucion = escenaCarga.valorStringEjecucion;
+            EscenaControl.valorStringEjecucion = escenaCarga.valorStringEjecucion;
             AsyncOperation accion = SceneManager.LoadSceneAsync(escenaCarga.valorStringEjecucion);
             while (!accion.isDone)
             {

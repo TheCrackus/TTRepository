@@ -527,7 +527,7 @@ SpriteRenderer:
   m_SortingLayerID: 1508288005
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5034061168752090764, guid: 4e07b8e86be44cd4f98890fdb5aaea4c, type: 3}
+  m_Sprite: {fileID: 7552624352064725239, guid: 7ccc1148f1ba28546b62c586084c7fba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -595,7 +595,7 @@ Animator:
   m_GameObject: {fileID: 5799077720624876057}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 612902d812187fe4e88ddb15b98378f0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 54977d6483d4bb340919953e308a78f6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -624,7 +624,7 @@ MonoBehaviour:
   radioPersecucion: 4
   radioAtaque: 0.1
   proyectilPiedra: {fileID: 8853671634870005005, guid: 33623850b879320419cf749702cdeb92, type: 3}
-  tiempoDisparo: 2
+  tiempoDisparo: 3
   manejadorAudioProyectil: {fileID: 4641389249621774531}
 --- !u!114 &4641389249621774531
 MonoBehaviour:

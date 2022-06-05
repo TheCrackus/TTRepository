@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a43868418dc19643ac4ca1f3f8100f5, type: 3}
   m_Name: PlayerContador
   m_EditorClassIdentifier: 
-  valorStringInicial: 
-  valorStringEjecucion: 
+  valorStringInicial: Contador
+  valorStringEjecucion: Contador

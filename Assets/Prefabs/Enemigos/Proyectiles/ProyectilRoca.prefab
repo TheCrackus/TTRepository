@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fa258ed16913148ab48c6a1b4485b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 3
+  velocidadMovimiento: 4
   tiempoVidaProyectil: 2
   proyectilRigidBody: {fileID: 8853671634870005007}
   manejadorAudioProyectilRomper: {fileID: 6653683269554228982}
