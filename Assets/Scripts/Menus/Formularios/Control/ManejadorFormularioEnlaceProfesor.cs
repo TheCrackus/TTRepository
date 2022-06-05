@@ -48,7 +48,7 @@ public class ManejadorFormularioEnlaceProfesor : ManejadorFormulario, ICanvasFor
 
     public void cerrarSesion()
     {
-        Conexion.cierraSesion();
+        Conexion.MiUsuario.reiniciarScriptable();
         cerrarGrafico();
     }
 

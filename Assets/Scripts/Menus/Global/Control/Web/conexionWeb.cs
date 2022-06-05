@@ -323,9 +323,4 @@ public class ConexionWeb : MonoBehaviour
         }
     }
 
-    public void cierraSesion()
-    {
-        miUsuario.reiniciarValores();
-    }
-
 }

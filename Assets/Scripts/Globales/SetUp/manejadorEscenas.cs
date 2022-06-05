@@ -114,17 +114,6 @@ public class ManejadorEscenas : MonoBehaviour
             }
             empezoPartida.valorBooleanoEjecucion = false;
         }
-        else
-        {
-            if (nombreEscenaActual == nombreEscenaLaberintos.valorStringEjecucion
-                || nombreEscenaActual == nombreEscenaMazmorra.valorStringEjecucion
-                || nombreEscenaActual == nombreEscenaCasa1.valorStringEjecucion
-                || nombreEscenaActual == nombreEscenaPuzzle.valorStringEjecucion
-                || nombreEscenaActual == nombreEscenaJefeFinal.valorStringEjecucion)
-            {
-                //Carga la partida del usuario en log in
-            }
-        }
     }
 
     private void Start()

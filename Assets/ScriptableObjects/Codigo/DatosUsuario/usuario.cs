@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -29,15 +31,17 @@ public class Usuario : ScriptableObject
     }
 
     [Header("Datos usuario iniciales")]
-    private DatosUsuario datosIniciales;
+    [SerializeField]  private DatosUsuario datosIniciales;
+
     [Header("Datos usuario en ejecucion del juego")]
-    private DatosUsuario datosEjecucion;
+    [SerializeField] private DatosUsuario datosEjecucion;
 
     public DatosUsuario DatosIniciales { get => datosIniciales; set => datosIniciales = value; }
     public DatosUsuario DatosEjecucion { get => datosEjecucion; set => datosEjecucion = value; }
 
-    public void reiniciarValores()
+    public void reiniciarScriptable()
     {
         datosEjecucion = datosIniciales;
     }
+
 }

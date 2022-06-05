@@ -81,7 +81,7 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudioInterf
             //--------------
             if (SingletonEventosEscenas.instance != null)
             {
-                SingletonEventosEscenas.instance.guardarDatos();
+                SingletonEventosEscenas.instance.guardarDatosPartida();
             }
             //--------------
             StartCoroutine(cambiarEscena(nombreEscenaMenuPrincipal.valorStringEjecucion));
@@ -98,8 +98,8 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudioInterf
             //--------------
             if (SingletonEventosEscenas.instance != null)
             {
-                SingletonEventosEscenas.instance.reiniciarDatos();
-                SingletonEventosEscenas.instance.reiniciarScriptable();
+                SingletonEventosEscenas.instance.reiniciarDatosPartida();
+                SingletonEventosEscenas.instance.reiniciarScriptablePartida();
             }
             //--------------
             StartCoroutine(cambiarEscena(nombreEscenaMenuPrincipal.valorStringEjecucion));

@@ -26,9 +26,9 @@ public class MoverEscenaEventoFinalJuego : MoverEscenaEvento
         //--------------
         if (SingletonEventosEscenas.instance != null)
         {
-            SingletonEventosEscenas.instance.reiniciarScriptable();
-            SingletonEventosEscenas.instance.reiniciarDatos();
-            SingletonEventosEscenas.instance.guardarDatos();
+            SingletonEventosEscenas.instance.reiniciarScriptablePartida();
+            SingletonEventosEscenas.instance.reiniciarDatosPartida();
+            SingletonEventosEscenas.instance.guardarDatosPartida();
         }
         //--------------
 

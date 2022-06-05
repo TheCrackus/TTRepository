@@ -61,7 +61,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 802c112a5dd0d0f4bb4f1c02d2c96b46, type: 2}
   - {fileID: 11400000, guid: d7519930e031db640b2dd7859c182079, type: 2}
   - {fileID: 11400000, guid: c7f5f529dad4ce0479322ef9d02b50fc, type: 2}
-  - {fileID: 11400000, guid: d801293b60788ca4f8748c1bc5b4af3e, type: 2}
   - {fileID: 11400000, guid: dbef9a861cf400440a61fc062cf00220, type: 2}
   - {fileID: 11400000, guid: 6cb7a487756ba064f907e5d5ebee9cca, type: 2}
   vectores:

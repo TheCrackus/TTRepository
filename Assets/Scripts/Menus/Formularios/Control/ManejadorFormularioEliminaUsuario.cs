@@ -51,7 +51,7 @@ public class ManejadorFormularioEliminaUsuario : ManejadorFormulario, ICanvasMen
 
     public void cerrarSesion() 
     {
-        Conexion.cierraSesion();
+        Conexion.MiUsuario.reiniciarScriptable();
         StartCoroutine(cambiarEscena(escenaLogIn.valorStringEjecucion));
     }
 

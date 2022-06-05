@@ -341,7 +341,7 @@ public class ManejadorFormularioModificaUsuario : ManejadorFormulario, ICanvasMe
 
     public void cerrarSesion()
     {
-        Conexion.cierraSesion();
+        Conexion.MiUsuario.reiniciarScriptable();
         StartCoroutine(cambiarEscena(escenaLogIn.valorStringEjecucion));
     }
 

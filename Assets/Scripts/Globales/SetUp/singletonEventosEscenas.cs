@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,22 +45,22 @@ public class SingletonEventosEscenas : MonoBehaviour
         }
     }
 
-    public void reiniciarScriptable() 
+    public void reiniciarScriptablePartida() 
     {
         datos.reiniciarScriptable();
     }
 
-    public void reiniciarDatos() 
+    public void reiniciarDatosPartida() 
     {
         datos.reiniciarDatos();
     }
 
-    public void guardarDatos() 
+    public void guardarDatosPartida() 
     {
         datos.guardarDatos();
     }
 
-    public void cargarDatos() 
+    public void cargarDatosPartida() 
     {
         datos.cargarDatos();
     }
