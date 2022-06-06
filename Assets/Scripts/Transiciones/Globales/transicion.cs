@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum accionContador
 {
@@ -85,6 +86,12 @@ public class Transicion : MonoBehaviour
     [Header("Posicion a la que se movera el player al final del conteo")]
     [SerializeField] private ValorVectorial nuevaPosicionPlayerContador;
 
+    [Header("Arreglo de imagenes para direccion")]
+    [SerializeField] private Sprite[] spritesFlecha;
+
+    [Header("Direccion Flecha")]
+    [SerializeField] private Vector2 direccionFlecha;
+
     public accionContador EnumAccionContador { get => enumAccionContador; set => enumAccionContador = value; }
     public tipoTransicion EnumTipoTransicion { get => enumTipoTransicion; set => enumTipoTransicion = value; }
     public GameObject ObjetoPanel { get => objetoPanel; set => objetoPanel = value; }
@@ -110,6 +117,47 @@ public class Transicion : MonoBehaviour
     public ValorString EscenaContador { get => escenaContador; set => escenaContador = value; }
     public ValorBooleano CuentaTimerRegresivo { get => cuentaTimerRegresivo; set => cuentaTimerRegresivo = value; }
     public ValorVectorial NuevaPosicionPlayerContador { get => nuevaPosicionPlayerContador; set => nuevaPosicionPlayerContador = value; }
+    public Sprite[] SpritesFlecha { get => spritesFlecha; set => spritesFlecha = value; }
+    public Vector2 DireccionFlecha { get => direccionFlecha; set => direccionFlecha = value; }
+
+    public virtual void Start()
+    {
+        if (SpritesFlecha != null
+            && SpritesFlecha.Length > 0)
+        {
+            if (direccionFlecha.x == 0)
+            {
+                if (direccionFlecha.y > 0)
+                {
+                    gameObject.GetComponent<SpriteRenderer>().sprite = SpritesFlecha[1];
+                }
+                else
+                {
+                    if (direccionFlecha.y < 0)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().sprite = SpritesFlecha[3];
+                    }
+                }
+            }
+            else
+            {
+                if (direccionFlecha.y == 0)
+                {
+                    if (direccionFlecha.x > 0)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().sprite = SpritesFlecha[0];
+                    }
+                    else
+                    {
+                        if (direccionFlecha.x < 0)
+                        {
+                            gameObject.GetComponent<SpriteRenderer>().sprite = SpritesFlecha[2];
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     public void iniciarCanvas()
     {

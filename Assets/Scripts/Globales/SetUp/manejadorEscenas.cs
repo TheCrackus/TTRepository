@@ -49,6 +49,9 @@ public class ManejadorEscenas : MonoBehaviour
     [Header("Objeto Singleton")]
     [SerializeField] private GameObject singleton;
 
+    [Header("Evento que abre el tutorial")]
+    [SerializeField] private Evento abreTutorial;
+
     private void Awake()
     {
         iniciarSingleton();
@@ -81,20 +84,15 @@ public class ManejadorEscenas : MonoBehaviour
                     }
                 }
             }
-        } 
-        
+        }
         if (empezoPartida.valorBooleanoEjecucion
             && !estadoCambioEscena.cambieEscenaEjecucion
-            && escenaControl.valorStringEjecucion == nombreEscenaLaberintos.valorStringEjecucion)
-        {
-            cinematicaInicial.Play();
-        }
-        if (!estadoCambioEscena.cambieEscenaEjecucion
-            && empezoPartida.valorBooleanoEjecucion
             && escenaControl.valorStringEjecucion != "")
         {
-            if (nombreEscenaActual == nombreEscenaLaberintos.valorStringEjecucion)
+            if (escenaControl.valorStringEjecucion == nombreEscenaLaberintos.valorStringEjecucion)
             {
+                cinematicaInicial.Play();
+                abreTutorial.invocarFunciones();
                 posicionPlayer.valorVectorialEjecucion = new Vector3(2f, -13.5f, 0);
             }
             else
@@ -112,12 +110,21 @@ public class ManejadorEscenas : MonoBehaviour
                     }
                 }
             }
-            empezoPartida.valorBooleanoEjecucion = false;
         }
     }
 
     private void Start()
     {
+        if (empezoPartida.valorBooleanoEjecucion
+            && !estadoCambioEscena.cambieEscenaEjecucion
+            && escenaControl.valorStringEjecucion != "")
+        {
+            if (escenaControl.valorStringEjecucion == nombreEscenaLaberintos.valorStringEjecucion)
+            {
+                abreTutorial.invocarFunciones();
+            }
+            empezoPartida.valorBooleanoEjecucion = false;
+        }
         if (SingletonEventosEscenas.instance != null)
         {
             SingletonEventosEscenas.instance.ejecutarEventos();

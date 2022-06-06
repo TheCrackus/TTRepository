@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2509b261aad71147a2e4d043c0e0dfb, type: 3}
   m_Name: Contador Regresivo Laberintos
   m_EditorClassIdentifier: 
-  valorFlotanteInicial: 600
-  valorFlotanteEjecucion: 596.6497
+  valorFlotanteInicial: 900
+  valorFlotanteEjecucion: 900

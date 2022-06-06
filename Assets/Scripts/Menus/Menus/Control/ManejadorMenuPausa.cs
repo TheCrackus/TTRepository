@@ -15,9 +15,6 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudioInterf
     [Header("Nombre de la escena con el menu principal")]
     [SerializeField] private ValorString nombreEscenaMenuPrincipal;
 
-    [Header("Objeto que contiene la informacion del juego en ejecucion")]
-    [SerializeField] private CambioEscena estadoCambioEscena;
-
     [Header("Manejador de audio de interfaces")]
     [SerializeField] private AudioInterfazGrafica manejadorAudioInterfazGrafica;
 
@@ -82,6 +79,7 @@ public class ManejadorMenuPausa : ManejadorMenuGenerico, IReproductorAudioInterf
             if (SingletonEventosEscenas.instance != null)
             {
                 SingletonEventosEscenas.instance.guardarDatosPartida();
+                SingletonEventosEscenas.instance.reiniciarScriptablePartida();
             }
             //--------------
             StartCoroutine(cambiarEscena(nombreEscenaMenuPrincipal.valorStringEjecucion));

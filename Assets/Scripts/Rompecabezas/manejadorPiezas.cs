@@ -25,7 +25,7 @@ public class ManejadorPiezas : MonoBehaviour
     {
         EstoyPosicionCorrecta = false;
         posicionContenedorPiezas = gameObject.transform.position;
-        gameObject.transform.position = new Vector3(Random.Range(-1f, 8f), Random.Range(-4f, 4f));
+        gameObject.transform.position = new Vector3(Random.Range(2f, 10f), Random.Range(-5f, 5f));
     }
 
     private void Update()

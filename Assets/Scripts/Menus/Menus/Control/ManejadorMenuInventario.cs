@@ -124,6 +124,7 @@ public class ManejadorMenuInventario : ManejadorMenuGenerico, IReproductorAudioI
             {
                 activarBotonEnviaTexto("", false, null);
             }
+            cerrarGrafico();
         }
     }
 

@@ -1103,6 +1103,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1452414894}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: direccionFlecha.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: nuevaDireccionPlayer.x
       value: 0
       objectReference: {fileID: 0}
@@ -1523,6 +1527,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 739154760}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: direccionFlecha.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: nuevaDireccionPlayer.x
       value: 1
       objectReference: {fileID: 0}
@@ -1828,6 +1836,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 656618046}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: direccionFlecha.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: nuevaDireccionPlayer.x
       value: 1
       objectReference: {fileID: 0}
@@ -2006,6 +2018,10 @@ PrefabInstance:
       propertyPath: moverCuartoRef
       value: 
       objectReference: {fileID: 1971140268}
+    - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: direccionFlecha.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: nuevaDireccionPlayer.x
       value: -1
@@ -2208,6 +2224,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4938905415738854631, guid: 838e3229dc93cc545bac77bf63f5ed09, type: 3}
+      propertyPath: direccionFlecha.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 838e3229dc93cc545bac77bf63f5ed09, type: 3}
 --- !u!4 &733675898 stripped
@@ -2274,6 +2294,10 @@ PrefabInstance:
       propertyPath: moverCuartoRef
       value: 
       objectReference: {fileID: 422661383}
+    - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: direccionFlecha.x
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
 --- !u!4 &739154759 stripped
@@ -3824,7 +3848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8536082101049496842, guid: 13581d609db8ba443bf8687eb38f8827, type: 3}
       propertyPath: enemigos.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8536082101049496842, guid: 13581d609db8ba443bf8687eb38f8827, type: 3}
       propertyPath: enemigos.Array.data[0]
@@ -3845,17 +3869,21 @@ PrefabInstance:
     - target: {fileID: 8536082101049496842, guid: 13581d609db8ba443bf8687eb38f8827, type: 3}
       propertyPath: enemigos.Array.data[4]
       value: 
-      objectReference: {fileID: 1685099167}
+      objectReference: {fileID: 1701405677}
     - target: {fileID: 8536082101049496842, guid: 13581d609db8ba443bf8687eb38f8827, type: 3}
       propertyPath: enemigos.Array.data[5]
       value: 
-      objectReference: {fileID: 801467180}
+      objectReference: {fileID: 1685099167}
     - target: {fileID: 8536082101049496842, guid: 13581d609db8ba443bf8687eb38f8827, type: 3}
       propertyPath: enemigos.Array.data[6]
       value: 
-      objectReference: {fileID: 898229480}
+      objectReference: {fileID: 801467180}
     - target: {fileID: 8536082101049496842, guid: 13581d609db8ba443bf8687eb38f8827, type: 3}
       propertyPath: enemigos.Array.data[7]
+      value: 
+      objectReference: {fileID: 898229480}
+    - target: {fileID: 8536082101049496842, guid: 13581d609db8ba443bf8687eb38f8827, type: 3}
+      propertyPath: enemigos.Array.data[8]
       value: 
       objectReference: {fileID: 1638851866}
     m_RemovedComponents: []
@@ -3963,6 +3991,10 @@ PrefabInstance:
       propertyPath: moverCuartoRef
       value: 
       objectReference: {fileID: 233670681}
+    - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: direccionFlecha.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: nuevaDireccionPlayer.x
       value: 0
@@ -4426,6 +4458,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1635407725}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: direccionFlecha.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: nuevaDireccionPlayer.x
       value: 0
       objectReference: {fileID: 0}
@@ -4601,6 +4637,10 @@ PrefabInstance:
       propertyPath: moverCuartoRef
       value: 
       objectReference: {fileID: 1560508670}
+    - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: direccionFlecha.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: nuevaDireccionPlayer.x
       value: 0
@@ -5088,6 +5128,17 @@ Transform:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5799077720624876056, guid: 7b617c1dedc30764a8d42388ddfe538d, type: 3}
   m_PrefabInstance: {fileID: 1699362973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e2bc36f48681a4eae975d4f9d6c60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1701405677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5799077720624876056, guid: 7b617c1dedc30764a8d42388ddfe538d, type: 3}
+  m_PrefabInstance: {fileID: 2010361073}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -6103,6 +6154,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 656618046}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: direccionFlecha.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: nuevaDireccionPlayer.x
       value: 1
       objectReference: {fileID: 0}
@@ -6208,6 +6263,10 @@ PrefabInstance:
     - target: {fileID: 3230322103667937639, guid: d8341849cb34f614e999e2c10b3b8e58, type: 3}
       propertyPath: debeMostrarTexto
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3230322103667937639, guid: d8341849cb34f614e999e2c10b3b8e58, type: 3}
+      propertyPath: direccionFlecha.y
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3230322103667937639, guid: d8341849cb34f614e999e2c10b3b8e58, type: 3}
       propertyPath: direccionPlayer.y

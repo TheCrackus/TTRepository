@@ -129,6 +129,7 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
             if (SingletonEventosEscenas.instance != null)
             {
                 SingletonEventosEscenas.instance.reiniciarDatosPartida();
+                SingletonEventosEscenas.instance.reiniciarScriptablePartida();
                 SingletonEventosEscenas.instance.guardarDatosPartida();
                 SingletonEventosEscenas.instance.cargarDatosPartida();
             }
@@ -150,6 +151,7 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
             if (SingletonEventosEscenas.instance != null)
             {
                 SingletonEventosEscenas.instance.reiniciarDatosPartida();
+                SingletonEventosEscenas.instance.reiniciarScriptablePartida();
                 SingletonEventosEscenas.instance.guardarDatosPartida();
                 SingletonEventosEscenas.instance.cargarDatosPartida();
             }
@@ -171,6 +173,7 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
             if (SingletonEventosEscenas.instance != null)
             {
                 SingletonEventosEscenas.instance.reiniciarDatosPartida();
+                SingletonEventosEscenas.instance.reiniciarScriptablePartida();
                 SingletonEventosEscenas.instance.guardarDatosPartida();
                 SingletonEventosEscenas.instance.cargarDatosPartida();
             }
@@ -192,6 +195,7 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
             if (SingletonEventosEscenas.instance != null)
             {
                 SingletonEventosEscenas.instance.reiniciarDatosPartida();
+                SingletonEventosEscenas.instance.reiniciarScriptablePartida();
                 SingletonEventosEscenas.instance.guardarDatosPartida();
                 SingletonEventosEscenas.instance.cargarDatosPartida();
             }
@@ -207,6 +211,7 @@ public class ManejadorMenuPrincipal : ManejadorMenuGenerico, IBotonPulso, IRepro
         //--------------
         if (SingletonEventosEscenas.instance != null)
         {
+            SingletonEventosEscenas.instance.reiniciarScriptablePartida();
             SingletonEventosEscenas.instance.cargarDatosPartida();
         }
         //--------------

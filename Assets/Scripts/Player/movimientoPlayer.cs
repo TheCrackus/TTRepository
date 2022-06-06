@@ -201,7 +201,7 @@ public class MovimientoPlayer : MonoBehaviour
 
                     manejadorAudioMelee.reproducirAudioMelee();
                     animatorPlayer.SetBool("Atacando", false);
-                    yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(0.5f);
 
                     estadoPlayer.Estado = EstadoGenerico.ninguno;
                 }
