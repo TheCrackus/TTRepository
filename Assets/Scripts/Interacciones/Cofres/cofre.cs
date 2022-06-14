@@ -47,6 +47,10 @@ public class Cofre : Interactuador
     void Update()
     {
         if (Input.GetButtonDown("Interactuar") 
+            && GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado != EstadoGenerico.estuneado
+            && GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado != EstadoGenerico.atacando
+            && GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado != EstadoGenerico.transicionando
+            && GameObject.FindGameObjectWithTag("Player").GetComponent<MovimientoPlayer>().EstadoPlayer.Estado != EstadoGenerico.inactivo
             && PlayerEnRango)
         {
             if (!cofreAbierto && !cofreVacio)

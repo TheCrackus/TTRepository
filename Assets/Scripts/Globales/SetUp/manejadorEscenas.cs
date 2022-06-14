@@ -92,7 +92,6 @@ public class ManejadorEscenas : MonoBehaviour
             if (escenaControl.valorStringEjecucion == nombreEscenaLaberintos.valorStringEjecucion)
             {
                 cinematicaInicial.Play();
-                abreTutorial.invocarFunciones();
                 posicionPlayer.valorVectorialEjecucion = new Vector3(2f, -13.5f, 0);
             }
             else

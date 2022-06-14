@@ -154,6 +154,7 @@ public class MovimientoPlayer : MonoBehaviour
                 if (estadoPlayer.Estado == EstadoGenerico.caminando
                     || estadoPlayer.Estado == EstadoGenerico.ninguno)
                 {
+                    vectorMovimiento = Vector3.zero;
                     estadoPlayer.Estado = EstadoGenerico.ninguno;
                     animatorPlayer.SetBool("Movimiento", false);
                 }
@@ -171,7 +172,7 @@ public class MovimientoPlayer : MonoBehaviour
             }
             else 
             {
-                if (estadoPlayer.Estado == EstadoGenerico.estuneado) 
+                if (estadoPlayer.Estado == EstadoGenerico.estuneado)
                 {
                     animatorPlayer.SetBool("Movimiento", false);
                 }

@@ -1522,6 +1522,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoverCuarto (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4432209651786303975, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: moverCuartoRef
       value: 
@@ -2014,6 +2018,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoverCuarto (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4432209651786303975, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: moverCuartoRef
       value: 
@@ -2289,6 +2297,10 @@ PrefabInstance:
     - target: {fileID: 4420008845017785321, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: m_Name
       value: MoverCuarto (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432209651786303975, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: moverCuartoRef
@@ -3987,6 +3999,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoverCuarto (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4432209651786303975, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: moverCuartoRef
       value: 
@@ -4632,6 +4648,10 @@ PrefabInstance:
     - target: {fileID: 4420008845017785321, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: m_Name
       value: MoverCuarto (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432209651786303975, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: m_Size.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: moverCuartoRef
@@ -6148,6 +6168,10 @@ PrefabInstance:
     - target: {fileID: 4420008845017785321, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: m_Name
       value: MoverCuarto (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432209651786303975, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6204763251028791180, guid: ecf911334f6df374bb1783abf5a655ba, type: 3}
       propertyPath: moverCuartoRef
